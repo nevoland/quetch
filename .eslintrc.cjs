@@ -49,7 +49,7 @@ module.exports = {
         null: "never",
       },
     ],
-    "func-names": ["error", "always"],
+    // "func-names": ["error", "always"],
     "id-length": [
       "error",
       {
@@ -119,7 +119,8 @@ module.exports = {
     "no-var": "error",
     "no-redeclare": "off",
     "object-shorthand": ["error", "properties"],
-    "prefer-arrow-callback": ["error", { allowNamedFunctions: true }],
+    // "prefer-arrow-callback": ["error", { allowNamedFunctions: true }],
+    "prefer-arrow-callback": "off",
     "prefer-const": "error",
     quotes: [
       "error",

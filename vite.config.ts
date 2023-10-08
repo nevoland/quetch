@@ -13,6 +13,16 @@ export default defineConfig({
     }),
     moduleList({
       mode: "named-static-no-extension",
+      rootPath: resolve("lib/middlewares"),
+      outputPath: resolve("lib/middlewares.ts"),
+    }),
+    moduleList({
+      mode: "named-static-no-extension",
+      rootPath: resolve("lib/errors"),
+      outputPath: resolve("lib/errors.ts"),
+    }),
+    moduleList({
+      mode: "named-static-no-extension",
       rootPath: resolve("src/components"),
       outputPath: resolve("src/components.ts"),
     }),
