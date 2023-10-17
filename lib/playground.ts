@@ -21,6 +21,8 @@ type Demo1 = BubbleSort<[9, 8, 2, 6, 5, 4, 1]>;
 
 type Demo2 = BubbleSort<[234, 43, 55, 63, 5, 6, 235, 547]>;
 
+type Tuple = M.NTuple<4, [null]>;
+
 // Math Utils
 namespace M {
   export type Num<T> = Extract<T, number>;
@@ -55,7 +57,7 @@ function bubbleSort(input: number[], curr: number = 0): number[] {
   }
   for (let i = 0; i < input.length; i++) {
     if (input[i] > input[i + 1]) {
-      let newvar = input[i];
+      const newvar = input[i];
       input[i] = input[i + 1];
       input[i + 1] = newvar;
     }
@@ -64,3 +66,50 @@ function bubbleSort(input: number[], curr: number = 0): number[] {
 }
 
 bubbleSort([234, 43, 55, 63, 5, 6, 235, 547]);
+
+type Input = {};
+type Result = any;
+
+type NextHandler<I, R> = (input: I) => Promise<R>;
+
+type Handler<I, O, NI, No> = (
+  input: I,
+  next: NextHandler<NI, No>,
+) => Promise<O>;
+
+type TT = ["one", "two"];
+type KK = number & keyof TT;
+
+const key: KK = 1;
+
+type Indices<T extends { length: number }> = Exclude<
+  Partial<T>["length"],
+  T["length"]
+> &
+  number;
+
+type TupleIndices<T extends readonly any[]> = Extract<
+  keyof T,
+  `${number}`
+> extends `${infer N extends number}`
+  ? N
+  : never;
+
+function getHandler<
+  HandlerList extends unknown[],
+  K extends keyof HandlerList & number,
+>(
+  index: K,
+): K extends 0 ? HandlerList[0] : K extends 1 ? HandlerList[1] : never {}
+
+type Head<T extends readonly any[]> = T extends [...infer H, any] ? H : any[];
+
+type Tail<T extends readonly any[]> = T extends readonly [any, ...infer R]
+  ? R
+  : never;
+
+type First<T extends readonly any[]> = T extends readonly [any, ...infer R]
+  ? T extends readonly [...infer F, ...R]
+    ? F
+    : never
+  : never;

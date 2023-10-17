@@ -2,7 +2,9 @@
 export { aggregate } from "./middlewares/aggregate";
 export { branch } from "./middlewares/branch";
 export { cache } from "./middlewares/cache";
+export { combine } from "./middlewares/combine";
 export { concurrent } from "./middlewares/concurrent";
-export { fetch } from "./middlewares/fetch";
-export { logQuery } from "./middlewares/logQuery";
+export { fetchRequest } from "./middlewares/fetchRequest";
+export { identity } from "./middlewares/identity";
+export { log } from "./middlewares/log";
 export { retry } from "./middlewares/retry";

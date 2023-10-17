@@ -9,60 +9,183 @@ export type Any =
   | Array<any>
   | ((...args: any[]) => any);
 
-export interface Order {
-  key: string;
-  descending: boolean;
-}
+export type AbortableRequest = Request & { signal?: AbortSignal };
 
-export interface UnaryFilter {
-  operator: string;
-  value:
-    | string
-    | number
-    | RegExp
-    | Date
-    | Filter
-    | (string | number | RegExp | Date | Filter)[];
-}
+export type Handler<I, O, NI, No> = (
+  input: I,
+  next: NextHandler<NI, No>,
+) => Promise<O>;
 
-export interface BinaryFilter extends UnaryFilter {
-  key: string;
-}
+export type NextHandler<I, R> = (input: I) => Promise<R>;
 
-export type Filter = UnaryFilter | BinaryFilter;
+export type Query<T extends object> =
+  | QueryGet<T>
+  | QueryGetMultiple<T>
+  | QueryCreate<T>
+  | QueryCreateMultiple<T>
+  | QueryUpdate<T>
+  | QueryUpdateMultiple<T>
+  | QueryDelete<T>
+  | QueryDeleteMultiple<T>
+  | QueryAggregate<T>;
 
-export interface BaseQuery {
-  type: string | {}[];
-  method: string;
+export type QueryBase<T extends object> = {
+  type: string | T[];
   context?: {
     [key: string]: string | number | undefined;
   };
-  fields?: string[];
-  relatedFields?: { [name: string]: Query };
-}
+  fields?: (keyof T)[];
+  signal?: AbortSignal;
+};
 
-export interface MutationQuery extends BaseQuery {
-  value?: {};
-}
+export type QueryMethod = Query<never>["method"];
 
-export interface ListQuery extends BaseQuery {
-  method: "list";
-  filter?: Filter;
-  order?: Order[];
-  limit?: number;
-  offset?: number;
-}
+export type QueryGet<T extends object> = QueryBase<T> & {
+  method: "get";
+  filter?: Filter<T>;
+  customFields?: CustomFieldMap<T>;
+  orderBy?: Order<T>[];
+  groupBy?: never;
+};
 
-export type Query = BaseQuery | MutationQuery | ListQuery;
+export type QueryGetMultiple<T extends object> = QueryBase<T> & {
+  method: "get";
+  multiple: true;
+  filter?: Filter<T>;
+  customFields?: CustomFieldMap<T>;
+  orderBy?: Order<T>[];
+  groupBy?: Group<T>[];
+};
 
-export interface ConcurrentQuery {
-  queries: { [name: string]: Query } | Query[];
-}
+export type QueryCreate<T extends object> = QueryBase<T> & {
+  method: "create";
+  value: Partial<T>;
+};
 
-export type Result = string | number | {} | (string | number | {})[];
+export type QueryCreateMultiple<T extends object> = QueryBase<T> & {
+  method: "create";
+  multiple: true;
+  value: Partial<T>[];
+};
 
-export type Fetcher<Q = Query, R = Result> = (query: Q) => Promise<R>;
+export type QueryUpdate<T extends object> = QueryBase<T> & {
+  method: "update";
+  value: Partial<T>;
+};
 
-export type Handler<Q extends Query, R> =
-  | ((next: Fetcher<NQ, NR>) => Fetcher<Q, R>)
-  | (() => Fetcher<Q, R>);
+export type QueryUpdateMultiple<T extends object> = QueryBase<T> & {
+  method: "update";
+  multiple: true;
+  value: Partial<T>[];
+  filter?: Filter<T>;
+};
+
+export type QueryDelete<T extends object> = QueryBase<T> & {
+  method: "delete";
+  filter?: Filter<T>;
+};
+
+export type QueryDeleteMultiple<T extends object> = QueryBase<T> & {
+  method: "delete";
+  multiple: true;
+  filter?: Filter<T>;
+};
+
+export type QueryAggregate<T extends object> = QueryBase<T> & {
+  method: "aggregate";
+  aggregator: AggregateFunction<T>;
+  filter?: Filter<T>;
+};
+
+export type Order<T extends object> = {
+  key: keyof T;
+  descending: boolean;
+};
+
+type FieldFunction<T extends object> = {
+  operator: "formatDate";
+  field: keyof T;
+  format: string;
+};
+
+type CustomFieldMap<T extends object> = Record<string, FieldFunction<T>>;
+
+export type AggregateFunction<T extends object> =
+  | "count"
+  | { operator: "count" }
+  | {
+      operator:
+        | "median"
+        | "standardDeviation"
+        | "mean"
+        | "minimum"
+        | "maximum"
+        | "variance"
+        | "mode";
+      field: keyof T;
+    };
+
+export type AggregateFunctionOperator = Exclude<
+  AggregateFunction<{}>,
+  string
+>["operator"];
+
+type CustomFieldAggregateMap<T extends object> = Record<
+  string,
+  AggregateFunction<T>
+>;
+
+type Group<T extends object> =
+  | keyof T
+  | {
+      field: keyof T;
+      customFields?: CustomFieldAggregateMap<T>;
+    };
+
+export type Filter<T extends object> =
+  | FilterBoolean<T>
+  | FilterString<T>
+  | FilterNumber<T>
+  | FilterStringContains<T>;
+
+export type FilterOperator = Filter<{}>["operator"];
+
+export type FilterBoolean<T extends object> = {
+  operator: "all" | "any" | "none";
+  children?: Filter<T>[];
+};
+
+export type FilterString<T extends object> = {
+  operator: "equal" | "notEqual";
+  field: keyof T;
+  value: string;
+};
+
+export type FilterNumber<T extends object> = {
+  operator:
+    | "equal"
+    | "notEqual"
+    | "greaterThan"
+    | "greaterThanOrEqual"
+    | "lowerThan"
+    | "lowerThanOrEqual";
+  field: keyof T;
+  value: number;
+};
+
+export type FilterStringMatch<T extends object> = {
+  operator: "match";
+  field: keyof T;
+  value: string;
+  options: {
+    ignoreCase?: boolean;
+    global?: boolean;
+    dotAll?: boolean;
+  };
+};
+
+export type FilterStringContains<T extends object> = {
+  operator: "contains";
+  field: keyof T;
+  value: string[];
+};
