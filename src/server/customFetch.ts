@@ -43,6 +43,7 @@ type EntityTest = {
 type EntityTest2 = {
   c: boolean;
   d: object;
+  e: string;
 };
 
 type Entities = {
@@ -73,7 +74,7 @@ declare function quetch6<
 >(
   query: Q & { type: T },
 ): Promise<
-  Q["method"] extends "get" | unknown
+  Q["method"] extends "get"
     ? Q extends { multiple: true }
       ? EntityItem<E, Q>[]
       : EntityItem<E, Q>
@@ -84,7 +85,7 @@ declare function quetch6<
 declare function quetch6<E extends object, Q extends Query<E>>(
   query: Q & { type: E[] },
 ): Promise<
-  Q["method"] extends "get" | unknown
+  Q["method"] extends "get"
     ? Q extends { multiple: true }
       ? EntityItem<E, Q>[]
       : EntityItem<E, Q>
@@ -97,18 +98,21 @@ function builder<Entities extends Record<string, object>>() {
   function quetch6<
     T extends keyof Entities,
     E extends Entities[T],
-    Q extends Query<E>,
+    const Q extends Query<E>,
   >(
     query: Q & { type: T },
   ): Promise<
-    Q["method"] extends "get" | unknown
+    Q["method"] extends "get"
       ? Q extends { multiple: true }
         ? EntityItem<E, Q>[]
         : EntityItem<E, Q>
       : Q["method"] extends "aggregate"
       ? number
-      : never
+      : Q extends { multiple: true }
+      ? EntityItem<E, Q>[]
+      : EntityItem<E, Q>
   > {
+    // @ts-ignore
     return Promise.resolve(query);
   }
   return quetch6;
@@ -120,6 +124,12 @@ const result7 = await quetch7({
   type: "test",
 });
 
+const result7B = await quetch7({
+  type: "test",
+  method: "aggregate",
+  aggregator: "length",
+});
+
 const result6 = await quetch6({
   type: "test2",
   method: "get",
@@ -128,12 +138,13 @@ const result6 = await quetch6({
   customFields: {
     customFieldA: {
       operator: "formatDate",
-      field: "c",
+      field: "e",
       format: "YYYY-MM",
     },
   },
 });
 result6.c;
+result6.customFieldA;
 
 const result6B = await quetch6({
   type: [{ a: 32, b: true, c: "hello" }],

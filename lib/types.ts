@@ -42,6 +42,7 @@ export type QueryMethod = Query<never>["method"];
 
 export type QueryGet<T extends object> = QueryBase<T> & {
   method?: "get";
+  multiple?: false;
   filter?: Filter<T>;
   customFields?: CustomFieldMap<T>;
   orderBy?: Order<T>[];
@@ -153,16 +154,30 @@ type Group<T extends object> =
     };
 
 export type Filter<T extends object> =
+  | FilterFilter<T>
+  | FilterField<T>
   | FilterBoolean<T>
   | FilterString<T>
+  | FilterStringContains<T>
   | FilterNumber<T>
-  | FilterStringContains<T>;
+  | FilterArray<T>;
 
 export type FilterOperator = Filter<{}>["operator"];
 
-export type FilterBoolean<T extends object> = {
+export type FilterFilter<T extends object> = {
   operator: "all" | "any" | "none";
-  children?: Filter<T>[];
+  value?: Filter<T>[];
+};
+
+export type FilterField<T extends object> = {
+  operator: "exist";
+  field: keyof T;
+};
+
+export type FilterBoolean<T extends object> = {
+  operator: "equal" | "notEqual";
+  field: keyof T;
+  value: boolean;
 };
 
 export type FilterString<T extends object> = {
@@ -183,7 +198,7 @@ export type FilterStringMatch<T extends object> = {
 };
 
 export type FilterStringContains<T extends object> = {
-  operator: "contains";
+  operator: "include";
   field: keyof T;
   value: string[];
 };
@@ -198,4 +213,10 @@ export type FilterNumber<T extends object> = {
     | "lowerThanOrEqual";
   field: keyof T;
   value: number;
+};
+
+export type FilterArray<T extends object, P = Any> = {
+  operator: "include";
+  field: FilterKeys<T, P[]>;
+  value: P[];
 };
