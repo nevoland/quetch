@@ -41,7 +41,7 @@ export type QueryBase<T extends object> = {
 export type QueryMethod = Query<never>["method"];
 
 export type QueryGet<T extends object> = QueryBase<T> & {
-  method: "get";
+  method?: "get";
   filter?: Filter<T>;
   customFields?: CustomFieldMap<T>;
   orderBy?: Order<T>[];
@@ -49,7 +49,7 @@ export type QueryGet<T extends object> = QueryBase<T> & {
 };
 
 export type QueryGetMultiple<T extends object> = QueryBase<T> & {
-  method: "get";
+  method?: "get";
   multiple: true;
   filter?: Filter<T>;
   customFields?: CustomFieldMap<T>;
@@ -102,17 +102,27 @@ export type Order<T extends object> = {
   descending: boolean;
 };
 
-type FieldFunction<T extends object> = {
+type FilterKeys<T extends object, P> = {
+  [K in keyof T]-?: T[K] extends P ? K : never;
+}[keyof T];
+
+export type FieldFunction<T extends object> = {
   operator: "formatDate";
-  field: keyof T;
+  field: FilterKeys<T, string | number>;
   format: string;
 };
 
-type CustomFieldMap<T extends object> = Record<string, FieldFunction<T>>;
+export type FieldFunctionOperator = FieldFunction<never>["operator"];
+
+export type FieldFunctionReturn = {
+  formatDate: string;
+};
+
+export type CustomFieldMap<T extends object> = Record<string, FieldFunction<T>>;
 
 export type AggregateFunction<T extends object> =
-  | "count"
-  | { operator: "count" }
+  | "length"
+  | { operator: "length" }
   | {
       operator:
         | "median"
@@ -161,18 +171,6 @@ export type FilterString<T extends object> = {
   value: string;
 };
 
-export type FilterNumber<T extends object> = {
-  operator:
-    | "equal"
-    | "notEqual"
-    | "greaterThan"
-    | "greaterThanOrEqual"
-    | "lowerThan"
-    | "lowerThanOrEqual";
-  field: keyof T;
-  value: number;
-};
-
 export type FilterStringMatch<T extends object> = {
   operator: "match";
   field: keyof T;
@@ -188,4 +186,16 @@ export type FilterStringContains<T extends object> = {
   operator: "contains";
   field: keyof T;
   value: string[];
+};
+
+export type FilterNumber<T extends object> = {
+  operator:
+    | "equal"
+    | "notEqual"
+    | "greaterThan"
+    | "greaterThanOrEqual"
+    | "lowerThan"
+    | "lowerThanOrEqual";
+  field: keyof T;
+  value: number;
 };
