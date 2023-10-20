@@ -1,27 +1,89 @@
-import { middleware, requester, Query } from '../../src'
+import type { AnyQueryExternal, Handler, Store } from "../types";
 
-export function cache({
-  serialize = ({ context = {}, method = 'get', type }: Query) =>
-    method === 'get' && context.id && `${type}/${context.id}`,
-  engine = new Map(),
-  duration = 10 * 60 * 1000,
-} = {}): middleware {
+type CachedItem<I extends AnyQueryExternal> = {
+  query: I;
+  value: any;
+};
+
+type CacheOptions<I extends AnyQueryExternal> = {
+  /**
+   * Unique identifier for the item to cache.
+   * Returns `undefined` if the item should not be cached.
+   */
+  itemId?: (query: I) => string | undefined;
+  /**
+   * Cache store.
+   */
+  store: Store<CachedItem<I>>;
+  /**
+   * Returns `true` if the cached item must be invalidated.
+   */
+  invalidatesItem: (query: I, cachedQuery: I, cachedValue: any) => boolean;
+  /**
+   * Returns a query that completes the cached value.
+   * Returns `undefined` if the query should not be completed.
+   */
+  extendCachedQuery: (query: I, cachedQuery: I) => I | undefined;
+  /**
+   * Merges the extended query with the cached query.
+   * Only called when `extendCachedQuery` returns a query.
+   */
+  mergeQuery: (extendedQuery: I, cachedQuery: I) => I;
+  /**
+   * Merges the value from the extended query with the cached value.
+   * Only called when `extendCachedQuery` returns a query.
+   */
+  mergeItem: (value: any, cachedValue: any, query: I, cachedQuery: I) => any;
+};
+
+export function cache<
+  I extends AnyQueryExternal,
+  O,
+  In extends AnyQueryExternal,
+  On,
+>({
+  itemId = ({ context = {}, method = "get", type }: I) => {
+    if (method === "get" && context.id) {
+      return `${type}/${context.id}`;
+    }
+    return undefined;
+  },
+  store,
+  invalidatesItem,
+  extendCachedQuery,
+  mergeQuery,
+  mergeItem,
+}: CacheOptions<I>): Handler<I, O, In, On> {
   /*
   Caches the result of a query if `serialize` returns a non-empty string key. The `engine` should follow the `Map` API. Elements are kept in the cache until the `duration` in milliseconds expires.
   Note that a `duration` set to `Infinity` indefinitely keeps items in the cache.
   */
-  return (next: requester) => (query: Query) => {
-    const key = serialize(query)
-    if (!key) {
-      return next(query)
+  return async (query, next) => {
+    const id = itemId(query);
+    if (!id) {
+      return next(query as unknown as In);
     }
-    const item = engine.get(key)
-    if (item == null || item.expiration <= Date.now()) {
-      return next(query).then((result) => {
-        engine.set(key, { result, expiration: Date.now() + duration })
-        return result
-      })
+    if (await store.has(id)) {
+      const { query: cachedQuery, value: cachedValue } = await store.get(id);
+      if (invalidatesItem(query, cachedQuery, cachedValue)) {
+        const value = await next(query as unknown as In);
+        store.set(id, { query, value });
+        return value;
+      }
+      const extendedQuery = extendCachedQuery(query, cachedQuery);
+      if (extendedQuery === undefined) {
+        return cachedValue;
+      }
+      const value = await next(extendedQuery as unknown as In);
+      const extendedValue = mergeItem(value, cachedValue, query, cachedQuery);
+      store.set(id, {
+        query: mergeQuery(extendedQuery, cachedQuery),
+        value: extendedValue,
+      });
+      return extendedValue;
     }
-    return Promise.resolve(item.result)
-  }
+    const value = await next(query as unknown as In);
+    store.set(id, { query, value });
+    return value;
+  };
 }

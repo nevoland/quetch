@@ -1,15 +1,17 @@
-import { combine, fetchRequest, identity, impasse, log } from "../../lib/main";
-import type {
-  CustomFieldMap,
-  FieldFunctionReturn,
-  Handler,
-  Query,
-  QueryMethod,
-} from "../../lib/types";
+import {
+  combine,
+  defineCheckQuery,
+  defineCustomFetch,
+  fetchRequest,
+  identity,
+  impasse,
+  log,
+} from "../../lib/main";
+import type { FieldFunctionCustom, Handler } from "../../lib/types";
 
 const customFetch: Handler<Request, Response, never, never> = combine(
   log("test"),
-  // (input, next) => next(input),
+  (input, next) => next(input),
   // (input, next) => {},
   identity,
   identity,
@@ -30,14 +32,12 @@ const customFetch2: Handler<{}, {}, never, never> = combine(
   // async (query: string, fetcher: typeof fetch) => fetcher(query),
 );
 
-const result = await customFetch(
-  new Request("https://www.apple.com/"),
-  impasse,
-);
+const result = await customFetch(new Request("https://localhost/"), impasse);
 
 type EntityTest = {
   a: number;
   b: string;
+  c: boolean;
 };
 
 type EntityTest2 = {
@@ -51,90 +51,45 @@ type Entities = {
   test2: EntityTest2;
 };
 
-type ItemType<T, S> = T extends Array<infer I> ? I : S;
+const customFetchTyped = defineCustomFetch<Entities>(async () => {});
+const checkQuery = defineCheckQuery<Entities>();
 
-type EntityItem<E extends object, Q extends Query<E>> = Q extends {
-  customFields: CustomFieldMap<E>;
-}
-  ? {
-      readonly [K in
-        | ItemType<Q["fields"], keyof E>
-        | keyof Q["customFields"]]: K extends keyof E
-        ? E[K]
-        : K extends keyof Q["customFields"]
-        ? FieldFunctionReturn[Q["customFields"][K]["operator"]]
-        : never;
-    }
-  : { readonly [K in ItemType<Q["fields"], keyof E>]: E[K] };
-
-declare function quetch6<
-  T extends keyof Entities,
-  E extends Entities[T],
-  Q extends Query<E>,
->(
-  query: Q & { type: T },
-): Promise<
-  Q["method"] extends "get"
-    ? Q extends { multiple: true }
-      ? EntityItem<E, Q>[]
-      : EntityItem<E, Q>
-    : Q["method"] extends "aggregate"
-    ? number
-    : never
->;
-declare function quetch6<E extends object, Q extends Query<E>>(
-  query: Q & { type: E[] },
-): Promise<
-  Q["method"] extends "get"
-    ? Q extends { multiple: true }
-      ? EntityItem<E, Q>[]
-      : EntityItem<E, Q>
-    : Q["method"] extends "aggregate"
-    ? number
-    : never
->;
-
-function builder<Entities extends Record<string, object>>() {
-  function quetch6<
-    T extends keyof Entities,
-    E extends Entities[T],
-    const Q extends Query<E>,
-  >(
-    query: Q & { type: T },
-  ): Promise<
-    Q["method"] extends "get"
-      ? Q extends { multiple: true }
-        ? EntityItem<E, Q>[]
-        : EntityItem<E, Q>
-      : Q["method"] extends "aggregate"
-      ? number
-      : Q extends { multiple: true }
-      ? EntityItem<E, Q>[]
-      : EntityItem<E, Q>
-  > {
-    // @ts-ignore
-    return Promise.resolve(query);
-  }
-  return quetch6;
-}
-
-const quetch7 = builder<Entities>();
-
-const result7 = await quetch7({
+const typedResult = await customFetchTyped({
   type: "test",
 });
 
-const result7B = await quetch7({
+const typedResultA = await customFetchTyped({
+  type: "test",
+  // multiple: true,
+  fields: ["a", "date"],
+  customFields: {
+    date: {
+      operator: "formatDate",
+      field: "a",
+      format: "YYYY-MM",
+    },
+  },
+  filter: {
+    field: "date",
+    operator: "equal",
+    value: "test",
+  },
+  // Not possible with { multiple: false }
+  // groupBy: ["date"],
+});
+typedResultA.a;
+
+const typedResultB = await customFetchTyped({
   type: "test",
   method: "aggregate",
   aggregator: "length",
 });
 
-const result6 = await quetch6({
+const typedResultC = await customFetchTyped({
   type: "test2",
   method: "get",
   // multiple: true,
-  fields: ["c"],
+  fields: ["c", "customFieldA"],
   customFields: {
     customFieldA: {
       operator: "formatDate",
@@ -142,28 +97,36 @@ const result6 = await quetch6({
       format: "YYYY-MM",
     },
   },
+  filter: {
+    operator: "equal",
+    field: "customFieldA",
+    value: "2023-03",
+  },
 });
-result6.c;
-result6.customFieldA;
+typedResultC.c;
+typedResultC.customFieldA;
 
-const result6B = await quetch6({
-  type: [{ a: 32, b: true, c: "hello" }],
+const typedResultD = await customFetchTyped({
+  type: [
+    { a: 32, b: true, c: "hello" },
+    { a: 3232, b: true, c: "hello" },
+  ],
   method: "get",
   multiple: true,
   fields: ["a", "b"],
 });
-result6B[0].b;
+typedResultD[0].b;
 
-const result6C = await quetch6({
+const typedResultE = await customFetchTyped({
   type: [{ a: 32, b: true, c: "hello" }],
   method: "aggregate",
   aggregator: "length",
 });
 
-const result6D = await quetch6({
+const typedResultF = await customFetchTyped({
   type: [{ a: 32, b: true, c: "hello" }],
   method: "get",
-  fields: ["a"],
+  fields: ["a", "customA"],
   multiple: true,
   customFields: {
     customA: {
@@ -173,12 +136,44 @@ const result6D = await quetch6({
     },
   },
 });
+typedResultF[0].customA;
 
-const result6E = await quetch6({
+const typedResultG = await customFetchTyped({
   type: [{ a: 32, b: true, c: "hello" }],
   method: "get",
   multiple: true,
-  fields: ["c"],
+  fields: ["a", "customA", "customB"],
+  groupBy: [
+    {
+      field: "c",
+      customFields: {
+        count: "length",
+      },
+    },
+  ],
+  customFields: {
+    customA: {
+      operator: "formatDate",
+      field: "c",
+      format: "YYYY",
+    },
+    customB: {
+      operator: "custom",
+      value: (item) => item.a * 2,
+    },
+  },
+});
+typedResultG[0].customA;
+typedResultG[0].customB;
+
+const fieldsH = ["a", "customA"] as const;
+const context = { id: "00001" };
+const typedResultH = await customFetchTyped({
+  type: [{ id: "00001", a: 32, b: true, c: "hello" }],
+  method: "get",
+  context,
+  multiple: true,
+  fields: fieldsH,
   groupBy: [
     {
       field: "c",
@@ -195,5 +190,31 @@ const result6E = await quetch6({
     },
   },
 });
+typedResultH[0].a;
 
-result6E[0].customA;
+const data = [{ id: "00001", a: 32, b: true, c: "hello" }];
+const customFieldsI = {
+  customA: {
+    operator: "formatDate",
+    field: "c",
+    format: "YYYY",
+  },
+} as const;
+const query = checkQuery({
+  type: data,
+  method: "get",
+  context,
+  multiple: true,
+  fields: fieldsH,
+  groupBy: [
+    {
+      field: "c",
+      customFields: {
+        count: "length",
+      },
+    },
+  ],
+  customFields: customFieldsI,
+});
+const typedResultI = await customFetchTyped(query);
+typedResultI[0].a;

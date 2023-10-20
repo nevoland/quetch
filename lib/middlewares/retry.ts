@@ -2,7 +2,7 @@ import { getGlobal } from "@davidbonnet/get-global";
 import { sleep, untilOnline } from "futurise";
 
 import { RequestError } from "../errors/RequestError";
-import type { AbortableRequest, Handler } from "../types";
+import type { Handler } from "../types";
 
 /**
  * Retries a failed query call up to `amount` times, with a given `delay` in milliseconds at ±`delayDelta` milliseconds.
@@ -16,7 +16,7 @@ export function retry({
   amount = 5,
   delay = 1000,
   delayDelta = 500,
-} = {}): Handler<AbortableRequest, Response, Request, Response> {
+} = {}): Handler<Request, Response, Request, Response> {
   const { navigator } = getGlobal();
   return (input, next) => {
     let errorsLeft = amount;

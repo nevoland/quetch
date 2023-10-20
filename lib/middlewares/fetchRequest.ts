@@ -22,6 +22,7 @@ export function fetchRequest(
         throw new RequestError(
           response.statusText,
           response.status,
+          undefined,
           request,
           response,
         );
@@ -29,9 +30,9 @@ export function fetchRequest(
       return response;
     } catch (error) {
       if (error instanceof Error) {
-        throw new RequestError(error.message, 500, request);
+        throw new RequestError(error.message, 500, undefined, request);
       }
-      throw new RequestError(String(error), 500, request);
+      throw new RequestError(String(error), 500, undefined, request);
     }
   };
 }
