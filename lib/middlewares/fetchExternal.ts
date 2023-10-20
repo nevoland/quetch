@@ -7,9 +7,9 @@ import type { Handler } from "../types";
  * Calls the provided `fetch` function, which defaults to the DOM `fetch` function, with the incoming `query`.
  *
  * @param fetch A standard `fetch` function.
- * @returns Promise<Response>
+ * @returns Handler that returns a promise that resolves to the response.
  */
-export function fetchRequest(
+export function fetchExternal(
   fetch = getGlobal().fetch,
 ): Handler<Request, Response, never, never> {
   if (process.env.NODE_ENV !== "production" && !fetch) {

@@ -1,7 +1,15 @@
-import type { CustomFieldMap, EntityItem, Query } from "../types";
+import type {
+  AnyQuery,
+  CustomFieldMap,
+  EntityItem,
+  Handler,
+  Query,
+} from "../types";
+
+import { impasse } from "./impasse";
 
 export function defineCustomFetch<M extends Record<string, object>>(
-  next: (input: any) => Promise<any>,
+  handler: Handler<AnyQuery, any, never, never>,
 ) {
   function customFetch<
     E extends object,
@@ -56,7 +64,7 @@ export function defineCustomFetch<M extends Record<string, object>>(
       ? EntityItem<E, C, Q>[]
       : EntityItem<E, C, Q>
   > {
-    return await next(input);
+    return await handler(input, impasse);
   }
   return customFetch;
 }

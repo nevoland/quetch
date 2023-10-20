@@ -12,7 +12,8 @@ function combine<Ai, Ao, Bi, Bo, Ci, Co, Di, Do>(
 */
 
 function generateSignature(argumentsCount = 2) {
-  return `function combine<${generateGenericsList(0, argumentsCount + 1)}>(
+  return `/** @hidden */
+function combine<${generateGenericsList(0, argumentsCount + 1)}>(
   ...handlerList: readonly [${generateArgumentTypes(argumentsCount)}]
 ): Handler<${generateGenericsList(0, 2, argumentsCount)}>;`;
 }
@@ -37,5 +38,6 @@ function generateGenericsList(fromIndex = 0, length = 2, step = 1) {
 Array(20)
   .fill("")
   .forEach((_, index) => {
+    // eslint-disable-next-line no-console
     console.log(generateSignature(2 + index));
   });

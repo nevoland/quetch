@@ -1,8 +1,10 @@
 import type { Handler } from "../types";
 
+/** @hidden */
 function combine<I0, O0, I1, O1, I2, O2>(
   ...handlerList: readonly [Handler<I0, O0, I1, O1>, Handler<I1, O1, I2, O2>]
 ): Handler<I0, O0, I2, O2>;
+/** @hidden */
 function combine<I0, O0, I1, O1, I2, O2, I3, O3>(
   ...handlerList: readonly [
     Handler<I0, O0, I1, O1>,
@@ -10,6 +12,7 @@ function combine<I0, O0, I1, O1, I2, O2, I3, O3>(
     Handler<I2, O2, I3, O3>,
   ]
 ): Handler<I0, O0, I3, O3>;
+/** @hidden */
 function combine<I0, O0, I1, O1, I2, O2, I3, O3, I4, O4>(
   ...handlerList: readonly [
     Handler<I0, O0, I1, O1>,
@@ -18,6 +21,7 @@ function combine<I0, O0, I1, O1, I2, O2, I3, O3, I4, O4>(
     Handler<I3, O3, I4, O4>,
   ]
 ): Handler<I0, O0, I4, O4>;
+/** @hidden */
 function combine<I0, O0, I1, O1, I2, O2, I3, O3, I4, O4, I5, O5>(
   ...handlerList: readonly [
     Handler<I0, O0, I1, O1>,
@@ -27,6 +31,7 @@ function combine<I0, O0, I1, O1, I2, O2, I3, O3, I4, O4, I5, O5>(
     Handler<I4, O4, I5, O5>,
   ]
 ): Handler<I0, O0, I5, O5>;
+/** @hidden */
 function combine<I0, O0, I1, O1, I2, O2, I3, O3, I4, O4, I5, O5, I6, O6>(
   ...handlerList: readonly [
     Handler<I0, O0, I1, O1>,
@@ -37,6 +42,7 @@ function combine<I0, O0, I1, O1, I2, O2, I3, O3, I4, O4, I5, O5, I6, O6>(
     Handler<I5, O5, I6, O6>,
   ]
 ): Handler<I0, O0, I6, O6>;
+/** @hidden */
 function combine<
   I0,
   O0,
@@ -65,6 +71,7 @@ function combine<
     Handler<I6, O6, I7, O7>,
   ]
 ): Handler<I0, O0, I7, O7>;
+/** @hidden */
 function combine<
   I0,
   O0,
@@ -96,6 +103,7 @@ function combine<
     Handler<I7, O7, I8, O8>,
   ]
 ): Handler<I0, O0, I8, O8>;
+/** @hidden */
 function combine<
   I0,
   O0,
@@ -130,6 +138,7 @@ function combine<
     Handler<I8, O8, I9, O9>,
   ]
 ): Handler<I0, O0, I9, O9>;
+/** @hidden */
 function combine<
   I0,
   O0,
@@ -167,6 +176,7 @@ function combine<
     Handler<I9, O9, I10, O10>,
   ]
 ): Handler<I0, O0, I10, O10>;
+/** @hidden */
 function combine<
   I0,
   O0,
@@ -207,6 +217,7 @@ function combine<
     Handler<I10, O10, I11, O11>,
   ]
 ): Handler<I0, O0, I11, O11>;
+/** @hidden */
 function combine<
   I0,
   O0,
@@ -250,6 +261,7 @@ function combine<
     Handler<I11, O11, I12, O12>,
   ]
 ): Handler<I0, O0, I12, O12>;
+/** @hidden */
 function combine<
   I0,
   O0,
@@ -296,6 +308,7 @@ function combine<
     Handler<I12, O12, I13, O13>,
   ]
 ): Handler<I0, O0, I13, O13>;
+/** @hidden */
 function combine<
   I0,
   O0,
@@ -345,6 +358,7 @@ function combine<
     Handler<I13, O13, I14, O14>,
   ]
 ): Handler<I0, O0, I14, O14>;
+/** @hidden */
 function combine<
   I0,
   O0,
@@ -397,6 +411,7 @@ function combine<
     Handler<I14, O14, I15, O15>,
   ]
 ): Handler<I0, O0, I15, O15>;
+/** @hidden */
 function combine<
   I0,
   O0,
@@ -452,6 +467,7 @@ function combine<
     Handler<I15, O15, I16, O16>,
   ]
 ): Handler<I0, O0, I16, O16>;
+/** @hidden */
 function combine<
   I0,
   O0,
@@ -510,6 +526,7 @@ function combine<
     Handler<I16, O16, I17, O17>,
   ]
 ): Handler<I0, O0, I17, O17>;
+/** @hidden */
 function combine<
   I0,
   O0,
@@ -571,6 +588,7 @@ function combine<
     Handler<I17, O17, I18, O18>,
   ]
 ): Handler<I0, O0, I18, O18>;
+/** @hidden */
 function combine<
   I0,
   O0,
@@ -635,6 +653,7 @@ function combine<
     Handler<I18, O18, I19, O19>,
   ]
 ): Handler<I0, O0, I19, O19>;
+/** @hidden */
 function combine<
   I0,
   O0,
@@ -702,6 +721,7 @@ function combine<
     Handler<I19, O19, I20, O20>,
   ]
 ): Handler<I0, O0, I20, O20>;
+/** @hidden */
 function combine<
   I0,
   O0,
@@ -770,6 +790,82 @@ function combine<
     Handler<I18, O18, I19, O19>,
     Handler<I19, O19, I20, O20>,
     Handler<I20, O20, I21, O21>,
+  ]
+): Handler<I0, O0, I21, O21>;
+/**
+ * Combines the provided handler into a single handler.
+ *
+ * @param handlerList List of handlers to combine.
+ * @returns Handler that combines all provided handlers.
+ */
+function combine<
+  I0,
+  O0,
+  I1,
+  O1,
+  I2,
+  O2,
+  I3,
+  O3,
+  I4,
+  O4,
+  I5,
+  O5,
+  I6,
+  O6,
+  I7,
+  O7,
+  I8,
+  O8,
+  I9,
+  O9,
+  I10,
+  O10,
+  I11,
+  O11,
+  I12,
+  O12,
+  I13,
+  O13,
+  I14,
+  O14,
+  I15,
+  O15,
+  I16,
+  O16,
+  I17,
+  O17,
+  I18,
+  O18,
+  I19,
+  O19,
+  I20,
+  O20,
+  I21,
+  O21,
+>(
+  ...handlerList: readonly [
+    Handler<I0, O0, I1, O1>,
+    Handler<I1, O1, I2, O2>,
+    Handler<I2, O2, I3, O3>?,
+    Handler<I3, O3, I4, O4>?,
+    Handler<I4, O4, I5, O5>?,
+    Handler<I5, O5, I6, O6>?,
+    Handler<I6, O6, I7, O7>?,
+    Handler<I7, O7, I8, O8>?,
+    Handler<I8, O8, I9, O9>?,
+    Handler<I9, O9, I10, O10>?,
+    Handler<I10, O10, I11, O11>?,
+    Handler<I11, O11, I12, O12>?,
+    Handler<I12, O12, I13, O13>?,
+    Handler<I13, O13, I14, O14>?,
+    Handler<I14, O14, I15, O15>?,
+    Handler<I15, O15, I16, O16>?,
+    Handler<I16, O16, I17, O17>?,
+    Handler<I17, O17, I18, O18>?,
+    Handler<I18, O18, I19, O19>?,
+    Handler<I19, O19, I20, O20>?,
+    Handler<I20, O20, I21, O21>?,
   ]
 ): Handler<I0, O0, I21, O21>;
 function combine<

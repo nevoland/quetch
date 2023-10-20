@@ -39,6 +39,10 @@ type ArrayItem<T, S> = T extends Array<infer I>
   ? I
   : S;
 
+type DefaultObject<T extends object | undefined> = T extends undefined
+  ? object
+  : T;
+
 /**
  * Entity type for a given query.
  */
@@ -150,7 +154,8 @@ export type QueryGet<T extends object, C extends CustomFieldMap<T>> = QueryBase<
    * Custom fields to add to each item, which can be used in the `filter`.
    */
   customFields?: C;
-  orderBy?: Order<InjectCustomField<T, C>>[];
+  offset?: never;
+  orderBy?: never;
   groupBy?: never;
 };
 
@@ -179,6 +184,14 @@ export type QueryGetMultiple<
    * Groups items by specified fields.
    */
   groupBy?: Group<InjectCustomField<T, C>>[];
+  /**
+   * Offset of the first matching item.
+   */
+  offset?: number;
+  /**
+   * Upper bound of the number of items to return.
+   */
+  limit?: number;
 };
 
 /**
@@ -213,6 +226,13 @@ export type QueryUpdate<
 > = QueryBase<T, C> & {
   method: "update";
   value: Partial<T>;
+  /**
+   * Filter for finding the item, if it cannot be found based on the `context`.
+   */
+  filter?: Filter<InjectCustomField<T, C>>;
+  offset?: never;
+  orderBy: never;
+  groupBy?: never;
 };
 
 /**
@@ -226,6 +246,18 @@ export type QueryUpdateMultiple<
   multiple: true;
   value: Partial<T>[];
   filter?: Filter<T>;
+  /**
+   * Order by which the items should be sorted.
+   */
+  orderBy?: Order<InjectCustomField<T, C>>[];
+  /**
+   * Offset of the first matching item to update.
+   */
+  offset?: number;
+  /**
+   * Sets the upper bound of the number of items to update.
+   */
+  limit?: number;
 };
 
 /**
@@ -266,10 +298,12 @@ export type QueryAggregate<
 /**
  * Order item.
  */
-export type Order<T extends object> = {
-  key: keyof T;
-  descending: boolean;
-};
+export type Order<T extends object> =
+  | keyof T
+  | {
+      field: keyof T;
+      descending?: boolean;
+    };
 
 type FilterKeys<T extends object, P> = {
   [K in keyof T]-?: T[K] extends P ? K : never;

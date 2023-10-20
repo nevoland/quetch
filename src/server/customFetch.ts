@@ -2,7 +2,7 @@ import {
   combine,
   defineCheckQuery,
   defineCustomFetch,
-  fetchRequest,
+  fetchExternal,
   identity,
   impasse,
   log,
@@ -17,7 +17,7 @@ const customFetch: Handler<Request, Response, never, never> = combine(
   identity,
   identity,
   identity,
-  fetchRequest(),
+  fetchExternal(),
   // async (query: string, fetcher: typeof fetch) => fetcher(query),
 );
 
@@ -28,7 +28,7 @@ const customFetch2: Handler<{}, {}, never, never> = combine(
   middleware,
   identity,
   // middleware,
-  fetchRequest(),
+  fetchExternal(),
   // async (query: string, fetcher: typeof fetch) => fetcher(query),
 );
 
@@ -88,7 +88,7 @@ const typedResultB = await customFetchTyped({
 const typedResultC = await customFetchTyped({
   type: "test2",
   method: "get",
-  // multiple: true,
+  multiple: true,
   fields: ["c", "customFieldA"],
   customFields: {
     customFieldA: {
@@ -102,18 +102,38 @@ const typedResultC = await customFetchTyped({
     field: "customFieldA",
     value: "2023-03",
   },
+  orderBy: [
+    "d",
+    {
+      field: "c",
+    },
+  ],
+  groupBy: ["e", { field: "customFieldA" }],
+  // orderBy: ["c"],
 });
-typedResultC.c;
-typedResultC.customFieldA;
+typedResultC[0].c;
+typedResultC[0].customFieldA;
 
 const typedResultD = await customFetchTyped({
   type: [
-    { a: 32, b: true, c: "hello" },
-    { a: 3232, b: true, c: "hello" },
+    { id: "0001", a: 32, b: true, c: "hello" },
+    // { id: "0002", a: 3232, b: true, c: "hello" },
   ],
   method: "get",
-  multiple: true,
   fields: ["a", "b"],
+  multiple: true,
+  orderBy: [],
+  filter: {
+    operator: "equal",
+    field: "f",
+    value: 32,
+  },
+  // orderBy: [
+  //   {
+  //     field: "sdfsdfsdf",
+  //   },
+  // ],
+  // groupBy: [{ field: "dfsdsdf" }],
 });
 typedResultD[0].b;
 
@@ -134,6 +154,11 @@ const typedResultF = await customFetchTyped({
       field: "a",
       format: "YYYY",
     },
+  },
+  filter: {
+    operator: "equal",
+    field: "a",
+    value: 32,
   },
 });
 typedResultF[0].customA;
@@ -182,6 +207,7 @@ const typedResultH = await customFetchTyped({
       },
     },
   ],
+  orderBy: ["b"],
   customFields: {
     customA: {
       operator: "formatDate",
