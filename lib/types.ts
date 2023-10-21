@@ -143,22 +143,36 @@ export type QueryGet<
 > = QueryBase<T> & {
   method?: "get";
   multiple?: false;
-  /**
-   * Item fields to pick. If omitted, all fields are picked.
-   */
-  fields?: readonly (keyof InjectCustomField<T, C>)[];
-  /**
-   * Filter for finding the item, if it cannot be found based on the `context`.
-   */
-  filter?: Filter<InjectCustomField<T, C>>;
-  /**
-   * Custom fields to add to each item, which can be used in the `filter`.
-   */
-  customFields?: C;
   offset?: never;
   orderBy?: never;
   groupBy?: never;
-};
+} & (
+    | {
+        /**
+         * Item fields to pick. If omitted, all fields are picked.
+         */
+        fields?: readonly (keyof InjectCustomField<T, C>)[];
+        /**
+         * Filter for finding the item, if it cannot be found based on the `context`.
+         */
+        filter?: Filter<InjectCustomField<T, C>>;
+        /**
+         * Custom fields to add to each item, which can be used in the `filter`.
+         */
+        customFields?: C;
+      }
+    | {
+        /**
+         * Item fields to pick. If omitted, all fields are picked.
+         */
+        fields?: readonly (keyof T)[];
+        /**
+         * Filter for finding the item, if it cannot be found based on the `context`.
+         */
+        filter?: Filter<T>;
+        customFields?: never;
+      }
+  );
 
 /**
  * Query for getting a list of items.
@@ -170,26 +184,6 @@ export type QueryGetMultiple<
   method?: "get";
   multiple: true;
   /**
-   * Item fields to pick. If omitted, all fields are picked.
-   */
-  fields?: readonly (keyof InjectCustomField<T, C>)[];
-  /**
-   * Filter that picks the items.
-   */
-  filter?: Filter<InjectCustomField<T, C>>;
-  /**
-   * Custom fields to add to each item, which can be used in the `filter` and `groupBy`.
-   */
-  customFields?: C;
-  /**
-   * Order by which the items should be sorted.
-   */
-  orderBy?: Order<InjectCustomField<T, C>>[];
-  /**
-   * Groups items by specified fields.
-   */
-  groupBy?: Group<InjectCustomField<T, C>>[];
-  /**
    * Offset of the first matching item.
    */
   offset?: number;
@@ -197,7 +191,49 @@ export type QueryGetMultiple<
    * Upper bound of the number of items to return.
    */
   limit?: number;
-};
+} & (
+    | {
+        /**
+         * Item fields to pick. If omitted, all fields are picked.
+         */
+        fields?: readonly (keyof InjectCustomField<T, C>)[];
+        /**
+         * Filter that picks the items.
+         */
+        filter?: Filter<InjectCustomField<T, C>>;
+        /**
+         * Custom fields to add to each item, which can be used in the `filter` and `groupBy`.
+         */
+        customFields: C;
+        /**
+         * Order by which the items should be sorted.
+         */
+        orderBy?: Order<InjectCustomField<T, C>>[];
+        /**
+         * Groups items by specified fields.
+         */
+        groupBy?: Group<InjectCustomField<T, C>>[];
+      }
+    | {
+        /**
+         * Item fields to pick. If omitted, all fields are picked.
+         */
+        fields?: readonly (keyof T)[];
+        /**
+         * Filter that picks the items.
+         */
+        filter?: Filter<T>;
+        customFields?: never;
+        /**
+         * Order by which the items should be sorted.
+         */
+        orderBy?: Order<T>[];
+        /**
+         * Groups items by specified fields.
+         */
+        groupBy?: Group<T>[];
+      }
+  );
 
 /**
  * Query for creating an item.

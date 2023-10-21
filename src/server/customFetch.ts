@@ -7,7 +7,7 @@ import {
   impasse,
   log,
 } from "../../lib/main";
-import type { FieldFunctionCustom, Handler } from "../../lib/types";
+import type { Handler } from "../../lib/types";
 
 const customFetch: Handler<Request, Response, never, never> = combine(
   log("test"),
@@ -57,6 +57,7 @@ const checkQuery = defineCheckQuery<Entities>();
 const typedResult = await customFetchTyped({
   type: "test",
 });
+typedResult.a;
 
 const typedResultA = await customFetchTyped({
   type: "test",
@@ -84,6 +85,7 @@ const typedResultB = await customFetchTyped({
   method: "aggregate",
   aggregator: "length",
 });
+typedResultB + 2;
 
 const typedResultC = await customFetchTyped({
   type: "test2",
@@ -122,11 +124,26 @@ const typedResultD = await customFetchTyped({
   method: "get",
   fields: ["a", "b"],
   multiple: true,
-  orderBy: [],
+  customFields: {
+    customFieldA: {
+      operator: "custom",
+      value: (item) => `ID: ${item.id}`,
+    },
+  },
   filter: {
-    operator: "equal",
-    field: "f",
-    value: 32,
+    operator: "all",
+    value: [
+      {
+        operator: "equal",
+        field: "a",
+        value: 32,
+      },
+      {
+        operator: "equal",
+        field: "customFieldA",
+        value: "bingo",
+      },
+    ],
   },
   // orderBy: [
   //   {
@@ -142,17 +159,22 @@ const typedResultE = await customFetchTyped({
   method: "aggregate",
   aggregator: "length",
 });
+typedResultE + 2;
 
 const typedResultF = await customFetchTyped({
   type: [{ a: 32, b: true, c: "hello" }],
   method: "get",
-  fields: ["a", "customA"],
-  multiple: true,
+  fields: ["a", "customA", "customB"],
+  // multiple: true,
   customFields: {
     customA: {
       operator: "formatDate",
       field: "a",
       format: "YYYY",
+    },
+    customB: {
+      operator: "custom",
+      value: (item) => item.a * 2,
     },
   },
   filter: {
@@ -161,13 +183,14 @@ const typedResultF = await customFetchTyped({
     value: 32,
   },
 });
-typedResultF[0].customA;
+typedResultF.customA;
+typedResultF.customB;
 
 const typedResultG = await customFetchTyped({
   type: [{ a: 32, b: true, c: "hello" }],
   method: "get",
   multiple: true,
-  fields: ["a", "customA", "customB"],
+  fields: ["a"],
   groupBy: [
     {
       field: "c",
@@ -176,20 +199,20 @@ const typedResultG = await customFetchTyped({
       },
     },
   ],
-  customFields: {
-    customA: {
-      operator: "formatDate",
-      field: "c",
-      format: "YYYY",
-    },
-    customB: {
-      operator: "custom",
-      value: (item) => item.a * 2,
-    },
-  },
+  // customFields: {
+  //   customA: {
+  //     operator: "formatDate",
+  //     field: "c",
+  //     format: "YYYY",
+  //   },
+  //   customB: {
+  //     operator: "custom",
+  //     value: (item) => item.a * 2,
+  //   },
+  // },
 });
-typedResultG[0].customA;
-typedResultG[0].customB;
+typedResultG[0].a;
+// typedResultG[0].customB;
 
 const fieldsH = ["a", "customA"] as const;
 const context = { id: "00001" };
