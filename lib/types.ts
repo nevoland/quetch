@@ -39,6 +39,10 @@ type ArrayItem<T, S> = T extends Array<infer I>
   ? I
   : S;
 
+type Get<T extends object, K extends string, D> = T extends { [key in K]: any }
+  ? T[K]
+  : D;
+
 /**
  * Entity type for a given query.
  */
@@ -51,7 +55,7 @@ export type EntityItem<
 }
   ? {
       readonly [K in ArrayItem<
-        Q["fields"],
+        Get<Q, "fields", undefined>,
         keyof E | keyof Q["customFields"]
       >]: K extends keyof E
         ? E[K]
@@ -64,9 +68,10 @@ export type EntityItem<
         : never;
     }
   : {
-      readonly [K in ArrayItem<Q["fields"], keyof E>]: K extends keyof E
-        ? E[K]
-        : never;
+      readonly [K in ArrayItem<
+        Get<Q, "fields", undefined>,
+        keyof E
+      >]: K extends keyof E ? E[K] : never;
     };
 
 /**
@@ -75,13 +80,13 @@ export type EntityItem<
 export type Query<T extends object, C extends CustomFieldMap<T>> =
   | QueryGet<T, C>
   | QueryGetMultiple<T, C>
-  | QueryCreate<T, C>
-  | QueryCreateMultiple<T, C>
+  | QueryCreate<T>
+  | QueryCreateMultiple<T>
   | QueryUpdate<T, C>
   | QueryUpdateMultiple<T, C>
-  | QueryDelete<T, C>
-  | QueryDeleteMultiple<T, C>
-  | QueryAggregate<T, C>;
+  | QueryDelete<T>
+  | QueryDeleteMultiple<T>
+  | QueryAggregate<T>;
 
 export type AnyQuery = Query<any, any>;
 
@@ -89,7 +94,7 @@ export type AnyQueryExternal = Omit<Query<any, any>, "type"> & { type: string };
 
 export type AnyQueryLocal = Omit<Query<any, any>, "type"> & { type: object[] };
 
-export type QueryBase<T extends object, C extends CustomFieldMap<T>> = {
+export type QueryBase<T extends object> = {
   type: string | T[];
   /**
    * Common item properties to use for identifying the item.
@@ -103,10 +108,6 @@ export type QueryBase<T extends object, C extends CustomFieldMap<T>> = {
   context?: {
     [K in keyof T]?: T[K];
   };
-  /**
-   * Item fields to pick. If omitted, all fields are picked.
-   */
-  fields?: readonly (keyof InjectCustomField<T, C>)[];
   /**
    * Abort signal to abort the request.
    */
@@ -136,12 +137,16 @@ type InjectCustomField<T extends object, C extends CustomFieldMap<T>> = {
 /**
  * Query for getting a single item.
  */
-export type QueryGet<T extends object, C extends CustomFieldMap<T>> = QueryBase<
-  T,
-  C
-> & {
+export type QueryGet<
+  T extends object,
+  C extends CustomFieldMap<T>,
+> = QueryBase<T> & {
   method?: "get";
   multiple?: false;
+  /**
+   * Item fields to pick. If omitted, all fields are picked.
+   */
+  fields?: readonly (keyof InjectCustomField<T, C>)[];
   /**
    * Filter for finding the item, if it cannot be found based on the `context`.
    */
@@ -161,9 +166,13 @@ export type QueryGet<T extends object, C extends CustomFieldMap<T>> = QueryBase<
 export type QueryGetMultiple<
   T extends object,
   C extends CustomFieldMap<T>,
-> = QueryBase<T, C> & {
+> = QueryBase<T> & {
   method?: "get";
   multiple: true;
+  /**
+   * Item fields to pick. If omitted, all fields are picked.
+   */
+  fields?: readonly (keyof InjectCustomField<T, C>)[];
   /**
    * Filter that picks the items.
    */
@@ -193,10 +202,7 @@ export type QueryGetMultiple<
 /**
  * Query for creating an item.
  */
-export type QueryCreate<
-  T extends object,
-  C extends CustomFieldMap<T>,
-> = QueryBase<T, C> & {
+export type QueryCreate<T extends object> = QueryBase<T> & {
   method: "create";
   value: Partial<T>;
 };
@@ -204,10 +210,7 @@ export type QueryCreate<
 /**
  * Query for creating multiple items.
  */
-export type QueryCreateMultiple<
-  T extends object,
-  C extends CustomFieldMap<T>,
-> = QueryBase<T, C> & {
+export type QueryCreateMultiple<T extends object> = QueryBase<T> & {
   method: "create";
   multiple: true;
   value: Partial<T>[];
@@ -219,9 +222,13 @@ export type QueryCreateMultiple<
 export type QueryUpdate<
   T extends object,
   C extends CustomFieldMap<T>,
-> = QueryBase<T, C> & {
+> = QueryBase<T> & {
   method: "update";
   value: Partial<T>;
+  /**
+   * Custom fields to add to each item, which can be used in the `filter`.
+   */
+  customFields?: C;
   /**
    * Filter for finding the item, if it cannot be found based on the `context`.
    */
@@ -237,10 +244,14 @@ export type QueryUpdate<
 export type QueryUpdateMultiple<
   T extends object,
   C extends CustomFieldMap<T>,
-> = QueryBase<T, C> & {
+> = QueryBase<T> & {
   method: "update";
   multiple: true;
   value: Partial<T>[];
+  /**
+   * Custom fields to add to each item, which can be used in the `filter`.
+   */
+  customFields?: C;
   filter?: Filter<T>;
   /**
    * Order by which the items should be sorted.
@@ -259,10 +270,7 @@ export type QueryUpdateMultiple<
 /**
  * Query for deleting an item.
  */
-export type QueryDelete<
-  T extends object,
-  C extends CustomFieldMap<T>,
-> = QueryBase<T, C> & {
+export type QueryDelete<T extends object> = QueryBase<T> & {
   method: "delete";
   filter?: Filter<T>;
 };
@@ -270,10 +278,7 @@ export type QueryDelete<
 /**
  * Query for deleting multiple items.
  */
-export type QueryDeleteMultiple<
-  T extends object,
-  C extends CustomFieldMap<T>,
-> = QueryBase<T, C> & {
+export type QueryDeleteMultiple<T extends object> = QueryBase<T> & {
   method: "delete";
   multiple: true;
   filter?: Filter<T>;
@@ -282,10 +287,7 @@ export type QueryDeleteMultiple<
 /**
  * Query for computing an aggregated value.
  */
-export type QueryAggregate<
-  T extends object,
-  C extends CustomFieldMap<T>,
-> = QueryBase<T, C> & {
+export type QueryAggregate<T extends object> = QueryBase<T> & {
   method: "aggregate";
   aggregator: AggregateFunction<T>;
   filter?: Filter<T>;
