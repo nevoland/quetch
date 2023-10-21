@@ -39,10 +39,6 @@ type ArrayItem<T, S> = T extends Array<infer I>
   ? I
   : S;
 
-type DefaultObject<T extends object | undefined> = T extends undefined
-  ? object
-  : T;
-
 /**
  * Entity type for a given query.
  */
