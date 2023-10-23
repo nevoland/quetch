@@ -11,5 +11,6 @@
       "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "vitest.commandLine": "npx vitest --update",
-  "typescript.tsserver.experimental.enableProjectDiagnostics": true
+  "typescript.tsserver.experimental.enableProjectDiagnostics": true,
+  "testing.automaticallyOpenPeekView": "never"
 }
