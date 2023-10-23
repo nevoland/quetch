@@ -1,3 +1,3 @@
 export function App() {
-  return <h1 class="text-teal-500">Foundation</h1>;
+  return <h1 class="text-teal-500">Quetch</h1>;
 }

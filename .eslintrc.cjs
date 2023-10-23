@@ -49,7 +49,7 @@ module.exports = {
         null: "never",
       },
     ],
-    "func-names": ["error", "always"],
+    // "func-names": ["error", "always"],
     "id-length": [
       "error",
       {
@@ -102,10 +102,6 @@ module.exports = {
     ],
     "no-param-reassign": "error",
     "no-unused-vars": "off",
-    "no-use-before-define": [
-      "error",
-      { functions: false, classes: true, variables: true },
-    ],
     "sort-imports": [
       "error",
       {
@@ -119,7 +115,8 @@ module.exports = {
     "no-var": "error",
     "no-redeclare": "off",
     "object-shorthand": ["error", "properties"],
-    "prefer-arrow-callback": ["error", { allowNamedFunctions: true }],
+    // "prefer-arrow-callback": ["error", { allowNamedFunctions: true }],
+    "prefer-arrow-callback": "off",
     "prefer-const": "error",
     quotes: [
       "error",

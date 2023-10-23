@@ -1,8 +1,8 @@
 import { resolve } from "path";
 
-import moduleList from "vite-plugin-module-list";
-import { defineConfig } from "vite";
 import preact from "@preact/preset-vite";
+import { defineConfig } from "vite";
+import moduleList from "vite-plugin-module-list";
 
 export default defineConfig({
   plugins: [
@@ -10,6 +10,16 @@ export default defineConfig({
       mode: "named-static-no-extension",
       rootPath: resolve("lib/tools"),
       outputPath: resolve("lib/tools.ts"),
+    }),
+    moduleList({
+      mode: "named-static-no-extension",
+      rootPath: resolve("lib/middlewares"),
+      outputPath: resolve("lib/middlewares.ts"),
+    }),
+    moduleList({
+      mode: "named-static-no-extension",
+      rootPath: resolve("lib/errors"),
+      outputPath: resolve("lib/errors.ts"),
     }),
     moduleList({
       mode: "named-static-no-extension",

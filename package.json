@@ -1,5 +1,5 @@
 {
-  "name": "foundation",
+  "name": "quetch",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -24,7 +24,7 @@
     "dev:test": "vitest --update",
     "test": "npm run lint && npm run format && vitest run",
     "build": "tsc --project tsconfig.package.json",
-    "build:doc": "typedoc",
+    "build:doc": "typedoc --tsconfig tsconfig.package.json",
     "build:demo": "vite build",
     "prepare": "npm run build",
     "start": "vite preview",
@@ -65,5 +65,9 @@
     "vite": "^4.4.11",
     "vite-plugin-module-list": "^1.5.0",
     "vitest": "^0.34.6"
+  },
+  "dependencies": {
+    "@davidbonnet/get-global": "^2.0.0",
+    "futurise": "^1.0.0"
   }
 }
