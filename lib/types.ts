@@ -425,7 +425,7 @@ export type Filter<T extends object> =
   | FilterBoolean<T>
   | FilterString<T>
   | FilterStringMatch<T>
-  | FilterStringInclude<T>
+  | FilterStringIntersect<T>
   | FilterNumber<T>
   | FilterArray<T>;
 
@@ -523,7 +523,7 @@ export type FilterStringMatch<T extends object> = {
 /**
  * Checks if a given string field has any of the provided values.
  */
-export type FilterStringInclude<T extends object> = {
+export type FilterStringIntersect<T extends object> = {
   operator: "intersect";
   field: FilterKeys<T, string>;
   value: string[];
