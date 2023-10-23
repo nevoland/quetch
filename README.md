@@ -4,16 +4,18 @@
 
 ### Features
 
-- Provides a common query object format
-- Separates data requests from API configuration
+- Provides a fully typed query object format
+- Queries local data as well as external data (e.g., through `fetch`)
+- Separates resource requests from API configuration
 - Provides error handlers
 
 ## Usage
 
 Everything is exported from the main entry-point through an ES6 module:
 
-```js
-import { add } from "quetch";
+```typescript
+import { fetchLocal, combine } from "quetch";
+import type { Query } from "quetch";
 ```
 
 ## Installation
