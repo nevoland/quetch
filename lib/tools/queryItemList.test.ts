@@ -167,3 +167,50 @@ test("aggregates items", () => {
     }),
   ).toBe(1);
 });
+
+test("slices items", () => {
+  expect(
+    queryItemList({
+      type: [
+        { a: 1, c: "a" },
+        { a: 2, c: "a" },
+        { a: 3, c: "b" },
+      ],
+      method: "get",
+      multiple: true,
+      limit: 1,
+    }),
+  ).toEqual([{ a: 1, c: "a" }]);
+  expect(
+    queryItemList({
+      type: [
+        { a: 1, c: "a" },
+        { a: 2, c: "a" },
+        { a: 3, c: "b" },
+      ],
+      method: "get",
+      multiple: true,
+      context: {
+        c: "a",
+      },
+      offset: 1,
+    }),
+  ).toEqual([{ a: 2, c: "a" }]);
+  expect(
+    queryItemList({
+      type: [
+        { a: 1, c: "a" },
+        { a: 2, c: "a" },
+        { a: 3, c: "b" },
+        { a: 2, c: "b" },
+      ],
+      method: "get",
+      multiple: true,
+      offset: 1,
+      limit: 2,
+    }),
+  ).toEqual([
+    { a: 2, c: "a" },
+    { a: 3, c: "b" },
+  ]);
+});
