@@ -342,7 +342,7 @@ export type Order<T extends object> =
       descending?: boolean;
     };
 
-type FilterKeys<T extends object, P> = {
+export type FilterKeys<T extends object, P> = {
   [K in keyof T]-?: T[K] extends P ? K : never;
 }[keyof T];
 
