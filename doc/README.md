@@ -28,7 +28,7 @@ quetch
 - [FilterNumber](README.md#filternumber)
 - [FilterOperator](README.md#filteroperator)
 - [FilterString](README.md#filterstring)
-- [FilterStringInclude](README.md#filterstringinclude)
+- [FilterStringIntersect](README.md#filterstringintersect)
 - [FilterStringMatch](README.md#filterstringmatch)
 - [Handler](README.md#handler)
 - [NextHandler](README.md#nexthandler)
@@ -83,7 +83,7 @@ Aggregation function.
 
 #### Defined in
 
-[lib/types.ts:387](https://github.com/nevoland/quetch/blob/93a058c/lib/types.ts#L387)
+[lib/types.ts:387](https://github.com/nevoland/quetch/blob/4d845da/lib/types.ts#L387)
 
 ___
 
@@ -93,7 +93,7 @@ ___
 
 #### Defined in
 
-[lib/types.ts:402](https://github.com/nevoland/quetch/blob/93a058c/lib/types.ts#L402)
+[lib/types.ts:402](https://github.com/nevoland/quetch/blob/4d845da/lib/types.ts#L402)
 
 ___
 
@@ -103,7 +103,7 @@ ___
 
 #### Defined in
 
-[lib/types.ts:1](https://github.com/nevoland/quetch/blob/93a058c/lib/types.ts#L1)
+[lib/types.ts:1](https://github.com/nevoland/quetch/blob/4d845da/lib/types.ts#L1)
 
 ___
 
@@ -113,7 +113,7 @@ ___
 
 #### Defined in
 
-[lib/types.ts:92](https://github.com/nevoland/quetch/blob/93a058c/lib/types.ts#L92)
+[lib/types.ts:92](https://github.com/nevoland/quetch/blob/4d845da/lib/types.ts#L92)
 
 ___
 
@@ -123,7 +123,7 @@ ___
 
 #### Defined in
 
-[lib/types.ts:94](https://github.com/nevoland/quetch/blob/93a058c/lib/types.ts#L94)
+[lib/types.ts:94](https://github.com/nevoland/quetch/blob/4d845da/lib/types.ts#L94)
 
 ___
 
@@ -133,7 +133,7 @@ ___
 
 #### Defined in
 
-[lib/types.ts:96](https://github.com/nevoland/quetch/blob/93a058c/lib/types.ts#L96)
+[lib/types.ts:96](https://github.com/nevoland/quetch/blob/4d845da/lib/types.ts#L96)
 
 ___
 
@@ -149,7 +149,7 @@ ___
 
 #### Defined in
 
-[lib/types.ts:98](https://github.com/nevoland/quetch/blob/93a058c/lib/types.ts#L98)
+[lib/types.ts:98](https://github.com/nevoland/quetch/blob/4d845da/lib/types.ts#L98)
 
 ___
 
@@ -165,7 +165,7 @@ ___
 
 #### Defined in
 
-[lib/types.ts:382](https://github.com/nevoland/quetch/blob/93a058c/lib/types.ts#L382)
+[lib/types.ts:382](https://github.com/nevoland/quetch/blob/4d845da/lib/types.ts#L382)
 
 ___
 
@@ -185,7 +185,7 @@ Entity type for a given query.
 
 #### Defined in
 
-[lib/types.ts:49](https://github.com/nevoland/quetch/blob/93a058c/lib/types.ts#L49)
+[lib/types.ts:49](https://github.com/nevoland/quetch/blob/4d845da/lib/types.ts#L49)
 
 ___
 
@@ -201,7 +201,7 @@ ___
 
 #### Defined in
 
-[lib/types.ts:349](https://github.com/nevoland/quetch/blob/93a058c/lib/types.ts#L349)
+[lib/types.ts:349](https://github.com/nevoland/quetch/blob/4d845da/lib/types.ts#L349)
 
 ___
 
@@ -226,7 +226,7 @@ Applies a custom field transform function.
 
 #### Defined in
 
-[lib/types.ts:356](https://github.com/nevoland/quetch/blob/93a058c/lib/types.ts#L356)
+[lib/types.ts:356](https://github.com/nevoland/quetch/blob/4d845da/lib/types.ts#L356)
 
 ___
 
@@ -252,7 +252,7 @@ Formats the date found in a given field, which can be an ISO string date or a ti
 
 #### Defined in
 
-[lib/types.ts:364](https://github.com/nevoland/quetch/blob/93a058c/lib/types.ts#L364)
+[lib/types.ts:364](https://github.com/nevoland/quetch/blob/4d845da/lib/types.ts#L364)
 
 ___
 
@@ -264,7 +264,7 @@ Possible field function operators.
 
 #### Defined in
 
-[lib/types.ts:373](https://github.com/nevoland/quetch/blob/93a058c/lib/types.ts#L373)
+[lib/types.ts:373](https://github.com/nevoland/quetch/blob/4d845da/lib/types.ts#L373)
 
 ___
 
@@ -282,13 +282,13 @@ Return types of custom field functions.
 
 #### Defined in
 
-[lib/types.ts:378](https://github.com/nevoland/quetch/blob/93a058c/lib/types.ts#L378)
+[lib/types.ts:378](https://github.com/nevoland/quetch/blob/4d845da/lib/types.ts#L378)
 
 ___
 
 ### Filter
 
-Ƭ **Filter**<`T`\>: [`FilterList`](README.md#filterlist)<`T`\> \| [`FilterField`](README.md#filterfield)<`T`\> \| [`FilterBoolean`](README.md#filterboolean)<`T`\> \| [`FilterString`](README.md#filterstring)<`T`\> \| [`FilterStringMatch`](README.md#filterstringmatch)<`T`\> \| [`FilterStringInclude`](README.md#filterstringinclude)<`T`\> \| [`FilterNumber`](README.md#filternumber)<`T`\> \| [`FilterArray`](README.md#filterarray)<`T`\>
+Ƭ **Filter**<`T`\>: [`FilterList`](README.md#filterlist)<`T`\> \| [`FilterField`](README.md#filterfield)<`T`\> \| [`FilterBoolean`](README.md#filterboolean)<`T`\> \| [`FilterString`](README.md#filterstring)<`T`\> \| [`FilterStringMatch`](README.md#filterstringmatch)<`T`\> \| [`FilterStringIntersect`](README.md#filterstringintersect)<`T`\> \| [`FilterNumber`](README.md#filternumber)<`T`\> \| [`FilterArray`](README.md#filterarray)<`T`\>
 
 Describes a predicate for filtering items.
 
@@ -300,7 +300,7 @@ Describes a predicate for filtering items.
 
 #### Defined in
 
-[lib/types.ts:422](https://github.com/nevoland/quetch/blob/93a058c/lib/types.ts#L422)
+[lib/types.ts:422](https://github.com/nevoland/quetch/blob/4d845da/lib/types.ts#L422)
 
 ___
 
@@ -327,7 +327,7 @@ Checks if a given array field matches a given array value according to a given o
 
 #### Defined in
 
-[lib/types.ts:550](https://github.com/nevoland/quetch/blob/93a058c/lib/types.ts#L550)
+[lib/types.ts:550](https://github.com/nevoland/quetch/blob/4d845da/lib/types.ts#L550)
 
 ___
 
@@ -353,7 +353,7 @@ Checks if a given boolean field is `true` or `false`.
 
 #### Defined in
 
-[lib/types.ts:470](https://github.com/nevoland/quetch/blob/93a058c/lib/types.ts#L470)
+[lib/types.ts:470](https://github.com/nevoland/quetch/blob/4d845da/lib/types.ts#L470)
 
 ___
 
@@ -378,7 +378,7 @@ Checks if a given field exists.
 
 #### Defined in
 
-[lib/types.ts:462](https://github.com/nevoland/quetch/blob/93a058c/lib/types.ts#L462)
+[lib/types.ts:462](https://github.com/nevoland/quetch/blob/4d845da/lib/types.ts#L462)
 
 ___
 
@@ -396,7 +396,7 @@ Joins a list of filters with a specific boolean operator.
 
 #### Defined in
 
-[lib/types.ts:437](https://github.com/nevoland/quetch/blob/93a058c/lib/types.ts#L437)
+[lib/types.ts:437](https://github.com/nevoland/quetch/blob/4d845da/lib/types.ts#L437)
 
 ___
 
@@ -422,7 +422,7 @@ Checks if a given number field matches a given number value according to a given
 
 #### Defined in
 
-[lib/types.ts:535](https://github.com/nevoland/quetch/blob/93a058c/lib/types.ts#L535)
+[lib/types.ts:535](https://github.com/nevoland/quetch/blob/4d845da/lib/types.ts#L535)
 
 ___
 
@@ -432,7 +432,7 @@ ___
 
 #### Defined in
 
-[lib/types.ts:432](https://github.com/nevoland/quetch/blob/93a058c/lib/types.ts#L432)
+[lib/types.ts:432](https://github.com/nevoland/quetch/blob/4d845da/lib/types.ts#L432)
 
 ___
 
@@ -458,13 +458,13 @@ Checks if a given string field matches a given string value according to a given
 
 #### Defined in
 
-[lib/types.ts:479](https://github.com/nevoland/quetch/blob/93a058c/lib/types.ts#L479)
+[lib/types.ts:479](https://github.com/nevoland/quetch/blob/4d845da/lib/types.ts#L479)
 
 ___
 
-### FilterStringInclude
+### FilterStringIntersect
 
-Ƭ **FilterStringInclude**<`T`\>: `Object`
+Ƭ **FilterStringIntersect**<`T`\>: `Object`
 
 Checks if a given string field has any of the provided values.
 
@@ -484,7 +484,7 @@ Checks if a given string field has any of the provided values.
 
 #### Defined in
 
-[lib/types.ts:526](https://github.com/nevoland/quetch/blob/93a058c/lib/types.ts#L526)
+[lib/types.ts:526](https://github.com/nevoland/quetch/blob/4d845da/lib/types.ts#L526)
 
 ___
 
@@ -514,7 +514,7 @@ Checks if a given string field matches a given regular expression.
 
 #### Defined in
 
-[lib/types.ts:497](https://github.com/nevoland/quetch/blob/93a058c/lib/types.ts#L497)
+[lib/types.ts:497](https://github.com/nevoland/quetch/blob/4d845da/lib/types.ts#L497)
 
 ___
 
@@ -550,7 +550,7 @@ Handles an `input` query and returns an `output` promise, eventually using the `
 
 #### Defined in
 
-[lib/types.ts:23](https://github.com/nevoland/quetch/blob/93a058c/lib/types.ts#L23)
+[lib/types.ts:23](https://github.com/nevoland/quetch/blob/4d845da/lib/types.ts#L23)
 
 ___
 
@@ -583,7 +583,7 @@ Handles an `input` query and returns an `output` promise.
 
 #### Defined in
 
-[lib/types.ts:31](https://github.com/nevoland/quetch/blob/93a058c/lib/types.ts#L31)
+[lib/types.ts:31](https://github.com/nevoland/quetch/blob/4d845da/lib/types.ts#L31)
 
 ___
 
@@ -601,7 +601,7 @@ Order item.
 
 #### Defined in
 
-[lib/types.ts:338](https://github.com/nevoland/quetch/blob/93a058c/lib/types.ts#L338)
+[lib/types.ts:338](https://github.com/nevoland/quetch/blob/4d845da/lib/types.ts#L338)
 
 ___
 
@@ -620,7 +620,7 @@ Query that fetches or mutates an entity.
 
 #### Defined in
 
-[lib/types.ts:80](https://github.com/nevoland/quetch/blob/93a058c/lib/types.ts#L80)
+[lib/types.ts:80](https://github.com/nevoland/quetch/blob/4d845da/lib/types.ts#L80)
 
 ___
 
@@ -638,7 +638,7 @@ Query for computing an aggregated value.
 
 #### Defined in
 
-[lib/types.ts:329](https://github.com/nevoland/quetch/blob/93a058c/lib/types.ts#L329)
+[lib/types.ts:329](https://github.com/nevoland/quetch/blob/4d845da/lib/types.ts#L329)
 
 ___
 
@@ -662,7 +662,7 @@ ___
 
 #### Defined in
 
-[lib/types.ts:102](https://github.com/nevoland/quetch/blob/93a058c/lib/types.ts#L102)
+[lib/types.ts:102](https://github.com/nevoland/quetch/blob/4d845da/lib/types.ts#L102)
 
 ___
 
@@ -680,7 +680,7 @@ Query for creating an item.
 
 #### Defined in
 
-[lib/types.ts:244](https://github.com/nevoland/quetch/blob/93a058c/lib/types.ts#L244)
+[lib/types.ts:244](https://github.com/nevoland/quetch/blob/4d845da/lib/types.ts#L244)
 
 ___
 
@@ -698,7 +698,7 @@ Query for creating multiple items.
 
 #### Defined in
 
-[lib/types.ts:252](https://github.com/nevoland/quetch/blob/93a058c/lib/types.ts#L252)
+[lib/types.ts:252](https://github.com/nevoland/quetch/blob/4d845da/lib/types.ts#L252)
 
 ___
 
@@ -716,7 +716,7 @@ Query for deleting an item.
 
 #### Defined in
 
-[lib/types.ts:312](https://github.com/nevoland/quetch/blob/93a058c/lib/types.ts#L312)
+[lib/types.ts:312](https://github.com/nevoland/quetch/blob/4d845da/lib/types.ts#L312)
 
 ___
 
@@ -734,7 +734,7 @@ Query for deleting multiple items.
 
 #### Defined in
 
-[lib/types.ts:320](https://github.com/nevoland/quetch/blob/93a058c/lib/types.ts#L320)
+[lib/types.ts:320](https://github.com/nevoland/quetch/blob/4d845da/lib/types.ts#L320)
 
 ___
 
@@ -753,7 +753,7 @@ Query for getting a single item.
 
 #### Defined in
 
-[lib/types.ts:143](https://github.com/nevoland/quetch/blob/93a058c/lib/types.ts#L143)
+[lib/types.ts:143](https://github.com/nevoland/quetch/blob/4d845da/lib/types.ts#L143)
 
 ___
 
@@ -772,7 +772,7 @@ Query for getting a list of items.
 
 #### Defined in
 
-[lib/types.ts:183](https://github.com/nevoland/quetch/blob/93a058c/lib/types.ts#L183)
+[lib/types.ts:183](https://github.com/nevoland/quetch/blob/4d845da/lib/types.ts#L183)
 
 ___
 
@@ -784,7 +784,7 @@ Available query methods.
 
 #### Defined in
 
-[lib/types.ts:123](https://github.com/nevoland/quetch/blob/93a058c/lib/types.ts#L123)
+[lib/types.ts:123](https://github.com/nevoland/quetch/blob/4d845da/lib/types.ts#L123)
 
 ___
 
@@ -803,7 +803,7 @@ Query for updating an item.
 
 #### Defined in
 
-[lib/types.ts:261](https://github.com/nevoland/quetch/blob/93a058c/lib/types.ts#L261)
+[lib/types.ts:261](https://github.com/nevoland/quetch/blob/4d845da/lib/types.ts#L261)
 
 ___
 
@@ -822,7 +822,7 @@ Query for updating multiple items.
 
 #### Defined in
 
-[lib/types.ts:283](https://github.com/nevoland/quetch/blob/93a058c/lib/types.ts#L283)
+[lib/types.ts:283](https://github.com/nevoland/quetch/blob/4d845da/lib/types.ts#L283)
 
 ___
 
@@ -847,7 +847,7 @@ ___
 
 #### Defined in
 
-[lib/types.ts:13](https://github.com/nevoland/quetch/blob/93a058c/lib/types.ts#L13)
+[lib/types.ts:13](https://github.com/nevoland/quetch/blob/4d845da/lib/types.ts#L13)
 
 ## Functions
 
@@ -888,7 +888,7 @@ If a query occurs twice, `mergeQuery(query, currentQuery)` is called and the out
 
 #### Defined in
 
-[lib/middlewares/aggregate.ts:16](https://github.com/nevoland/quetch/blob/93a058c/lib/middlewares/aggregate.ts#L16)
+[lib/middlewares/aggregate.ts:16](https://github.com/nevoland/quetch/blob/4d845da/lib/middlewares/aggregate.ts#L16)
 
 ___
 
@@ -930,7 +930,7 @@ const customFetch = combine(
 
 #### Defined in
 
-[lib/middlewares/branch.ts:21](https://github.com/nevoland/quetch/blob/93a058c/lib/middlewares/branch.ts#L21)
+[lib/middlewares/branch.ts:21](https://github.com/nevoland/quetch/blob/4d845da/lib/middlewares/branch.ts#L21)
 
 ___
 
@@ -959,7 +959,7 @@ ___
 
 #### Defined in
 
-[lib/middlewares/cache.ts:39](https://github.com/nevoland/quetch/blob/93a058c/lib/middlewares/cache.ts#L39)
+[lib/middlewares/cache.ts:39](https://github.com/nevoland/quetch/blob/4d845da/lib/middlewares/cache.ts#L39)
 
 ___
 
@@ -1032,7 +1032,7 @@ Handler that combines all provided handlers.
 
 #### Defined in
 
-[lib/middlewares/combine.ts:801](https://github.com/nevoland/quetch/blob/93a058c/lib/middlewares/combine.ts#L801)
+[lib/middlewares/combine.ts:801](https://github.com/nevoland/quetch/blob/4d845da/lib/middlewares/combine.ts#L801)
 
 ___
 
@@ -1093,7 +1093,7 @@ typeof `query`
 
 #### Defined in
 
-[lib/tools/defineCheckQuery.ts:3](https://github.com/nevoland/quetch/blob/93a058c/lib/tools/defineCheckQuery.ts#L3)
+[lib/tools/defineCheckQuery.ts:3](https://github.com/nevoland/quetch/blob/4d845da/lib/tools/defineCheckQuery.ts#L3)
 
 ___
 
@@ -1160,7 +1160,7 @@ ___
 
 #### Defined in
 
-[lib/tools/defineCustomFetch.ts:11](https://github.com/nevoland/quetch/blob/93a058c/lib/tools/defineCustomFetch.ts#L11)
+[lib/tools/defineCustomFetch.ts:11](https://github.com/nevoland/quetch/blob/4d845da/lib/tools/defineCustomFetch.ts#L11)
 
 ___
 
@@ -1184,7 +1184,7 @@ Handler that returns a promise that resolves to the response.
 
 #### Defined in
 
-[lib/middlewares/fetchExternal.ts:12](https://github.com/nevoland/quetch/blob/93a058c/lib/middlewares/fetchExternal.ts#L12)
+[lib/middlewares/fetchExternal.ts:12](https://github.com/nevoland/quetch/blob/4d845da/lib/middlewares/fetchExternal.ts#L12)
 
 ___
 
@@ -1209,7 +1209,7 @@ Promise that resolves to the response.
 
 #### Defined in
 
-[lib/middlewares/fetchLocal.ts:9](https://github.com/nevoland/quetch/blob/93a058c/lib/middlewares/fetchLocal.ts#L9)
+[lib/middlewares/fetchLocal.ts:9](https://github.com/nevoland/quetch/blob/4d845da/lib/middlewares/fetchLocal.ts#L9)
 
 ___
 
@@ -1235,7 +1235,7 @@ ___
 
 #### Defined in
 
-lib/tools/filterFromContext.ts:5
+[lib/tools/filterFromContext.ts:5](https://github.com/nevoland/quetch/blob/4d845da/lib/tools/filterFromContext.ts#L5)
 
 ___
 
@@ -1266,7 +1266,7 @@ Checks wether the provided `value` matches the `filter` or not.
 
 #### Defined in
 
-lib/tools/filterItem.ts:12
+[lib/tools/filterItem.ts:12](https://github.com/nevoland/quetch/blob/4d845da/lib/tools/filterItem.ts#L12)
 
 ___
 
@@ -1296,7 +1296,7 @@ ___
 
 #### Defined in
 
-[lib/middlewares/identity.ts:3](https://github.com/nevoland/quetch/blob/93a058c/lib/middlewares/identity.ts#L3)
+[lib/middlewares/identity.ts:3](https://github.com/nevoland/quetch/blob/4d845da/lib/middlewares/identity.ts#L3)
 
 ___
 
@@ -1318,7 +1318,7 @@ Handles an `input` query and returns an `output` promise.
 
 #### Defined in
 
-[lib/types.ts:31](https://github.com/nevoland/quetch/blob/93a058c/lib/types.ts#L31)
+[lib/types.ts:31](https://github.com/nevoland/quetch/blob/4d845da/lib/types.ts#L31)
 
 ___
 
@@ -1351,7 +1351,7 @@ Query handler
 
 #### Defined in
 
-[lib/middlewares/log.ts:11](https://github.com/nevoland/quetch/blob/93a058c/lib/middlewares/log.ts#L11)
+[lib/middlewares/log.ts:11](https://github.com/nevoland/quetch/blob/4d845da/lib/middlewares/log.ts#L11)
 
 ___
 
@@ -1382,7 +1382,7 @@ ___
 
 #### Defined in
 
-lib/tools/normalizeOrder.ts:3
+[lib/tools/normalizeOrder.ts:3](https://github.com/nevoland/quetch/blob/4d845da/lib/tools/normalizeOrder.ts#L3)
 
 ___
 
@@ -1409,7 +1409,7 @@ ___
 
 #### Defined in
 
-lib/tools/queryItemList.ts:41
+[lib/tools/queryItemList.ts:41](https://github.com/nevoland/quetch/blob/4d845da/lib/tools/queryItemList.ts#L41)
 
 ___
 
@@ -1438,7 +1438,7 @@ Handler
 
 #### Defined in
 
-[lib/middlewares/retry.ts:15](https://github.com/nevoland/quetch/blob/93a058c/lib/middlewares/retry.ts#L15)
+[lib/middlewares/retry.ts:15](https://github.com/nevoland/quetch/blob/4d845da/lib/middlewares/retry.ts#L15)
 
 ___
 
@@ -1469,4 +1469,4 @@ The same array sorted in place.
 
 #### Defined in
 
-lib/tools/sortItemList.ts:12
+[lib/tools/sortItemList.ts:12](https://github.com/nevoland/quetch/blob/4d845da/lib/tools/sortItemList.ts#L12)
