@@ -84,10 +84,9 @@ export type Query<T extends object, C extends CustomFieldMap<T>> =
   | QueryCreateMultiple<T>
   | QueryUpdate<T, C>
   | QueryUpdateMultiple<T, C>
-  | QueryDelete<T>
-  | QueryDeleteMultiple<T>
-  // TODO: Handle custom fields
-  | QueryAggregate<T>;
+  | QueryDelete<T, C>
+  | QueryDeleteMultiple<T, C>
+  | QueryAggregate<T, C>;
 
 export type AnyQuery = Query<any, any>;
 
@@ -309,27 +308,36 @@ export type QueryUpdateMultiple<
 /**
  * Query for deleting an item.
  */
-export type QueryDelete<T extends object> = QueryBase<T> & {
+export type QueryDelete<
+  T extends object,
+  C extends CustomFieldMap<T>,
+> = QueryBase<T> & {
   method: "delete";
-  filter?: Filter<T>;
+  filter?: Filter<InjectCustomField<T, C>>;
 };
 
 /**
  * Query for deleting multiple items.
  */
-export type QueryDeleteMultiple<T extends object> = QueryBase<T> & {
+export type QueryDeleteMultiple<
+  T extends object,
+  C extends CustomFieldMap<T>,
+> = QueryBase<T> & {
   method: "delete";
   multiple: true;
-  filter?: Filter<T>;
+  filter?: Filter<InjectCustomField<T, C>>;
 };
 
 /**
  * Query for computing an aggregated value.
  */
-export type QueryAggregate<T extends object> = QueryBase<T> & {
+export type QueryAggregate<
+  T extends object,
+  C extends CustomFieldMap<T>,
+> = QueryBase<T> & {
   method: "aggregate";
-  aggregator: AggregateFunction<T>;
-  filter?: Filter<T>;
+  aggregator: AggregateFunction<InjectCustomField<T, C>>;
+  filter?: Filter<InjectCustomField<T, C>>;
 };
 
 /**
