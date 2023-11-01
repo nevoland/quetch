@@ -43,11 +43,11 @@ export function queryItemList<T extends object, C extends CustomFieldMap<T>>(
 ) {
   const data = query.type as T[];
   switch (query.method) {
-    case "get":
+    case "read":
     case undefined: {
       const { filter, context } = query;
       if (query.multiple) {
-        const { offset = 0, limit = Infinity, orderBy } = query;
+        const { offset = 0, limit = Infinity, order } = query;
         // Filter
         let result = data;
         if (context !== undefined || filter !== undefined) {
@@ -59,7 +59,7 @@ export function queryItemList<T extends object, C extends CustomFieldMap<T>>(
         }
         // Sort
         result = sortItemList(
-          orderBy as Order<T>[],
+          order as Order<T>[],
           result === data ? [...data] : result,
         );
         // Slice

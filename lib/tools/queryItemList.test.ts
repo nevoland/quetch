@@ -63,7 +63,7 @@ test("queries lists of items", () => {
         { a: 2, c: "a" },
         { a: 3, c: "b" },
       ],
-      method: "get",
+      method: "read",
       multiple: true,
       context: {
         c: "a",
@@ -99,7 +99,7 @@ test("sorts items", () => {
         { a: 1, c: "b" },
       ],
       multiple: true,
-      orderBy: ["a", "c"],
+      order: ["a", "c"],
     }),
   ).toEqual([
     { a: 1, c: "a" },
@@ -118,7 +118,7 @@ test("sorts items", () => {
         { a: 1, c: "b" },
       ],
       multiple: true,
-      orderBy: [
+      order: [
         { field: "a", descending: true },
         { field: "c", descending: true },
       ],
@@ -176,7 +176,7 @@ test("slices items", () => {
         { a: 2, c: "a" },
         { a: 3, c: "b" },
       ],
-      method: "get",
+      method: "read",
       multiple: true,
       limit: 1,
     }),
@@ -188,7 +188,7 @@ test("slices items", () => {
         { a: 2, c: "a" },
         { a: 3, c: "b" },
       ],
-      method: "get",
+      method: "read",
       multiple: true,
       context: {
         c: "a",
@@ -204,7 +204,7 @@ test("slices items", () => {
         { a: 3, c: "b" },
         { a: 2, c: "b" },
       ],
-      method: "get",
+      method: "read",
       multiple: true,
       offset: 1,
       limit: 2,
