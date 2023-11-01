@@ -10,6 +10,7 @@ export function defineGenericFetch<K extends string>(
     never
   >,
 ) {
+  // FIXME: Until https://github.com/microsoft/TypeScript/issues/26242 gets resolved, the fetcher needs to be curried
   function genericFetch<T extends object>() {
     async function customFetch<const Q extends Query<T, {}>>(
       query: Q & { type: K | T[]; customFields?: never },
