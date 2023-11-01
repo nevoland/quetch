@@ -1,11 +1,11 @@
-import type { AnyQueryExternal, Handler, Store } from "../types";
+import type { Handler, QueryAny, Store } from "../types";
 
-type CachedItem<I extends AnyQueryExternal> = {
+type CachedItem<I extends QueryAny> = {
   query: I;
   value: any;
 };
 
-type CacheOptions<I extends AnyQueryExternal> = {
+type CacheOptions<I extends QueryAny> = {
   /**
    * Unique identifier for the item to cache.
    * Returns `undefined` if the item should not be cached.
@@ -36,15 +36,10 @@ type CacheOptions<I extends AnyQueryExternal> = {
   mergeItem: (value: any, cachedValue: any, query: I, cachedQuery: I) => any;
 };
 
-export function cache<
-  I extends AnyQueryExternal,
-  O,
-  In extends AnyQueryExternal,
-  On,
->({
-  itemId = ({ context = {}, method = "get", type }: I) => {
-    if (method === "get" && context.id) {
-      return `${type}/${context.id}`;
+export function cache<I extends QueryAny, O, In extends QueryAny, On>({
+  itemId = ({ context = {}, method = "read", type }: I) => {
+    if (method === "read" && context.id) {
+      return `${String(type)}/${context.id}`;
     }
     return undefined;
   },

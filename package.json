@@ -22,7 +22,7 @@
     "dev": "vite",
     "dev:test": "vitest --update",
     "test": "npm run lint && npm run format && vitest run",
-    "build": "tsc --project tsconfig.package.json",
+    "build": "rm -rf dist; tsc --project tsconfig.package.json",
     "build:doc": "typedoc --tsconfig tsconfig.package.json",
     "build:demo": "vite build",
     "prepare": "npm run build",
@@ -62,7 +62,7 @@
     "typedoc-plugin-markdown": "^3.16.0",
     "typescript": "^5.2.2",
     "vite": "^4.4.11",
-    "vite-plugin-module-list": "^1.5.0",
+    "vite-plugin-module-list": "^2.1.0",
     "vitest": "^0.34.6"
   },
   "dependencies": {

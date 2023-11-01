@@ -76,7 +76,7 @@ const typedResultA = await customFetchTyped({
     value: "test",
   },
   // Not possible with { multiple: false }
-  // groupBy: ["date"],
+  // group: ["date"],
 });
 typedResultA.a;
 
@@ -104,14 +104,14 @@ const typedResultC = await customFetchTyped({
     field: "customFieldA",
     value: "2023-03",
   },
-  orderBy: [
+  order: [
     "d",
     {
       field: "c",
     },
   ],
-  groupBy: ["e", { field: "customFieldA" }],
-  // orderBy: ["c"],
+  group: ["e", { field: "customFieldA" }],
+  // order: ["c"],
 });
 typedResultC[0].c;
 typedResultC[0].customFieldA;
@@ -145,12 +145,12 @@ const typedResultD = await customFetchTyped({
       },
     ],
   },
-  // orderBy: [
+  // order: [
   //   {
   //     field: "sdfsdfsdf",
   //   },
   // ],
-  // groupBy: [{ field: "dfsdsdf" }],
+  // group: [{ field: "dfsdsdf" }],
 });
 typedResultD[0].b;
 
@@ -191,7 +191,7 @@ const typedResultG = await customFetchTyped({
   method: "get",
   multiple: true,
   fields: ["a"],
-  groupBy: [
+  group: [
     {
       field: "c",
       customFields: {
@@ -222,7 +222,7 @@ const typedResultH = await customFetchTyped({
   context,
   multiple: true,
   fields: fieldsH,
-  groupBy: [
+  group: [
     {
       field: "c",
       customFields: {
@@ -230,7 +230,7 @@ const typedResultH = await customFetchTyped({
       },
     },
   ],
-  orderBy: ["b"],
+  order: ["b"],
   customFields: {
     customA: {
       operator: "formatDate",
@@ -255,7 +255,7 @@ const query = checkQuery({
   context,
   multiple: true,
   fields: fieldsH,
-  groupBy: [
+  group: [
     {
       field: "c",
       customFields: {

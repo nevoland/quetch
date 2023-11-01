@@ -1,7 +1,7 @@
 import { sleep } from "futurise";
 
 import { RequestError } from "../errors";
-import type { AnyQuery, Handler } from "../types";
+import type { Handler, QueryAny } from "../types";
 
 /**
  * Aggregates multiple incoming query calls into one query.
@@ -13,7 +13,7 @@ import type { AnyQuery, Handler } from "../types";
  * @param options
  * @returns
  */
-export function aggregate<I extends AnyQuery, O, In extends AnyQuery, On>({
+export function aggregate<I extends QueryAny, O, In extends QueryAny, On>({
   queryGroupId = ({ type, method = "get" }) => {
     if (method !== "get") {
       return undefined;
@@ -31,9 +31,9 @@ export function aggregate<I extends AnyQuery, O, In extends AnyQuery, On>({
   },
   mergeQuery = (query, _currentQuery) => query,
   delay = 200,
-  queryForGroup = (queryList, _): AnyQuery => ({
+  queryForGroup = (queryList, _): QueryAny => ({
     type: queryList[0].type,
-    method: "get",
+    method: "read",
     multiple: true,
     filter: {
       operator: "include",
@@ -55,7 +55,7 @@ export function aggregate<I extends AnyQuery, O, In extends AnyQuery, On>({
   queryId?: (query: I) => string | undefined;
   mergeQuery?: (query: I, currentQuery: I) => I;
   delay?: number;
-  queryForGroup: (queryList: I[], group: string) => AnyQuery;
+  queryForGroup: (queryList: I[], group: string) => QueryAny;
   resultForQuery: (resultList: O[], query: I) => O | never;
 }): Handler<I, O, In, On> {
   const queryGroupMap = new Map<

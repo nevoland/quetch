@@ -1,23 +1,28 @@
 import type { CustomFieldMap, Query } from "../types";
 
-export function defineCheckQuery<Entities extends Record<string, object>>() {
+/**
+ * Returns a function that checks queries. This is useful to prevent the query to have its type being narrowed if declared outside of a custom fetcher function argument.
+ *
+ * @returns Function that checks queries.
+ */
+export function defineCheckQuery<M extends Record<string, object>>() {
   function checkQuery<
-    E extends object,
-    C extends CustomFieldMap<E>,
-    const Q extends Query<E, C>,
-  >(query: Q & { type: E[]; customFields?: C }): typeof query;
+    T extends object,
+    C extends CustomFieldMap<T>,
+    const Q extends Query<T, C>,
+  >(query: Q & { type: T[]; customFields?: C }): typeof query;
   function checkQuery<
-    T extends keyof Entities,
-    E extends Entities[T],
-    C extends CustomFieldMap<E>,
-    const Q extends Query<E, C>,
-  >(query: Q & { type: T; customFields?: C }): typeof query;
+    K extends keyof M,
+    T extends M[K],
+    C extends CustomFieldMap<T>,
+    const Q extends Query<T, C>,
+  >(query: Q & { type: K; customFields?: C }): typeof query;
   function checkQuery<
-    T extends keyof Entities,
-    E extends Entities[T] | object,
-    C extends CustomFieldMap<E>,
-    const Q extends Query<E, C>,
-  >(query: Q & { type: T | E[]; customFields?: C }): typeof query {
+    K extends keyof M,
+    T extends M[K] | object,
+    C extends CustomFieldMap<T>,
+    const Q extends Query<T, C>,
+  >(query: Q & { type: K | T[]; customFields?: C }): typeof query {
     return query;
   }
   return checkQuery;

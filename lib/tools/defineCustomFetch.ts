@@ -1,70 +1,48 @@
-import type {
-  AnyQuery,
-  CustomFieldMap,
-  EntityItem,
-  Handler,
-  Query,
-} from "../types";
+import type { CustomFieldMap, Handler, Key, Query, Result } from "../types";
 
-import { impasse } from "./impasse";
+import { cork } from "./cork";
 
+/**
+ *
+ *
+ * @param handler
+ * @returns
+ */
 export function defineCustomFetch<M extends Record<string, object>>(
-  handler: Handler<AnyQuery, any, never, never>,
+  handler: Handler<
+    Query<any, any> & { type: Key | any[]; customFields?: CustomFieldMap<any> },
+    any,
+    never,
+    never
+  >,
 ) {
-  function customFetch<
-    E extends object,
-    C extends CustomFieldMap<E>,
-    const Q extends Query<E, C>,
-  >(
-    input: Q & { type: E[]; customFields?: C },
-  ): Promise<
-    Q["method"] extends "get"
-      ? Q extends { multiple: true }
-        ? EntityItem<E, C, Q>[]
-        : EntityItem<E, C, Q>
-      : Q["method"] extends "aggregate"
-      ? number
-      : Q extends { multiple: true }
-      ? EntityItem<E, C, Q>[]
-      : EntityItem<E, C, Q>
-  >;
-  function customFetch<
-    T extends keyof M,
-    E extends M[T],
-    C extends CustomFieldMap<E>,
-    const Q extends Query<E, C>,
-  >(
-    input: Q & { type: T; customFields?: C },
-  ): Promise<
-    Q["method"] extends "get"
-      ? Q extends { multiple: true }
-        ? EntityItem<E, C, Q>[]
-        : EntityItem<E, C, Q>
-      : Q["method"] extends "aggregate"
-      ? number
-      : Q extends { multiple: true }
-      ? EntityItem<E, C, Q>[]
-      : EntityItem<E, C, Q>
-  >;
   async function customFetch<
-    T extends keyof M,
-    E extends M[T] | object,
-    C extends CustomFieldMap<E>,
-    const Q extends Query<E, C>,
-  >(
-    input: Q & { type: T | E[]; customFields?: C },
-  ): Promise<
-    Q["method"] extends "get"
-      ? Q extends { multiple: true }
-        ? EntityItem<E, C, Q>[]
-        : EntityItem<E, C, Q>
-      : Q["method"] extends "aggregate"
-      ? number
-      : Q extends { multiple: true }
-      ? EntityItem<E, C, Q>[]
-      : EntityItem<E, C, Q>
-  > {
-    return await handler(input, impasse);
+    K extends keyof M,
+    T extends M[K],
+    const Q extends Query<T, {}>,
+  >(query: Q & { type: K; customFields?: never }): Promise<Result<T, Q, {}>>;
+  async function customFetch<
+    K extends keyof M,
+    T extends M[K],
+    const Q extends Query<T, C>,
+    const C extends CustomFieldMap<T>,
+  >(query: Q & { type: K; customFields: C }): Promise<Result<T, Q, C>>;
+  async function customFetch<T extends object, const Q extends Query<T, {}>>(
+    type: T[],
+    query: Q & { customFields?: never },
+  ): Promise<Result<T, Q, {}>>;
+  async function customFetch<
+    T extends object,
+    const Q extends Query<T, C>,
+    const C extends CustomFieldMap<T>,
+  >(query: Q & { type: T[]; customFields: C }): Promise<Result<T, Q, C>>;
+  async function customFetch<
+    K extends keyof M,
+    T extends M[K] | object,
+    const Q extends Query<T, C>,
+    const C extends CustomFieldMap<T>,
+  >(query: Q & { type: T[] | K; customFields?: C }): Promise<Result<T, Q, C>> {
+    return await handler(query, cork);
   }
   return customFetch;
 }

@@ -16,10 +16,10 @@ export function sortItemList<T extends object>(
   if (orderList === undefined || orderList.length === 0) {
     return value;
   }
-  const normalizedOrderBy = orderList.map(normalizeOrder);
+  const normalizedorder = orderList.map(normalizeOrder);
   return value.sort((a, b) => {
-    for (let index = 0; index < normalizedOrderBy.length; index++) {
-      const { field, descending } = normalizedOrderBy[index];
+    for (let index = 0; index < normalizedorder.length; index++) {
+      const { field, descending } = normalizedorder[index];
       if (a[field] === b[field]) {
         continue;
       }

@@ -6,7 +6,6 @@ module.exports = {
   plugins: ["import", "inferno", "tailwindcss"],
   extends: [
     "eslint:recommended",
-    "plugin:import/errors",
     "plugin:import/typescript",
     "preact",
     "prettier",
