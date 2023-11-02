@@ -21,6 +21,7 @@ export type { FilterSequence } from "./types/FilterSequence";
 export type { FilterString } from "./types/FilterString";
 export type { FilterStringIntersect } from "./types/FilterStringIntersect";
 export type { FilterStringMatch } from "./types/FilterStringMatch";
+export type { GenericFetch } from "./types/GenericFetch";
 export type { Get } from "./types/Get";
 export type { Group } from "./types/Group";
 export type { Handler } from "./types/Handler";
