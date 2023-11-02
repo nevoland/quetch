@@ -6,6 +6,7 @@ import type { Filter } from "./Filter";
  */
 export type QueryDelete<T extends object> = {
   method: "delete";
+  multiple?: false;
   filter?: Filter<T>;
   customFields?: CustomFieldMap<T>;
 };

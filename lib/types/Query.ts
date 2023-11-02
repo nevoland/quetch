@@ -26,9 +26,26 @@ type QueryBase<T extends object> =
  * Query that fetches or mutates an entity.
  */
 export type Query<
+  /**
+   * Type.
+   */
   T extends object,
+  /**
+   * Custom fields.
+   */
   C extends CustomFieldMap<T> | undefined,
-> = QueryBase<InjectCustomFields<T, C>> & {
+  /**
+   * Methods.
+   */
+  M extends QueryBase<never>["method"] = QueryBase<never>["method"],
+  /**
+   * Multiple.
+   */
+  L extends boolean | undefined = boolean,
+> = Extract<
+  QueryBase<InjectCustomFields<T, C>>,
+  { method?: M; multiple?: L }
+> & {
   /**
    * Common item properties to use for identifying the item.
    */

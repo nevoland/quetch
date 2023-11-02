@@ -5,6 +5,7 @@ import type { Filter } from "./Filter";
  */
 export type QueryUpdate<T extends object> = {
   method: "update";
+  multiple?: false;
   /**
    * Partial property values to update.
    */
