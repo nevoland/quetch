@@ -7,6 +7,7 @@ import type {
   Filter,
   Order,
   Query,
+  Result,
 } from "../types";
 
 import { filterFromContext } from "./filterFromContext";
@@ -38,9 +39,19 @@ function normalizeAggregator<T extends object>(
   return aggregator.operator;
 }
 
-export function queryItemList<T extends object, C extends CustomFieldMap<T>>(
-  query: Query<T, C> & { type: T[] },
-) {
+function queryItemList<T extends object, const Q extends Query<T, {}>>(
+  query: Q & { type: T[]; customFields?: never },
+): Result<T, Q, {}>;
+function queryItemList<
+  T extends object,
+  const Q extends Query<T, C>,
+  const C extends CustomFieldMap<T>,
+>(query: Q & { type: T[]; customFields: C }): Result<T, Q, C>;
+function queryItemList<
+  T extends object,
+  const Q extends Query<T, C>,
+  const C extends CustomFieldMap<T>,
+>(query: Q & { type: T[]; customFields?: C }): Result<T, Q, C> {
   const data = query.type as T[];
   switch (query.method) {
     case "read":
@@ -66,7 +77,7 @@ export function queryItemList<T extends object, C extends CustomFieldMap<T>>(
         if (offset !== 0 || limit !== Infinity) {
           result = result.slice(offset, offset + limit);
         }
-        return result;
+        return result as Result<T, Q, C>;
       }
       const normalizedFilter = mergeContextAndFilter(
         context,
@@ -76,14 +87,14 @@ export function queryItemList<T extends object, C extends CustomFieldMap<T>>(
       if (result === undefined) {
         throw new RequestError("Not found", 404, query);
       }
-      return result;
+      return result as Result<T, Q, C>;
     }
     case "aggregate": {
       const { context, filter, aggregator } = query;
       switch (normalizeAggregator(aggregator)) {
         case "length": {
           if (filter === undefined && context === undefined) {
-            return data.length;
+            return data.length as Result<T, Q, C>;
           }
           const normalizedFilter = mergeContextAndFilter(
             context,
@@ -94,7 +105,7 @@ export function queryItemList<T extends object, C extends CustomFieldMap<T>>(
               return result + 1;
             }
             return result;
-          }, 0);
+          }, 0 as number) as Result<T, Q, C>;
         }
         default: {
           throw new Error("Not implemented");
@@ -106,3 +117,5 @@ export function queryItemList<T extends object, C extends CustomFieldMap<T>>(
     }
   }
 }
+
+export { queryItemList };

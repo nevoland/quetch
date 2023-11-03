@@ -107,8 +107,14 @@ const user = await customFetch2({
       field: "creationDate",
       format: "YYYY",
     },
+    isJunior: {
+      operator: "custom",
+      value(item) {
+        return new Date(item.creationDate).valueOf() < 1000;
+      },
+    },
   },
-  fields: ["email", "creationYear"],
+  fields: ["email", "creationYear", "id", "isJunior"],
 });
 user[0].creationYear;
 
