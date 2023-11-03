@@ -32,7 +32,7 @@
 
 #### Defined in
 
-[lib/types/GenericFetch.ts:6](https://github.com/nevoland/quetch/blob/c839ceb/lib/types/GenericFetch.ts#L6)
+[lib/types/GenericFetch.ts:6](https://github.com/nevoland/quetch/blob/fd3c43e/lib/types/GenericFetch.ts#L6)
 
 ### GenericFetch
 
@@ -57,4 +57,4 @@
 
 #### Defined in
 
-[lib/types/GenericFetch.ts:9](https://github.com/nevoland/quetch/blob/c839ceb/lib/types/GenericFetch.ts#L9)
+[lib/types/GenericFetch.ts:9](https://github.com/nevoland/quetch/blob/fd3c43e/lib/types/GenericFetch.ts#L9)
