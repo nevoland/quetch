@@ -15,7 +15,9 @@ export default [
     ignores: ["dist/**/*", "node_modules/**/*"],
     languageOptions: {
       globals: {
-        ...globalThis,
+        ...((keyList) => Object.fromEntries(keyList.map((key) => [key, true])))(
+          ["process", "console", "Request", "Response", "AbortSignal"],
+        ),
       },
       parser,
       parserOptions: {
