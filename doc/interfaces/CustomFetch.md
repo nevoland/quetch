@@ -1,6 +1,6 @@
-[quetch](../README.md) / GenericFetch
+[quetch](../README.md) / CustomFetch
 
-# Interface: GenericFetch<T\>
+# Interface: CustomFetch<T\>
 
 ## Type parameters
 
@@ -10,9 +10,9 @@
 
 ## Callable
 
-### GenericFetch
+### CustomFetch
 
-▸ **GenericFetch**<`Q`\>(`query`): `Promise`<[`Result`](../README.md#result)<`T`, `Q`, {}, { readonly [K in string \| number \| symbol]: K extends keyof T ? T[K] : K extends never ? Object[K] extends FieldFunctionCustom<T\> ? ReturnType<Object[K]["value"]\> : Object[K]["operator"] extends "formatDate" ? FieldFunctionReturn[Object[K]["operator"]] : never : never }\>\>
+▸ **CustomFetch**<`Q`\>(`query`): `Promise`<[`Result`](../README.md#result)<`T`, `Q`, {}, { readonly [K in string \| number \| symbol]: K extends keyof T ? T[K] : K extends never ? Object[K] extends FieldFunctionCustom<T\> ? ReturnType<Object[K]["value"]\> : Object[K]["operator"] extends "formatDate" ? FieldFunctionReturn[Object[K]["operator"]] : never : never }\>\>
 
 #### Type parameters
 
@@ -32,11 +32,11 @@
 
 #### Defined in
 
-[lib/types/GenericFetch.ts:6](https://github.com/nevoland/quetch/blob/fd3c43e/lib/types/GenericFetch.ts#L6)
+[lib/types/CustomFetch.ts:6](https://github.com/nevoland/quetch/blob/970ac46/lib/types/CustomFetch.ts#L6)
 
-### GenericFetch
+### CustomFetch
 
-▸ **GenericFetch**<`Q`, `C`\>(`query`): `Promise`<[`Result`](../README.md#result)<`T`, `Q`, `C`, [`InjectCustomFields`](../README.md#injectcustomfields)<`T`, `C`\>\>\>
+▸ **CustomFetch**<`Q`, `C`\>(`query`): `Promise`<[`Result`](../README.md#result)<`T`, `Q`, `C`, [`InjectCustomFields`](../README.md#injectcustomfields)<`T`, `C`\>\>\>
 
 #### Type parameters
 
@@ -57,4 +57,4 @@
 
 #### Defined in
 
-[lib/types/GenericFetch.ts:9](https://github.com/nevoland/quetch/blob/fd3c43e/lib/types/GenericFetch.ts#L9)
+[lib/types/CustomFetch.ts:9](https://github.com/nevoland/quetch/blob/970ac46/lib/types/CustomFetch.ts#L9)
