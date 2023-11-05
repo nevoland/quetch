@@ -1,6 +1,6 @@
 import type { Handler } from "../types";
 
-import { identity } from "./identity";
+import { identity } from "./identity.js";
 
 /**
  * Logs the outgoing query and the incoming result or the error.
