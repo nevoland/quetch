@@ -1,3 +1,5 @@
+/* global process, console */
+
 import type { Handler } from "../types";
 
 import { identity } from "./identity.js";

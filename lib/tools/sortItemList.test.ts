@@ -24,8 +24,8 @@ test("sorts items", () => {
   expect(
     sortItemList(
       [
-        { field: "a", descending: true },
-        { field: "c", descending: true },
+        { descending: true, field: "a" },
+        { descending: true, field: "c" },
       ],
       [
         { a: 1, c: "a" },
@@ -44,7 +44,7 @@ test("sorts items", () => {
   ]);
   expect(
     sortItemList(
-      ["a", { field: "c", descending: true }],
+      ["a", { descending: true, field: "c" }],
       [
         { a: 1, c: "a" },
         { a: 2, c: "a" },

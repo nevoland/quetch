@@ -938,12 +938,14 @@ function combine<
     Handler<I20, O20, I21, O21>?,
   ]
 ): Handler<I0, O0, I21, O21> {
+  // eslint-disable-next-line func-names
   return function (input, next) {
     function dispatch(input: any, index: number) {
       const handler = handlerList[index];
       if (!handler) {
         return next(input);
       }
+      // eslint-disable-next-line func-names, prefer-arrow-callback
       const result: any = handler(input, function (input) {
         return dispatch(input, index + 1);
       });

@@ -4,7 +4,7 @@ import {
   defineCustomFetch,
   fetchExternal,
   identity,
-  impasse,
+  cork,
   log,
 } from "../../lib/main";
 import type { Handler } from "../../lib/types";
@@ -32,7 +32,7 @@ const customFetch2: Handler<{}, {}, never, never> = combine(
   // async (query: string, fetcher: typeof fetch) => fetcher(query),
 );
 
-const result = await customFetch(new Request("https://localhost/"), impasse);
+const result = await customFetch(new Request("https://localhost/"), cork);
 
 type EntityTest = {
   a: number;

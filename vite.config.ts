@@ -5,39 +5,39 @@ import { defineConfig } from "vite";
 import moduleList from "vite-plugin-module-list";
 
 export default defineConfig({
+  build: {
+    outDir: "dist/demo",
+  },
+  clearScreen: false,
   plugins: [
     moduleList({
       mode: {
         language: "ts",
         type: true,
       },
-      rootPath: resolve("lib/types"),
       outputPath: resolve("lib/types.ts"),
+      rootPath: resolve("lib/types"),
     }),
     moduleList({
-      mode: { language: "ts", extension: "js" },
-      rootPath: resolve("lib/tools"),
+      mode: { extension: "js", language: "ts" },
       outputPath: resolve("lib/tools.ts"),
+      rootPath: resolve("lib/tools"),
     }),
     moduleList({
-      mode: { language: "ts", extension: "js" },
-      rootPath: resolve("lib/middlewares"),
+      mode: { extension: "js", language: "ts" },
       outputPath: resolve("lib/middlewares.ts"),
+      rootPath: resolve("lib/middlewares"),
     }),
     moduleList({
-      mode: { language: "ts", extension: "js" },
-      rootPath: resolve("lib/errors"),
+      mode: { extension: "js", language: "ts" },
       outputPath: resolve("lib/errors.ts"),
+      rootPath: resolve("lib/errors"),
     }),
     moduleList({
-      mode: { language: "ts", extension: "js" },
-      rootPath: resolve("src/components"),
+      mode: { extension: "js", language: "ts" },
       outputPath: resolve("src/components.ts"),
+      rootPath: resolve("src/components"),
     }),
     preact(),
   ],
-  clearScreen: false,
-  build: {
-    outDir: "dist/demo",
-  },
 });

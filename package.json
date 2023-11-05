@@ -7,6 +7,12 @@
     "types": "./dist/main.d.ts",
     "import": "./dist/main.js"
   },
+  "author": "David Bonnet <david@bonnet.cc>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nevoland/quetch.git"
+  },
   "files": [
     "dist",
     "lib",
@@ -41,6 +47,7 @@
   },
   "devDependencies": {
     "@preact/preset-vite": "^2.5.0",
+    "@types/eslint": "^8.44.6",
     "@types/node": "^20.8.3",
     "@typescript-eslint/parser": "^6.7.4",
     "autoprefixer": "^10.4.16",
@@ -50,6 +57,7 @@
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-import": "^2.28.1",
     "eslint-plugin-inferno": "^7.32.2",
+    "eslint-plugin-sort-keys": "^2.3.5",
     "eslint-plugin-tailwindcss": "^3.13.0",
     "eslint-plugin-vitest": "^0.3.2",
     "postcss": "^8.4.31",

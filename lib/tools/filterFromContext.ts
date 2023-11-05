@@ -8,8 +8,8 @@ export function filterFromContext<T extends object>(
   return {
     operator: "all",
     value: entries(context).map(([field, value]) => ({
-      operator: "equal",
       field,
+      operator: "equal",
       value,
     })) as Filter<T>[],
   };

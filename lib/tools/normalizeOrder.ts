@@ -7,7 +7,7 @@ export function normalizeOrder<T extends object>(
     return order;
   }
   return {
-    field: order,
     descending: false,
+    field: order,
   };
 }

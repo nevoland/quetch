@@ -8,8 +8,8 @@ test("tests filter lists", () => {
       {
         operator: "all",
         value: [
-          { operator: "equal", field: "a", value: "foo" },
-          { operator: "equal", field: "b", value: "bar" },
+          { field: "a", operator: "equal", value: "foo" },
+          { field: "b", operator: "equal", value: "bar" },
         ],
       },
       { a: "foo", b: "bar" },
@@ -20,8 +20,8 @@ test("tests filter lists", () => {
       {
         operator: "all",
         value: [
-          { operator: "equal", field: "a", value: "foo" },
-          { operator: "equal", field: "b", value: "baz" },
+          { field: "a", operator: "equal", value: "foo" },
+          { field: "b", operator: "equal", value: "baz" },
         ],
       },
       { a: "foo", b: "bar" },
@@ -57,8 +57,8 @@ test("tests filter lists", () => {
       {
         operator: "any",
         value: [
-          { operator: "equal", field: "a", value: "foo" },
-          { operator: "equal", field: "b", value: "baz" },
+          { field: "a", operator: "equal", value: "foo" },
+          { field: "b", operator: "equal", value: "baz" },
         ],
       },
       { a: "foo", b: "bar" },
@@ -69,8 +69,8 @@ test("tests filter lists", () => {
       {
         operator: "none",
         value: [
-          { operator: "equal", field: "a", value: "a" },
-          { operator: "equal", field: "b", value: "b" },
+          { field: "a", operator: "equal", value: "a" },
+          { field: "b", operator: "equal", value: "b" },
         ],
       },
       { a: "foo", b: "bar" },
@@ -81,8 +81,8 @@ test("tests filter lists", () => {
       {
         operator: "none",
         value: [
-          { operator: "equal", field: "a", value: "a" },
-          { operator: "equal", field: "b", value: "b" },
+          { field: "a", operator: "equal", value: "a" },
+          { field: "b", operator: "equal", value: "b" },
         ],
       },
       { a: "foo", b: "bar" },
@@ -92,42 +92,42 @@ test("tests filter lists", () => {
 
 test("tests filter on string values", () => {
   expect(
-    filterItem({ operator: "equal", field: "a", value: "foo" }, { a: "foo" }),
+    filterItem({ field: "a", operator: "equal", value: "foo" }, { a: "foo" }),
   ).toBeTruthy();
   expect(
-    filterItem({ operator: "equal", field: "a", value: "bar" }, { a: "foo" }),
+    filterItem({ field: "a", operator: "equal", value: "bar" }, { a: "foo" }),
   ).toBeFalsy();
   expect(
     filterItem(
-      { operator: "notEqual", field: "a", value: "bar" },
+      { field: "a", operator: "notEqual", value: "bar" },
       { a: "foo" },
     ),
   ).toBeTruthy();
   expect(
     filterItem(
-      { operator: "include", field: "a", value: "bar" },
+      { field: "a", operator: "include", value: "bar" },
       { a: "foobar" },
     ),
   ).toBeTruthy();
   expect(
     filterItem(
-      { operator: "intersect", field: "a", value: ["foo", "bar", "foobar"] },
+      { field: "a", operator: "intersect", value: ["foo", "bar", "foobar"] },
       { a: "foobar" },
     ),
   ).toBeTruthy();
   expect(
     filterItem(
-      { operator: "intersect", field: "a", value: ["foo", "bar"] },
+      { field: "a", operator: "intersect", value: ["foo", "bar"] },
       { a: "foobar" },
     ),
   ).toBeFalsy();
   expect(
     filterItem(
       {
-        operator: "match",
         field: "a",
-        value: "^FOO",
+        operator: "match",
         options: { ignoreCase: true },
+        value: "^FOO",
       },
       { a: "foobar" },
     ),
@@ -135,10 +135,10 @@ test("tests filter on string values", () => {
   expect(
     filterItem(
       {
-        operator: "match",
         field: "a",
-        value: "FOO$",
+        operator: "match",
         options: { ignoreCase: true },
+        value: "FOO$",
       },
       { a: "foobar" },
     ),
@@ -147,26 +147,26 @@ test("tests filter on string values", () => {
 
 test("tests filter on number values", () => {
   expect(
-    filterItem({ operator: "equal", field: "a", value: 1 }, { a: 1 }),
+    filterItem({ field: "a", operator: "equal", value: 1 }, { a: 1 }),
   ).toBeTruthy();
   expect(
-    filterItem({ operator: "notEqual", field: "a", value: 2 }, { a: 1 }),
+    filterItem({ field: "a", operator: "notEqual", value: 2 }, { a: 1 }),
   ).toBeTruthy();
   expect(
-    filterItem({ operator: "greaterThan", field: "a", value: 0 }, { a: 1 }),
+    filterItem({ field: "a", operator: "greaterThan", value: 0 }, { a: 1 }),
   ).toBeTruthy();
   expect(
     filterItem(
-      { operator: "greaterThanOrEqual", field: "a", value: 1 },
+      { field: "a", operator: "greaterThanOrEqual", value: 1 },
       { a: 1 },
     ),
   ).toBeTruthy();
   expect(
-    filterItem({ operator: "lowerThan", field: "a", value: 2 }, { a: 1 }),
+    filterItem({ field: "a", operator: "lowerThan", value: 2 }, { a: 1 }),
   ).toBeTruthy();
   expect(
     filterItem(
-      { operator: "lowerThanOrEqual", field: "a", value: 1 },
+      { field: "a", operator: "lowerThanOrEqual", value: 1 },
       { a: 1 },
     ),
   ).toBeTruthy();
@@ -174,29 +174,29 @@ test("tests filter on number values", () => {
 
 test("tests filter on array values", () => {
   expect(
-    filterItem({ operator: "equal", field: "a", value: [2, 1] }, { a: [1, 2] }),
+    filterItem({ field: "a", operator: "equal", value: [2, 1] }, { a: [1, 2] }),
   ).toBeTruthy();
   expect(
-    filterItem({ operator: "equal", field: "a", value: [2] }, { a: [1, 2] }),
+    filterItem({ field: "a", operator: "equal", value: [2] }, { a: [1, 2] }),
   ).toBeFalsy();
   expect(
-    filterItem({ operator: "include", field: "a", value: [1] }, { a: [1, 2] }),
+    filterItem({ field: "a", operator: "include", value: [1] }, { a: [1, 2] }),
   ).toBeTruthy();
   expect(
     filterItem(
-      { operator: "include", field: "a", value: [2, 3] },
+      { field: "a", operator: "include", value: [2, 3] },
       { a: [1, 2] },
     ),
   ).toBeFalsy();
   expect(
     filterItem(
-      { operator: "intersect", field: "a", value: [2, 3] },
+      { field: "a", operator: "intersect", value: [2, 3] },
       { a: [1, 2] },
     ),
   ).toBeTruthy();
   expect(
     filterItem(
-      { operator: "intersect", field: "a", value: [3, 4] },
+      { field: "a", operator: "intersect", value: [3, 4] },
       { a: [1, 2] },
     ),
   ).toBeFalsy();

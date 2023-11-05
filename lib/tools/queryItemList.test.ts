@@ -10,30 +10,30 @@ test("queries a single item", () => {
   ).toEqual({ a: 1 });
   expect(() =>
     queryItemList({
-      type: [{ a: 1 }, { a: 2 }, { a: 3 }],
       context: {
         a: 4,
       },
+      type: [{ a: 1 }, { a: 2 }, { a: 3 }],
     }),
   ).toThrow("Not found");
   expect(
     queryItemList({
-      type: [{ a: 1 }, { a: 2 }, { a: 3 }],
       filter: {
         field: "a",
         operator: "greaterThan",
         value: 1,
       },
+      type: [{ a: 1 }, { a: 2 }, { a: 3 }],
     }),
   ).toEqual({ a: 2 });
   expect(() =>
     queryItemList({
-      type: [{ a: 1 }, { a: 2 }, { a: 3 }],
       filter: {
         field: "a",
         operator: "greaterThanOrEqual",
         value: 4,
       },
+      type: [{ a: 1 }, { a: 2 }, { a: 3 }],
     }),
   ).toThrow("Not found");
 });
@@ -41,30 +41,23 @@ test("queries a single item", () => {
 test("queries lists of items", () => {
   expect(
     queryItemList({
-      type: [{ a: 1 }, { a: 2 }, { a: 3 }],
       multiple: true,
+      type: [{ a: 1 }, { a: 2 }, { a: 3 }],
     }),
   ).toEqual([{ a: 1 }, { a: 2 }, { a: 3 }]);
   expect(
     queryItemList({
-      type: [{ a: 1 }, { a: 2 }, { a: 3 }],
-      multiple: true,
       filter: {
         field: "a",
         operator: "greaterThan",
         value: 1,
       },
+      multiple: true,
+      type: [{ a: 1 }, { a: 2 }, { a: 3 }],
     }),
   ).toEqual([{ a: 2 }, { a: 3 }]);
   expect(
     queryItemList({
-      type: [
-        { a: 1, c: "a" },
-        { a: 2, c: "a" },
-        { a: 3, c: "b" },
-      ],
-      method: "read",
-      multiple: true,
       context: {
         c: "a",
       },
@@ -73,17 +66,24 @@ test("queries lists of items", () => {
         operator: "greaterThan",
         value: 1,
       },
+      method: "read",
+      multiple: true,
+      type: [
+        { a: 1, c: "a" },
+        { a: 2, c: "a" },
+        { a: 3, c: "b" },
+      ],
     }),
   ).toEqual([{ a: 2, c: "a" }]);
   expect(
     queryItemList({
-      type: [{ a: 1 }, { a: 2 }, { a: 3 }],
-      multiple: true,
       filter: {
         field: "a",
         operator: "greaterThanOrEqual",
         value: 4,
       },
+      multiple: true,
+      type: [{ a: 1 }, { a: 2 }, { a: 3 }],
     }),
   ).toEqual([]);
 });
@@ -91,6 +91,8 @@ test("queries lists of items", () => {
 test("sorts items", () => {
   expect(
     queryItemList({
+      multiple: true,
+      order: ["a", "c"],
       type: [
         { a: 1, c: "a" },
         { a: 2, c: "a" },
@@ -98,8 +100,6 @@ test("sorts items", () => {
         { a: 2, c: "b" },
         { a: 1, c: "b" },
       ],
-      multiple: true,
-      order: ["a", "c"],
     }),
   ).toEqual([
     { a: 1, c: "a" },
@@ -110,17 +110,17 @@ test("sorts items", () => {
   ]);
   expect(
     queryItemList({
+      multiple: true,
+      order: [
+        { descending: true, field: "a" },
+        { descending: true, field: "c" },
+      ],
       type: [
         { a: 1, c: "a" },
         { a: 2, c: "a" },
         { a: 3, c: "b" },
         { a: 2, c: "b" },
         { a: 1, c: "b" },
-      ],
-      multiple: true,
-      order: [
-        { field: "a", descending: true },
-        { field: "c", descending: true },
       ],
     }),
   ).toEqual([
@@ -135,26 +135,20 @@ test("sorts items", () => {
 test("aggregates items", () => {
   expect(
     queryItemList({
-      type: [
-        { a: 1, c: "a" },
-        { a: 2, c: "a" },
-        { a: 3, c: "b" },
-      ],
-      method: "aggregate",
       aggregator: "length",
       context: {
         c: "a",
       },
-    }),
-  ).toBe(2);
-  expect(
-    queryItemList({
+      method: "aggregate",
       type: [
         { a: 1, c: "a" },
         { a: 2, c: "a" },
         { a: 3, c: "b" },
       ],
-      method: "aggregate",
+    }),
+  ).toBe(2);
+  expect(
+    queryItemList({
       aggregator: "length",
       context: {
         c: "a",
@@ -164,6 +158,12 @@ test("aggregates items", () => {
         operator: "greaterThan",
         value: 1,
       },
+      method: "aggregate",
+      type: [
+        { a: 1, c: "a" },
+        { a: 2, c: "a" },
+        { a: 3, c: "b" },
+      ],
     }),
   ).toBe(1);
 });
@@ -171,43 +171,43 @@ test("aggregates items", () => {
 test("slices items", () => {
   expect(
     queryItemList({
+      limit: 1,
+      method: "read",
+      multiple: true,
       type: [
         { a: 1, c: "a" },
         { a: 2, c: "a" },
         { a: 3, c: "b" },
       ],
-      method: "read",
-      multiple: true,
-      limit: 1,
     }),
   ).toEqual([{ a: 1, c: "a" }]);
   expect(
     queryItemList({
+      context: {
+        c: "a",
+      },
+      method: "read",
+      multiple: true,
+      offset: 1,
       type: [
         { a: 1, c: "a" },
         { a: 2, c: "a" },
         { a: 3, c: "b" },
       ],
-      method: "read",
-      multiple: true,
-      context: {
-        c: "a",
-      },
-      offset: 1,
     }),
   ).toEqual([{ a: 2, c: "a" }]);
   expect(
     queryItemList({
+      limit: 2,
+      method: "read",
+      multiple: true,
+      offset: 1,
       type: [
         { a: 1, c: "a" },
         { a: 2, c: "a" },
         { a: 3, c: "b" },
         { a: 2, c: "b" },
       ],
-      method: "read",
-      multiple: true,
-      offset: 1,
-      limit: 2,
     }),
   ).toEqual([
     { a: 2, c: "a" },

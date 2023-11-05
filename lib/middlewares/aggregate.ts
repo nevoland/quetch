@@ -32,14 +32,14 @@ export function aggregate<I extends QueryAny, O, In extends QueryAny, On>({
   mergeQuery = (query, _currentQuery) => query,
   delay = 200,
   queryForGroup = (queryList, _): QueryAny => ({
-    type: queryList[0].type,
-    method: "read",
-    multiple: true,
     filter: {
-      operator: "include",
       field: "id",
+      operator: "include",
       value: queryList.map((query) => query.context!.id),
     },
+    method: "read",
+    multiple: true,
+    type: queryList[0].type,
   }),
   resultForQuery = (resultList, query) => {
     const result = resultList.find(
@@ -87,8 +87,8 @@ export function aggregate<I extends QueryAny, O, In extends QueryAny, On>({
                 queryForGroup([...queryMap.values()], groupId) as unknown as In,
               );
         })(),
-        requestMap: new Map(),
         queryMap,
+        requestMap: new Map(),
       });
     }
     const { groupRequest, requestMap, queryMap } = queryGroupMap.get(groupId)!;
