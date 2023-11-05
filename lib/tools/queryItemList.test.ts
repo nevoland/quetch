@@ -1,6 +1,6 @@
 import { expect, test } from "vitest";
 
-import { queryItemList } from "./queryItemList";
+import { queryItemList } from "./queryItemList.js";
 
 test("queries a single item", () => {
   expect(

@@ -1,6 +1,6 @@
 import { expect, test } from "vitest";
 
-import { sortItemList } from "./sortItemList";
+import { sortItemList } from "./sortItemList.js";
 
 test("sorts items", () => {
   expect(

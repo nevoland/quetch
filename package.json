@@ -67,6 +67,6 @@
   },
   "dependencies": {
     "@davidbonnet/get-global": "^2.0.0",
-    "futurise": "^1.0.0"
+    "futurise": "^1.2.1"
   }
 }
