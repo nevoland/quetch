@@ -2,7 +2,7 @@ import type { CustomFieldMap } from "./CustomFieldMap";
 import type { Query } from "./Query";
 import type { Result } from "./Result";
 
-export interface GenericFetch<T extends object> {
+export interface CustomFetch<T extends object> {
   <Q extends Query<T, {}>>(
     query: Q & { customFields?: never },
   ): Promise<Result<T, Q, {}>>;
