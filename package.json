@@ -46,6 +46,7 @@
     "release:beta": "npm version prerelease --preid=beta && git push origin --follow-tags && npm publish --tag=next"
   },
   "devDependencies": {
+    "@eslint/js": "^8.53.0",
     "@preact/preset-vite": "^2.5.0",
     "@types/eslint": "^8.44.6",
     "@types/node": "^20.8.3",
