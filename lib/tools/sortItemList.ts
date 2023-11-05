@@ -1,6 +1,6 @@
 import type { Order } from "../types";
 
-import { normalizeOrder } from "./normalizeOrder";
+import { normalizeOrder } from "./normalizeOrder.js";
 
 /**
  * Sorts provided `value` array *in place* according to the `orderList`.

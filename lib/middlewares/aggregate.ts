@@ -1,6 +1,6 @@
 import { sleep } from "futurise";
 
-import { RequestError } from "../errors";
+import { RequestError } from "../errors.js";
 import type { Handler, QueryAny } from "../types";
 
 /**

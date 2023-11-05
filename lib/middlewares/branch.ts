@@ -1,6 +1,6 @@
 import type { Handler } from "../types";
 
-import { identity } from "./identity";
+import { identity } from "./identity.js";
 
 /**
  *  Dispatches an incoming query to `left` if `condition(query)` returns a truthy value, `right` otherwise. This is helpful for sending queries to different resolvers.

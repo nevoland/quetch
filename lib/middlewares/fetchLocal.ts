@@ -1,4 +1,4 @@
-import { queryItemList } from "../tools/queryItemList";
+import { queryItemList } from "../tools/queryItemList.js";
 import type { CustomFieldMap, Handler, Query } from "../types";
 
 /**

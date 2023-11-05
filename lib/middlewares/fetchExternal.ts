@@ -1,6 +1,6 @@
 import { getGlobal } from "@davidbonnet/get-global";
 
-import { RequestError } from "../errors/RequestError";
+import { RequestError } from "../errors/RequestError.js";
 import type { Handler } from "../types";
 
 /**

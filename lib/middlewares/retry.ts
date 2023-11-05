@@ -1,7 +1,7 @@
 import { getGlobal } from "@davidbonnet/get-global";
 import { sleep, untilOnline } from "futurise";
 
-import { RequestError } from "../errors/RequestError";
+import { RequestError } from "../errors/RequestError.js";
 import type { Handler } from "../types";
 
 /**

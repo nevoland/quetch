@@ -1,4 +1,4 @@
-import { RequestError } from "../errors";
+import { RequestError } from "../errors.js";
 import type {
   AggregateFunction,
   AggregateFunctionOperator,
@@ -8,11 +8,11 @@ import type {
   Order,
   Query,
   Result,
-} from "../types";
+} from "../types.js";
 
-import { filterFromContext } from "./filterFromContext";
-import { filterItem } from "./filterItem";
-import { sortItemList } from "./sortItemList";
+import { filterFromContext } from "./filterFromContext.js";
+import { filterItem } from "./filterItem.js";
+import { sortItemList } from "./sortItemList.js";
 
 function mergeContextAndFilter<T extends object>(
   context?: Context<T>,
