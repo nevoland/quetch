@@ -1,6 +1,6 @@
 import type { CustomFieldMap, Handler, Key, Query, Result } from "../types";
 
-import { cork } from "./cork";
+import { cork } from "./cork.js";
 
 /**
  *
