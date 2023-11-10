@@ -7,6 +7,7 @@ import type {
   Filter,
   Order,
   Query,
+  QueryAny,
   Result,
 } from "../types.js";
 
@@ -39,9 +40,9 @@ function normalizeAggregator<T extends object>(
   return aggregator.operator;
 }
 
-function queryItemList<T extends object, const Q extends Query<T, {}>>(
+function queryItemList<T extends object, const Q extends Query<T, undefined>>(
   query: Q & { type: T[]; customFields?: never },
-): Result<T, Q, {}>;
+): Result<T, Q, undefined>;
 function queryItemList<
   T extends object,
   const Q extends Query<T, C>,
@@ -85,7 +86,7 @@ function queryItemList<
       );
       const result = data.find((item) => filterItem(normalizedFilter, item));
       if (result === undefined) {
-        throw new RequestError("Not found", 404, query);
+        throw new RequestError("Not found", 404, query as QueryAny);
       }
       return result as Result<T, Q, C>;
     }

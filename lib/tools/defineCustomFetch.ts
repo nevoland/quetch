@@ -19,18 +19,23 @@ export function defineCustomFetch<M extends Record<string, object>>(
   async function customFetch<
     K extends keyof M,
     T extends M[K],
-    const Q extends Query<T, {}>,
-  >(query: Q & { type: K; customFields?: never }): Promise<Result<T, Q, {}>>;
+    const Q extends Query<T, undefined>,
+  >(
+    query: Q & { type: K; customFields?: never },
+  ): Promise<Result<T, Q, undefined>>;
   async function customFetch<
     K extends keyof M,
     T extends M[K],
     const Q extends Query<T, C>,
     const C extends CustomFieldMap<T>,
   >(query: Q & { type: K; customFields: C }): Promise<Result<T, Q, C>>;
-  async function customFetch<T extends object, const Q extends Query<T, {}>>(
+  async function customFetch<
+    T extends object,
+    const Q extends Query<T, undefined>,
+  >(
     type: T[],
     query: Q & { customFields?: never },
-  ): Promise<Result<T, Q, {}>>;
+  ): Promise<Result<T, Q, undefined>>;
   async function customFetch<
     T extends object,
     const Q extends Query<T, C>,
@@ -42,7 +47,7 @@ export function defineCustomFetch<M extends Record<string, object>>(
     const Q extends Query<T, C>,
     const C extends CustomFieldMap<T>,
   >(query: Q & { type: T[] | K; customFields?: C }): Promise<Result<T, Q, C>> {
-    return await handler(query, cork);
+    return await handler(query as any, cork);
   }
   return customFetch;
 }

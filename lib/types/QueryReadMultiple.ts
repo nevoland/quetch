@@ -16,7 +16,6 @@ export type QueryReadMultiple<T extends object> = {
    * Upper bound of the number of items to return.
    */
   limit?: number;
-
   /**
    * Item fields to pick. If omitted, all fields are picked.
    */

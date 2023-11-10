@@ -7,7 +7,7 @@ import type { CustomFieldMap, Handler, Query } from "../types";
  * @returns Promise that resolves to the response.
  */
 export function fetchLocal<T extends object>(): Handler<
-  Query<T, {}> & { type: T[]; customFields: never },
+  Query<T, undefined> & { type: T[]; customFields: never },
   any,
   never,
   never
