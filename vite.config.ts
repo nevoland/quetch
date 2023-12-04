@@ -25,6 +25,11 @@ export default defineConfig({
     }),
     moduleList({
       mode: { extension: "js", language: "ts" },
+      outputPath: resolve("lib/constants.ts"),
+      rootPath: resolve("lib/constants"),
+    }),
+    moduleList({
+      mode: { extension: "js", language: "ts" },
       outputPath: resolve("lib/middlewares.ts"),
       rootPath: resolve("lib/middlewares"),
     }),

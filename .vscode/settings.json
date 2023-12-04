@@ -14,5 +14,6 @@
   },
   "vitest.commandLine": "npx vitest --update",
   "typescript.tsserver.experimental.enableProjectDiagnostics": true,
-  "testing.automaticallyOpenPeekView": "never"
+  "testing.automaticallyOpenPeekView": "never",
+  "typescript.tsdk": "node_modules/typescript/lib"
 }

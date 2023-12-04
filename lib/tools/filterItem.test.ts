@@ -1,5 +1,8 @@
 import { expect, test } from "vitest";
 
+import { SymbolCache } from "../constants.js";
+import type { FilterChildren } from "../types.js";
+
 import { filterItem } from "./filterItem.js";
 
 test("tests filter lists", () => {
@@ -198,6 +201,55 @@ test("tests filter on array values", () => {
     filterItem(
       { field: "a", operator: "intersect", value: [3, 4] },
       { a: [1, 2] },
+    ),
+  ).toBeFalsy();
+});
+
+test("tests filter with children predicates", () => {
+  expect(
+    filterItem({ operator: "children", value: "a" }, { id: "a/b" }),
+  ).toBeTruthy();
+  expect(
+    filterItem(
+      { operator: "children", value: ".a" },
+      { path: ".a.b" },
+      {
+        pathFieldKey: "path",
+        pathFieldSeparator: ".",
+      },
+    ),
+  ).toBeTruthy();
+  const filterChildren: FilterChildren<any> = {
+    operator: "children",
+    value: "a",
+  };
+  expect(
+    filterItem(
+      filterChildren,
+      { path: ".a.b" },
+      {
+        transformFilterChildren(filter) {
+          return {
+            field: "path",
+            operator: "startWith",
+            value: `.${filter.value}.`,
+          };
+        },
+      },
+    ),
+  ).toBeTruthy();
+  expect(filterChildren[SymbolCache]).toBeDefined();
+  expect(
+    filterItem({ operator: "children", value: "b" }, { id: "a/b" }),
+  ).toBeFalsy();
+  expect(
+    filterItem(
+      { operator: "children", value: "ba" },
+      { path: ".a.b" },
+      {
+        pathFieldKey: "path",
+        pathFieldSeparator: ".",
+      },
     ),
   ).toBeFalsy();
 });

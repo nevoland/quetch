@@ -67,7 +67,9 @@ function queryItemList<
             context,
             filter as Filter<T>,
           );
-          result = data.filter((item) => filterItem(normalizedFilter, item));
+          result = data.filter((item) =>
+            filterItem(normalizedFilter, item, query.settings),
+          );
         }
         // Sort
         result = sortItemList(
@@ -84,7 +86,9 @@ function queryItemList<
         context,
         filter as Filter<T>,
       );
-      const result = data.find((item) => filterItem(normalizedFilter, item));
+      const result = data.find((item) =>
+        filterItem(normalizedFilter, item, query.settings),
+      );
       if (result === undefined) {
         throw new RequestError("Not found", 404, query as QueryAny);
       }
@@ -102,7 +106,7 @@ function queryItemList<
             filter as Filter<T>,
           );
           return data.reduce((result, item) => {
-            if (filterItem(normalizedFilter, item)) {
+            if (filterItem(normalizedFilter, item, query.settings)) {
               return result + 1;
             }
             return result;

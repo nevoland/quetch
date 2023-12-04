@@ -8,6 +8,7 @@ import type { QueryDelete } from "./QueryDelete";
 import type { QueryDeleteMultiple } from "./QueryDeleteMultiple";
 import type { QueryRead } from "./QueryRead";
 import type { QueryReadMultiple } from "./QueryReadMultiple";
+import type { QuerySettings } from "./QuerySettings";
 import type { QueryUpdate } from "./QueryUpdate";
 import type { QueryUpdateMultiple } from "./QueryUpdateMultiple";
 
@@ -50,4 +51,12 @@ export type Query<
    * Common item properties to use for identifying the item.
    */
   context?: Context<T>;
+  /**
+   * Query parameters.
+   */
+  parameters?: Record<string, string | string[] | number | number[]>;
+  /**
+   * Query settings.
+   */
+  settings?: QuerySettings<T>;
 };

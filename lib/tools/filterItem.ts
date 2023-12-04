@@ -1,4 +1,8 @@
-import type { Any, Filter } from "../types";
+import { SymbolCache } from "../constants/SymbolCache.js";
+import type { Any, Filter, FilterKeys } from "../types";
+import type { QuerySettings } from "../types/QuerySettings";
+
+import { filterChildren } from "./filterChildren.js";
 
 const { isArray } = Array;
 
@@ -7,11 +11,13 @@ const { isArray } = Array;
  *
  * @param filter The filter to apply.
  * @param value The value to check.
+ * @param settings Optional query settings.
  * @returns `true` if the `value` matches the `filter` and `false` otherwise.
  */
 export function filterItem<T extends object>(
   filter: Filter<T> | undefined,
   value: T | undefined,
+  settings?: QuerySettings<T>,
 ): boolean {
   if (value === undefined) {
     return false;
@@ -52,6 +58,28 @@ export function filterItem<T extends object>(
     }
     case "notEqual":
       return value[filter.field] !== filter.value;
+    case "children": {
+      if (filter[SymbolCache] === undefined) {
+        switch (true) {
+          case settings?.transformFilterChildren !== undefined:
+            filter[SymbolCache] = settings.transformFilterChildren(filter);
+            break;
+          default: {
+            const {
+              pathFieldKey = "id" as FilterKeys<T, string>,
+              pathFieldSeparator = "/",
+            } = settings || {};
+            filter[SymbolCache] = filterChildren(
+              filter.value as string,
+              pathFieldKey,
+              filter.deep,
+              pathFieldSeparator,
+            );
+          }
+        }
+      }
+      return filterItem(filter[SymbolCache], value);
+    }
     case "startWith":
       return (
         (value[filter.field] as string | undefined)?.startsWith(filter.value) ??
@@ -88,14 +116,14 @@ export function filterItem<T extends object>(
       if (item === undefined) {
         return false;
       }
-      if (filter.regularExpression === undefined) {
+      if (filter[SymbolCache] === undefined) {
         const { options = {} } = filter;
-        filter.regularExpression = new RegExp(
+        filter[SymbolCache] = new RegExp(
           filter.value,
           `${options.ignoreCase ? "i" : ""}${options.dotAll ? "s" : ""}`,
         );
       }
-      return filter.regularExpression.test(item);
+      return filter[SymbolCache].test(item);
     }
     case "intersect": {
       const item = value[filter.field];

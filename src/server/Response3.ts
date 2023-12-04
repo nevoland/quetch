@@ -37,14 +37,11 @@ function someHook4<T extends object>() {
 }
 
 const device4B = await someHook4<M["user"]>()({
-  type: "user",
   fields: ["email"],
+  type: "user",
 });
 
 const device4 = await genericFetch<M["device"]>()({
-  type: [{ name: "hello", id: "333", state: "online" }],
-  method: "read",
-  fields: ["name", "a", "state"],
   customFields: {
     a: {
       operator: "custom",
@@ -53,6 +50,9 @@ const device4 = await genericFetch<M["device"]>()({
       },
     },
   },
+  fields: ["name", "a", "state"],
+  method: "read",
+  type: [{ id: "333", name: "hello", state: "online" }],
 });
 
 function customFetch3<T extends object>(): <Q extends Query<T, {}>>(
@@ -74,8 +74,8 @@ function customFetch3<T extends object>(): <
 }
 
 const device3 = customFetch3<M["device"]>()({
-  method: "read",
   fields: ["id", "name"],
+  method: "read",
 });
 
 const customFetch2 = defineCustomFetch<M>(async (input) => input);
@@ -88,24 +88,22 @@ async function getDevice(query: Parameters<typeof customFetch2>[1]) {
 }
 
 const deviceCount = await customFetch2({
-  type: "device",
-  method: "aggregate",
   aggregator: "length",
   filter: {
-    operator: "include",
     field: "name",
+    operator: "include",
     value: "a",
   },
+  method: "aggregate",
+  type: "device",
 });
 
 const user = await customFetch2({
-  type: "user",
-  multiple: true,
   customFields: {
     creationYear: {
-      operator: "formatDate",
       field: "creationDate",
       format: "YYYY",
+      operator: "formatDate",
     },
     isJunior: {
       operator: "custom",
@@ -115,16 +113,14 @@ const user = await customFetch2({
     },
   },
   fields: ["email", "creationYear", "id", "isJunior"],
+  multiple: true,
+  type: "user",
 });
 user[0].creationYear;
 
 const DATA = [{ a: 1, b: "2", c: true }];
 
 const result = await customFetch2({
-  type: DATA,
-  method: "read",
-  fields: ["a", "d", "u"],
-  multiple: true,
   customFields: {
     d: {
       operator: "custom",
@@ -133,19 +129,19 @@ const result = await customFetch2({
       },
     },
     e: {
-      operator: "formatDate",
       field: "a",
       format: "YYYY",
+      operator: "formatDate",
     },
   },
+  fields: ["a", "d", "u"],
+  method: "read",
+  multiple: true,
+  type: DATA,
 });
 result[0].a;
 
 const resultB = await customFetch2({
-  type: DATA,
-  method: "read",
-  fields: ["a", "d"],
-  multiple: true,
   customFields: {
     d: {
       operator: "custom",
@@ -154,11 +150,15 @@ const resultB = await customFetch2({
       },
     },
     e: {
-      operator: "formatDate",
       field: "a",
       format: "YYYY",
+      operator: "formatDate",
     },
   },
+  fields: ["a", "d"],
+  method: "read",
+  multiple: true,
+  type: DATA,
 });
 resultB[0].a;
 resultB[0].b;
