@@ -32,7 +32,7 @@
 
 #### Defined in
 
-[lib/types/CustomFetch.ts:6](https://github.com/nevoland/quetch/blob/af55a6c/lib/types/CustomFetch.ts#L6)
+[lib/types/CustomFetch.ts:6](https://github.com/nevoland/quetch/blob/044bd59/lib/types/CustomFetch.ts#L6)
 
 ### CustomFetch
 
@@ -57,4 +57,4 @@
 
 #### Defined in
 
-[lib/types/CustomFetch.ts:9](https://github.com/nevoland/quetch/blob/af55a6c/lib/types/CustomFetch.ts#L9)
+[lib/types/CustomFetch.ts:9](https://github.com/nevoland/quetch/blob/044bd59/lib/types/CustomFetch.ts#L9)
