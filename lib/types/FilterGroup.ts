@@ -3,7 +3,7 @@ import type { Filter } from "./Filter";
 /**
  * Joins a list of filters with a specific boolean operator.
  */
-export type FilterSequence<T extends object> =
+export type FilterGroup<T extends object> =
   | {
       /**
        * Boolean operator to use for joining the filters.

@@ -8,6 +8,7 @@ export type QueryRead<T extends object> = {
   method?: "read";
   multiple?: false;
   offset?: never;
+  limit?: never;
   group?: never;
   /**
    * Item fields to pick. If omitted, all fields are picked.

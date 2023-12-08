@@ -2,8 +2,8 @@ import type { FilterArray } from "./FilterArray";
 import type { FilterBoolean } from "./FilterBoolean";
 import type { FilterChildren } from "./FilterChildren";
 import type { FilterField } from "./FilterField";
+import type { FilterGroup } from "./FilterGroup";
 import type { FilterNumber } from "./FilterNumber";
-import type { FilterSequence } from "./FilterSequence";
 import type { FilterString } from "./FilterString";
 import type { FilterStringIntersect } from "./FilterStringIntersect";
 import type { FilterStringMatch } from "./FilterStringMatch";
@@ -17,7 +17,7 @@ export type Filter<T extends object> =
   | FilterChildren<T>
   | FilterField<T>
   | FilterNumber<T>
-  | FilterSequence<T>
+  | FilterGroup<T>
   | FilterString<T>
   | FilterStringIntersect<T>
   | FilterStringMatch<T>;
