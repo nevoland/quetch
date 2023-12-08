@@ -1,7 +1,7 @@
 import type { Filter, FilterGroup } from "../types";
 
 /**
- * Return `true` if the provided filter `value` is a group filter or not.
+ * Returns `true` if the provided filter `value` is a group filter or not.
  *
  * @param value The filter to test.
  * @returns Whether the provided filter is a group filter or not.
