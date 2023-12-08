@@ -7,6 +7,7 @@ export { escapeRegex } from "./tools/escapeRegex.js";
 export { filterChildren } from "./tools/filterChildren.js";
 export { filterFromContext } from "./tools/filterFromContext.js";
 export { filterItem } from "./tools/filterItem.js";
+export { isFilterGroup } from "./tools/isFilterGroup.js";
 export { normalizeOrder } from "./tools/normalizeOrder.js";
 export { queryItemList } from "./tools/queryItemList.js";
 export { sortItemList } from "./tools/sortItemList.js";
