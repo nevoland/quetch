@@ -5,7 +5,24 @@ type CachedItem<I extends Query<any>> = {
   value: any;
 };
 
-type CacheOptions<I extends Query<any>> = {
+export function cache<
+  I extends Query<any> & { type: any },
+  O,
+  In extends Query<any>,
+  On,
+>({
+  itemId = ({ context = {}, method = "read", type }: I) => {
+    if (method === "read" && context.id) {
+      return `${String(type)}/${context.id}`;
+    }
+    return undefined;
+  },
+  store,
+  invalidatesItem,
+  extendCachedQuery,
+  mergeQuery,
+  mergeItem,
+}: {
   /**
    * Unique identifier for the item to cache.
    * Returns `undefined` if the item should not be cached.
@@ -34,26 +51,7 @@ type CacheOptions<I extends Query<any>> = {
    * Only called when `extendCachedQuery` returns a query.
    */
   mergeItem: (value: any, cachedValue: any, query: I, cachedQuery: I) => any;
-};
-
-export function cache<
-  I extends Query<any> & { type: any },
-  O,
-  In extends Query<any>,
-  On,
->({
-  itemId = ({ context = {}, method = "read", type }: I) => {
-    if (method === "read" && context.id) {
-      return `${String(type)}/${context.id}`;
-    }
-    return undefined;
-  },
-  store,
-  invalidatesItem,
-  extendCachedQuery,
-  mergeQuery,
-  mergeItem,
-}: CacheOptions<I>): Handler<I, O, In, On> {
+}): Handler<I, O, In, On> {
   /*
   Caches the result of a query if `serialize` returns a non-empty string key. The `engine` should follow the `Map` API. Elements are kept in the cache until the `duration` in milliseconds expires.
   Note that a `duration` set to `Infinity` indefinitely keeps items in the cache.
