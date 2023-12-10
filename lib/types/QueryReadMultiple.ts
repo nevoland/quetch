@@ -1,6 +1,9 @@
+import type { Context } from "./Context";
 import type { Filter } from "./Filter";
 import type { Group } from "./Group";
 import type { Order } from "./Order";
+import type { Parameters } from "./Parameters";
+import type { QuerySettings } from "./QuerySettings";
 
 /**
  * Query for getting a list of items.
@@ -8,6 +11,10 @@ import type { Order } from "./Order";
 export type QueryReadMultiple<T extends object> = {
   method?: "read";
   multiple: true;
+  /**
+   * Common item properties to use for identifying the item.
+   */
+  context?: Context<T>;
   /**
    * Offset of the first matching item.
    */
@@ -32,4 +39,12 @@ export type QueryReadMultiple<T extends object> = {
    * Groups items by specified fields.
    */
   group?: Group<T>[];
+  /**
+   * Query parameters.
+   */
+  parameters?: Parameters;
+  /**
+   * Query settings.
+   */
+  settings?: QuerySettings<T>;
 };

@@ -1,8 +1,9 @@
-import type { CustomFieldMap } from "./CustomFieldMap";
-import type { InjectCustomFields } from "./InjectCustomFields";
 import type { Item } from "./Item";
 import type { Query } from "./Query";
 
+/**
+ * Picks fields `F` from object `T`.
+ */
 export type PickFields<
   T extends object | undefined,
   F extends string | number | symbol,
@@ -10,30 +11,20 @@ export type PickFields<
   ? { readonly [K in F]: T[K] }
   : { readonly [K in keyof T]: T[K] };
 
-export type ResultRead<
-  T extends object,
-  Q extends Query<T, C>,
-  C extends CustomFieldMap<T> | undefined,
-  U extends InjectCustomFields<T, C> | undefined = InjectCustomFields<T, C>,
-> = [C] extends [CustomFieldMap<T>]
-  ? [Q] extends [{ fields: (keyof U)[] }]
-    ? PickFields<U, Item<Q["fields"]>>
-    : U
-  : [Q] extends [{ fields: (keyof T)[] }]
+export type ResultRead<T extends object, Q extends Query<T>> = [Q] extends [
+  { fields: (keyof T)[] },
+]
   ? PickFields<T, Item<Q["fields"]>>
   : T;
 
-export type Result<
-  T extends object,
-  Q extends Query<T, C>,
-  C extends CustomFieldMap<T> | undefined,
-  U extends InjectCustomFields<T, C> | undefined = InjectCustomFields<T, C>,
-> = [Q] extends [{ method: "read" }]
+export type Result<T extends object, Q extends Query<T>> = [Q] extends [
+  { method: "read" },
+]
   ? [Q] extends [{ multiple: true }]
-    ? ResultRead<T, Q, C, U>[]
-    : ResultRead<T, Q, C, U>
+    ? ResultRead<T, Q>[]
+    : ResultRead<T, Q>
   : [Q] extends [{ method: "aggregate" }]
   ? number
   : [Q] extends [{ multiple: true }]
-  ? ResultRead<T, Q, C, U>[]
-  : ResultRead<T, Q, C, U>;
+  ? ResultRead<T, Q>[]
+  : ResultRead<T, Q>;

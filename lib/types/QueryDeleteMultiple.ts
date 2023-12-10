@@ -1,5 +1,7 @@
-import type { CustomFieldMap } from "./CustomFieldMap";
+import type { Context } from "./Context";
 import type { Filter } from "./Filter";
+import type { Parameters } from "./Parameters";
+import type { QuerySettings } from "./QuerySettings";
 
 /**
  * Query for deleting multiple items.
@@ -7,6 +9,17 @@ import type { Filter } from "./Filter";
 export type QueryDeleteMultiple<T extends object> = {
   method: "delete";
   multiple: true;
+  /**
+   * Common item properties to use for identifying the context in which to delete the item.
+   */
+  context?: Context<T>;
   filter?: Filter<T>;
-  customFields?: CustomFieldMap<T>;
+  /**
+   * Query parameters.
+   */
+  parameters?: Parameters;
+  /**
+   * Query settings.
+   */
+  settings?: QuerySettings<T>;
 };

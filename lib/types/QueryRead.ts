@@ -1,5 +1,8 @@
+import type { Context } from "./Context";
 import type { Filter } from "./Filter";
 import type { Order } from "./Order";
+import type { Parameters } from "./Parameters";
+import type { QuerySettings } from "./QuerySettings";
 
 /**
  * Query for reading a single item.
@@ -7,6 +10,10 @@ import type { Order } from "./Order";
 export type QueryRead<T extends object> = {
   method?: "read";
   multiple?: false;
+  /**
+   * Common item properties to use for identifying the context in which to delete the item.
+   */
+  context?: Context<T>;
   offset?: never;
   limit?: never;
   group?: never;
@@ -22,4 +29,12 @@ export type QueryRead<T extends object> = {
    * Order by which the items should be sorted.
    */
   order?: Order<T>[];
+  /**
+   * Query parameters.
+   */
+  parameters?: Parameters;
+  /**
+   * Query settings.
+   */
+  settings?: QuerySettings<T>;
 };

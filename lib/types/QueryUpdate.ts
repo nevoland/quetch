@@ -1,4 +1,7 @@
+import type { Context } from "./Context";
 import type { Filter } from "./Filter";
+import type { Parameters } from "./Parameters";
+import type { QuerySettings } from "./QuerySettings";
 
 /**
  * Query for updating an item.
@@ -6,6 +9,10 @@ import type { Filter } from "./Filter";
 export type QueryUpdate<T extends object> = {
   method: "update";
   multiple?: false;
+  /**
+   * Common item properties to use for identifying the context in which to update the item.
+   */
+  context?: Context<T>;
   /**
    * Partial property values to update.
    */
@@ -17,4 +24,12 @@ export type QueryUpdate<T extends object> = {
   offset?: never;
   order: never;
   group?: never;
+  /**
+   * Query parameters.
+   */
+  parameters?: Parameters;
+  /**
+   * Query settings.
+   */
+  settings?: QuerySettings<T>;
 };

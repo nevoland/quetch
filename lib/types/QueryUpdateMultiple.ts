@@ -1,5 +1,8 @@
+import type { Context } from "./Context";
 import type { Filter } from "./Filter";
 import type { Order } from "./Order";
+import type { Parameters } from "./Parameters";
+import type { QuerySettings } from "./QuerySettings";
 
 /**
  * Query for updating multiple items.
@@ -7,6 +10,10 @@ import type { Order } from "./Order";
 export type QueryUpdateMultiple<T extends object> = {
   method: "update";
   multiple: true;
+  /**
+   * Common item properties to use for identifying the context in which to update the item.
+   */
+  context?: Context<T>;
   /**
    * Partial property values to update.
    */
@@ -24,4 +31,12 @@ export type QueryUpdateMultiple<T extends object> = {
    * Sets the upper bound of the number of items to update.
    */
   limit?: number;
+  /**
+   * Query parameters.
+   */
+  parameters?: Parameters;
+  /**
+   * Query settings.
+   */
+  settings?: QuerySettings<T>;
 };

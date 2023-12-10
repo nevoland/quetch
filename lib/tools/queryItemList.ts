@@ -3,11 +3,9 @@ import type {
   AggregateFunction,
   AggregateFunctionOperator,
   Context,
-  CustomFieldMap,
   Filter,
   Order,
   Query,
-  QueryAny,
   Result,
 } from "../types.js";
 
@@ -40,19 +38,9 @@ function normalizeAggregator<T extends object>(
   return aggregator.operator;
 }
 
-function queryItemList<T extends object, const Q extends Query<T, undefined>>(
-  query: Q & { type: T[]; customFields?: never },
-): Result<T, Q, undefined>;
-function queryItemList<
-  T extends object,
-  const Q extends Query<T, C>,
-  const C extends CustomFieldMap<T>,
->(query: Q & { type: T[]; customFields: C }): Result<T, Q, C>;
-function queryItemList<
-  T extends object,
-  const Q extends Query<T, C>,
-  const C extends CustomFieldMap<T>,
->(query: Q & { type: T[]; customFields?: C }): Result<T, Q, C> {
+function queryItemList<T extends object, const Q extends Query<T>>(
+  query: Q & { type: T[] },
+): Result<T, Q> {
   const data = query.type as T[];
   switch (query.method) {
     case "read":
@@ -80,7 +68,7 @@ function queryItemList<
         if (offset !== 0 || limit !== Infinity) {
           result = result.slice(offset, offset + limit);
         }
-        return result as Result<T, Q, C>;
+        return result as Result<T, Q>;
       }
       const normalizedFilter = mergeContextAndFilter(
         context,
@@ -90,16 +78,16 @@ function queryItemList<
         filterItem(normalizedFilter, item, query.settings),
       );
       if (result === undefined) {
-        throw new RequestError("Not found", 404, query as QueryAny);
+        throw new RequestError("Not found", 404, query as Query<any>);
       }
-      return result as Result<T, Q, C>;
+      return result as Result<T, Q>;
     }
     case "aggregate": {
       const { context, filter, aggregator } = query;
       switch (normalizeAggregator(aggregator)) {
         case "length": {
           if (filter === undefined && context === undefined) {
-            return data.length as Result<T, Q, C>;
+            return data.length as Result<T, Q>;
           }
           const normalizedFilter = mergeContextAndFilter(
             context,
@@ -110,7 +98,7 @@ function queryItemList<
               return result + 1;
             }
             return result;
-          }, 0 as number) as Result<T, Q, C>;
+          }, 0 as number) as Result<T, Q>;
         }
         default: {
           throw new Error("Not implemented");

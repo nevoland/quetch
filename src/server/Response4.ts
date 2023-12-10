@@ -14,6 +14,16 @@ type EntityMap = {
 
 const customFetch = defineCustomFetch<EntityMap>(null as any);
 
+const data = await customFetch({
+  aggregator: "length",
+  filter: {
+    field: "name",
+    operator: "exist",
+  },
+  method: "aggregate",
+  type: "device",
+});
+
 const filter: Filter<EntityMap["user"]> = {
   field: "fullName",
   operator: "lowerThan",

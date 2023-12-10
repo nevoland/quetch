@@ -1,6 +1,6 @@
 import { SymbolCache } from "../constants/SymbolCache.js";
 import type { Any, Filter, FilterKeys } from "../types";
-import type { QuerySettings } from "../types/QuerySettings";
+import type { QuerySettings } from "../types/QuerySettings.js";
 
 import { filterChildren } from "./filterChildren.js";
 
