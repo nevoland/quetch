@@ -80,6 +80,9 @@ export function filterItem<T extends object>(
       }
       return filterItem(filter[SymbolCache], value);
     }
+    case "custom": {
+      return filter.value(value);
+    }
     case "startWith":
       return (
         (value[filter.field] as string | undefined)?.startsWith(filter.value) ??
