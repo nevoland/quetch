@@ -42,7 +42,7 @@ export function filterItem<T extends object>(
     }
     case "exist":
       // TODO: Handle path
-      return filter.field in value;
+      return filter.value in value;
     case "equal": {
       if (isArray(filter.value)) {
         const item = value[filter.field] as Any[] | undefined;

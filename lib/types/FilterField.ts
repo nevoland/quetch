@@ -3,5 +3,8 @@
  */
 export type FilterField<T extends object> = {
   operator: "exist";
-  field: keyof T;
+  /**
+   * The field name for which to check its existence.
+   */
+  value: keyof T;
 };
