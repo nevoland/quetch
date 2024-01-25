@@ -16,23 +16,24 @@ export function fetchExternal(
     console.error("Could not find a global `fetch` function");
   }
   return async (request, _) => {
+    let response;
     try {
-      const response = await fetch(request);
-      if (!response.ok) {
-        throw new RequestError(
-          response.statusText,
-          response.status,
-          undefined,
-          request,
-          response,
-        );
-      }
-      return response;
+      response = await fetch(request);
     } catch (error) {
       if (error instanceof Error) {
         throw new RequestError(error.message, 500, undefined, request);
       }
       throw new RequestError(String(error), 500, undefined, request);
     }
+    if (!response.ok) {
+      throw new RequestError(
+        response.statusText,
+        response.status,
+        undefined,
+        request,
+        response,
+      );
+    }
+    return response;
   };
 }
