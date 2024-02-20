@@ -54,10 +54,44 @@ export function filterItem<T extends object>(
         }
         return filter.value.every((value) => item.includes(value));
       }
-      return value[filter.field] === filter.value;
+      const item = value[filter.field];
+      if (item === filter.value) {
+        return true;
+      }
+      if (
+        ("options" in filter && filter.options) ||
+        ("locale" in filter && filter.locale)
+      ) {
+        return (
+          item !== undefined &&
+          filter.value.localeCompare(
+            item as string,
+            filter.locale,
+            filter.options,
+          ) === 0
+        );
+      }
+      return false;
     }
-    case "notEqual":
-      return value[filter.field] !== filter.value;
+    case "notEqual": {
+      const item = value[filter.field];
+      if (item === filter.value) {
+        return false;
+      }
+      if (
+        ("options" in filter && filter.options) ||
+        ("locale" in filter && filter.locale)
+      ) {
+        return (
+          filter.value.localeCompare(
+            value[filter.field] as string,
+            filter.locale,
+            filter.options,
+          ) !== 0
+        );
+      }
+      return true;
+    }
     case "children": {
       if (filter[SymbolCache] === undefined) {
         switch (true) {
@@ -83,58 +117,179 @@ export function filterItem<T extends object>(
     case "custom": {
       return filter.value(value);
     }
-    case "startWith":
-      return (
-        (value[filter.field] as string | undefined)?.startsWith(filter.value) ??
-        false
-      );
-    case "endWith":
-      return (
-        (value[filter.field] as string | undefined)?.endsWith(filter.value) ??
-        false
-      );
+    case "startWith": {
+      const item = value[filter.field] as string | undefined;
+      if (item === undefined || item.length < filter.value.length) {
+        return false;
+      }
+      if (filter.options !== undefined || filter.locale !== undefined) {
+        return (
+          filter.value.localeCompare(
+            item.slice(0, filter.value.length),
+            filter.locale,
+            filter.options,
+          ) !== 0
+        );
+      }
+      return item.startsWith(filter.value) ?? false;
+    }
+    case "endWith": {
+      const item = value[filter.field] as string | undefined;
+      if (item === undefined || item.length < filter.value.length) {
+        return false;
+      }
+      if (filter.options !== undefined || filter.locale !== undefined) {
+        return (
+          filter.value.localeCompare(
+            item.slice(-filter.value.length),
+            filter.locale,
+            filter.options,
+          ) !== 0
+        );
+      }
+      return item.endsWith(filter.value) ?? false;
+    }
     case "include": {
-      const item = value[filter.field];
-      if (item === undefined) {
+      const item = value[filter.field] as string | any[];
+      if (item == null) {
         return false;
       }
       if (isArray(filter.value)) {
-        if (!isArray(item)) {
+        // FIXME: Get unique values
+        if (!isArray(item) || item.length < filter.value.length) {
           return false;
         }
         return filter.value.every((value) => item.includes(value));
       }
-      return (item as string).includes?.(filter.value) ?? false;
+      if (isArray(item) || item.length < filter.value.length) {
+        return false;
+      }
+      if (
+        ("options" in filter && filter.options) ||
+        ("locale" in filter && filter.locale)
+      ) {
+        const { length } = filter.value;
+        const end = item.length - length + 1;
+        for (let i = 0; i < end; i++) {
+          if (
+            filter.value.localeCompare(
+              item.slice(i, i + length),
+              filter.locale,
+              filter.options,
+            ) === 0
+          ) {
+            return true;
+          }
+        }
+        return false;
+      }
+      return item.includes?.(filter.value) ?? false;
     }
-    case "greaterThan":
-      return value[filter.field] > filter.value;
-    case "greaterThanOrEqual":
-      return value[filter.field] >= filter.value;
-    case "lowerThan":
-      return value[filter.field] < filter.value;
-    case "lowerThanOrEqual":
-      return value[filter.field] <= filter.value;
+    case "greaterThan": {
+      const item = value[filter.field];
+      if (
+        ("options" in filter && filter.options) ||
+        ("locale" in filter && filter.locale)
+      ) {
+        return (
+          filter.value.localeCompare(
+            item as string,
+            filter.locale,
+            filter.options,
+          ) < 0
+        );
+      }
+      return item > filter.value;
+    }
+    case "greaterThanOrEqual": {
+      const item = value[filter.field];
+      if (
+        ("options" in filter && filter.options) ||
+        ("locale" in filter && filter.locale)
+      ) {
+        return (
+          filter.value.localeCompare(
+            item as string,
+            filter.locale,
+            filter.options,
+          ) <= 0
+        );
+      }
+      return item >= filter.value;
+    }
+    case "lowerThan": {
+      const item = value[filter.field];
+      if (
+        ("options" in filter && filter.options) ||
+        ("locale" in filter && filter.locale)
+      ) {
+        return (
+          filter.value.localeCompare(
+            item as string,
+            filter.locale,
+            filter.options,
+          ) > 0
+        );
+      }
+      return item < filter.value;
+    }
+    case "lowerThanOrEqual": {
+      const item = value[filter.field];
+      if (
+        ("options" in filter && filter.options) ||
+        ("locale" in filter && filter.locale)
+      ) {
+        return (
+          filter.value.localeCompare(
+            item as string,
+            filter.locale,
+            filter.options,
+          ) >= 0
+        );
+      }
+      return item <= filter.value;
+    }
     case "match": {
       const item = value[filter.field] as string | undefined;
       if (item === undefined) {
         return false;
       }
       if (filter[SymbolCache] === undefined) {
-        const { options = {} } = filter;
         filter[SymbolCache] = new RegExp(
           filter.value,
-          `${options.ignoreCase ? "i" : ""}${options.dotAll ? "s" : ""}`,
+          `${filter.options?.ignoreCase ? "i" : ""}${
+            filter.options?.dotAll ? "s" : ""
+          }`,
         );
       }
       return filter[SymbolCache].test(item);
     }
     case "intersect": {
       const item = value[filter.field];
-      if (item === undefined) {
+      if (item == null) {
         return false;
       }
       if (isArray(item)) {
-        return filter.value.some((value) => item?.includes(value));
+        return (
+          isArray(filter.value) &&
+          filter.value.some((value) => item.includes(value))
+        );
+      }
+      if (
+        ("options" in filter && filter.options) ||
+        ("locale" in filter && filter.locale)
+      ) {
+        return (
+          item !== undefined &&
+          filter.value.some(
+            (value) =>
+              value.localeCompare(
+                item as string,
+                filter.locale,
+                filter.options,
+              ) === 0,
+          )
+        );
       }
       return filter.value.includes(item as string);
     }
