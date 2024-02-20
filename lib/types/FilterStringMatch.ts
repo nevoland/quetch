@@ -17,11 +17,11 @@ export type FilterStringMatch<T extends object> = {
    */
   options?: {
     /**
-     * When matching, casing differences are ignored.
+     * Ignore casing differences if `true`.
      */
     ignoreCase?: boolean;
     /**
-     * Allows . to match newlines.
+     * Allow `.` to match newlines.
      */
     dotAll?: boolean;
   };

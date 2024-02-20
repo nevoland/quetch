@@ -30,6 +30,7 @@ export type { Immutable } from "./types/Immutable";
 export type { InjectCustomFields } from "./types/InjectCustomFields";
 export type { Item } from "./types/Item";
 export type { Key } from "./types/Key";
+export type { Locale } from "./types/Locale";
 export type { Mutable } from "./types/Mutable";
 export type { NextHandler } from "./types/NextHandler";
 export type { Order } from "./types/Order";
