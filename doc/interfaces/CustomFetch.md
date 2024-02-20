@@ -32,4 +32,4 @@
 
 #### Defined in
 
-[lib/types/CustomFetch.ts:5](https://github.com/nevoland/quetch/blob/6055b33/lib/types/CustomFetch.ts#L5)
+[lib/types/CustomFetch.ts:5](https://github.com/nevoland/quetch/blob/fbf3307/lib/types/CustomFetch.ts#L5)

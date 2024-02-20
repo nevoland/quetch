@@ -45,7 +45,7 @@ Error.constructor
 
 #### Defined in
 
-[lib/errors/RequestError.ts:7](https://github.com/nevoland/quetch/blob/6055b33/lib/errors/RequestError.ts#L7)
+[lib/errors/RequestError.ts:7](https://github.com/nevoland/quetch/blob/fbf3307/lib/errors/RequestError.ts#L7)
 
 ## Properties
 
@@ -55,7 +55,7 @@ Error.constructor
 
 #### Defined in
 
-[lib/errors/RequestError.ts:10](https://github.com/nevoland/quetch/blob/6055b33/lib/errors/RequestError.ts#L10)
+[lib/errors/RequestError.ts:10](https://github.com/nevoland/quetch/blob/fbf3307/lib/errors/RequestError.ts#L10)
 
 ___
 
@@ -65,7 +65,7 @@ ___
 
 #### Defined in
 
-[lib/errors/RequestError.ts:11](https://github.com/nevoland/quetch/blob/6055b33/lib/errors/RequestError.ts#L11)
+[lib/errors/RequestError.ts:11](https://github.com/nevoland/quetch/blob/fbf3307/lib/errors/RequestError.ts#L11)
 
 ___
 
@@ -75,7 +75,7 @@ ___
 
 #### Defined in
 
-[lib/errors/RequestError.ts:12](https://github.com/nevoland/quetch/blob/6055b33/lib/errors/RequestError.ts#L12)
+[lib/errors/RequestError.ts:12](https://github.com/nevoland/quetch/blob/fbf3307/lib/errors/RequestError.ts#L12)
 
 ___
 
@@ -85,4 +85,4 @@ ___
 
 #### Defined in
 
-[lib/errors/RequestError.ts:9](https://github.com/nevoland/quetch/blob/6055b33/lib/errors/RequestError.ts#L9)
+[lib/errors/RequestError.ts:9](https://github.com/nevoland/quetch/blob/fbf3307/lib/errors/RequestError.ts#L9)
