@@ -16,7 +16,7 @@ export function fetchExternal(
     console.error("Could not find a global `fetch` function");
   }
   return async (request, _) => {
-    let response;
+    let response: Response | undefined;
     try {
       response = await fetch(request);
     } catch (error) {
