@@ -8,6 +8,15 @@ import sortkeysPlugin from "eslint-plugin-sort-keys";
 import tailwindcssPlugin from "eslint-plugin-tailwindcss";
 import vitestPlugin from "eslint-plugin-vitest";
 
+const GLOBAL_NAME_LIST = [
+  "process",
+  "console",
+  "Request",
+  "Response",
+  "AbortSignal",
+  "AbortController",
+];
+
 /** @type { import("eslint").Linter.FlatConfig[] } */
 export default [
   {
@@ -16,7 +25,7 @@ export default [
     languageOptions: {
       globals: {
         ...((keyList) => Object.fromEntries(keyList.map((key) => [key, true])))(
-          ["process", "console", "Request", "Response", "AbortSignal"],
+          GLOBAL_NAME_LIST,
         ),
       },
       parser,

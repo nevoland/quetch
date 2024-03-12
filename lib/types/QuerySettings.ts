@@ -27,4 +27,8 @@ export type QuerySettings<T extends object> = {
    * Abort signal to abort the query.
    */
   signal?: AbortSignal;
+  /**
+   * Abort controller to abort the query.
+   */
+  abortController?: AbortController;
 };
