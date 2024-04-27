@@ -27,7 +27,7 @@ Error to be thrown in case there is an issue with the query call. Only instances
 
 ### constructor
 
-• **new RequestError**(`message`, `status`, `query?`, `request?`, `response?`)
+• **new RequestError**(`message`, `status`, `query?`, `request?`, `response?`): [`RequestError`](RequestError.md)
 
 #### Parameters
 
@@ -35,9 +35,13 @@ Error to be thrown in case there is an issue with the query call. Only instances
 | :------ | :------ |
 | `message` | `string` |
 | `status` | `number` |
-| `query?` | [`Query`](../README.md#query)<`any`\> |
+| `query?` | [`Query`](../README.md#query)\<`any`\> |
 | `request?` | `Request` |
 | `response?` | `Response` |
+
+#### Returns
+
+[`RequestError`](RequestError.md)
 
 #### Overrides
 
@@ -45,17 +49,17 @@ Error.constructor
 
 #### Defined in
 
-[lib/errors/RequestError.ts:7](https://github.com/nevoland/quetch/blob/fbf3307/lib/errors/RequestError.ts#L7)
+[lib/errors/RequestError.ts:7](https://github.com/nevoland/quetch/blob/b46dff0534f861059aba3484d2e1d047d841b31f/lib/errors/RequestError.ts#L7)
 
 ## Properties
 
 ### query
 
-• `Optional` **query**: [`Query`](../README.md#query)<`any`\>
+• `Optional` **query**: [`Query`](../README.md#query)\<`any`\>
 
 #### Defined in
 
-[lib/errors/RequestError.ts:10](https://github.com/nevoland/quetch/blob/fbf3307/lib/errors/RequestError.ts#L10)
+[lib/errors/RequestError.ts:10](https://github.com/nevoland/quetch/blob/b46dff0534f861059aba3484d2e1d047d841b31f/lib/errors/RequestError.ts#L10)
 
 ___
 
@@ -65,7 +69,7 @@ ___
 
 #### Defined in
 
-[lib/errors/RequestError.ts:11](https://github.com/nevoland/quetch/blob/fbf3307/lib/errors/RequestError.ts#L11)
+[lib/errors/RequestError.ts:11](https://github.com/nevoland/quetch/blob/b46dff0534f861059aba3484d2e1d047d841b31f/lib/errors/RequestError.ts#L11)
 
 ___
 
@@ -75,7 +79,7 @@ ___
 
 #### Defined in
 
-[lib/errors/RequestError.ts:12](https://github.com/nevoland/quetch/blob/fbf3307/lib/errors/RequestError.ts#L12)
+[lib/errors/RequestError.ts:12](https://github.com/nevoland/quetch/blob/b46dff0534f861059aba3484d2e1d047d841b31f/lib/errors/RequestError.ts#L12)
 
 ___
 
@@ -85,4 +89,4 @@ ___
 
 #### Defined in
 
-[lib/errors/RequestError.ts:9](https://github.com/nevoland/quetch/blob/fbf3307/lib/errors/RequestError.ts#L9)
+[lib/errors/RequestError.ts:9](https://github.com/nevoland/quetch/blob/b46dff0534f861059aba3484d2e1d047d841b31f/lib/errors/RequestError.ts#L9)

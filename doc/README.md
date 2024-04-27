@@ -20,6 +20,8 @@ quetch
 - [Context](README.md#context)
 - [CustomFieldAggregateMap](README.md#customfieldaggregatemap)
 - [CustomFieldMap](README.md#customfieldmap)
+- [Field](README.md#field)
+- [FieldFiltered](README.md#fieldfiltered)
 - [FieldFunction](README.md#fieldfunction)
 - [FieldFunctionCustom](README.md#fieldfunctioncustom)
 - [FieldFunctionFormatDate](README.md#fieldfunctionformatdate)
@@ -31,7 +33,6 @@ quetch
 - [FilterCustom](README.md#filtercustom)
 - [FilterField](README.md#filterfield)
 - [FilterGroup](README.md#filtergroup)
-- [FilterKeys](README.md#filterkeys)
 - [FilterNumber](README.md#filternumber)
 - [FilterOperator](README.md#filteroperator)
 - [FilterString](README.md#filterstring)
@@ -44,11 +45,14 @@ quetch
 - [InjectCustomFields](README.md#injectcustomfields)
 - [Item](README.md#item)
 - [Key](README.md#key)
+- [KeyFiltered](README.md#keyfiltered)
 - [Locale](README.md#locale)
 - [Mutable](README.md#mutable)
 - [NextHandler](README.md#nexthandler)
 - [Order](README.md#order)
 - [Parameters](README.md#parameters)
+- [Path](README.md#path)
+- [PathFiltered](README.md#pathfiltered)
 - [Query](README.md#query)
 - [QueryAggregate](README.md#queryaggregate)
 - [QueryCreate](README.md#querycreate)
@@ -80,6 +84,7 @@ quetch
 - [filterChildren](README.md#filterchildren-1)
 - [filterFromContext](README.md#filterfromcontext)
 - [filterItem](README.md#filteritem)
+- [get](README.md#get-1)
 - [identity](README.md#identity)
 - [isFilterGroup](README.md#isfiltergroup)
 - [log](README.md#log)
@@ -92,7 +97,7 @@ quetch
 
 ### AggregateFunction
 
-Ƭ **AggregateFunction**<`T`\>: ``"length"`` \| { `operator`: ``"length"``  } \| { `field`: keyof `T` ; `operator`: ``"median"`` \| ``"standardDeviation"`` \| ``"mean"`` \| ``"minimum"`` \| ``"maximum"`` \| ``"variance"`` \| ``"mode"``  }
+Ƭ **AggregateFunction**\<`T`\>: ``"length"`` \| \{ `operator`: ``"length"``  } \| \{ `field`: keyof `T` ; `operator`: ``"median"`` \| ``"standardDeviation"`` \| ``"mean"`` \| ``"minimum"`` \| ``"maximum"`` \| ``"variance"`` \| ``"mode"``  }
 
 Aggregation function.
 
@@ -104,17 +109,17 @@ Aggregation function.
 
 #### Defined in
 
-[lib/types/AggregateFunction.ts:4](https://github.com/nevoland/quetch/blob/fbf3307/lib/types/AggregateFunction.ts#L4)
+[lib/types/AggregateFunction.ts:4](https://github.com/nevoland/quetch/blob/b46dff0534f861059aba3484d2e1d047d841b31f/lib/types/AggregateFunction.ts#L4)
 
 ___
 
 ### AggregateFunctionOperator
 
-Ƭ **AggregateFunctionOperator**: `Exclude`<[`AggregateFunction`](README.md#aggregatefunction)<{}\>, `string`\>[``"operator"``]
+Ƭ **AggregateFunctionOperator**: `Exclude`\<[`AggregateFunction`](README.md#aggregatefunction)\<{}\>, `string`\>[``"operator"``]
 
 #### Defined in
 
-[lib/types/AggregateFunctionOperator.ts:3](https://github.com/nevoland/quetch/blob/fbf3307/lib/types/AggregateFunctionOperator.ts#L3)
+[lib/types/AggregateFunctionOperator.ts:3](https://github.com/nevoland/quetch/blob/b46dff0534f861059aba3484d2e1d047d841b31f/lib/types/AggregateFunctionOperator.ts#L3)
 
 ___
 
@@ -124,13 +129,13 @@ ___
 
 #### Defined in
 
-[lib/types/Any.ts:1](https://github.com/nevoland/quetch/blob/fbf3307/lib/types/Any.ts#L1)
+[lib/types/Any.ts:1](https://github.com/nevoland/quetch/blob/b46dff0534f861059aba3484d2e1d047d841b31f/lib/types/Any.ts#L1)
 
 ___
 
 ### Context
 
-Ƭ **Context**<`T`\>: { [K in keyof T]?: T[K] }
+Ƭ **Context**\<`T`\>: \{ [K in keyof T]?: T[K] }
 
 #### Type parameters
 
@@ -140,13 +145,13 @@ ___
 
 #### Defined in
 
-[lib/types/Context.ts:1](https://github.com/nevoland/quetch/blob/fbf3307/lib/types/Context.ts#L1)
+[lib/types/Context.ts:1](https://github.com/nevoland/quetch/blob/b46dff0534f861059aba3484d2e1d047d841b31f/lib/types/Context.ts#L1)
 
 ___
 
 ### CustomFieldAggregateMap
 
-Ƭ **CustomFieldAggregateMap**<`T`\>: `Record`<`string`, [`AggregateFunction`](README.md#aggregatefunction)<`T`\>\>
+Ƭ **CustomFieldAggregateMap**\<`T`\>: `Record`\<`string`, [`AggregateFunction`](README.md#aggregatefunction)\<`T`\>\>
 
 #### Type parameters
 
@@ -156,13 +161,13 @@ ___
 
 #### Defined in
 
-[lib/types/CustomFieldAggregateMap.ts:3](https://github.com/nevoland/quetch/blob/fbf3307/lib/types/CustomFieldAggregateMap.ts#L3)
+[lib/types/CustomFieldAggregateMap.ts:3](https://github.com/nevoland/quetch/blob/b46dff0534f861059aba3484d2e1d047d841b31f/lib/types/CustomFieldAggregateMap.ts#L3)
 
 ___
 
 ### CustomFieldMap
 
-Ƭ **CustomFieldMap**<`T`\>: `Record`<`string`, [`FieldFunction`](README.md#fieldfunction)<`T`\>\>
+Ƭ **CustomFieldMap**\<`T`\>: `Record`\<`string`, [`FieldFunction`](README.md#fieldfunction)\<`T`\>\>
 
 #### Type parameters
 
@@ -172,13 +177,46 @@ ___
 
 #### Defined in
 
-[lib/types/CustomFieldMap.ts:3](https://github.com/nevoland/quetch/blob/fbf3307/lib/types/CustomFieldMap.ts#L3)
+[lib/types/CustomFieldMap.ts:3](https://github.com/nevoland/quetch/blob/b46dff0534f861059aba3484d2e1d047d841b31f/lib/types/CustomFieldMap.ts#L3)
+
+___
+
+### Field
+
+Ƭ **Field**\<`T`\>: keyof `T` \| [`Path`](README.md#path)\<`T`\>
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `T` | extends `object` |
+
+#### Defined in
+
+[lib/types/Field.ts:3](https://github.com/nevoland/quetch/blob/b46dff0534f861059aba3484d2e1d047d841b31f/lib/types/Field.ts#L3)
+
+___
+
+### FieldFiltered
+
+Ƭ **FieldFiltered**\<`T`, `P`\>: [`KeyFiltered`](README.md#keyfiltered)\<`T`, `P`\> \| [`PathFiltered`](README.md#pathfiltered)\<`T`, `P`\>
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `T` | extends `object` |
+| `P` | `P` |
+
+#### Defined in
+
+[lib/types/FieldFiltered.ts:4](https://github.com/nevoland/quetch/blob/b46dff0534f861059aba3484d2e1d047d841b31f/lib/types/FieldFiltered.ts#L4)
 
 ___
 
 ### FieldFunction
 
-Ƭ **FieldFunction**<`T`\>: [`FieldFunctionCustom`](README.md#fieldfunctioncustom)<`T`\> \| [`FieldFunctionFormatDate`](README.md#fieldfunctionformatdate)<`T`\>
+Ƭ **FieldFunction**\<`T`\>: [`FieldFunctionCustom`](README.md#fieldfunctioncustom)\<`T`\> \| [`FieldFunctionFormatDate`](README.md#fieldfunctionformatdate)\<`T`\>
 
 #### Type parameters
 
@@ -188,13 +226,13 @@ ___
 
 #### Defined in
 
-[lib/types/FieldFunction.ts:4](https://github.com/nevoland/quetch/blob/fbf3307/lib/types/FieldFunction.ts#L4)
+[lib/types/FieldFunction.ts:4](https://github.com/nevoland/quetch/blob/b46dff0534f861059aba3484d2e1d047d841b31f/lib/types/FieldFunction.ts#L4)
 
 ___
 
 ### FieldFunctionCustom
 
-Ƭ **FieldFunctionCustom**<`T`\>: `Object`
+Ƭ **FieldFunctionCustom**\<`T`\>: `Object`
 
 Applies a custom field transform function.
 
@@ -213,13 +251,13 @@ Applies a custom field transform function.
 
 #### Defined in
 
-[lib/types/FieldFunctionCustom.ts:4](https://github.com/nevoland/quetch/blob/fbf3307/lib/types/FieldFunctionCustom.ts#L4)
+[lib/types/FieldFunctionCustom.ts:4](https://github.com/nevoland/quetch/blob/b46dff0534f861059aba3484d2e1d047d841b31f/lib/types/FieldFunctionCustom.ts#L4)
 
 ___
 
 ### FieldFunctionFormatDate
 
-Ƭ **FieldFunctionFormatDate**<`T`\>: `Object`
+Ƭ **FieldFunctionFormatDate**\<`T`\>: `Object`
 
 Formats the date found in a given field, which can be an ISO string date or a timestamp.
 
@@ -233,13 +271,13 @@ Formats the date found in a given field, which can be an ISO string date or a ti
 
 | Name | Type |
 | :------ | :------ |
-| `field` | [`FilterKeys`](README.md#filterkeys)<`T`, `string` \| `number`\> |
+| `field` | [`FieldFiltered`](README.md#fieldfiltered)\<`T`, `string` \| `number`\> |
 | `format` | `string` |
 | `operator` | ``"formatDate"`` |
 
 #### Defined in
 
-[lib/types/FieldFunctionFormatDate.ts:6](https://github.com/nevoland/quetch/blob/fbf3307/lib/types/FieldFunctionFormatDate.ts#L6)
+[lib/types/FieldFunctionFormatDate.ts:6](https://github.com/nevoland/quetch/blob/b46dff0534f861059aba3484d2e1d047d841b31f/lib/types/FieldFunctionFormatDate.ts#L6)
 
 ___
 
@@ -257,13 +295,13 @@ Return types of custom field functions.
 
 #### Defined in
 
-[lib/types/FieldFunctionReturn.ts:4](https://github.com/nevoland/quetch/blob/fbf3307/lib/types/FieldFunctionReturn.ts#L4)
+[lib/types/FieldFunctionReturn.ts:4](https://github.com/nevoland/quetch/blob/b46dff0534f861059aba3484d2e1d047d841b31f/lib/types/FieldFunctionReturn.ts#L4)
 
 ___
 
 ### Filter
 
-Ƭ **Filter**<`T`\>: [`FilterArray`](README.md#filterarray)<`T`\> \| [`FilterBoolean`](README.md#filterboolean)<`T`\> \| [`FilterChildren`](README.md#filterchildren)<`T`\> \| [`FilterCustom`](README.md#filtercustom)<`T`\> \| [`FilterField`](README.md#filterfield)<`T`\> \| [`FilterNumber`](README.md#filternumber)<`T`\> \| [`FilterGroup`](README.md#filtergroup)<`T`\> \| [`FilterString`](README.md#filterstring)<`T`\> \| [`FilterStringIntersect`](README.md#filterstringintersect)<`T`\> \| [`FilterStringMatch`](README.md#filterstringmatch)<`T`\>
+Ƭ **Filter**\<`T`\>: [`FilterArray`](README.md#filterarray)\<`T`\> \| [`FilterBoolean`](README.md#filterboolean)\<`T`\> \| [`FilterChildren`](README.md#filterchildren)\<`T`\> \| [`FilterCustom`](README.md#filtercustom)\<`T`\> \| [`FilterField`](README.md#filterfield)\<`T`\> \| [`FilterNumber`](README.md#filternumber)\<`T`\> \| [`FilterGroup`](README.md#filtergroup)\<`T`\> \| [`FilterString`](README.md#filterstring)\<`T`\> \| [`FilterStringIntersect`](README.md#filterstringintersect)\<`T`\> \| [`FilterStringMatch`](README.md#filterstringmatch)\<`T`\>
 
 Describes a predicate for filtering items.
 
@@ -275,13 +313,13 @@ Describes a predicate for filtering items.
 
 #### Defined in
 
-[lib/types/Filter.ts:15](https://github.com/nevoland/quetch/blob/fbf3307/lib/types/Filter.ts#L15)
+[lib/types/Filter.ts:15](https://github.com/nevoland/quetch/blob/b46dff0534f861059aba3484d2e1d047d841b31f/lib/types/Filter.ts#L15)
 
 ___
 
 ### FilterArray
 
-Ƭ **FilterArray**<`T`, `P`\>: `Object`
+Ƭ **FilterArray**\<`T`, `P`\>: `Object`
 
 Checks if a given array field matches a given array value according to a given operator.
 
@@ -296,19 +334,19 @@ Checks if a given array field matches a given array value according to a given o
 
 | Name | Type |
 | :------ | :------ |
-| `field` | [`FilterKeys`](README.md#filterkeys)<`T`, `P`[]\> |
+| `field` | [`FieldFiltered`](README.md#fieldfiltered)\<`T`, `P`[]\> |
 | `operator` | ``"equal"`` \| ``"include"`` \| ``"intersect"`` |
 | `value` | `P`[] |
 
 #### Defined in
 
-[lib/types/FilterArray.ts:7](https://github.com/nevoland/quetch/blob/fbf3307/lib/types/FilterArray.ts#L7)
+[lib/types/FilterArray.ts:7](https://github.com/nevoland/quetch/blob/b46dff0534f861059aba3484d2e1d047d841b31f/lib/types/FilterArray.ts#L7)
 
 ___
 
 ### FilterBoolean
 
-Ƭ **FilterBoolean**<`T`\>: `Object`
+Ƭ **FilterBoolean**\<`T`\>: `Object`
 
 Checks if a given boolean field is `true` or `false`.
 
@@ -322,19 +360,19 @@ Checks if a given boolean field is `true` or `false`.
 
 | Name | Type |
 | :------ | :------ |
-| `field` | [`FilterKeys`](README.md#filterkeys)<`T`, `boolean`\> |
+| `field` | [`FieldFiltered`](README.md#fieldfiltered)\<`T`, `boolean`\> |
 | `operator` | ``"equal"`` \| ``"notEqual"`` |
 | `value` | `boolean` |
 
 #### Defined in
 
-[lib/types/FilterBoolean.ts:6](https://github.com/nevoland/quetch/blob/fbf3307/lib/types/FilterBoolean.ts#L6)
+[lib/types/FilterBoolean.ts:6](https://github.com/nevoland/quetch/blob/b46dff0534f861059aba3484d2e1d047d841b31f/lib/types/FilterBoolean.ts#L6)
 
 ___
 
 ### FilterChildren
 
-Ƭ **FilterChildren**<`T`\>: `Object`
+Ƭ **FilterChildren**\<`T`\>: `Object`
 
 Matches the direct children of a specified `value` item.
 If `deep` is `true`, also captures all the descendants.
@@ -349,20 +387,20 @@ If `deep` is `true`, also captures all the descendants.
 
 | Name | Type |
 | :------ | :------ |
-| `[SymbolCache]?` | [`Filter`](README.md#filter)<`T`\> |
+| `[SymbolCache]?` | [`Filter`](README.md#filter)\<`T`\> |
 | `deep?` | `boolean` |
 | `operator` | ``"children"`` |
-| `value` | [`Context`](README.md#context)<`T`\> \| `string` |
+| `value?` | [`Context`](README.md#context)\<`T`\> \| `string` |
 
 #### Defined in
 
-[lib/types/FilterChildren.ts:10](https://github.com/nevoland/quetch/blob/fbf3307/lib/types/FilterChildren.ts#L10)
+[lib/types/FilterChildren.ts:10](https://github.com/nevoland/quetch/blob/b46dff0534f861059aba3484d2e1d047d841b31f/lib/types/FilterChildren.ts#L10)
 
 ___
 
 ### FilterCustom
 
-Ƭ **FilterCustom**<`T`\>: `Object`
+Ƭ **FilterCustom**\<`T`\>: `Object`
 
 Custom filter where `value(item)` returns `true` for matching items.
 
@@ -381,13 +419,13 @@ Custom filter where `value(item)` returns `true` for matching items.
 
 #### Defined in
 
-[lib/types/FilterCustom.ts:4](https://github.com/nevoland/quetch/blob/fbf3307/lib/types/FilterCustom.ts#L4)
+[lib/types/FilterCustom.ts:4](https://github.com/nevoland/quetch/blob/b46dff0534f861059aba3484d2e1d047d841b31f/lib/types/FilterCustom.ts#L4)
 
 ___
 
 ### FilterField
 
-Ƭ **FilterField**<`T`\>: `Object`
+Ƭ **FilterField**\<`T`\>: `Object`
 
 Checks if a given field exists.
 
@@ -402,17 +440,17 @@ Checks if a given field exists.
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `operator` | ``"exist"`` | - |
-| `value` | keyof `T` | The field name for which to check its existence. |
+| `value` | [`Field`](README.md#field)\<`T`\> | The field name for which to check its existence. |
 
 #### Defined in
 
-[lib/types/FilterField.ts:4](https://github.com/nevoland/quetch/blob/fbf3307/lib/types/FilterField.ts#L4)
+[lib/types/FilterField.ts:6](https://github.com/nevoland/quetch/blob/b46dff0534f861059aba3484d2e1d047d841b31f/lib/types/FilterField.ts#L6)
 
 ___
 
 ### FilterGroup
 
-Ƭ **FilterGroup**<`T`\>: { `operator`: ``"all"`` ; `value`: [`Filter`](README.md#filter)<`T`\>[]  } \| { `operator`: ``"any"`` \| ``"none"`` ; `value?`: [`Filter`](README.md#filter)<`T`\>[]  }
+Ƭ **FilterGroup**\<`T`\>: \{ `operator`: ``"all"`` ; `value`: [`Filter`](README.md#filter)\<`T`\>[]  } \| \{ `operator`: ``"any"`` \| ``"none"`` ; `value?`: [`Filter`](README.md#filter)\<`T`\>[]  }
 
 Joins a list of filters with a specific boolean operator.
 
@@ -424,32 +462,13 @@ Joins a list of filters with a specific boolean operator.
 
 #### Defined in
 
-[lib/types/FilterGroup.ts:6](https://github.com/nevoland/quetch/blob/fbf3307/lib/types/FilterGroup.ts#L6)
-
-___
-
-### FilterKeys
-
-Ƭ **FilterKeys**<`T`, `P`\>: keyof `T` & keyof { [K in keyof T as T[K] extends P ? K : never]-?: T[K] }
-
-Returns object type with field extending the provided `P` type.
-
-#### Type parameters
-
-| Name | Type |
-| :------ | :------ |
-| `T` | extends `object` |
-| `P` | `P` |
-
-#### Defined in
-
-[lib/types/FilterKeys.ts:4](https://github.com/nevoland/quetch/blob/fbf3307/lib/types/FilterKeys.ts#L4)
+[lib/types/FilterGroup.ts:6](https://github.com/nevoland/quetch/blob/b46dff0534f861059aba3484d2e1d047d841b31f/lib/types/FilterGroup.ts#L6)
 
 ___
 
 ### FilterNumber
 
-Ƭ **FilterNumber**<`T`\>: `Object`
+Ƭ **FilterNumber**\<`T`\>: `Object`
 
 Checks if a given number field matches a given number value according to a given operator.
 
@@ -463,29 +482,29 @@ Checks if a given number field matches a given number value according to a given
 
 | Name | Type |
 | :------ | :------ |
-| `field` | [`FilterKeys`](README.md#filterkeys)<`T`, `number`\> |
+| `field` | [`FieldFiltered`](README.md#fieldfiltered)\<`T`, `number`\> |
 | `operator` | ``"equal"`` \| ``"notEqual"`` \| ``"greaterThan"`` \| ``"greaterThanOrEqual"`` \| ``"lowerThan"`` \| ``"lowerThanOrEqual"`` |
 | `value` | `number` |
 
 #### Defined in
 
-[lib/types/FilterNumber.ts:6](https://github.com/nevoland/quetch/blob/fbf3307/lib/types/FilterNumber.ts#L6)
+[lib/types/FilterNumber.ts:6](https://github.com/nevoland/quetch/blob/b46dff0534f861059aba3484d2e1d047d841b31f/lib/types/FilterNumber.ts#L6)
 
 ___
 
 ### FilterOperator
 
-Ƭ **FilterOperator**: [`Filter`](README.md#filter)<`never`\>[``"operator"``]
+Ƭ **FilterOperator**: [`Filter`](README.md#filter)\<`never`\>[``"operator"``]
 
 #### Defined in
 
-[lib/types/FilterOperator.ts:3](https://github.com/nevoland/quetch/blob/fbf3307/lib/types/FilterOperator.ts#L3)
+[lib/types/FilterOperator.ts:3](https://github.com/nevoland/quetch/blob/b46dff0534f861059aba3484d2e1d047d841b31f/lib/types/FilterOperator.ts#L3)
 
 ___
 
 ### FilterString
 
-Ƭ **FilterString**<`T`\>: `Object`
+Ƭ **FilterString**\<`T`\>: `Object`
 
 Checks if a given string field matches a given string value according to a given operator.
 
@@ -499,7 +518,7 @@ Checks if a given string field matches a given string value according to a given
 
 | Name | Type |
 | :------ | :------ |
-| `field` | [`FilterKeys`](README.md#filterkeys)<`T`, `string`\> |
+| `field` | [`FieldFiltered`](README.md#fieldfiltered)\<`T`, `string`\> |
 | `locale?` | [`Locale`](README.md#locale) |
 | `operator` | ``"equal"`` \| ``"notEqual"`` \| ``"startWith"`` \| ``"endWith"`` \| ``"include"`` \| ``"greaterThan"`` \| ``"greaterThanOrEqual"`` \| ``"lowerThan"`` \| ``"lowerThanOrEqual"`` |
 | `options?` | `Intl.CollatorOptions` |
@@ -507,13 +526,13 @@ Checks if a given string field matches a given string value according to a given
 
 #### Defined in
 
-[lib/types/FilterString.ts:7](https://github.com/nevoland/quetch/blob/fbf3307/lib/types/FilterString.ts#L7)
+[lib/types/FilterString.ts:7](https://github.com/nevoland/quetch/blob/b46dff0534f861059aba3484d2e1d047d841b31f/lib/types/FilterString.ts#L7)
 
 ___
 
 ### FilterStringIntersect
 
-Ƭ **FilterStringIntersect**<`T`\>: `Object`
+Ƭ **FilterStringIntersect**\<`T`\>: `Object`
 
 Checks if a given string field has any of the provided values.
 
@@ -527,7 +546,7 @@ Checks if a given string field has any of the provided values.
 
 | Name | Type |
 | :------ | :------ |
-| `field` | [`FilterKeys`](README.md#filterkeys)<`T`, `string`\> |
+| `field` | [`FieldFiltered`](README.md#fieldfiltered)\<`T`, `string`\> |
 | `locale?` | [`Locale`](README.md#locale) |
 | `operator` | ``"intersect"`` |
 | `options?` | `Intl.CollatorOptions` |
@@ -535,13 +554,13 @@ Checks if a given string field has any of the provided values.
 
 #### Defined in
 
-[lib/types/FilterStringIntersect.ts:7](https://github.com/nevoland/quetch/blob/fbf3307/lib/types/FilterStringIntersect.ts#L7)
+[lib/types/FilterStringIntersect.ts:7](https://github.com/nevoland/quetch/blob/b46dff0534f861059aba3484d2e1d047d841b31f/lib/types/FilterStringIntersect.ts#L7)
 
 ___
 
 ### FilterStringMatch
 
-Ƭ **FilterStringMatch**<`T`\>: `Object`
+Ƭ **FilterStringMatch**\<`T`\>: `Object`
 
 Checks if a given string field matches a given regular expression.
 
@@ -556,42 +575,41 @@ Checks if a given string field matches a given regular expression.
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `[SymbolCache]?` | `RegExp` | Compiled regular expression generated by the `testFilter` function. |
-| `field` | [`FilterKeys`](README.md#filterkeys)<`T`, `string`\> | - |
+| `field` | [`FieldFiltered`](README.md#fieldfiltered)\<`T`, `string`\> | - |
 | `operator` | ``"match"`` | - |
-| `options?` | { `dotAll?`: `boolean` ; `ignoreCase?`: `boolean`  } | Regular expression options. |
+| `options?` | \{ `dotAll?`: `boolean` ; `ignoreCase?`: `boolean`  } | Regular expression options. |
 | `options.dotAll?` | `boolean` | Allow `.` to match newlines. |
 | `options.ignoreCase?` | `boolean` | Ignore casing differences if `true`. |
 | `value` | `string` | Raw regular expression string. |
 
 #### Defined in
 
-[lib/types/FilterStringMatch.ts:8](https://github.com/nevoland/quetch/blob/fbf3307/lib/types/FilterStringMatch.ts#L8)
+[lib/types/FilterStringMatch.ts:8](https://github.com/nevoland/quetch/blob/b46dff0534f861059aba3484d2e1d047d841b31f/lib/types/FilterStringMatch.ts#L8)
 
 ___
 
 ### Get
 
-Ƭ **Get**<`T`, `K`, `D`\>: `T` extends { [key in K]: any } ? `T`[`K`] : `D`
+Ƭ **Get**\<`T`, `P`\>: [`P`] extends [[infer K, ...(infer R)]] ? `K` extends keyof `T` ? `R` extends [`Path`](README.md#path)\<`T`[`K`]\> ? [`Get`](README.md#get)\<`T`[`K`], `R`\> : `T`[`K`] : `never` : `never`
 
 Returns the type of the property at the specified `K` key.
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends `object` |
-| `K` | extends `string` |
-| `D` | `D` |
+| Name |
+| :------ |
+| `T` |
+| `P` |
 
 #### Defined in
 
-[lib/types/Get.ts:4](https://github.com/nevoland/quetch/blob/fbf3307/lib/types/Get.ts#L4)
+[lib/types/Get.ts:6](https://github.com/nevoland/quetch/blob/b46dff0534f861059aba3484d2e1d047d841b31f/lib/types/Get.ts#L6)
 
 ___
 
 ### Group
 
-Ƭ **Group**<`T`\>: keyof `T` \| { `field`: keyof `T`  }
+Ƭ **Group**\<`T`\>: keyof `T` \| \{ `field`: keyof `T`  }
 
 Specifies how items should be grouped.
 
@@ -603,13 +621,15 @@ Specifies how items should be grouped.
 
 #### Defined in
 
-[lib/types/Group.ts:4](https://github.com/nevoland/quetch/blob/fbf3307/lib/types/Group.ts#L4)
+[lib/types/Group.ts:4](https://github.com/nevoland/quetch/blob/b46dff0534f861059aba3484d2e1d047d841b31f/lib/types/Group.ts#L4)
 
 ___
 
 ### Handler
 
-Ƭ **Handler**<`I`, `O`, `NI`, `No`\>: (`input`: `I`, `next`: [`NextHandler`](README.md#nexthandler)<`NI`, `No`\>) => `Promise`<`O`\>
+Ƭ **Handler**\<`I`, `O`, `NI`, `No`\>: (`input`: `I`, `next`: [`NextHandler`](README.md#nexthandler)\<`NI`, `No`\>) => `Promise`\<`O`\>
+
+Handles an `input` query and returns an `output` promise, eventually using the `next` handler.
 
 #### Type parameters
 
@@ -622,30 +642,28 @@ ___
 
 #### Type declaration
 
-▸ (`input`, `next`): `Promise`<`O`\>
-
-Handles an `input` query and returns an `output` promise, eventually using the `next` handler.
+▸ (`input`, `next`): `Promise`\<`O`\>
 
 ##### Parameters
 
 | Name | Type |
 | :------ | :------ |
 | `input` | `I` |
-| `next` | [`NextHandler`](README.md#nexthandler)<`NI`, `No`\> |
+| `next` | [`NextHandler`](README.md#nexthandler)\<`NI`, `No`\> |
 
 ##### Returns
 
-`Promise`<`O`\>
+`Promise`\<`O`\>
 
 #### Defined in
 
-[lib/types/Handler.ts:6](https://github.com/nevoland/quetch/blob/fbf3307/lib/types/Handler.ts#L6)
+[lib/types/Handler.ts:6](https://github.com/nevoland/quetch/blob/b46dff0534f861059aba3484d2e1d047d841b31f/lib/types/Handler.ts#L6)
 
 ___
 
 ### Immutable
 
-Ƭ **Immutable**<`T`\>: { readonly [K in keyof T]: T[K] }
+Ƭ **Immutable**\<`T`\>: \{ readonly [K in keyof T]: T[K] }
 
 #### Type parameters
 
@@ -655,13 +673,13 @@ ___
 
 #### Defined in
 
-[lib/types/Immutable.ts:1](https://github.com/nevoland/quetch/blob/fbf3307/lib/types/Immutable.ts#L1)
+[lib/types/Immutable.ts:1](https://github.com/nevoland/quetch/blob/b46dff0534f861059aba3484d2e1d047d841b31f/lib/types/Immutable.ts#L1)
 
 ___
 
 ### InjectCustomFields
 
-Ƭ **InjectCustomFields**<`T`, `C`\>: `C` extends [`CustomFieldMap`](README.md#customfieldmap)<`T`\> ? { readonly [K in keyof T \| keyof C]: K extends keyof T ? T[K] : K extends keyof C ? C[K] extends FieldFunctionCustom<T\> ? ReturnType<C[K]["value"]\> : C[K]["operator"] extends keyof FieldFunctionReturn ? FieldFunctionReturn[C[K]["operator"]] : never : never } : `T`
+Ƭ **InjectCustomFields**\<`T`, `C`\>: `C` extends [`CustomFieldMap`](README.md#customfieldmap)\<`T`\> ? \{ readonly [K in keyof T \| keyof C]: K extends keyof T ? T[K] : K extends keyof C ? C[K] extends FieldFunctionCustom\<T\> ? ReturnType\<C[K]["value"]\> : C[K]["operator"] extends keyof FieldFunctionReturn ? FieldFunctionReturn[C[K]["operator"]] : never : never } : `T`
 
 Injects the custom fields into the entity type.
 
@@ -670,17 +688,17 @@ Injects the custom fields into the entity type.
 | Name | Type |
 | :------ | :------ |
 | `T` | extends `object` |
-| `C` | extends [`CustomFieldMap`](README.md#customfieldmap)<`T`\> \| `undefined` |
+| `C` | extends [`CustomFieldMap`](README.md#customfieldmap)\<`T`\> \| `undefined` |
 
 #### Defined in
 
-[lib/types/InjectCustomFields.ts:8](https://github.com/nevoland/quetch/blob/fbf3307/lib/types/InjectCustomFields.ts#L8)
+[lib/types/InjectCustomFields.ts:8](https://github.com/nevoland/quetch/blob/b46dff0534f861059aba3484d2e1d047d841b31f/lib/types/InjectCustomFields.ts#L8)
 
 ___
 
 ### Item
 
-Ƭ **Item**<`T`, `S`\>: `T` extends infer I[] ? `I` : `T` extends `ReadonlyArray`<infer I\> ? `I` : `S`
+Ƭ **Item**\<`T`, `S`\>: `T` extends infer I[] ? `I` : `T` extends `ReadonlyArray`\<infer I\> ? `I` : `S`
 
 Returns the inferred item type of an array, or an alternative type if it is something else (e.g., `undefined`).
 
@@ -693,7 +711,7 @@ Returns the inferred item type of an array, or an alternative type if it is some
 
 #### Defined in
 
-[lib/types/Item.ts:4](https://github.com/nevoland/quetch/blob/fbf3307/lib/types/Item.ts#L4)
+[lib/types/Item.ts:4](https://github.com/nevoland/quetch/blob/b46dff0534f861059aba3484d2e1d047d841b31f/lib/types/Item.ts#L4)
 
 ___
 
@@ -703,7 +721,26 @@ ___
 
 #### Defined in
 
-[lib/types/Key.ts:1](https://github.com/nevoland/quetch/blob/fbf3307/lib/types/Key.ts#L1)
+[lib/types/Key.ts:1](https://github.com/nevoland/quetch/blob/b46dff0534f861059aba3484d2e1d047d841b31f/lib/types/Key.ts#L1)
+
+___
+
+### KeyFiltered
+
+Ƭ **KeyFiltered**\<`T`, `P`\>: keyof `T` & keyof \{ [K in keyof T as T[K] extends P ? K : never]-?: T[K] }
+
+Returns object type with field extending the provided `P` type.
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `T` | extends `object` |
+| `P` | `P` |
+
+#### Defined in
+
+[lib/types/KeyFiltered.ts:4](https://github.com/nevoland/quetch/blob/b46dff0534f861059aba3484d2e1d047d841b31f/lib/types/KeyFiltered.ts#L4)
 
 ___
 
@@ -713,13 +750,13 @@ ___
 
 #### Defined in
 
-[lib/types/Locale.ts:1](https://github.com/nevoland/quetch/blob/fbf3307/lib/types/Locale.ts#L1)
+[lib/types/Locale.ts:1](https://github.com/nevoland/quetch/blob/b46dff0534f861059aba3484d2e1d047d841b31f/lib/types/Locale.ts#L1)
 
 ___
 
 ### Mutable
 
-Ƭ **Mutable**<`T`\>: { -readonly [K in keyof T]: T[K] }
+Ƭ **Mutable**\<`T`\>: \{ -readonly [K in keyof T]: T[K] }
 
 #### Type parameters
 
@@ -729,13 +766,15 @@ ___
 
 #### Defined in
 
-[lib/types/Mutable.ts:1](https://github.com/nevoland/quetch/blob/fbf3307/lib/types/Mutable.ts#L1)
+[lib/types/Mutable.ts:1](https://github.com/nevoland/quetch/blob/b46dff0534f861059aba3484d2e1d047d841b31f/lib/types/Mutable.ts#L1)
 
 ___
 
 ### NextHandler
 
-Ƭ **NextHandler**<`I`, `R`\>: (`input`: `I`) => `Promise`<`R`\>
+Ƭ **NextHandler**\<`I`, `R`\>: (`input`: `I`) => `Promise`\<`R`\>
+
+Handles an `input` query and returns an `output` promise.
 
 #### Type parameters
 
@@ -746,9 +785,7 @@ ___
 
 #### Type declaration
 
-▸ (`input`): `Promise`<`R`\>
-
-Handles an `input` query and returns an `output` promise.
+▸ (`input`): `Promise`\<`R`\>
 
 ##### Parameters
 
@@ -758,17 +795,17 @@ Handles an `input` query and returns an `output` promise.
 
 ##### Returns
 
-`Promise`<`R`\>
+`Promise`\<`R`\>
 
 #### Defined in
 
-[lib/types/NextHandler.ts:4](https://github.com/nevoland/quetch/blob/fbf3307/lib/types/NextHandler.ts#L4)
+[lib/types/NextHandler.ts:4](https://github.com/nevoland/quetch/blob/b46dff0534f861059aba3484d2e1d047d841b31f/lib/types/NextHandler.ts#L4)
 
 ___
 
 ### Order
 
-Ƭ **Order**<`T`\>: keyof `T` \| { `descending?`: `boolean` ; `field`: keyof `T`  }
+Ƭ **Order**\<`T`\>: keyof `T` \| \{ `descending?`: `boolean` ; `field`: keyof `T`  }
 
 Order item.
 
@@ -780,23 +817,56 @@ Order item.
 
 #### Defined in
 
-[lib/types/Order.ts:4](https://github.com/nevoland/quetch/blob/fbf3307/lib/types/Order.ts#L4)
+[lib/types/Order.ts:4](https://github.com/nevoland/quetch/blob/b46dff0534f861059aba3484d2e1d047d841b31f/lib/types/Order.ts#L4)
 
 ___
 
 ### Parameters
 
-Ƭ **Parameters**: `Record`<`string`, `string` \| `string`[] \| `number` \| `number`[]\>
+Ƭ **Parameters**: `Record`\<`string`, `string` \| `string`[] \| `number` \| `number`[]\>
 
 #### Defined in
 
-[lib/types/Parameters.ts:1](https://github.com/nevoland/quetch/blob/fbf3307/lib/types/Parameters.ts#L1)
+[lib/types/Parameters.ts:1](https://github.com/nevoland/quetch/blob/b46dff0534f861059aba3484d2e1d047d841b31f/lib/types/Parameters.ts#L1)
+
+___
+
+### Path
+
+Ƭ **Path**\<`T`\>: `T` extends infer P[] ? [`number`] \| [`number`, ...Path\<P\>] : `T` extends `object` ? \{ [K in keyof T]-?: [K] \| [K, ...Path\<T[K]\>] }[keyof `T`] : `never`
+
+#### Type parameters
+
+| Name |
+| :------ |
+| `T` |
+
+#### Defined in
+
+[lib/types/Path.ts:1](https://github.com/nevoland/quetch/blob/b46dff0534f861059aba3484d2e1d047d841b31f/lib/types/Path.ts#L1)
+
+___
+
+### PathFiltered
+
+Ƭ **PathFiltered**\<`T`, `P`\>: `T` extends infer I[] ? `I` extends `P` ? [`number`] : [`number`, ...PathFiltered\<I, P\>] : `T` extends `object` ? \{ [K in keyof T]-?: T[K] extends P ? [K] : [K, ...PathFiltered\<T[K], P\>] }[keyof `T`] : `never`
+
+#### Type parameters
+
+| Name |
+| :------ |
+| `T` |
+| `P` |
+
+#### Defined in
+
+[lib/types/PathFiltered.ts:1](https://github.com/nevoland/quetch/blob/b46dff0534f861059aba3484d2e1d047d841b31f/lib/types/PathFiltered.ts#L1)
 
 ___
 
 ### Query
 
-Ƭ **Query**<`T`\>: [`QueryRead`](README.md#queryread)<`T`\> \| [`QueryReadMultiple`](README.md#queryreadmultiple)<`T`\> \| [`QueryCreate`](README.md#querycreate)<`T`\> \| [`QueryCreateMultiple`](README.md#querycreatemultiple)<`T`\> \| [`QueryUpdate`](README.md#queryupdate)<`T`\> \| [`QueryUpdateMultiple`](README.md#queryupdatemultiple)<`T`\> \| [`QueryDelete`](README.md#querydelete)<`T`\> \| [`QueryDeleteMultiple`](README.md#querydeletemultiple)<`T`\> \| [`QueryAggregate`](README.md#queryaggregate)<`T`\>
+Ƭ **Query**\<`T`\>: [`QueryRead`](README.md#queryread)\<`T`\> \| [`QueryReadMultiple`](README.md#queryreadmultiple)\<`T`\> \| [`QueryCreate`](README.md#querycreate)\<`T`\> \| [`QueryCreateMultiple`](README.md#querycreatemultiple)\<`T`\> \| [`QueryUpdate`](README.md#queryupdate)\<`T`\> \| [`QueryUpdateMultiple`](README.md#queryupdatemultiple)\<`T`\> \| [`QueryDelete`](README.md#querydelete)\<`T`\> \| [`QueryDeleteMultiple`](README.md#querydeletemultiple)\<`T`\> \| [`QueryAggregate`](README.md#queryaggregate)\<`T`\>
 
 Query that fetches or mutates an entity.
 
@@ -808,13 +878,13 @@ Query that fetches or mutates an entity.
 
 #### Defined in
 
-[lib/types/Query.ts:14](https://github.com/nevoland/quetch/blob/fbf3307/lib/types/Query.ts#L14)
+[lib/types/Query.ts:14](https://github.com/nevoland/quetch/blob/b46dff0534f861059aba3484d2e1d047d841b31f/lib/types/Query.ts#L14)
 
 ___
 
 ### QueryAggregate
 
-Ƭ **QueryAggregate**<`T`\>: `Object`
+Ƭ **QueryAggregate**\<`T`\>: `Object`
 
 Query for computing an aggregated value.
 
@@ -828,22 +898,22 @@ Query for computing an aggregated value.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `aggregator` | [`AggregateFunction`](README.md#aggregatefunction)<`T`\> | - |
-| `context?` | [`Context`](README.md#context)<`T`\> | Common item properties to use for identifying the item. |
-| `filter?` | [`Filter`](README.md#filter)<`T`\> | - |
+| `aggregator` | [`AggregateFunction`](README.md#aggregatefunction)\<`T`\> | - |
+| `context?` | [`Context`](README.md#context)\<`T`\> | Common item properties to use for identifying the item. |
+| `filter?` | [`Filter`](README.md#filter)\<`T`\> | - |
 | `method` | ``"aggregate"`` | - |
 | `parameters?` | [`Parameters`](README.md#parameters) | Query parameters. |
-| `settings?` | [`QuerySettings`](README.md#querysettings)<`T`\> | Query settings. |
+| `settings?` | [`QuerySettings`](README.md#querysettings)\<`T`\> | Query settings. |
 
 #### Defined in
 
-[lib/types/QueryAggregate.ts:10](https://github.com/nevoland/quetch/blob/fbf3307/lib/types/QueryAggregate.ts#L10)
+[lib/types/QueryAggregate.ts:10](https://github.com/nevoland/quetch/blob/b46dff0534f861059aba3484d2e1d047d841b31f/lib/types/QueryAggregate.ts#L10)
 
 ___
 
 ### QueryCreate
 
-Ƭ **QueryCreate**<`T`\>: `Object`
+Ƭ **QueryCreate**\<`T`\>: `Object`
 
 Query for creating an item.
 
@@ -857,22 +927,22 @@ Query for creating an item.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `context?` | [`Context`](README.md#context)<`T`\> | Common item properties to use for identifying the context in which to create the item. |
+| `context?` | [`Context`](README.md#context)\<`T`\> | Common item properties to use for identifying the context in which to create the item. |
 | `method` | ``"create"`` | - |
 | `multiple?` | ``false`` | - |
 | `parameters?` | [`Parameters`](README.md#parameters) | Query parameters. |
-| `settings?` | [`QuerySettings`](README.md#querysettings)<`T`\> | Query settings. |
-| `value` | `Partial`<`T`\> | Value properties of the item to create. |
+| `settings?` | [`QuerySettings`](README.md#querysettings)\<`T`\> | Query settings. |
+| `value` | `Partial`\<`T`\> | Value properties of the item to create. |
 
 #### Defined in
 
-[lib/types/QueryCreate.ts:8](https://github.com/nevoland/quetch/blob/fbf3307/lib/types/QueryCreate.ts#L8)
+[lib/types/QueryCreate.ts:8](https://github.com/nevoland/quetch/blob/b46dff0534f861059aba3484d2e1d047d841b31f/lib/types/QueryCreate.ts#L8)
 
 ___
 
 ### QueryCreateMultiple
 
-Ƭ **QueryCreateMultiple**<`T`\>: `Object`
+Ƭ **QueryCreateMultiple**\<`T`\>: `Object`
 
 Query for creating multiple items.
 
@@ -886,22 +956,22 @@ Query for creating multiple items.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `context?` | [`Context`](README.md#context)<`T`\> | Common item properties to use for identifying the context in which to create the items. |
+| `context?` | [`Context`](README.md#context)\<`T`\> | Common item properties to use for identifying the context in which to create the items. |
 | `method` | ``"create"`` | - |
 | `multiple` | ``true`` | - |
 | `parameters?` | [`Parameters`](README.md#parameters) | Query parameters. |
-| `settings?` | [`QuerySettings`](README.md#querysettings)<`T`\> | Query settings. |
-| `value` | `Partial`<`T`\>[] | - |
+| `settings?` | [`QuerySettings`](README.md#querysettings)\<`T`\> | Query settings. |
+| `value` | `Partial`\<`T`\>[] | - |
 
 #### Defined in
 
-[lib/types/QueryCreateMultiple.ts:8](https://github.com/nevoland/quetch/blob/fbf3307/lib/types/QueryCreateMultiple.ts#L8)
+[lib/types/QueryCreateMultiple.ts:8](https://github.com/nevoland/quetch/blob/b46dff0534f861059aba3484d2e1d047d841b31f/lib/types/QueryCreateMultiple.ts#L8)
 
 ___
 
 ### QueryDelete
 
-Ƭ **QueryDelete**<`T`\>: `Object`
+Ƭ **QueryDelete**\<`T`\>: `Object`
 
 Query for deleting an item.
 
@@ -915,22 +985,22 @@ Query for deleting an item.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `context?` | [`Context`](README.md#context)<`T`\> | Common item properties to use for identifying the context in which to delete the item. |
-| `filter?` | [`Filter`](README.md#filter)<`T`\> | - |
+| `context?` | [`Context`](README.md#context)\<`T`\> | Common item properties to use for identifying the context in which to delete the item. |
+| `filter?` | [`Filter`](README.md#filter)\<`T`\> | - |
 | `method` | ``"delete"`` | - |
 | `multiple?` | ``false`` | - |
 | `parameters?` | [`Parameters`](README.md#parameters) | Query parameters. |
-| `settings?` | [`QuerySettings`](README.md#querysettings)<`T`\> | Query settings. |
+| `settings?` | [`QuerySettings`](README.md#querysettings)\<`T`\> | Query settings. |
 
 #### Defined in
 
-[lib/types/QueryDelete.ts:9](https://github.com/nevoland/quetch/blob/fbf3307/lib/types/QueryDelete.ts#L9)
+[lib/types/QueryDelete.ts:9](https://github.com/nevoland/quetch/blob/b46dff0534f861059aba3484d2e1d047d841b31f/lib/types/QueryDelete.ts#L9)
 
 ___
 
 ### QueryDeleteMultiple
 
-Ƭ **QueryDeleteMultiple**<`T`\>: `Object`
+Ƭ **QueryDeleteMultiple**\<`T`\>: `Object`
 
 Query for deleting multiple items.
 
@@ -944,34 +1014,34 @@ Query for deleting multiple items.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `context?` | [`Context`](README.md#context)<`T`\> | Common item properties to use for identifying the context in which to delete the item. |
-| `filter?` | [`Filter`](README.md#filter)<`T`\> | - |
+| `context?` | [`Context`](README.md#context)\<`T`\> | Common item properties to use for identifying the context in which to delete the item. |
+| `filter?` | [`Filter`](README.md#filter)\<`T`\> | - |
 | `method` | ``"delete"`` | - |
 | `multiple` | ``true`` | - |
 | `parameters?` | [`Parameters`](README.md#parameters) | Query parameters. |
-| `settings?` | [`QuerySettings`](README.md#querysettings)<`T`\> | Query settings. |
+| `settings?` | [`QuerySettings`](README.md#querysettings)\<`T`\> | Query settings. |
 
 #### Defined in
 
-[lib/types/QueryDeleteMultiple.ts:9](https://github.com/nevoland/quetch/blob/fbf3307/lib/types/QueryDeleteMultiple.ts#L9)
+[lib/types/QueryDeleteMultiple.ts:9](https://github.com/nevoland/quetch/blob/b46dff0534f861059aba3484d2e1d047d841b31f/lib/types/QueryDeleteMultiple.ts#L9)
 
 ___
 
 ### QueryMethod
 
-Ƭ **QueryMethod**: `Exclude`<[`Query`](README.md#query)<`never`\>[``"method"``], `undefined`\>
+Ƭ **QueryMethod**: `Exclude`\<[`Query`](README.md#query)\<`never`\>[``"method"``], `undefined`\>
 
 Available query methods.
 
 #### Defined in
 
-[lib/types/QueryMethod.ts:6](https://github.com/nevoland/quetch/blob/fbf3307/lib/types/QueryMethod.ts#L6)
+[lib/types/QueryMethod.ts:6](https://github.com/nevoland/quetch/blob/b46dff0534f861059aba3484d2e1d047d841b31f/lib/types/QueryMethod.ts#L6)
 
 ___
 
 ### QueryRead
 
-Ƭ **QueryRead**<`T`\>: `Object`
+Ƭ **QueryRead**\<`T`\>: `Object`
 
 Query for reading a single item.
 
@@ -985,27 +1055,27 @@ Query for reading a single item.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `context?` | [`Context`](README.md#context)<`T`\> | Common item properties to use for identifying the context in which to delete the item. |
+| `context?` | [`Context`](README.md#context)\<`T`\> | Common item properties to use for identifying the context in which to delete the item. |
 | `fields?` | readonly keyof `T`[] | Item fields to pick. If omitted, all fields are picked. |
-| `filter?` | [`Filter`](README.md#filter)<`T`\> | Filter for finding the item, if it cannot be found based on the `context`. |
+| `filter?` | [`Filter`](README.md#filter)\<`T`\> | Filter for finding the item, if it cannot be found based on the `context`. |
 | `group?` | `never` | - |
 | `limit?` | `never` | - |
 | `method?` | ``"read"`` | - |
 | `multiple?` | ``false`` | - |
 | `offset?` | `never` | - |
-| `order?` | [`Order`](README.md#order)<`T`\>[] | Order by which the items should be sorted. |
+| `order?` | [`Order`](README.md#order)\<`T`\>[] | Order by which the items should be sorted. |
 | `parameters?` | [`Parameters`](README.md#parameters) | Query parameters. |
-| `settings?` | [`QuerySettings`](README.md#querysettings)<`T`\> | Query settings. |
+| `settings?` | [`QuerySettings`](README.md#querysettings)\<`T`\> | Query settings. |
 
 #### Defined in
 
-[lib/types/QueryRead.ts:10](https://github.com/nevoland/quetch/blob/fbf3307/lib/types/QueryRead.ts#L10)
+[lib/types/QueryRead.ts:10](https://github.com/nevoland/quetch/blob/b46dff0534f861059aba3484d2e1d047d841b31f/lib/types/QueryRead.ts#L10)
 
 ___
 
 ### QueryReadMultiple
 
-Ƭ **QueryReadMultiple**<`T`\>: `Object`
+Ƭ **QueryReadMultiple**\<`T`\>: `Object`
 
 Query for getting a list of items.
 
@@ -1019,27 +1089,27 @@ Query for getting a list of items.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `context?` | [`Context`](README.md#context)<`T`\> | Common item properties to use for identifying the item. |
+| `context?` | [`Context`](README.md#context)\<`T`\> | Common item properties to use for identifying the item. |
 | `fields?` | readonly keyof `T`[] | Item fields to pick. If omitted, all fields are picked. |
-| `filter?` | [`Filter`](README.md#filter)<`T`\> | Filter that picks the items. |
-| `group?` | [`Group`](README.md#group)<`T`\>[] | Groups items by specified fields. |
+| `filter?` | [`Filter`](README.md#filter)\<`T`\> | Filter that picks the items. |
+| `group?` | [`Group`](README.md#group)\<`T`\>[] | Groups items by specified fields. |
 | `limit?` | `number` | Upper bound of the number of items to return. |
 | `method?` | ``"read"`` | - |
 | `multiple` | ``true`` | - |
 | `offset?` | `number` | Offset of the first matching item. |
-| `order?` | [`Order`](README.md#order)<`T`\>[] | Order by which the items should be sorted. |
+| `order?` | [`Order`](README.md#order)\<`T`\>[] | Order by which the items should be sorted. |
 | `parameters?` | [`Parameters`](README.md#parameters) | Query parameters. |
-| `settings?` | [`QuerySettings`](README.md#querysettings)<`T`\> | Query settings. |
+| `settings?` | [`QuerySettings`](README.md#querysettings)\<`T`\> | Query settings. |
 
 #### Defined in
 
-[lib/types/QueryReadMultiple.ts:11](https://github.com/nevoland/quetch/blob/fbf3307/lib/types/QueryReadMultiple.ts#L11)
+[lib/types/QueryReadMultiple.ts:11](https://github.com/nevoland/quetch/blob/b46dff0534f861059aba3484d2e1d047d841b31f/lib/types/QueryReadMultiple.ts#L11)
 
 ___
 
 ### QuerySettings
 
-Ƭ **QuerySettings**<`T`\>: `Object`
+Ƭ **QuerySettings**\<`T`\>: `Object`
 
 Settings to use when doing a query.
 
@@ -1053,20 +1123,21 @@ Settings to use when doing a query.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `pathFieldKey?` | [`FilterKeys`](README.md#filterkeys)<`T`, `string`\> | Field key to that contains the path value of an item. |
+| `abortController?` | `AbortController` | Abort controller to abort the query. |
+| `pathFieldKey?` | [`FieldFiltered`](README.md#fieldfiltered)\<`T`, `string`\> | Field key to that contains the path value of an item. |
 | `pathFieldSeparator?` | `string` | String used to separate the path nodes of an item. |
 | `signal?` | `AbortSignal` | Abort signal to abort the query. |
-| `transformFilterChildren?` | (`filter`: [`FilterChildren`](README.md#filterchildren)<`T`\>) => `Exclude`<[`Filter`](README.md#filter)<`T`\>, { `operator`: ``"children"``  }\> | Returns a filter that captures the items expressed by the provided `FilterChildren`. The return filter cannot use filters of type `FilterChildren`. |
+| `transformFilterChildren?` | (`filter`: [`FilterChildren`](README.md#filterchildren)\<`T`\>) => `Exclude`\<[`Filter`](README.md#filter)\<`T`\>, \{ `operator`: ``"children"``  }\> | - |
 
 #### Defined in
 
-[lib/types/QuerySettings.ts:8](https://github.com/nevoland/quetch/blob/fbf3307/lib/types/QuerySettings.ts#L8)
+[lib/types/QuerySettings.ts:8](https://github.com/nevoland/quetch/blob/b46dff0534f861059aba3484d2e1d047d841b31f/lib/types/QuerySettings.ts#L8)
 
 ___
 
 ### QueryUpdate
 
-Ƭ **QueryUpdate**<`T`\>: `Object`
+Ƭ **QueryUpdate**\<`T`\>: `Object`
 
 Query for updating an item.
 
@@ -1080,26 +1151,26 @@ Query for updating an item.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `context?` | [`Context`](README.md#context)<`T`\> | Common item properties to use for identifying the context in which to update the item. |
-| `filter?` | [`Filter`](README.md#filter)<`T`\> | Filter for finding the item, if it cannot be found based on the `context`. |
+| `context?` | [`Context`](README.md#context)\<`T`\> | Common item properties to use for identifying the context in which to update the item. |
+| `filter?` | [`Filter`](README.md#filter)\<`T`\> | Filter for finding the item, if it cannot be found based on the `context`. |
 | `group?` | `never` | - |
 | `method` | ``"update"`` | - |
 | `multiple?` | ``false`` | - |
 | `offset?` | `never` | - |
 | `order` | `never` | - |
 | `parameters?` | [`Parameters`](README.md#parameters) | Query parameters. |
-| `settings?` | [`QuerySettings`](README.md#querysettings)<`T`\> | Query settings. |
-| `value` | `Partial`<`T`\> | Partial property values to update. |
+| `settings?` | [`QuerySettings`](README.md#querysettings)\<`T`\> | Query settings. |
+| `value` | `Partial`\<`T`\> | Partial property values to update. |
 
 #### Defined in
 
-[lib/types/QueryUpdate.ts:9](https://github.com/nevoland/quetch/blob/fbf3307/lib/types/QueryUpdate.ts#L9)
+[lib/types/QueryUpdate.ts:9](https://github.com/nevoland/quetch/blob/b46dff0534f861059aba3484d2e1d047d841b31f/lib/types/QueryUpdate.ts#L9)
 
 ___
 
 ### QueryUpdateMultiple
 
-Ƭ **QueryUpdateMultiple**<`T`\>: `Object`
+Ƭ **QueryUpdateMultiple**\<`T`\>: `Object`
 
 Query for updating multiple items.
 
@@ -1113,43 +1184,43 @@ Query for updating multiple items.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `context?` | [`Context`](README.md#context)<`T`\> | Common item properties to use for identifying the context in which to update the item. |
-| `filter?` | [`Filter`](README.md#filter)<`T`\> | - |
+| `context?` | [`Context`](README.md#context)\<`T`\> | Common item properties to use for identifying the context in which to update the item. |
+| `filter?` | [`Filter`](README.md#filter)\<`T`\> | - |
 | `limit?` | `number` | Sets the upper bound of the number of items to update. |
 | `method` | ``"update"`` | - |
 | `multiple` | ``true`` | - |
 | `offset?` | `number` | Offset of the first matching item to update. |
-| `order?` | [`Order`](README.md#order)<`T`\>[] | Order by which the items should be sorted. |
+| `order?` | [`Order`](README.md#order)\<`T`\>[] | Order by which the items should be sorted. |
 | `parameters?` | [`Parameters`](README.md#parameters) | Query parameters. |
-| `settings?` | [`QuerySettings`](README.md#querysettings)<`T`\> | Query settings. |
-| `value` | `Partial`<`T`\>[] | Partial property values to update. |
+| `settings?` | [`QuerySettings`](README.md#querysettings)\<`T`\> | Query settings. |
+| `value` | `Partial`\<`T`\>[] | Partial property values to update. |
 
 #### Defined in
 
-[lib/types/QueryUpdateMultiple.ts:10](https://github.com/nevoland/quetch/blob/fbf3307/lib/types/QueryUpdateMultiple.ts#L10)
+[lib/types/QueryUpdateMultiple.ts:10](https://github.com/nevoland/quetch/blob/b46dff0534f861059aba3484d2e1d047d841b31f/lib/types/QueryUpdateMultiple.ts#L10)
 
 ___
 
 ### Result
 
-Ƭ **Result**<`T`, `Q`\>: [`Q`] extends [{ `method`: ``"read"``  }] ? [`Q`] extends [{ `multiple`: ``true``  }] ? `ResultRead`<`T`, `Q`\>[] : `ResultRead`<`T`, `Q`\> : [`Q`] extends [{ `method`: ``"aggregate"``  }] ? `number` : [`Q`] extends [{ `multiple`: ``true``  }] ? `ResultRead`<`T`, `Q`\>[] : `ResultRead`<`T`, `Q`\>
+Ƭ **Result**\<`T`, `Q`\>: [`Q`] extends [\{ `method`: ``"read"``  }] ? [`Q`] extends [\{ `multiple`: ``true``  }] ? `ResultRead`\<`T`, `Q`\>[] : `ResultRead`\<`T`, `Q`\> : [`Q`] extends [\{ `method`: ``"aggregate"``  }] ? `number` : [`Q`] extends [\{ `multiple`: ``true``  }] ? `ResultRead`\<`T`, `Q`\>[] : `ResultRead`\<`T`, `Q`\>
 
 #### Type parameters
 
 | Name | Type |
 | :------ | :------ |
 | `T` | extends `object` |
-| `Q` | extends [`Query`](README.md#query)<`T`\> |
+| `Q` | extends [`Query`](README.md#query)\<`T`\> |
 
 #### Defined in
 
-[lib/types/Result.ts:20](https://github.com/nevoland/quetch/blob/fbf3307/lib/types/Result.ts#L20)
+[lib/types/Result.ts:20](https://github.com/nevoland/quetch/blob/b46dff0534f861059aba3484d2e1d047d841b31f/lib/types/Result.ts#L20)
 
 ___
 
 ### Store
 
-Ƭ **Store**<`T`\>: `Object`
+Ƭ **Store**\<`T`\>: `Object`
 
 #### Type parameters
 
@@ -1161,20 +1232,20 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `delete` | (`key`: `string`) => `Promise`<`void`\> |
-| `get` | (`key`: `string`) => `Promise`<`T`\> |
-| `has` | (`key`: `string`) => `Promise`<`boolean`\> |
-| `set` | (`key`: `string`, `value`: `T`) => `Promise`<`void`\> |
+| `delete` | (`key`: `string`) => `Promise`\<`void`\> |
+| `get` | (`key`: `string`) => `Promise`\<`T`\> |
+| `has` | (`key`: `string`) => `Promise`\<`boolean`\> |
+| `set` | (`key`: `string`, `value`: `T`) => `Promise`\<`void`\> |
 
 #### Defined in
 
-[lib/types/Store.ts:2](https://github.com/nevoland/quetch/blob/fbf3307/lib/types/Store.ts#L2)
+[lib/types/Store.ts:2](https://github.com/nevoland/quetch/blob/b46dff0534f861059aba3484d2e1d047d841b31f/lib/types/Store.ts#L2)
 
 ## Functions
 
 ### aggregate
 
-▸ **aggregate**<`I`, `O`, `In`, `On`\>(`options`): [`Handler`](README.md#handler)<`I`, `O`, `In`, `On`\>
+▸ **aggregate**\<`I`, `O`, `In`, `On`\>(`options`): [`Handler`](README.md#handler)\<`I`, `O`, `In`, `On`\>
 
 Aggregates multiple incoming query calls into one query.
 Queries are grouped according to the string key returned by `queryGroupId(query)`. Inside a group, each query is identified with `queryId(query)`.
@@ -1186,36 +1257,36 @@ If a query occurs twice, `mergeQuery(query, currentQuery)` is called and the out
 
 | Name | Type |
 | :------ | :------ |
-| `I` | extends `Object` |
+| `I` | extends [`Query`](README.md#query)\<`any`\> & \{ `type`: `any`  } |
 | `O` | `O` |
-| `In` | extends `Object` |
+| `In` | extends [`Query`](README.md#query)\<`any`\> & \{ `type`: `any`  } |
 | `On` | `On` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `options` | `Object` |
-| `options.delay?` | `number` |
-| `options.mergeQuery?` | (`query`: `I`, `currentQuery`: `I`) => `I` |
-| `options.queryForGroup` | (`queryList`: `I`[], `group`: `string`) => `Object` |
-| `options.queryGroupId?` | (`query`: `I`) => `undefined` \| `string` |
-| `options.queryId?` | (`query`: `I`) => `undefined` \| `string` |
-| `options.resultForQuery` | (`resultList`: `O`[], `query`: `I`) => `O` |
+| Name | Type | Default value |
+| :------ | :------ | :------ |
+| `options` | `Object` | `undefined` |
+| `options.delay?` | `number` | `200` |
+| `options.mergeQuery?` | (`query`: `I`, `currentQuery`: `I`) => `I` | `undefined` |
+| `options.queryForGroup` | (`queryList`: `I`[], `group`: `string`) => [`Query`](README.md#query)\<`any`\> & \{ `type`: `any`  } | `undefined` |
+| `options.queryGroupId?` | (`query`: `I`) => `undefined` \| `string` | `undefined` |
+| `options.queryId?` | (`query`: `I`) => `undefined` \| `string` | `undefined` |
+| `options.resultForQuery` | (`resultList`: `O`[], `query`: `I`) => `O` | `undefined` |
 
 #### Returns
 
-[`Handler`](README.md#handler)<`I`, `O`, `In`, `On`\>
+[`Handler`](README.md#handler)\<`I`, `O`, `In`, `On`\>
 
 #### Defined in
 
-[lib/middlewares/aggregate.ts:16](https://github.com/nevoland/quetch/blob/fbf3307/lib/middlewares/aggregate.ts#L16)
+[lib/middlewares/aggregate.ts:16](https://github.com/nevoland/quetch/blob/b46dff0534f861059aba3484d2e1d047d841b31f/lib/middlewares/aggregate.ts#L16)
 
 ___
 
 ### branch
 
-▸ **branch**<`I`, `O`, `In`, `On`\>(`condition`, `left`, `right?`): [`Handler`](README.md#handler)<`I`, `O`, `In`, `On`\>
+▸ **branch**\<`I`, `O`, `In`, `On`\>(`condition`, `left`, `right?`): [`Handler`](README.md#handler)\<`I`, `O`, `In`, `On`\>
 
 Dispatches an incoming query to `left` if `condition(query)` returns a truthy value, `right` otherwise. This is helpful for sending queries to different resolvers.
 
@@ -1233,12 +1304,12 @@ Dispatches an incoming query to `left` if `condition(query)` returns a truthy va
 | Name | Type |
 | :------ | :------ |
 | `condition` | (`input`: `I`) => `boolean` |
-| `left` | [`Handler`](README.md#handler)<`I`, `O`, `In`, `On`\> |
-| `right` | [`Handler`](README.md#handler)<`I`, `O`, `In`, `On`\> |
+| `left` | [`Handler`](README.md#handler)\<`I`, `O`, `In`, `On`\> |
+| `right` | [`Handler`](README.md#handler)\<`I`, `O`, `In`, `On`\> |
 
 #### Returns
 
-[`Handler`](README.md#handler)<`I`, `O`, `In`, `On`\>
+[`Handler`](README.md#handler)\<`I`, `O`, `In`, `On`\>
 
 **`Example`**
 
@@ -1251,21 +1322,21 @@ const customFetch = combine(
 
 #### Defined in
 
-[lib/middlewares/branch.ts:21](https://github.com/nevoland/quetch/blob/fbf3307/lib/middlewares/branch.ts#L21)
+[lib/middlewares/branch.ts:21](https://github.com/nevoland/quetch/blob/b46dff0534f861059aba3484d2e1d047d841b31f/lib/middlewares/branch.ts#L21)
 
 ___
 
 ### cache
 
-▸ **cache**<`I`, `O`, `In`, `On`\>(`«destructured»`): [`Handler`](README.md#handler)<`I`, `O`, `In`, `On`\>
+▸ **cache**\<`I`, `O`, `In`, `On`\>(`«destructured»`): [`Handler`](README.md#handler)\<`I`, `O`, `In`, `On`\>
 
 #### Type parameters
 
 | Name | Type |
 | :------ | :------ |
-| `I` | extends `Object` |
+| `I` | extends [`Query`](README.md#query)\<`any`\> & \{ `type`: `any`  } |
 | `O` | `O` |
-| `In` | extends [`Query`](README.md#query)<`any`\> |
+| `In` | extends [`Query`](README.md#query)\<`any`\> |
 | `On` | `On` |
 
 #### Parameters
@@ -1278,21 +1349,21 @@ ___
 | › `itemId?` | (`query`: `I`) => `undefined` \| `string` | Unique identifier for the item to cache. Returns `undefined` if the item should not be cached. |
 | › `mergeItem` | (`value`: `any`, `cachedValue`: `any`, `query`: `I`, `cachedQuery`: `I`) => `any` | Merges the value from the extended query with the cached value. Only called when `extendCachedQuery` returns a query. |
 | › `mergeQuery` | (`extendedQuery`: `I`, `cachedQuery`: `I`) => `I` | Merges the extended query with the cached query. Only called when `extendCachedQuery` returns a query. |
-| › `store` | [`Store`](README.md#store)<`CachedItem`<`I`\>\> | Cache store. |
+| › `store` | [`Store`](README.md#store)\<`CachedItem`\<`I`\>\> | Cache store. |
 
 #### Returns
 
-[`Handler`](README.md#handler)<`I`, `O`, `In`, `On`\>
+[`Handler`](README.md#handler)\<`I`, `O`, `In`, `On`\>
 
 #### Defined in
 
-[lib/middlewares/cache.ts:8](https://github.com/nevoland/quetch/blob/fbf3307/lib/middlewares/cache.ts#L8)
+[lib/middlewares/cache.ts:8](https://github.com/nevoland/quetch/blob/b46dff0534f861059aba3484d2e1d047d841b31f/lib/middlewares/cache.ts#L8)
 
 ___
 
 ### combine
 
-▸ **combine**<`I0`, `O0`, `I1`, `O1`, `I2`, `O2`, `I3`, `O3`, `I4`, `O4`, `I5`, `O5`, `I6`, `O6`, `I7`, `O7`, `I8`, `O8`, `I9`, `O9`, `I10`, `O10`, `I11`, `O11`, `I12`, `O12`, `I13`, `O13`, `I14`, `O14`, `I15`, `O15`, `I16`, `O16`, `I17`, `O17`, `I18`, `O18`, `I19`, `O19`, `I20`, `O20`, `I21`, `O21`\>(`...handlerList`): [`Handler`](README.md#handler)<`I0`, `O0`, `I21`, `O21`\>
+▸ **combine**\<`I0`, `O0`, `I1`, `O1`, `I2`, `O2`, `I3`, `O3`, `I4`, `O4`, `I5`, `O5`, `I6`, `O6`, `I7`, `O7`, `I8`, `O8`, `I9`, `O9`, `I10`, `O10`, `I11`, `O11`, `I12`, `O12`, `I13`, `O13`, `I14`, `O14`, `I15`, `O15`, `I16`, `O16`, `I17`, `O17`, `I18`, `O18`, `I19`, `O19`, `I20`, `O20`, `I21`, `O21`\>(`...handlerList`): [`Handler`](README.md#handler)\<`I0`, `O0`, `I21`, `O21`\>
 
 Combines the provided handler into a single handler.
 
@@ -1349,23 +1420,23 @@ Combines the provided handler into a single handler.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `...handlerList` | readonly [[`Handler`](README.md#handler)<`I0`, `O0`, `I1`, `O1`\>, [`Handler`](README.md#handler)<`I1`, `O1`, `I2`, `O2`\>, `undefined` \| [`Handler`](README.md#handler)<`I2`, `O2`, `I3`, `O3`\>, `undefined` \| [`Handler`](README.md#handler)<`I3`, `O3`, `I4`, `O4`\>, `undefined` \| [`Handler`](README.md#handler)<`I4`, `O4`, `I5`, `O5`\>, `undefined` \| [`Handler`](README.md#handler)<`I5`, `O5`, `I6`, `O6`\>, `undefined` \| [`Handler`](README.md#handler)<`I6`, `O6`, `I7`, `O7`\>, `undefined` \| [`Handler`](README.md#handler)<`I7`, `O7`, `I8`, `O8`\>, `undefined` \| [`Handler`](README.md#handler)<`I8`, `O8`, `I9`, `O9`\>, `undefined` \| [`Handler`](README.md#handler)<`I9`, `O9`, `I10`, `O10`\>, `undefined` \| [`Handler`](README.md#handler)<`I10`, `O10`, `I11`, `O11`\>, `undefined` \| [`Handler`](README.md#handler)<`I11`, `O11`, `I12`, `O12`\>, `undefined` \| [`Handler`](README.md#handler)<`I12`, `O12`, `I13`, `O13`\>, `undefined` \| [`Handler`](README.md#handler)<`I13`, `O13`, `I14`, `O14`\>, `undefined` \| [`Handler`](README.md#handler)<`I14`, `O14`, `I15`, `O15`\>, `undefined` \| [`Handler`](README.md#handler)<`I15`, `O15`, `I16`, `O16`\>, `undefined` \| [`Handler`](README.md#handler)<`I16`, `O16`, `I17`, `O17`\>, `undefined` \| [`Handler`](README.md#handler)<`I17`, `O17`, `I18`, `O18`\>, `undefined` \| [`Handler`](README.md#handler)<`I18`, `O18`, `I19`, `O19`\>, `undefined` \| [`Handler`](README.md#handler)<`I19`, `O19`, `I20`, `O20`\>, `undefined` \| [`Handler`](README.md#handler)<`I20`, `O20`, `I21`, `O21`\>] | List of handlers to combine. |
+| `...handlerList` | readonly [[`Handler`](README.md#handler)\<`I0`, `O0`, `I1`, `O1`\>, [`Handler`](README.md#handler)\<`I1`, `O1`, `I2`, `O2`\>, `undefined` \| [`Handler`](README.md#handler)\<`I2`, `O2`, `I3`, `O3`\>, `undefined` \| [`Handler`](README.md#handler)\<`I3`, `O3`, `I4`, `O4`\>, `undefined` \| [`Handler`](README.md#handler)\<`I4`, `O4`, `I5`, `O5`\>, `undefined` \| [`Handler`](README.md#handler)\<`I5`, `O5`, `I6`, `O6`\>, `undefined` \| [`Handler`](README.md#handler)\<`I6`, `O6`, `I7`, `O7`\>, `undefined` \| [`Handler`](README.md#handler)\<`I7`, `O7`, `I8`, `O8`\>, `undefined` \| [`Handler`](README.md#handler)\<`I8`, `O8`, `I9`, `O9`\>, `undefined` \| [`Handler`](README.md#handler)\<`I9`, `O9`, `I10`, `O10`\>, `undefined` \| [`Handler`](README.md#handler)\<`I10`, `O10`, `I11`, `O11`\>, `undefined` \| [`Handler`](README.md#handler)\<`I11`, `O11`, `I12`, `O12`\>, `undefined` \| [`Handler`](README.md#handler)\<`I12`, `O12`, `I13`, `O13`\>, `undefined` \| [`Handler`](README.md#handler)\<`I13`, `O13`, `I14`, `O14`\>, `undefined` \| [`Handler`](README.md#handler)\<`I14`, `O14`, `I15`, `O15`\>, `undefined` \| [`Handler`](README.md#handler)\<`I15`, `O15`, `I16`, `O16`\>, `undefined` \| [`Handler`](README.md#handler)\<`I16`, `O16`, `I17`, `O17`\>, `undefined` \| [`Handler`](README.md#handler)\<`I17`, `O17`, `I18`, `O18`\>, `undefined` \| [`Handler`](README.md#handler)\<`I18`, `O18`, `I19`, `O19`\>, `undefined` \| [`Handler`](README.md#handler)\<`I19`, `O19`, `I20`, `O20`\>, `undefined` \| [`Handler`](README.md#handler)\<`I20`, `O20`, `I21`, `O21`\>] | List of handlers to combine. |
 
 #### Returns
 
-[`Handler`](README.md#handler)<`I0`, `O0`, `I21`, `O21`\>
+[`Handler`](README.md#handler)\<`I0`, `O0`, `I21`, `O21`\>
 
 Handler that combines all provided handlers.
 
 #### Defined in
 
-[lib/middlewares/combine.ts:801](https://github.com/nevoland/quetch/blob/fbf3307/lib/middlewares/combine.ts#L801)
+[lib/middlewares/combine.ts:801](https://github.com/nevoland/quetch/blob/b46dff0534f861059aba3484d2e1d047d841b31f/lib/middlewares/combine.ts#L801)
 
 ___
 
 ### cork
 
-▸ **cork**(`input`): `Promise`<`never`\>
+▸ **cork**(`input`): `Promise`\<`never`\>
 
 Uncallable handler used to terminate a sequence of handlers combined with `combine`.
 
@@ -1377,17 +1448,17 @@ Uncallable handler used to terminate a sequence of handlers combined with `combi
 
 #### Returns
 
-`Promise`<`never`\>
+`Promise`\<`never`\>
 
 #### Defined in
 
-[lib/types/NextHandler.ts:4](https://github.com/nevoland/quetch/blob/fbf3307/lib/types/NextHandler.ts#L4)
+[lib/tools/cork.ts:6](https://github.com/nevoland/quetch/blob/b46dff0534f861059aba3484d2e1d047d841b31f/lib/tools/cork.ts#L6)
 
 ___
 
 ### defineCheckQuery
 
-▸ **defineCheckQuery**<`M`\>(): <T, Q\>(`query`: `Q` & { `type`: `T`[]  }) => typeof `query`<K, T, Q\>(`query`: `Q` & { `type`: `K`  }) => typeof `query`
+▸ **defineCheckQuery**\<`M`\>(): \<T, Q\>(`query`: `Q` & \{ `type`: `T`[]  }) => typeof `query`\<K, T, Q\>(`query`: `Q` & \{ `type`: `K`  }) => typeof `query`
 
 Returns a function that checks queries. This is useful to prevent the query to have its type being narrowed if declared outside of a custom fetcher function argument.
 
@@ -1395,7 +1466,7 @@ Returns a function that checks queries. This is useful to prevent the query to h
 
 | Name | Type |
 | :------ | :------ |
-| `M` | extends `Record`<`string`, `object`\> |
+| `M` | extends `Record`\<`string`, `object`\> |
 
 #### Returns
 
@@ -1403,26 +1474,26 @@ Returns a function that checks queries. This is useful to prevent the query to h
 
 Function that checks queries.
 
-▸ <`T`, `Q`\>(`query`): typeof `query`
+▸ \<`T`, `Q`\>(`query`): typeof `query`
 
 ##### Type parameters
 
 | Name | Type |
 | :------ | :------ |
 | `T` | extends `object` |
-| `Q` | extends [`Query`](README.md#query)<`T`\> |
+| `Q` | extends [`Query`](README.md#query)\<`T`\> |
 
 ##### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `query` | `Q` & { `type`: `T`[]  } |
+| `query` | `Q` & \{ `type`: `T`[]  } |
 
 ##### Returns
 
 typeof `query`
 
-▸ <`K`, `T`, `Q`\>(`query`): typeof `query`
+▸ \<`K`, `T`, `Q`\>(`query`): typeof `query`
 
 ##### Type parameters
 
@@ -1430,13 +1501,13 @@ typeof `query`
 | :------ | :------ |
 | `K` | extends `string` \| `number` \| `symbol` |
 | `T` | extends `object` |
-| `Q` | extends [`Query`](README.md#query)<`T`\> |
+| `Q` | extends [`Query`](README.md#query)\<`T`\> |
 
 ##### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `query` | `Q` & { `type`: `K`  } |
+| `query` | `Q` & \{ `type`: `K`  } |
 
 ##### Returns
 
@@ -1444,13 +1515,13 @@ typeof `query`
 
 #### Defined in
 
-[lib/tools/defineCheckQuery.ts:8](https://github.com/nevoland/quetch/blob/fbf3307/lib/tools/defineCheckQuery.ts#L8)
+[lib/tools/defineCheckQuery.ts:8](https://github.com/nevoland/quetch/blob/b46dff0534f861059aba3484d2e1d047d841b31f/lib/tools/defineCheckQuery.ts#L8)
 
 ___
 
 ### defineCustomFetch
 
-▸ **defineCustomFetch**<`M`\>(`handler`): <K, T, Q\>(`query`: `Q` & { `type`: `K`  }) => `Promise`<[`Result`](README.md#result)<`T`, `Q`\>\><T, Q\>(`type`: `T`[], `query`: `Q`) => `Promise`<[`Result`](README.md#result)<`T`, `Q`\>\>
+▸ **defineCustomFetch**\<`M`\>(`handler`): \<K, T, Q\>(`query`: `Q` & \{ `type`: `K`  }) => `Promise`\<[`Result`](README.md#result)\<`T`, `Q`\>\>\<T, Q\>(`type`: `T`[], `query`: `Q`) => `Promise`\<[`Result`](README.md#result)\<`T`, `Q`\>\>
 
 Returns a custom fetch function that handles a `query`
 
@@ -1458,13 +1529,13 @@ Returns a custom fetch function that handles a `query`
 
 | Name | Type |
 | :------ | :------ |
-| `M` | extends `Record`<`string`, `object`\> |
+| `M` | extends `Record`\<`string`, `object`\> |
 
 #### Parameters
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `handler` | [`Handler`](README.md#handler)<`Object`, `any`, `never`, `never`\> | The query handler. |
+| `handler` | [`Handler`](README.md#handler)\<[`Query`](README.md#query)\<`any`\> & \{ `type`: any[] \| Key  }, `any`, `never`, `never`\> | The query handler. |
 
 #### Returns
 
@@ -1472,7 +1543,7 @@ Returns a custom fetch function that handles a `query`
 
 A custom fetch function.
 
-▸ <`K`, `T`, `Q`\>(`query`): `Promise`<[`Result`](README.md#result)<`T`, `Q`\>\>
+▸ \<`K`, `T`, `Q`\>(`query`): `Promise`\<[`Result`](README.md#result)\<`T`, `Q`\>\>
 
 ##### Type parameters
 
@@ -1480,26 +1551,26 @@ A custom fetch function.
 | :------ | :------ |
 | `K` | extends `string` \| `number` \| `symbol` |
 | `T` | extends `object` |
-| `Q` | extends [`Query`](README.md#query)<`T`\> |
+| `Q` | extends [`Query`](README.md#query)\<`T`\> |
 
 ##### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `query` | `Q` & { `type`: `K`  } |
+| `query` | `Q` & \{ `type`: `K`  } |
 
 ##### Returns
 
-`Promise`<[`Result`](README.md#result)<`T`, `Q`\>\>
+`Promise`\<[`Result`](README.md#result)\<`T`, `Q`\>\>
 
-▸ <`T`, `Q`\>(`type`, `query`): `Promise`<[`Result`](README.md#result)<`T`, `Q`\>\>
+▸ \<`T`, `Q`\>(`type`, `query`): `Promise`\<[`Result`](README.md#result)\<`T`, `Q`\>\>
 
 ##### Type parameters
 
 | Name | Type |
 | :------ | :------ |
 | `T` | extends `object` |
-| `Q` | extends [`Query`](README.md#query)<`T`\> |
+| `Q` | extends [`Query`](README.md#query)\<`T`\> |
 
 ##### Parameters
 
@@ -1510,17 +1581,17 @@ A custom fetch function.
 
 ##### Returns
 
-`Promise`<[`Result`](README.md#result)<`T`, `Q`\>\>
+`Promise`\<[`Result`](README.md#result)\<`T`, `Q`\>\>
 
 #### Defined in
 
-[lib/tools/defineCustomFetch.ts:11](https://github.com/nevoland/quetch/blob/fbf3307/lib/tools/defineCustomFetch.ts#L11)
+[lib/tools/defineCustomFetch.ts:11](https://github.com/nevoland/quetch/blob/b46dff0534f861059aba3484d2e1d047d841b31f/lib/tools/defineCustomFetch.ts#L11)
 
 ___
 
 ### defineGenericFetch
 
-▸ **defineGenericFetch**<`K`\>(`handler`): <T\>() => <Q\>(`query`: `Q` & { `type`: `K` \| `T`[]  }) => `Promise`<[`Result`](README.md#result)<`T`, `Q`\>\>
+▸ **defineGenericFetch**\<`K`\>(`handler`): \<T\>() => \<Q\>(`query`: `Q` & \{ `type`: `K` \| `T`[]  }) => `Promise`\<[`Result`](README.md#result)\<`T`, `Q`\>\>
 
 Returns a generic fetch function that has to be called like this:
 ```ts
@@ -1537,7 +1608,7 @@ genericFetch<T>()(query)
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `handler` | [`Handler`](README.md#handler)<`Object`, `any`, `never`, `never`\> | The query handler. |
+| `handler` | [`Handler`](README.md#handler)\<[`Query`](README.md#query)\<`any`\> & \{ `type`: any[] \| Key  }, `any`, `never`, `never`\> | The query handler. |
 
 #### Returns
 
@@ -1545,7 +1616,7 @@ genericFetch<T>()(query)
 
 A curried generic fetch function.
 
-▸ <`T`\>(): <Q\>(`query`: `Q` & { `type`: `K` \| `T`[]  }) => `Promise`<[`Result`](README.md#result)<`T`, `Q`\>\>
+▸ \<`T`\>(): \<Q\>(`query`: `Q` & \{ `type`: `K` \| `T`[]  }) => `Promise`\<[`Result`](README.md#result)\<`T`, `Q`\>\>
 
 ##### Type parameters
 
@@ -1557,27 +1628,27 @@ A curried generic fetch function.
 
 `fn`
 
-▸ <`Q`\>(`query`): `Promise`<[`Result`](README.md#result)<`T`, `Q`\>\>
+▸ \<`Q`\>(`query`): `Promise`\<[`Result`](README.md#result)\<`T`, `Q`\>\>
 
 ##### Type parameters
 
 | Name | Type |
 | :------ | :------ |
-| `Q` | extends [`Query`](README.md#query)<`T`\> |
+| `Q` | extends [`Query`](README.md#query)\<`T`\> |
 
 ##### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `query` | `Q` & { `type`: `K` \| `T`[]  } |
+| `query` | `Q` & \{ `type`: `K` \| `T`[]  } |
 
 ##### Returns
 
-`Promise`<[`Result`](README.md#result)<`T`, `Q`\>\>
+`Promise`\<[`Result`](README.md#result)\<`T`, `Q`\>\>
 
 #### Defined in
 
-[lib/tools/defineGenericFetch.ts:14](https://github.com/nevoland/quetch/blob/fbf3307/lib/tools/defineGenericFetch.ts#L14)
+[lib/tools/defineGenericFetch.ts:14](https://github.com/nevoland/quetch/blob/b46dff0534f861059aba3484d2e1d047d841b31f/lib/tools/defineGenericFetch.ts#L14)
 
 ___
 
@@ -1601,13 +1672,13 @@ Escaped regular expression
 
 #### Defined in
 
-[lib/tools/escapeRegex.ts:7](https://github.com/nevoland/quetch/blob/fbf3307/lib/tools/escapeRegex.ts#L7)
+[lib/tools/escapeRegex.ts:7](https://github.com/nevoland/quetch/blob/b46dff0534f861059aba3484d2e1d047d841b31f/lib/tools/escapeRegex.ts#L7)
 
 ___
 
 ### fetchExternal
 
-▸ **fetchExternal**(`fetch?`): [`Handler`](README.md#handler)<`Request`, `Response`, `never`, `never`\>
+▸ **fetchExternal**(`fetch?`): [`Handler`](README.md#handler)\<`Request`, `Response`, `never`, `never`\>
 
 Calls the provided `fetch` function, which defaults to the DOM `fetch` function, with the incoming `query`.
 
@@ -1615,23 +1686,23 @@ Calls the provided `fetch` function, which defaults to the DOM `fetch` function,
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `fetch` | (`input`: `RequestInfo` \| `URL`, `init?`: `RequestInit`) => `Promise`<`Response`\> | [MDN Reference](https://developer.mozilla.org/docs/Web/API/fetch) |
+| `fetch` | (`input`: `RequestInfo` \| `URL`, `init?`: `RequestInit`) => `Promise`\<`Response`\> | [MDN Reference](https://developer.mozilla.org/docs/Web/API/fetch) |
 
 #### Returns
 
-[`Handler`](README.md#handler)<`Request`, `Response`, `never`, `never`\>
+[`Handler`](README.md#handler)\<`Request`, `Response`, `never`, `never`\>
 
 Handler that returns a promise that resolves to the response.
 
 #### Defined in
 
-[lib/middlewares/fetchExternal.ts:12](https://github.com/nevoland/quetch/blob/fbf3307/lib/middlewares/fetchExternal.ts#L12)
+[lib/middlewares/fetchExternal.ts:12](https://github.com/nevoland/quetch/blob/b46dff0534f861059aba3484d2e1d047d841b31f/lib/middlewares/fetchExternal.ts#L12)
 
 ___
 
 ### fetchLocal
 
-▸ **fetchLocal**<`T`\>(): [`Handler`](README.md#handler)<[`Query`](README.md#query)<`T`\> & { `type`: `T`[]  }, `any`, `never`, `never`\>
+▸ **fetchLocal**\<`T`\>(): [`Handler`](README.md#handler)\<[`Query`](README.md#query)\<`T`\> & \{ `type`: `T`[]  }, `any`, `never`, `never`\>
 
 Performs the fetch query on local data.
 
@@ -1643,19 +1714,19 @@ Performs the fetch query on local data.
 
 #### Returns
 
-[`Handler`](README.md#handler)<[`Query`](README.md#query)<`T`\> & { `type`: `T`[]  }, `any`, `never`, `never`\>
+[`Handler`](README.md#handler)\<[`Query`](README.md#query)\<`T`\> & \{ `type`: `T`[]  }, `any`, `never`, `never`\>
 
 Promise that resolves to the response.
 
 #### Defined in
 
-[lib/middlewares/fetchLocal.ts:9](https://github.com/nevoland/quetch/blob/fbf3307/lib/middlewares/fetchLocal.ts#L9)
+[lib/middlewares/fetchLocal.ts:9](https://github.com/nevoland/quetch/blob/b46dff0534f861059aba3484d2e1d047d841b31f/lib/middlewares/fetchLocal.ts#L9)
 
 ___
 
 ### filterChildren
 
-▸ **filterChildren**<`T`\>(`parentPath`, `pathFieldKey`, `deep?`, `pathSeparator?`): [`Filter`](README.md#filter)<`T`\>
+▸ **filterChildren**\<`T`\>(`parentPath`, `pathFieldKey`, `deep?`, `pathSeparator?`): [`Filter`](README.md#filter)\<`T`\>
 
 #### Type parameters
 
@@ -1668,23 +1739,23 @@ ___
 | Name | Type | Default value |
 | :------ | :------ | :------ |
 | `parentPath` | `string` | `undefined` |
-| `pathFieldKey` | [`FilterKeys`](README.md#filterkeys)<`T`, `string`\> | `undefined` |
+| `pathFieldKey` | [`FieldFiltered`](README.md#fieldfiltered)\<`T`, `string`\> | `undefined` |
 | `deep` | `boolean` | `false` |
 | `pathSeparator` | `string` | `"/"` |
 
 #### Returns
 
-[`Filter`](README.md#filter)<`T`\>
+[`Filter`](README.md#filter)\<`T`\>
 
 #### Defined in
 
-[lib/tools/filterChildren.ts:5](https://github.com/nevoland/quetch/blob/fbf3307/lib/tools/filterChildren.ts#L5)
+[lib/tools/filterChildren.ts:5](https://github.com/nevoland/quetch/blob/b46dff0534f861059aba3484d2e1d047d841b31f/lib/tools/filterChildren.ts#L5)
 
 ___
 
 ### filterFromContext
 
-▸ **filterFromContext**<`T`\>(`context`): [`Filter`](README.md#filter)<`T`\>
+▸ **filterFromContext**\<`T`\>(`context`): [`Filter`](README.md#filter)\<`T`\>
 
 #### Type parameters
 
@@ -1696,21 +1767,21 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `context` | [`Context`](README.md#context)<`T`\> |
+| `context` | [`Context`](README.md#context)\<`T`\> |
 
 #### Returns
 
-[`Filter`](README.md#filter)<`T`\>
+[`Filter`](README.md#filter)\<`T`\>
 
 #### Defined in
 
-[lib/tools/filterFromContext.ts:5](https://github.com/nevoland/quetch/blob/fbf3307/lib/tools/filterFromContext.ts#L5)
+[lib/tools/filterFromContext.ts:5](https://github.com/nevoland/quetch/blob/b46dff0534f861059aba3484d2e1d047d841b31f/lib/tools/filterFromContext.ts#L5)
 
 ___
 
 ### filterItem
 
-▸ **filterItem**<`T`\>(`filter`, `value`, `settings?`): `boolean`
+▸ **filterItem**\<`T`\>(`filter`, `value`, `settings?`): `boolean`
 
 Checks wether the provided `value` matches the `filter` or not.
 
@@ -1724,9 +1795,9 @@ Checks wether the provided `value` matches the `filter` or not.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `filter` | `undefined` \| [`Filter`](README.md#filter)<`T`\> | The filter to apply. |
+| `filter` | `undefined` \| [`Filter`](README.md#filter)\<`T`\> | The filter to apply. |
 | `value` | `undefined` \| `T` | The value to check. |
-| `settings?` | [`QuerySettings`](README.md#querysettings)<`T`\> | Optional query settings. |
+| `settings?` | [`QuerySettings`](README.md#querysettings)\<`T`\> | Optional query settings. |
 
 #### Returns
 
@@ -1736,13 +1807,48 @@ Checks wether the provided `value` matches the `filter` or not.
 
 #### Defined in
 
-[lib/tools/filterItem.ts:17](https://github.com/nevoland/quetch/blob/fbf3307/lib/tools/filterItem.ts#L17)
+[lib/tools/filterItem.ts:18](https://github.com/nevoland/quetch/blob/b46dff0534f861059aba3484d2e1d047d841b31f/lib/tools/filterItem.ts#L18)
+
+___
+
+### get
+
+▸ **get**\<`T`, `P`\>(`value`, `path?`): `Get`\<`T`, `P`\>
+
+Gets the property value of the given `value` at the specified `path` (an array of object property names or array indexes).
+If the `path` is undefined, returns the `value` itself.
+If the `path` is a string, it is considered as a path with one item.
+If the `path` leads to an unknown property, returns `undefined`.
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `T` | `T` |
+| `P` | extends `string` \| `number` \| `symbol` \| [`number`] \| [keyof `T`\<`T`\>] \| [keyof `T`\<`T`\>, ...Path\<T\<T\>[keyof T\<T\>]\>[]] |
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `value` | `T` | The value from which to get the property value. |
+| `path?` | `P` | The path leading to the property value or a property name or `undefined`. |
+
+#### Returns
+
+`Get`\<`T`, `P`\>
+
+The property value found at the given path, or `undefined` if it cannot be found.
+
+#### Defined in
+
+[lib/tools/get.ts:23](https://github.com/nevoland/quetch/blob/b46dff0534f861059aba3484d2e1d047d841b31f/lib/tools/get.ts#L23)
 
 ___
 
 ### identity
 
-▸ **identity**<`I`, `O`, `In`, `On`\>(`input`, `next`): `Promise`<`O`\>
+▸ **identity**\<`I`, `O`, `In`, `On`\>(`input`, `next`): `Promise`\<`O`\>
 
 #### Type parameters
 
@@ -1758,21 +1864,21 @@ ___
 | Name | Type |
 | :------ | :------ |
 | `input` | `I` |
-| `next` | [`NextHandler`](README.md#nexthandler)<`In`, `On`\> |
+| `next` | [`NextHandler`](README.md#nexthandler)\<`In`, `On`\> |
 
 #### Returns
 
-`Promise`<`O`\>
+`Promise`\<`O`\>
 
 #### Defined in
 
-[lib/middlewares/identity.ts:3](https://github.com/nevoland/quetch/blob/fbf3307/lib/middlewares/identity.ts#L3)
+[lib/middlewares/identity.ts:3](https://github.com/nevoland/quetch/blob/b46dff0534f861059aba3484d2e1d047d841b31f/lib/middlewares/identity.ts#L3)
 
 ___
 
 ### isFilterGroup
 
-▸ **isFilterGroup**<`T`\>(`value`): value is FilterGroup<T\>
+▸ **isFilterGroup**\<`T`\>(`value`): value is FilterGroup\<T\>
 
 Returns `true` if the provided filter `value` is a group filter or not.
 
@@ -1786,23 +1892,23 @@ Returns `true` if the provided filter `value` is a group filter or not.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `value` | `undefined` \| [`Filter`](README.md#filter)<`T`\> | The filter to test. |
+| `value` | `undefined` \| [`Filter`](README.md#filter)\<`T`\> | The filter to test. |
 
 #### Returns
 
-value is FilterGroup<T\>
+value is FilterGroup\<T\>
 
 Whether the provided filter is a group filter or not.
 
 #### Defined in
 
-[lib/tools/isFilterGroup.ts:9](https://github.com/nevoland/quetch/blob/fbf3307/lib/tools/isFilterGroup.ts#L9)
+[lib/tools/isFilterGroup.ts:9](https://github.com/nevoland/quetch/blob/b46dff0534f861059aba3484d2e1d047d841b31f/lib/tools/isFilterGroup.ts#L9)
 
 ___
 
 ### log
 
-▸ **log**<`I`, `O`, `In`, `On`\>(`title?`): [`Handler`](README.md#handler)<`I`, `O`, `In`, `On`\>
+▸ **log**\<`I`, `O`, `In`, `On`\>(`title?`): [`Handler`](README.md#handler)\<`I`, `O`, `In`, `On`\>
 
 Logs the outgoing query and the incoming result or the error.
 
@@ -1823,19 +1929,19 @@ Logs the outgoing query and the incoming result or the error.
 
 #### Returns
 
-[`Handler`](README.md#handler)<`I`, `O`, `In`, `On`\>
+[`Handler`](README.md#handler)\<`I`, `O`, `In`, `On`\>
 
 Query handler
 
 #### Defined in
 
-[lib/middlewares/log.ts:13](https://github.com/nevoland/quetch/blob/fbf3307/lib/middlewares/log.ts#L13)
+[lib/middlewares/log.ts:13](https://github.com/nevoland/quetch/blob/b46dff0534f861059aba3484d2e1d047d841b31f/lib/middlewares/log.ts#L13)
 
 ___
 
 ### normalizeOrder
 
-▸ **normalizeOrder**<`T`\>(`order`): `Object`
+▸ **normalizeOrder**\<`T`\>(`order`): `Object`
 
 #### Type parameters
 
@@ -1847,7 +1953,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `order` | [`Order`](README.md#order)<`T`\> |
+| `order` | [`Order`](README.md#order)\<`T`\> |
 
 #### Returns
 
@@ -1860,40 +1966,40 @@ ___
 
 #### Defined in
 
-[lib/tools/normalizeOrder.ts:3](https://github.com/nevoland/quetch/blob/fbf3307/lib/tools/normalizeOrder.ts#L3)
+[lib/tools/normalizeOrder.ts:3](https://github.com/nevoland/quetch/blob/b46dff0534f861059aba3484d2e1d047d841b31f/lib/tools/normalizeOrder.ts#L3)
 
 ___
 
 ### queryItemList
 
-▸ **queryItemList**<`T`, `Q`\>(`query`): [`Result`](README.md#result)<`T`, `Q`\>
+▸ **queryItemList**\<`T`, `Q`\>(`query`): [`Result`](README.md#result)\<`T`, `Q`\>
 
 #### Type parameters
 
 | Name | Type |
 | :------ | :------ |
 | `T` | extends `object` |
-| `Q` | extends [`Query`](README.md#query)<`T`\> |
+| `Q` | extends [`Query`](README.md#query)\<`T`\> |
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `query` | `Q` & { `type`: `T`[]  } |
+| `query` | `Q` & \{ `type`: `T`[]  } |
 
 #### Returns
 
-[`Result`](README.md#result)<`T`, `Q`\>
+[`Result`](README.md#result)\<`T`, `Q`\>
 
 #### Defined in
 
-[lib/tools/queryItemList.ts:41](https://github.com/nevoland/quetch/blob/fbf3307/lib/tools/queryItemList.ts#L41)
+[lib/tools/queryItemList.ts:41](https://github.com/nevoland/quetch/blob/b46dff0534f861059aba3484d2e1d047d841b31f/lib/tools/queryItemList.ts#L41)
 
 ___
 
 ### retry
 
-▸ **retry**(`options?`): [`Handler`](README.md#handler)<`Request`, `Response`, `Request`, `Response`\>
+▸ **retry**(`options?`): [`Handler`](README.md#handler)\<`Request`, `Response`, `Request`, `Response`\>
 
 Retries a failed query call up to `amount` times, with a given `delay` in milliseconds at ±`delayDelta` milliseconds.
 Note that an `amount` set to `Infinity` results in indefinitely trying to resolve a query call.
@@ -1901,28 +2007,28 @@ Only instances of `RequestError` that do not result in a `500` status error will
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `options` | `Object` |
-| `options.amount` | `undefined` \| `number` |
-| `options.delay` | `undefined` \| `number` |
-| `options.delayDelta` | `undefined` \| `number` |
+| Name | Type | Default value |
+| :------ | :------ | :------ |
+| `options` | `Object` | `{}` |
+| `options.amount` | `undefined` \| `number` | `5` |
+| `options.delay` | `undefined` \| `number` | `1000` |
+| `options.delayDelta` | `undefined` \| `number` | `500` |
 
 #### Returns
 
-[`Handler`](README.md#handler)<`Request`, `Response`, `Request`, `Response`\>
+[`Handler`](README.md#handler)\<`Request`, `Response`, `Request`, `Response`\>
 
 Handler
 
 #### Defined in
 
-[lib/middlewares/retry.ts:15](https://github.com/nevoland/quetch/blob/fbf3307/lib/middlewares/retry.ts#L15)
+[lib/middlewares/retry.ts:15](https://github.com/nevoland/quetch/blob/b46dff0534f861059aba3484d2e1d047d841b31f/lib/middlewares/retry.ts#L15)
 
 ___
 
 ### sortItemList
 
-▸ **sortItemList**<`T`\>(`orderList`, `value`): `T`[]
+▸ **sortItemList**\<`T`\>(`orderList`, `value`): `T`[]
 
 Sorts provided `value` array *in place* according to the `orderList`.
 
@@ -1936,7 +2042,7 @@ Sorts provided `value` array *in place* according to the `orderList`.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `orderList` | `undefined` \| [`Order`](README.md#order)<`T`\>[] | The order to use for sorting. |
+| `orderList` | `undefined` \| [`Order`](README.md#order)\<`T`\>[] | The order to use for sorting. |
 | `value` | `T`[] | The array to sort. |
 
 #### Returns
@@ -1947,4 +2053,4 @@ The same array sorted in place.
 
 #### Defined in
 
-[lib/tools/sortItemList.ts:12](https://github.com/nevoland/quetch/blob/fbf3307/lib/tools/sortItemList.ts#L12)
+[lib/tools/sortItemList.ts:12](https://github.com/nevoland/quetch/blob/b46dff0534f861059aba3484d2e1d047d841b31f/lib/tools/sortItemList.ts#L12)
