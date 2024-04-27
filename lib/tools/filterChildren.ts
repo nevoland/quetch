@@ -1,10 +1,10 @@
-import type { Filter, FilterKeys } from "../types.ts";
+import type { FieldFiltered, Filter } from "../types.ts";
 
 import { escapeRegex } from "./escapeRegex.js";
 
 export function filterChildren<T extends object>(
   parentPath: string,
-  pathFieldKey: FilterKeys<T, string>,
+  pathFieldKey: FieldFiltered<T, string>,
   deep = false,
   pathSeparator = "/",
 ): Filter<T> {

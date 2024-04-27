@@ -1,4 +1,4 @@
-import type { FilterKeys } from "./FilterKeys";
+import type { FieldFiltered } from "./FieldFiltered";
 
 /**
  * Checks if a given number field matches a given number value according to a given operator.
@@ -11,6 +11,6 @@ export type FilterNumber<T extends object> = {
     | "greaterThanOrEqual"
     | "lowerThan"
     | "lowerThanOrEqual";
-  field: FilterKeys<T, number>;
+  field: FieldFiltered<T, number>;
   value: number;
 };

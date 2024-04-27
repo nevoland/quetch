@@ -1,3 +1,5 @@
+import type { Field } from "./Field";
+
 /**
  * Checks if a given field exists.
  */
@@ -6,5 +8,5 @@ export type FilterField<T extends object> = {
   /**
    * The field name for which to check its existence.
    */
-  value: keyof T;
+  value: Field<T>;
 };

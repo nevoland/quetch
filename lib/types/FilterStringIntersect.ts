@@ -1,4 +1,4 @@
-import type { FilterKeys } from "./FilterKeys";
+import type { FieldFiltered } from "./FieldFiltered";
 import type { Locale } from "./Locale";
 
 /**
@@ -6,7 +6,7 @@ import type { Locale } from "./Locale";
  */
 export type FilterStringIntersect<T extends object> = {
   operator: "intersect";
-  field: FilterKeys<T, string>;
+  field: FieldFiltered<T, string>;
   value: string[];
   options?: Intl.CollatorOptions;
   locale?: Locale;

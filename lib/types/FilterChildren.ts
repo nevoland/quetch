@@ -9,7 +9,7 @@ import type { Filter } from "./Filter";
  */
 export type FilterChildren<T extends object> = {
   operator: "children";
-  value: Context<T> | string;
+  value?: Context<T> | string;
   deep?: boolean;
   [SymbolCache]?: Filter<T>;
 };

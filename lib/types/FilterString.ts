@@ -1,4 +1,4 @@
-import type { FilterKeys } from "./FilterKeys";
+import type { FieldFiltered } from "./FieldFiltered";
 import type { Locale } from "./Locale";
 
 /**
@@ -15,7 +15,7 @@ export type FilterString<T extends object> = {
     | "greaterThanOrEqual"
     | "lowerThan"
     | "lowerThanOrEqual";
-  field: FilterKeys<T, string>;
+  field: FieldFiltered<T, string>;
   value: string;
   options?: Intl.CollatorOptions;
   locale?: Locale;

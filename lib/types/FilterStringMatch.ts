@@ -1,13 +1,13 @@
 import type { SymbolCache } from "../constants/SymbolCache";
 
-import type { FilterKeys } from "./FilterKeys";
+import type { FieldFiltered } from "./FieldFiltered";
 
 /**
  * Checks if a given string field matches a given regular expression.
  */
 export type FilterStringMatch<T extends object> = {
   operator: "match";
-  field: FilterKeys<T, string>;
+  field: FieldFiltered<T, string>;
   /**
    * Raw regular expression string.
    */

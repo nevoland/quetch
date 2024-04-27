@@ -1,8 +1,9 @@
 import { SymbolCache } from "../constants/SymbolCache.js";
-import type { Any, Filter, FilterKeys } from "../types";
+import type { Any, FieldFiltered, Filter } from "../types";
 import type { QuerySettings } from "../types/QuerySettings.js";
 
 import { filterChildren } from "./filterChildren.js";
+import { get } from "./get.js";
 
 const { isArray } = Array;
 
@@ -41,11 +42,10 @@ export function filterItem<T extends object>(
       return filter.value.every((filter) => !filterItem(filter, value));
     }
     case "exist":
-      // TODO: Handle path
-      return filter.value in value;
+      return get(value, filter.value) !== undefined;
     case "equal": {
       if (isArray(filter.value)) {
-        const item = value[filter.field] as Any[] | undefined;
+        const item = get(value, filter.field) as Any[] | undefined;
         if (!isArray(item)) {
           return false;
         }
@@ -54,7 +54,7 @@ export function filterItem<T extends object>(
         }
         return filter.value.every((value) => item.includes(value));
       }
-      const item = value[filter.field];
+      const item = get(value, filter.field);
       if (item === filter.value) {
         return true;
       }
@@ -65,7 +65,7 @@ export function filterItem<T extends object>(
         return (
           item !== undefined &&
           filter.value.localeCompare(
-            item as string,
+            item as any,
             filter.locale,
             filter.options,
           ) === 0
@@ -74,7 +74,7 @@ export function filterItem<T extends object>(
       return false;
     }
     case "notEqual": {
-      const item = value[filter.field];
+      const item = get(value, filter.field);
       if (item === filter.value) {
         return false;
       }
@@ -84,7 +84,7 @@ export function filterItem<T extends object>(
       ) {
         return (
           filter.value.localeCompare(
-            value[filter.field] as string,
+            get(value, filter.field) as string,
             filter.locale,
             filter.options,
           ) !== 0
@@ -100,7 +100,7 @@ export function filterItem<T extends object>(
             break;
           default: {
             const {
-              pathFieldKey = "id" as FilterKeys<T, string>,
+              pathFieldKey = "id" as FieldFiltered<T, string>,
               pathFieldSeparator = "/",
             } = settings || {};
             filter[SymbolCache] = filterChildren(
@@ -118,7 +118,7 @@ export function filterItem<T extends object>(
       return filter.value(value);
     }
     case "startWith": {
-      const item = value[filter.field] as string | undefined;
+      const item = get(value, filter.field) as string | undefined;
       if (item === undefined || item.length < filter.value.length) {
         return false;
       }
@@ -134,7 +134,7 @@ export function filterItem<T extends object>(
       return item.startsWith(filter.value) ?? false;
     }
     case "endWith": {
-      const item = value[filter.field] as string | undefined;
+      const item = get(value, filter.field) as string | undefined;
       if (item === undefined || item.length < filter.value.length) {
         return false;
       }
@@ -150,7 +150,7 @@ export function filterItem<T extends object>(
       return item.endsWith(filter.value) ?? false;
     }
     case "include": {
-      const item = value[filter.field] as string | any[];
+      const item = get(value, filter.field) as string | any[];
       if (item == null) {
         return false;
       }
@@ -186,7 +186,7 @@ export function filterItem<T extends object>(
       return item.includes?.(filter.value) ?? false;
     }
     case "greaterThan": {
-      const item = value[filter.field];
+      const item = get(value, filter.field);
       if (
         ("options" in filter && filter.options) ||
         ("locale" in filter && filter.locale)
@@ -202,7 +202,7 @@ export function filterItem<T extends object>(
       return item > filter.value;
     }
     case "greaterThanOrEqual": {
-      const item = value[filter.field];
+      const item = get(value, filter.field);
       if (
         ("options" in filter && filter.options) ||
         ("locale" in filter && filter.locale)
@@ -218,7 +218,7 @@ export function filterItem<T extends object>(
       return item >= filter.value;
     }
     case "lowerThan": {
-      const item = value[filter.field];
+      const item = get(value, filter.field);
       if (
         ("options" in filter && filter.options) ||
         ("locale" in filter && filter.locale)
@@ -234,7 +234,7 @@ export function filterItem<T extends object>(
       return item < filter.value;
     }
     case "lowerThanOrEqual": {
-      const item = value[filter.field];
+      const item = get(value, filter.field);
       if (
         ("options" in filter && filter.options) ||
         ("locale" in filter && filter.locale)
@@ -250,7 +250,7 @@ export function filterItem<T extends object>(
       return item <= filter.value;
     }
     case "match": {
-      const item = value[filter.field] as string | undefined;
+      const item = get(value, filter.field) as string | undefined;
       if (item === undefined) {
         return false;
       }
@@ -265,7 +265,7 @@ export function filterItem<T extends object>(
       return filter[SymbolCache].test(item);
     }
     case "intersect": {
-      const item = value[filter.field];
+      const item = get(value, filter.field);
       if (item == null) {
         return false;
       }
