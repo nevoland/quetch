@@ -53,3 +53,4 @@ export type { QueryUpdate } from "./types/QueryUpdate";
 export type { QueryUpdateMultiple } from "./types/QueryUpdateMultiple";
 export type { Result } from "./types/Result";
 export type { Store } from "./types/Store";
+export type { Value } from "./types/Value";
