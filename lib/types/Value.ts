@@ -6,6 +6,6 @@ export type Value<T extends object, V> =
       reference?: false;
     }
   | {
-      reference: true;
       value: FieldFiltered<T, V>;
+      reference: true;
     };

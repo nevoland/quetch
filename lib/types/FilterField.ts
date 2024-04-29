@@ -6,7 +6,7 @@ import type { Field } from "./Field";
 export type FilterField<T extends object> = {
   operator: "exist";
   /**
-   * The field name for which to check its existence.
+   * The field name or path for which to check its existence.
    */
   value: Field<T>;
 };

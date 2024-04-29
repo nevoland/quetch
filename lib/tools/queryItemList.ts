@@ -18,14 +18,14 @@ function mergeContextAndFilter<T extends object>(
   filter?: Filter<T>,
 ): Filter<T> {
   if (context === undefined) {
-    return filter ?? { operator: "any" };
+    return (filter as any) ?? { operator: "any" };
   }
   if (filter === undefined) {
     return filterFromContext(context);
   }
   return {
     operator: "all",
-    value: [filterFromContext(context), filter],
+    value: [filterFromContext(context), filter as any],
   };
 }
 

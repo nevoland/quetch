@@ -99,6 +99,12 @@ test("tests filter on string values", () => {
   ).toBe(true);
   expect(
     filterItem(
+      { field: "a", operator: "equal", reference: true, value: "b" },
+      { a: "foo", b: "foo" },
+    ),
+  ).toBe(true);
+  expect(
+    filterItem(
       {
         field: "a",
         operator: "equal",

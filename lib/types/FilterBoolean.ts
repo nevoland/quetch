@@ -1,4 +1,5 @@
 import type { FieldFiltered } from "./FieldFiltered";
+import type { Value } from "./Value";
 
 /**
  * Checks if a given boolean field is `true` or `false`.
@@ -6,5 +7,4 @@ import type { FieldFiltered } from "./FieldFiltered";
 export type FilterBoolean<T extends object> = {
   operator: "equal" | "notEqual";
   field: FieldFiltered<T, boolean>;
-  value: boolean;
-};
+} & Value<T, boolean>;
