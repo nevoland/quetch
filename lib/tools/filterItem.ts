@@ -10,9 +10,9 @@ const { isArray } = Array;
 function valueFromFilter<T extends object, F extends Filter<T>>(
   value: T,
   filter: F,
-): F extends { value: infer V; reference?: false } ? V : never {
-  if ("reference" in filter && filter.reference) {
-    return get(value, filter.value) as any;
+): F extends { value: infer V } ? V : never {
+  if ("valueField" in filter) {
+    return get(value, filter.valueField) as any;
   }
   return filter.value as any;
 }
