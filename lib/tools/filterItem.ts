@@ -54,19 +54,19 @@ export function filterItem<T extends object>(
     case "exist":
       return get(value, filter.value) !== undefined;
     case "equal": {
-      const filterValue = valueFromFilter(value, filter);
-      if (isArray(filterValue)) {
-        const item = get(value, filter.field) as Any[] | undefined;
-        if (!isArray(item)) {
+      const rightValue = valueFromFilter(value, filter);
+      if (isArray(rightValue)) {
+        const leftValue = get(value, filter.field) as Any[] | undefined;
+        if (!isArray(leftValue)) {
           return false;
         }
-        if (filterValue.length !== item.length) {
+        if (rightValue.length !== leftValue.length) {
           return false;
         }
-        return filterValue.every((value) => item.includes(value));
+        return rightValue.every((value) => leftValue.includes(value));
       }
-      const item = get(value, filter.field);
-      if (item === filterValue) {
+      const leftValue = get(value, filter.field);
+      if (leftValue === rightValue) {
         return true;
       }
       if (
@@ -74,9 +74,9 @@ export function filterItem<T extends object>(
         (filter as FilterString<T>).locale
       ) {
         return (
-          item !== undefined &&
-          (filterValue as string).localeCompare(
-            item as any,
+          leftValue !== undefined &&
+          (rightValue as string).localeCompare(
+            leftValue as any,
             (filter as FilterString<T>).locale,
             (filter as FilterString<T>).options,
           ) === 0
@@ -85,9 +85,9 @@ export function filterItem<T extends object>(
       return false;
     }
     case "notEqual": {
-      const filterValue = valueFromFilter(value, filter);
-      const item = get(value, filter.field);
-      if (item === filterValue) {
+      const rightValue = valueFromFilter(value, filter);
+      const leftValue = get(value, filter.field);
+      if (leftValue === rightValue) {
         return false;
       }
       if (
@@ -95,7 +95,7 @@ export function filterItem<T extends object>(
         (filter as FilterString<T>).locale
       ) {
         return (
-          (filterValue as string).localeCompare(
+          (rightValue as string).localeCompare(
             get(value, filter.field) as string,
             (filter as FilterString<T>).locale,
             (filter as FilterString<T>).options,
@@ -130,65 +130,65 @@ export function filterItem<T extends object>(
       return filter.value(value);
     }
     case "startWith": {
-      const filterValue = valueFromFilter(value, filter);
-      const item = get(value, filter.field) as string | undefined;
-      if (item === undefined || item.length < filterValue.length) {
+      const rightValue = valueFromFilter(value, filter);
+      const leftValue = get(value, filter.field) as string | undefined;
+      if (leftValue === undefined || leftValue.length < rightValue.length) {
         return false;
       }
       if (filter.options !== undefined || filter.locale !== undefined) {
         return (
-          filterValue.localeCompare(
-            item.slice(0, filterValue.length),
+          rightValue.localeCompare(
+            leftValue.slice(0, rightValue.length),
             filter.locale,
             filter.options,
           ) !== 0
         );
       }
-      return item.startsWith(filterValue) ?? false;
+      return leftValue.startsWith(rightValue) ?? false;
     }
     case "endWith": {
-      const filterValue = valueFromFilter(value, filter);
-      const item = get(value, filter.field) as string | undefined;
-      if (item === undefined || item.length < filterValue.length) {
+      const rightValue = valueFromFilter(value, filter);
+      const leftValue = get(value, filter.field) as string | undefined;
+      if (leftValue === undefined || leftValue.length < rightValue.length) {
         return false;
       }
       if (filter.options !== undefined || filter.locale !== undefined) {
         return (
-          filterValue.localeCompare(
-            item.slice(-filterValue.length),
+          rightValue.localeCompare(
+            leftValue.slice(-rightValue.length),
             filter.locale,
             filter.options,
           ) !== 0
         );
       }
-      return item.endsWith(filterValue) ?? false;
+      return leftValue.endsWith(rightValue) ?? false;
     }
     case "include": {
-      const filterValue = valueFromFilter(value, filter);
-      const item = get(value, filter.field) as string | any[];
-      if (item == null) {
+      const rightValue = valueFromFilter(value, filter);
+      const leftValue = get(value, filter.field) as string | any[];
+      if (leftValue == null) {
         return false;
       }
-      if (isArray(filterValue)) {
+      if (isArray(rightValue)) {
         // FIXME: Get unique values
-        if (!isArray(item) || item.length < filterValue.length) {
+        if (!isArray(leftValue) || leftValue.length < rightValue.length) {
           return false;
         }
-        return filterValue.every((value) => item.includes(value));
+        return rightValue.every((value) => leftValue.includes(value));
       }
-      if (isArray(item) || item.length < filterValue.length) {
+      if (isArray(leftValue) || leftValue.length < rightValue.length) {
         return false;
       }
       if (
         (filter as FilterString<T>).options ||
         (filter as FilterString<T>).locale
       ) {
-        const { length } = filterValue;
-        const end = item.length - length + 1;
+        const { length } = rightValue;
+        const end = leftValue.length - length + 1;
         for (let i = 0; i < end; i++) {
           if (
-            filterValue.localeCompare(
-              item.slice(i, i + length),
+            rightValue.localeCompare(
+              leftValue.slice(i, i + length),
               (filter as FilterString<T>).locale,
               (filter as FilterString<T>).options,
             ) === 0
@@ -198,102 +198,102 @@ export function filterItem<T extends object>(
         }
         return false;
       }
-      return item.includes?.(filterValue) ?? false;
+      return leftValue.includes?.(rightValue) ?? false;
     }
     case "greaterThan": {
-      const filterValue = valueFromFilter(value, filter);
-      const item = get(value, filter.field);
+      const rightValue = valueFromFilter(value, filter);
+      const leftValue = get(value, filter.field);
       if (
         (filter as FilterString<T>).options ||
         (filter as FilterString<T>).locale
       ) {
         return (
-          (filterValue as string).localeCompare(
-            item as string,
+          (rightValue as string).localeCompare(
+            leftValue as string,
             (filter as FilterString<T>).locale,
             (filter as FilterString<T>).options,
           ) < 0
         );
       }
-      return item > filterValue;
+      return leftValue > rightValue;
     }
     case "greaterThanOrEqual": {
-      const filterValue = valueFromFilter(value, filter);
-      const item = get(value, filter.field);
+      const rightValue = valueFromFilter(value, filter);
+      const leftValue = get(value, filter.field);
       if (
         (filter as FilterString<T>).options ||
         (filter as FilterString<T>).locale
       ) {
         return (
-          (filterValue as string).localeCompare(
-            item as string,
+          (rightValue as string).localeCompare(
+            leftValue as string,
             (filter as FilterString<T>).locale,
             (filter as FilterString<T>).options,
           ) <= 0
         );
       }
-      return item >= filterValue;
+      return leftValue >= rightValue;
     }
     case "lowerThan": {
-      const filterValue = valueFromFilter(value, filter);
-      const item = get(value, filter.field);
+      const rightValue = valueFromFilter(value, filter);
+      const leftValue = get(value, filter.field);
       if (
         (filter as FilterString<T>).options ||
         (filter as FilterString<T>).locale
       ) {
         return (
-          (filterValue as string).localeCompare(
-            item as string,
+          (rightValue as string).localeCompare(
+            leftValue as string,
             (filter as FilterString<T>).locale,
             (filter as FilterString<T>).options,
           ) > 0
         );
       }
-      return item < filterValue;
+      return leftValue < rightValue;
     }
     case "lowerThanOrEqual": {
-      const filterValue = valueFromFilter(value, filter);
-      const item = get(value, filter.field);
+      const rightValue = valueFromFilter(value, filter);
+      const leftValue = get(value, filter.field);
       if (
         (filter as FilterString<T>).options ||
         (filter as FilterString<T>).locale
       ) {
         return (
-          (filterValue as string).localeCompare(
-            item as string,
+          (rightValue as string).localeCompare(
+            leftValue as string,
             (filter as FilterString<T>).locale,
             (filter as FilterString<T>).options,
           ) >= 0
         );
       }
-      return item <= filterValue;
+      return leftValue <= rightValue;
     }
     case "match": {
-      const filterValue = valueFromFilter(value, filter);
-      const item = get(value, filter.field) as string | undefined;
-      if (item === undefined) {
+      const rightValue = valueFromFilter(value, filter);
+      const leftValue = get(value, filter.field) as string | undefined;
+      if (leftValue === undefined) {
         return false;
       }
       if (filter[SymbolCache] === undefined) {
         filter[SymbolCache] = new RegExp(
-          filterValue,
+          rightValue,
           `${filter.options?.ignoreCase ? "i" : ""}${
             filter.options?.dotAll ? "s" : ""
           }`,
         );
       }
-      return filter[SymbolCache].test(item);
+      return filter[SymbolCache].test(leftValue);
     }
     case "intersect": {
-      const filterValue = valueFromFilter(value, filter);
-      const item = get(value, filter.field);
-      if (item == null) {
+      const rightValue = valueFromFilter(value, filter);
+      const leftValue = get(value, filter.field);
+      if (leftValue == null) {
         return false;
       }
-      if (isArray(item)) {
+      if (isArray(leftValue)) {
         return (
-          isArray(filterValue) &&
-          filterValue.some((value) => item.includes(value))
+          isArray(rightValue) &&
+          rightValue.some((value) => leftValue.includes(value))
         );
       }
       if (
@@ -301,18 +301,18 @@ export function filterItem<T extends object>(
         (filter as FilterString<T>).locale
       ) {
         return (
-          item !== undefined &&
-          (filterValue as string[]).some(
+          leftValue !== undefined &&
+          (rightValue as string[]).some(
             (value) =>
               value.localeCompare(
-                item as string,
+                leftValue as string,
                 (filter as FilterString<T>).locale,
                 (filter as FilterString<T>).options,
               ) === 0,
           )
         );
       }
-      return filterValue.includes(item as string);
+      return rightValue.includes(leftValue as string);
     }
     default:
       throw new Error(`Unknown filter operator '${(filter as any).operator}'`);
