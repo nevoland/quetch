@@ -10,8 +10,8 @@ import type {
 } from "../types.js";
 
 import { filterFromContext } from "./filterFromContext.js";
-import { filterItem } from "./filterItem.js";
 import { sortItemList } from "./sortItemList.js";
+import { testFilter } from "./testFilter.js";
 
 function mergeContextAndFilter<T extends object>(
   context?: Context<T>,
@@ -56,7 +56,7 @@ function queryItemList<T extends object, const Q extends Query<T>>(
             filter as Filter<T>,
           );
           result = data.filter((item) =>
-            filterItem(normalizedFilter, item, query.settings),
+            testFilter(normalizedFilter, item, query.settings),
           );
         }
         // Sort
@@ -75,7 +75,7 @@ function queryItemList<T extends object, const Q extends Query<T>>(
         filter as Filter<T>,
       );
       const result = data.find((item) =>
-        filterItem(normalizedFilter, item, query.settings),
+        testFilter(normalizedFilter, item, query.settings),
       );
       if (result === undefined) {
         throw new RequestError("Not found", 404, query as Query<any>);
@@ -94,7 +94,7 @@ function queryItemList<T extends object, const Q extends Query<T>>(
             filter as Filter<T>,
           );
           return data.reduce((result, item) => {
-            if (filterItem(normalizedFilter, item, query.settings)) {
+            if (testFilter(normalizedFilter, item, query.settings)) {
               return result + 1;
             }
             return result;

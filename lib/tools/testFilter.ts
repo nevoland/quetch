@@ -1,6 +1,6 @@
 import { SymbolCache } from "../constants/SymbolCache.js";
-import type { Any, FieldFiltered, Filter, FilterString } from "../types";
 import type { QuerySettings } from "../types/QuerySettings.js";
+import type { Any, FieldFiltered, Filter, FilterString } from "../types.js";
 
 import { filterChildren } from "./filterChildren.js";
 import { get } from "./get.js";
@@ -25,7 +25,7 @@ function valueFromFilter<T extends object, F extends Filter<T>>(
  * @param settings Optional query settings.
  * @returns `true` if the `value` matches the `filter` and `false` otherwise.
  */
-export function filterItem<T extends object>(
+export function testFilter<T extends object>(
   filter: Filter<T> | undefined,
   value: T | undefined,
   settings?: QuerySettings<T>,
@@ -38,18 +38,18 @@ export function filterItem<T extends object>(
   }
   switch (filter.operator) {
     case "all":
-      return filter.value.every((filter) => filterItem(filter, value));
+      return filter.value.every((filter) => testFilter(filter, value));
     case "any": {
       if (filter.value === undefined || filter.value.length === 0) {
         return true;
       }
-      return filter.value.some((filter) => filterItem(filter, value));
+      return filter.value.some((filter) => testFilter(filter, value));
     }
     case "none": {
       if (filter.value === undefined || filter.value.length === 0) {
         return false;
       }
-      return filter.value.every((filter) => !filterItem(filter, value));
+      return filter.value.every((filter) => !testFilter(filter, value));
     }
     case "exist":
       return get(value, filter.value) !== undefined;
@@ -124,7 +124,7 @@ export function filterItem<T extends object>(
           }
         }
       }
-      return filterItem(filter[SymbolCache], value);
+      return testFilter(filter[SymbolCache], value);
     }
     case "custom": {
       return filter.value(value);

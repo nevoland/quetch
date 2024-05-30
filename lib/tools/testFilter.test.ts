@@ -3,11 +3,11 @@ import { expect, test } from "vitest";
 import { SymbolCache } from "../constants.js";
 import type { FilterChildren } from "../types.js";
 
-import { filterItem } from "./filterItem.js";
+import { testFilter } from "./testFilter.js";
 
 test("tests filter lists", () => {
   expect(
-    filterItem(
+    testFilter(
       {
         operator: "all",
         value: [
@@ -19,7 +19,7 @@ test("tests filter lists", () => {
     ),
   ).toBe(true);
   expect(
-    filterItem(
+    testFilter(
       {
         operator: "all",
         value: [
@@ -31,7 +31,7 @@ test("tests filter lists", () => {
     ),
   ).toBe(false);
   expect(
-    filterItem(
+    testFilter(
       {
         operator: "all",
         value: [],
@@ -40,7 +40,7 @@ test("tests filter lists", () => {
     ),
   ).toBe(true);
   expect(
-    filterItem(
+    testFilter(
       {
         operator: "any",
       },
@@ -48,7 +48,7 @@ test("tests filter lists", () => {
     ),
   ).toBe(true);
   expect(
-    filterItem(
+    testFilter(
       {
         operator: "none",
       },
@@ -56,7 +56,7 @@ test("tests filter lists", () => {
     ),
   ).toBe(false);
   expect(
-    filterItem(
+    testFilter(
       {
         operator: "any",
         value: [
@@ -68,7 +68,7 @@ test("tests filter lists", () => {
     ),
   ).toBe(true);
   expect(
-    filterItem(
+    testFilter(
       {
         operator: "none",
         value: [
@@ -80,7 +80,7 @@ test("tests filter lists", () => {
     ),
   ).toBe(true);
   expect(
-    filterItem(
+    testFilter(
       {
         operator: "none",
         value: [
@@ -95,16 +95,16 @@ test("tests filter lists", () => {
 
 test("tests filter on string values", () => {
   expect(
-    filterItem({ field: "a", operator: "equal", value: "foo" }, { a: "foo" }),
+    testFilter({ field: "a", operator: "equal", value: "foo" }, { a: "foo" }),
   ).toBe(true);
   expect(
-    filterItem(
+    testFilter(
       { field: "a", operator: "equal", valueField: "b" },
       { a: "foo", b: "foo" },
     ),
   ).toBe(true);
   expect(
-    filterItem(
+    testFilter(
       {
         field: "a",
         operator: "equal",
@@ -115,10 +115,10 @@ test("tests filter on string values", () => {
     ),
   ).toBe(true);
   expect(
-    filterItem({ field: "a", operator: "equal", value: "bar" }, { a: "foo" }),
+    testFilter({ field: "a", operator: "equal", value: "bar" }, { a: "foo" }),
   ).toBe(false);
   expect(
-    filterItem(
+    testFilter(
       {
         field: "a",
         operator: "equal",
@@ -129,19 +129,19 @@ test("tests filter on string values", () => {
     ),
   ).toBe(false);
   expect(
-    filterItem(
+    testFilter(
       { field: "a", operator: "notEqual", value: "bar" },
       { a: "foo" },
     ),
   ).toBe(true);
   expect(
-    filterItem(
+    testFilter(
       { field: "a", operator: "include", value: "bar" },
       { a: "foobar" },
     ),
   ).toBe(true);
   expect(
-    filterItem(
+    testFilter(
       {
         field: "a",
         operator: "include",
@@ -152,13 +152,13 @@ test("tests filter on string values", () => {
     ),
   ).toBe(true);
   expect(
-    filterItem(
+    testFilter(
       { field: "a", operator: "intersect", value: ["foo", "bar", "foobar"] },
       { a: "foobar" },
     ),
   ).toBe(true);
   expect(
-    filterItem(
+    testFilter(
       {
         field: "a",
         operator: "intersect",
@@ -169,13 +169,13 @@ test("tests filter on string values", () => {
     ),
   ).toBe(true);
   expect(
-    filterItem(
+    testFilter(
       { field: "a", operator: "intersect", value: ["foo", "bar"] },
       { a: "foobar" },
     ),
   ).toBe(false);
   expect(
-    filterItem(
+    testFilter(
       {
         field: "a",
         operator: "match",
@@ -186,7 +186,7 @@ test("tests filter on string values", () => {
     ),
   ).toBe(true);
   expect(
-    filterItem(
+    testFilter(
       {
         field: "a",
         operator: "match",
@@ -200,25 +200,25 @@ test("tests filter on string values", () => {
 
 test("tests filter on number values", () => {
   expect(
-    filterItem({ field: "a", operator: "equal", value: 1 }, { a: 1 }),
+    testFilter({ field: "a", operator: "equal", value: 1 }, { a: 1 }),
   ).toBe(true);
   expect(
-    filterItem({ field: "a", operator: "notEqual", value: 2 }, { a: 1 }),
+    testFilter({ field: "a", operator: "notEqual", value: 2 }, { a: 1 }),
   ).toBe(true);
   expect(
-    filterItem({ field: "a", operator: "greaterThan", value: 0 }, { a: 1 }),
+    testFilter({ field: "a", operator: "greaterThan", value: 0 }, { a: 1 }),
   ).toBe(true);
   expect(
-    filterItem(
+    testFilter(
       { field: "a", operator: "greaterThanOrEqual", value: 1 },
       { a: 1 },
     ),
   ).toBe(true);
   expect(
-    filterItem({ field: "a", operator: "lowerThan", value: 2 }, { a: 1 }),
+    testFilter({ field: "a", operator: "lowerThan", value: 2 }, { a: 1 }),
   ).toBe(true);
   expect(
-    filterItem(
+    testFilter(
       { field: "a", operator: "lowerThanOrEqual", value: 1 },
       { a: 1 },
     ),
@@ -227,28 +227,28 @@ test("tests filter on number values", () => {
 
 test("tests filter on array values", () => {
   expect(
-    filterItem({ field: "a", operator: "equal", value: [2, 1] }, { a: [1, 2] }),
+    testFilter({ field: "a", operator: "equal", value: [2, 1] }, { a: [1, 2] }),
   ).toBe(true);
   expect(
-    filterItem({ field: "a", operator: "equal", value: [2] }, { a: [1, 2] }),
+    testFilter({ field: "a", operator: "equal", value: [2] }, { a: [1, 2] }),
   ).toBe(false);
   expect(
-    filterItem({ field: "a", operator: "include", value: [1] }, { a: [1, 2] }),
+    testFilter({ field: "a", operator: "include", value: [1] }, { a: [1, 2] }),
   ).toBe(true);
   expect(
-    filterItem(
+    testFilter(
       { field: "a", operator: "include", value: [2, 3] },
       { a: [1, 2] },
     ),
   ).toBe(false);
   expect(
-    filterItem(
+    testFilter(
       { field: "a", operator: "intersect", value: [2, 3] },
       { a: [1, 2] },
     ),
   ).toBe(true);
   expect(
-    filterItem(
+    testFilter(
       { field: "a", operator: "intersect", value: [3, 4] },
       { a: [1, 2] },
     ),
@@ -256,11 +256,11 @@ test("tests filter on array values", () => {
 });
 
 test("tests filter with children predicates", () => {
-  expect(filterItem({ operator: "children", value: "a" }, { id: "a/b" })).toBe(
+  expect(testFilter({ operator: "children", value: "a" }, { id: "a/b" })).toBe(
     true,
   );
   expect(
-    filterItem(
+    testFilter(
       { operator: "children", value: ".a" },
       { path: ".a.b" },
       {
@@ -274,7 +274,7 @@ test("tests filter with children predicates", () => {
     value: "a",
   };
   expect(
-    filterItem(
+    testFilter(
       filterChildren,
       { path: ".a.b" },
       {
@@ -289,11 +289,11 @@ test("tests filter with children predicates", () => {
     ),
   ).toBe(true);
   expect(filterChildren[SymbolCache]).toBeDefined();
-  expect(filterItem({ operator: "children", value: "b" }, { id: "a/b" })).toBe(
+  expect(testFilter({ operator: "children", value: "b" }, { id: "a/b" })).toBe(
     false,
   );
   expect(
-    filterItem(
+    testFilter(
       { operator: "children", value: "ba" },
       { path: ".a.b" },
       {
