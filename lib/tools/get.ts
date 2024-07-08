@@ -1,14 +1,4 @@
-import type { Path } from "../types";
-
-type Get<T, P> = [P] extends [[infer K, ...infer R]]
-  ? K extends keyof T
-    ? R extends Path<T[K]>
-      ? Get<T[K], R>
-      : T[K]
-    : never
-  : [P] extends [keyof T]
-  ? T[P]
-  : T;
+import type { Get, Path } from "../types";
 
 /**
  * Gets the property value of the given `value` at the specified `path` (an array of object property names or array indexes).

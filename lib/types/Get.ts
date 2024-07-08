@@ -1,7 +1,7 @@
 import type { Path } from "./Path";
 
 /**
- * Returns the type of the property at the specified `K` key.
+ * Returns the type of the property at the specified `P` path.
  */
 export type Get<T, P> = [P] extends [[infer K, ...infer R]]
   ? K extends keyof T
@@ -9,4 +9,6 @@ export type Get<T, P> = [P] extends [[infer K, ...infer R]]
       ? Get<T[K], R>
       : T[K]
     : never
-  : never;
+  : [P] extends [keyof T]
+  ? T[P]
+  : T;

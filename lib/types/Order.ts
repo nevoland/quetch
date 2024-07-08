@@ -1,9 +1,11 @@
+import type { Field } from "./Field";
+
 /**
  * Order item.
  */
 export type Order<T extends object> =
-  | keyof T
+  | Field<T>
   | {
-      field: keyof T;
+      field: Field<T>;
       descending?: boolean;
     };

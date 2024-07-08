@@ -1,5 +1,6 @@
 import type { Order } from "../types";
 
+import { get } from "./get.js";
 import { normalizeOrder } from "./normalizeOrder.js";
 
 /**
@@ -16,14 +17,16 @@ export function sortItemList<T extends object>(
   if (orderList === undefined || orderList.length === 0) {
     return value;
   }
-  const normalizedorder = orderList.map(normalizeOrder);
+  const normalizedOrder = orderList.map(normalizeOrder);
   return value.sort((a, b) => {
-    for (let index = 0; index < normalizedorder.length; index++) {
-      const { field, descending } = normalizedorder[index];
-      if (a[field] === b[field]) {
+    for (let index = 0; index < normalizedOrder.length; index++) {
+      const { field, descending } = normalizedOrder[index];
+      const valueA = get(a, field);
+      const valueB = get(b, field);
+      if (valueA === valueB) {
         continue;
       }
-      if (a[field] > b[field]) {
+      if (valueA > valueB) {
         return descending ? -1 : 1;
       }
       return descending ? 1 : -1;

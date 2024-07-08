@@ -1,13 +1,18 @@
-import type { Order } from "../types";
+import type { Field, Order } from "../types";
+
+const { isArray } = Array;
 
 export function normalizeOrder<T extends object>(
   order: Order<T>,
-): { field: keyof T; descending?: boolean } {
-  if (typeof order === "object") {
-    return order;
+): {
+  field: Field<T>;
+  descending?: boolean | undefined;
+} {
+  if (isArray(order) || typeof order !== "object") {
+    return {
+      descending: false,
+      field: order,
+    };
   }
-  return {
-    descending: false,
-    field: order,
-  };
+  return order;
 }
