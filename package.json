@@ -62,7 +62,7 @@
     "eslint-plugin-inferno": "^7.32.2",
     "eslint-plugin-sort-keys": "^2.3.5",
     "eslint-plugin-tailwindcss": "^3.13.0",
-    "eslint-plugin-vitest": "^0.3.2",
+    "eslint-plugin-vitest": "^0.5.4",
     "postcss": "^8.4.31",
     "postcss-pseudo-classes": "^0.2.1",
     "preact": "^10.18.1",
@@ -74,7 +74,7 @@
     "typescript": "^5.4.5",
     "vite": "^4.4.11",
     "vite-plugin-module-list": "^2.1.0",
-    "vitest": "^0.34.6"
+    "vitest": "^1.6.0"
   },
   "dependencies": {
     "@davidbonnet/get-global": "^2.0.1",

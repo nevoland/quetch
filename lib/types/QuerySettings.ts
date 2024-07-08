@@ -6,6 +6,7 @@ import type { FilterChildren } from "./FilterChildren";
  * Settings to use when doing a query.
  */
 export type QuerySettings<T extends object> = {
+  // TODO: Move `path*` and `transform*` to fetch middleware?
   /**
    * String used to separate the path nodes of an item.
    */

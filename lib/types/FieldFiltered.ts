@@ -1,3 +1,4 @@
+import type { Join } from "./Join";
 import type { KeyFiltered } from "./KeyFiltered";
 import type { PathFiltered } from "./PathFiltered";
 

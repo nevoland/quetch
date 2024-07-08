@@ -6,10 +6,19 @@ test("gets properties", () => {
   const value = {
     a: { b: 3, c: true, d: { e: [1, 2, { f: "test" }] } },
   } as const;
-  expect(get(value, ["a", "c"])).toBe(value.a.c);
-  expect(get(value, ["a", "d", "e", 2, "f"])).toBe(value.a.d.e[2].f);
-  expect(get(value, ["a"])).toBe(value.a);
-  expect(get(value, "a")).toBe(value.a);
+
+  const result1 = get(value, ["a", "c"]);
+  expect(result1).toBe(value.a.c);
+
+  const result2 = get(value, ["a", "d", "e", 2, "f"]);
+  expect(result2).toBe(value.a.d.e[2].f);
+
+  const result3 = get(value, ["a"]);
+  expect(result3).toBe(value.a);
+
+  const result4 = get(value, "a");
+  expect(result4).toBe(value.a);
+
   // @ts-ignore
   expect(get(value, "z")).toBeUndefined();
   // @ts-ignore
