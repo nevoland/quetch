@@ -11,7 +11,7 @@ export type QueryRead<T extends object> = {
   method?: "read";
   multiple?: false;
   /**
-   * Common item properties to use for identifying the context in which to delete the item.
+   * Common item properties to use for identifying the context in which to get the item.
    */
   context?: Context<T>;
   /**
