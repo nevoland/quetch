@@ -14,7 +14,7 @@ function valueFromFilter<T extends object, F extends Filter<T>>(
   if ("valueField" in filter) {
     return get(value, filter.valueField) as any;
   }
-  return filter.value as any;
+  return (filter as any).value;
 }
 
 /**
@@ -52,7 +52,7 @@ export function testFilter<T extends object>(
       return filter.value.every((filter) => !testFilter(filter, value));
     }
     case "exist":
-      return get(value, filter.value) !== undefined;
+      return get(value, filter.field) !== undefined;
     case "equal": {
       const rightValue = valueFromFilter(value, filter);
       if (isArray(rightValue)) {

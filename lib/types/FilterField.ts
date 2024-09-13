@@ -8,5 +8,5 @@ export type FilterField<T extends object> = {
   /**
    * The field name or path for which to check its existence.
    */
-  value: Field<T>;
+  field: Field<T>;
 };
