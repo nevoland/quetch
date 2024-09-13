@@ -4,6 +4,7 @@ export { defineCheckQuery } from "./tools/defineCheckQuery.js";
 export { defineCustomFetch } from "./tools/defineCustomFetch.js";
 export { defineGenericFetch } from "./tools/defineGenericFetch.js";
 export { escapeRegex } from "./tools/escapeRegex.js";
+export { fieldListFromFilter } from "./tools/fieldListFromFilter.js";
 export { filterChildren } from "./tools/filterChildren.js";
 export { filterFromContext } from "./tools/filterFromContext.js";
 export { get } from "./tools/get.js";
