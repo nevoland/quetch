@@ -4,11 +4,11 @@ import { get } from "./get.js";
 import { normalizeOrder } from "./normalizeOrder.js";
 
 /**
- * Sorts provided `value` array *in place* according to the `orderList`.
+ * Sorts provided `value` array according to the `orderList`.
  *
  * @param orderList The order to use for sorting.
  * @param value The array to sort.
- * @returns The same array sorted in place.
+ * @returns A new sorted array.
  */
 export function sortItemList<T extends object>(
   orderList: Order<T>[] | undefined,
@@ -18,7 +18,7 @@ export function sortItemList<T extends object>(
     return value;
   }
   const normalizedOrder = orderList.map(normalizeOrder);
-  return value.sort((a, b) => {
+  return [...value].sort((a, b) => {
     for (let index = 0; index < normalizedOrder.length; index++) {
       const { field, descending } = normalizedOrder[index];
       const valueA = get(a, field);
