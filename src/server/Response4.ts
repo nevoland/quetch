@@ -14,10 +14,6 @@ type EntityMap = {
 
 const customFetch = defineCustomFetch<EntityMap>(null as any);
 
-const 
-
-
-
 const data = await customFetch({
   aggregator: "length",
   filter: {
@@ -76,4 +72,3 @@ type AandBKeys = keyof AandB;
 type GetAItem<K extends AKeys> = A[K];
 type GetBItem<K extends AKeys> = B[K];
 type AandBItem<K extends AKeys> = AandB[K];
- 

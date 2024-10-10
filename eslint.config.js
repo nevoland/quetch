@@ -25,7 +25,7 @@ const GLOBAL_NAME_LIST = [
 export default [
   {
     files: ["**/*.{js,ts,jsx,tsx}"],
-    ignores: ["dist/**/*", "node_modules/**/*"],
+    ignores: ["dist/**/*", "node_modules/**/*", "src/**/*"],
     languageOptions: {
       globals: {
         ...((keyList) => Object.fromEntries(keyList.map((key) => [key, true])))(
