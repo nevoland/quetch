@@ -2,17 +2,21 @@ import { type Filter, defineCustomFetch } from "../../lib/main.js";
 
 type EntityMap = {
   device: {
-    name: string;
+    name?: string;
   };
   user: {
-    fullName: string;
-    userName: string;
-    creationDate: string;
-    age: number;
+    fullName?: string;
+    userName?: string;
+    creationDate?: string;
+    age?: number;
   };
 };
 
 const customFetch = defineCustomFetch<EntityMap>(null as any);
+
+const 
+
+
 
 const data = await customFetch({
   aggregator: "length",
@@ -72,3 +76,4 @@ type AandBKeys = keyof AandB;
 type GetAItem<K extends AKeys> = A[K];
 type GetBItem<K extends AKeys> = B[K];
 type AandBItem<K extends AKeys> = AandB[K];
+ 
