@@ -1,35 +1,29 @@
+[**quetch**](../README.md) • **Docs**
+
+***
+
 [quetch](../README.md) / CustomFetch
 
-# Interface: CustomFetch\<T\>
+# Interface: CustomFetch()\<T\>
 
-## Type parameters
+## Type Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends `object` |
+• **T** *extends* `object`
 
-## Callable
+> **CustomFetch**\<`Q`\>(`query`): `Promise`\<[`Result`](../type-aliases/Result.md)\<`T`, `Q`\>\>
 
-### CustomFetch
+## Type Parameters
 
-▸ **CustomFetch**\<`Q`\>(`query`): `Promise`\<[`Result`](../README.md#result)\<`T`, `Q`\>\>
+• **Q** *extends* [`Query`](../type-aliases/Query.md)\<`T`\>
 
-#### Type parameters
+## Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `Q` | extends [`Query`](../README.md#query)\<`T`\> |
+• **query**: `Q`
 
-#### Parameters
+## Returns
 
-| Name | Type |
-| :------ | :------ |
-| `query` | `Q` |
+`Promise`\<[`Result`](../type-aliases/Result.md)\<`T`, `Q`\>\>
 
-#### Returns
+## Defined in
 
-`Promise`\<[`Result`](../README.md#result)\<`T`, `Q`\>\>
-
-#### Defined in
-
-[lib/types/CustomFetch.ts:5](https://github.com/nevoland/quetch/blob/b46dff0534f861059aba3484d2e1d047d841b31f/lib/types/CustomFetch.ts#L5)
+[lib/types/CustomFetch.ts:5](https://github.com/nevoland/quetch/blob/b70842cb9761fe7c217edef26e0fbc90449abccb/lib/types/CustomFetch.ts#L5)

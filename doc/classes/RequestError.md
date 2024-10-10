@@ -1,43 +1,34 @@
+[**quetch**](../README.md) • **Docs**
+
+***
+
 [quetch](../README.md) / RequestError
 
 # Class: RequestError
 
 Error to be thrown in case there is an issue with the query call. Only instances of this error will be caught by the `retry()` middleware.
 
-## Hierarchy
+## Extends
 
 - `Error`
 
-  ↳ **`RequestError`**
-
-## Table of contents
-
-### Constructors
-
-- [constructor](RequestError.md#constructor)
-
-### Properties
-
-- [query](RequestError.md#query)
-- [request](RequestError.md#request)
-- [response](RequestError.md#response)
-- [status](RequestError.md#status)
-
 ## Constructors
 
-### constructor
+### new RequestError()
 
-• **new RequestError**(`message`, `status`, `query?`, `request?`, `response?`): [`RequestError`](RequestError.md)
+> **new RequestError**(`message`, `status`, `query`?, `request`?, `response`?): [`RequestError`](RequestError.md)
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `message` | `string` |
-| `status` | `number` |
-| `query?` | [`Query`](../README.md#query)\<`any`\> |
-| `request?` | `Request` |
-| `response?` | `Response` |
+• **message**: `string`
+
+• **status**: `number`
+
+• **query?**: [`Query`](../type-aliases/Query.md)\<`any`\>
+
+• **request?**: `Request`
+
+• **response?**: `Response`
 
 #### Returns
 
@@ -45,48 +36,48 @@ Error to be thrown in case there is an issue with the query call. Only instances
 
 #### Overrides
 
-Error.constructor
+`Error.constructor`
 
 #### Defined in
 
-[lib/errors/RequestError.ts:7](https://github.com/nevoland/quetch/blob/b46dff0534f861059aba3484d2e1d047d841b31f/lib/errors/RequestError.ts#L7)
+[lib/errors/RequestError.ts:7](https://github.com/nevoland/quetch/blob/b70842cb9761fe7c217edef26e0fbc90449abccb/lib/errors/RequestError.ts#L7)
 
 ## Properties
 
-### query
+### query?
 
-• `Optional` **query**: [`Query`](../README.md#query)\<`any`\>
-
-#### Defined in
-
-[lib/errors/RequestError.ts:10](https://github.com/nevoland/quetch/blob/b46dff0534f861059aba3484d2e1d047d841b31f/lib/errors/RequestError.ts#L10)
-
-___
-
-### request
-
-• `Optional` **request**: `Request`
+> `optional` **query**: [`Query`](../type-aliases/Query.md)\<`any`\>
 
 #### Defined in
 
-[lib/errors/RequestError.ts:11](https://github.com/nevoland/quetch/blob/b46dff0534f861059aba3484d2e1d047d841b31f/lib/errors/RequestError.ts#L11)
+[lib/errors/RequestError.ts:10](https://github.com/nevoland/quetch/blob/b70842cb9761fe7c217edef26e0fbc90449abccb/lib/errors/RequestError.ts#L10)
 
-___
+***
 
-### response
+### request?
 
-• `Optional` **response**: `Response`
+> `optional` **request**: `Request`
 
 #### Defined in
 
-[lib/errors/RequestError.ts:12](https://github.com/nevoland/quetch/blob/b46dff0534f861059aba3484d2e1d047d841b31f/lib/errors/RequestError.ts#L12)
+[lib/errors/RequestError.ts:11](https://github.com/nevoland/quetch/blob/b70842cb9761fe7c217edef26e0fbc90449abccb/lib/errors/RequestError.ts#L11)
 
-___
+***
+
+### response?
+
+> `optional` **response**: `Response`
+
+#### Defined in
+
+[lib/errors/RequestError.ts:12](https://github.com/nevoland/quetch/blob/b70842cb9761fe7c217edef26e0fbc90449abccb/lib/errors/RequestError.ts#L12)
+
+***
 
 ### status
 
-• **status**: `number`
+> **status**: `number`
 
 #### Defined in
 
-[lib/errors/RequestError.ts:9](https://github.com/nevoland/quetch/blob/b46dff0534f861059aba3484d2e1d047d841b31f/lib/errors/RequestError.ts#L9)
+[lib/errors/RequestError.ts:9](https://github.com/nevoland/quetch/blob/b70842cb9761fe7c217edef26e0fbc90449abccb/lib/errors/RequestError.ts#L9)
