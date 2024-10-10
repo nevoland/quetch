@@ -2,6 +2,12 @@ import type { Field, Order } from "../types";
 
 const { isArray } = Array;
 
+/**
+ * Returns a normalized order, which is an object with the `field` and `descending` properties.
+ *
+ * @param order The string or order object.
+ * @returns The normalized order object.
+ */
 export function normalizeOrder<T extends object>(
   order: Order<T>,
 ): {
@@ -10,8 +16,8 @@ export function normalizeOrder<T extends object>(
 } {
   if (isArray(order) || typeof order !== "object") {
     return {
-      descending: false,
       field: order,
+      descending: false,
     };
   }
   return order;

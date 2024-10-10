@@ -11,5 +11,6 @@ export { get } from "./tools/get.js";
 export { isFilterGroup } from "./tools/isFilterGroup.js";
 export { normalizeOrder } from "./tools/normalizeOrder.js";
 export { queryItemList } from "./tools/queryItemList.js";
+export { reverseOrder } from "./tools/reverseOrder.js";
 export { sortItemList } from "./tools/sortItemList.js";
 export { testFilter } from "./tools/testFilter.js";
