@@ -166,6 +166,67 @@ test("aggregates items", () => {
       ],
     }),
   ).toBe(1);
+  expect(
+    queryItemList({
+      aggregator: {
+        operator: "index",
+        filter: {
+          field: "a",
+          operator: "greaterThan",
+          value: 3,
+        },
+      },
+      context: {
+        c: "a",
+      },
+      filter: {
+        field: "a",
+        operator: "greaterThan",
+        value: 1,
+      },
+      method: "aggregate",
+      type: [
+        { a: 1, c: "a" },
+        { a: 2, c: "a" },
+        { a: 3, c: "a" },
+        { a: 4, c: "a" },
+        { a: 5, c: "a" },
+        { a: 11, c: "b" },
+        { a: 12, c: "b" },
+      ],
+    }),
+  ).toBe(2);
+  expect(
+    queryItemList({
+      aggregator: {
+        operator: "index",
+        filter: {
+          field: "a",
+          operator: "greaterThan",
+          value: 3,
+        },
+      },
+      context: {
+        c: "a",
+      },
+      filter: {
+        field: "a",
+        operator: "greaterThan",
+        value: 1,
+      },
+      offset: 1,
+      method: "aggregate",
+      type: [
+        { a: 1, c: "a" },
+        { a: 2, c: "a" },
+        { a: 3, c: "a" },
+        { a: 4, c: "a" },
+        { a: 5, c: "a" },
+        { a: 11, c: "b" },
+        { a: 12, c: "b" },
+      ],
+    }),
+  ).toBe(1);
 });
 
 test("slices items", () => {

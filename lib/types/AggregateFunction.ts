@@ -1,9 +1,13 @@
+import type { Filter } from "./Filter";
+
 /**
  * Aggregation function.
  */
 export type AggregateFunction<T extends object> =
   | "length"
   | { operator: "length" }
+  | "index"
+  | { operator: "index"; filter?: Filter<T> }
   | {
       operator:
         | "median"
