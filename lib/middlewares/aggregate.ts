@@ -44,7 +44,7 @@ export function aggregate<
     },
     method: "read",
     multiple: true,
-    type: queryList[0].type,
+    type: queryList[0]?.type,
   }),
   resultForQuery = (resultList, query) => {
     const result = resultList.find(

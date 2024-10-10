@@ -1,4 +1,4 @@
-import { getGlobal } from "@davidbonnet/get-global";
+import { getGlobal } from "@nevoland/get-global";
 import { sleep, untilOnline } from "futurise";
 
 import { RequestError } from "../errors/RequestError.js";

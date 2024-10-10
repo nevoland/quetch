@@ -1,4 +1,4 @@
-import { getGlobal } from "@davidbonnet/get-global";
+import { getGlobal } from "@nevoland/get-global";
 
 import { RequestError } from "../errors/RequestError.js";
 import type { Handler } from "../types";

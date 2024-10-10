@@ -20,7 +20,7 @@ export function sortItemList<T extends object>(
   const normalizedOrder = orderList.map(normalizeOrder);
   return [...value].sort((a, b) => {
     for (let index = 0; index < normalizedOrder.length; index++) {
-      const { field, descending } = normalizedOrder[index];
+      const { field, descending } = normalizedOrder[index]!;
       const valueA = get(a, field);
       const valueB = get(b, field);
       if (valueA === valueB) {
