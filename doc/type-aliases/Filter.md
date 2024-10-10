@@ -16,4 +16,4 @@ Describes a predicate for filtering items.
 
 ## Defined in
 
-[lib/types/Filter.ts:15](https://github.com/nevoland/quetch/blob/b70842cb9761fe7c217edef26e0fbc90449abccb/lib/types/Filter.ts#L15)
+[lib/types/Filter.ts:15](https://github.com/nevoland/quetch/blob/4c3c4d08a348f3317d0dfdffa7516132c18306c7/lib/types/Filter.ts#L15)

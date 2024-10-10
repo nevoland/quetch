@@ -35,4 +35,4 @@ If `deep` is `true`, also captures all the descendants.
 
 ## Defined in
 
-[lib/types/FilterChildren.ts:10](https://github.com/nevoland/quetch/blob/b70842cb9761fe7c217edef26e0fbc90449abccb/lib/types/FilterChildren.ts#L10)
+[lib/types/FilterChildren.ts:10](https://github.com/nevoland/quetch/blob/4c3c4d08a348f3317d0dfdffa7516132c18306c7/lib/types/FilterChildren.ts#L10)
