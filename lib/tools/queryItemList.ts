@@ -33,13 +33,10 @@ function mergeContextAndFilter<T extends object>(
 function normalizeAggregator<T extends object>(
   aggregator: AggregateFunction<T>,
 ): Exclude<AggregateFunction<T>, string> {
-  switch (aggregator) {
-    case "length":
-    case "index":
-      return { operator: aggregator };
-    default:
-      return aggregator;
+  if (typeof aggregator === "string") {
+    return { operator: aggregator };
   }
+  return aggregator;
 }
 
 /**
@@ -118,7 +115,7 @@ export function queryItemList<T extends object, const Q extends Query<T>>(
         }
         case "index": {
           const { offset = 0, order, limit = Infinity } = query;
-          const filterItem = normalizedAggregator.filter;
+          const { filter: filterItem, last } = normalizedAggregator;
           let result = data;
           // Filter
           const normalizedFilter = mergeContextAndFilter(context, filter);
@@ -133,14 +130,14 @@ export function queryItemList<T extends object, const Q extends Query<T>>(
           if (offset !== 0 || limit !== Infinity) {
             result = result.slice(offset, offset + limit);
           }
-          return (
-            result.length === 0
-              ? -1
-              : filterItem === undefined
-              ? 0
-              : result.findIndex((item) =>
-                  testFilter(filterItem, item, settings),
-                )
+          if (result.length === 0) {
+            return -1 as Result<T, Q>;
+          }
+          if (filterItem === undefined) {
+            return (last ? result.length - 1 : 0) as Result<T, Q>;
+          }
+          return result[last ? "findLastIndex" : "findIndex"]((item) =>
+            testFilter(filterItem, item, settings),
           ) as Result<T, Q>;
         }
         default: {

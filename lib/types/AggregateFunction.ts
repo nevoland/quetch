@@ -6,8 +6,7 @@ import type { Filter } from "./Filter";
 export type AggregateFunction<T extends object> =
   | "length"
   | { operator: "length" }
-  | "index"
-  | { operator: "index"; filter?: Filter<T> }
+  | { operator: "index"; filter?: Filter<T>; last?: boolean }
   | {
       operator:
         | "median"
