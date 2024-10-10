@@ -49,6 +49,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^8.53.0",
+    "@nevoland/get-global": "^2.0.2",
     "@preact/preset-vite": "^2.6.0",
     "@types/eslint": "^9.6.1",
     "@types/node": "^22.5.5",
@@ -72,12 +73,11 @@
     "typedoc": "^0.26.7",
     "typedoc-plugin-markdown": "^4.2.7",
     "typescript": "^5.6.2",
-    "vite": "^4.4.11",
-    "vite-plugin-module-list": "^2.1.0",
-    "vitest": "^1.6.0"
+    "vite": "^5.4.0",
+    "vite-plugin-module-list": "^2.2.2",
+    "vitest": "^2.0.5"
   },
   "dependencies": {
-    "@davidbonnet/get-global": "^2.0.1",
     "futurise": "^1.2.3",
     "unchangeable": "^1.7.0"
   }

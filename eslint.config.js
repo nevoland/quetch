@@ -18,6 +18,7 @@ const GLOBAL_NAME_LIST = [
   "Response",
   "AbortSignal",
   "AbortController",
+  "MediaQueryListEvent",
 ];
 
 /** @type { import("eslint").Linter.FlatConfig[] } */
