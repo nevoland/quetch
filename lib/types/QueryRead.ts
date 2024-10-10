@@ -14,7 +14,10 @@ export type QueryRead<T extends object> = {
    * Common item properties to use for identifying the context in which to delete the item.
    */
   context?: Context<T>;
-  offset?: never;
+  /**
+   * Offset of the first matching item.
+   */
+  offset?: number;
   limit?: never;
   group?: never;
   /**
