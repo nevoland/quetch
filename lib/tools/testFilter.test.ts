@@ -136,6 +136,17 @@ test("tests filter on string values", () => {
   ).toBe(true);
   expect(
     testFilter(
+      {
+        field: "a",
+        operator: "startWith",
+        options: { sensitivity: "base" },
+        value: "HELLO",
+      },
+      { a: "hello there!" },
+    ),
+  ).toBe(true);
+  expect(
+    testFilter(
       { field: "a", operator: "include", value: "bar" },
       { a: "foobar" },
     ),

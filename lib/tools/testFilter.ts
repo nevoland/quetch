@@ -141,7 +141,7 @@ export function testFilter<T extends object>(
             leftValue.slice(0, rightValue.length),
             filter.locale,
             filter.options,
-          ) !== 0
+          ) === 0
         );
       }
       return leftValue.startsWith(rightValue) ?? false;
@@ -158,7 +158,7 @@ export function testFilter<T extends object>(
             leftValue.slice(-rightValue.length),
             filter.locale,
             filter.options,
-          ) !== 0
+          ) === 0
         );
       }
       return leftValue.endsWith(rightValue) ?? false;
