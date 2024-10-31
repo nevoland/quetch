@@ -8,16 +8,17 @@ import type { FieldFunctionReturn } from "./FieldFunctionReturn";
 export type InjectCustomFields<
   T extends object,
   C extends CustomFieldMap<T> | undefined,
-> = C extends CustomFieldMap<T>
-  ? {
-      readonly [K in keyof T | keyof C]: K extends keyof T
-        ? T[K]
-        : K extends keyof C
-        ? C[K] extends FieldFunctionCustom<T>
-          ? ReturnType<C[K]["value"]>
-          : C[K]["operator"] extends keyof FieldFunctionReturn
-          ? FieldFunctionReturn[C[K]["operator"]]
-          : never
-        : never;
-    }
-  : T;
+> =
+  C extends CustomFieldMap<T>
+    ? {
+        readonly [K in keyof T | keyof C]: K extends keyof T
+          ? T[K]
+          : K extends keyof C
+            ? C[K] extends FieldFunctionCustom<T>
+              ? ReturnType<C[K]["value"]>
+              : C[K]["operator"] extends keyof FieldFunctionReturn
+                ? FieldFunctionReturn[C[K]["operator"]]
+                : never
+            : never;
+      }
+    : T;

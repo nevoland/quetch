@@ -16,7 +16,7 @@ export function normalizeOrder<T extends object>(
 } {
   if (isArray(order) || typeof order !== "object") {
     return {
-      field: order,
+      field: order as any,
       descending: false,
     };
   }

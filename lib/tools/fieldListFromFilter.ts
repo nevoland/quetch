@@ -27,7 +27,7 @@ export function fieldListFromFilter<T extends object>(
     case "endWith":
     case "match":
     case "exist":
-      return [filter.field];
+      return [filter.field as any];
     case "all":
     case "any":
     case "none":

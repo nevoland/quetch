@@ -52,8 +52,8 @@
     "@nevoland/get-global": "^2.0.2",
     "@preact/preset-vite": "^2.9.1",
     "@types/eslint": "^9.6.1",
-    "@types/node": "^22.7.5",
-    "@typescript-eslint/parser": "^8.8.1",
+    "@types/node": "^22.8.5",
+    "@typescript-eslint/parser": "^8.12.2",
     "autoprefixer": "^10.4.20",
     "cssnano": "^6.1.2",
     "eslint": "^8.57.1",
@@ -66,19 +66,19 @@
     "eslint-plugin-vitest": "^0.5.4",
     "postcss": "^8.4.47",
     "postcss-pseudo-classes": "^0.4.0",
-    "preact": "^10.24.2",
+    "preact": "^10.24.3",
     "prettier": "^3.3.3",
     "prettier-plugin-tailwindcss": "^0.6.8",
-    "tailwindcss": "^3.4.13",
-    "typedoc": "^0.26.8",
+    "tailwindcss": "^3.4.14",
+    "typedoc": "^0.26.10",
     "typedoc-plugin-markdown": "^4.2.9",
     "typescript": "^5.6.3",
-    "vite": "^5.4.8",
+    "vite": "^5.4.10",
     "vite-plugin-module-list": "^2.2.2",
-    "vitest": "^2.1.2"
+    "vitest": "^2.1.4"
   },
   "dependencies": {
     "futurise": "^1.7.1",
-    "unchangeable": "^1.7.0"
+    "unchangeable": "^1.7.2"
   }
 }

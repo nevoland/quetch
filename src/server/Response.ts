@@ -15,12 +15,12 @@ type ResultItem<
   readonly [K in F]: K extends keyof T
     ? T[K]
     : K extends keyof C
-    ? C[K] extends FieldFunctionCustom<T>
-      ? ReturnType<C[K]["value"]>
-      : C[K]["operator"] extends keyof FieldFunctionReturn
-      ? FieldFunctionReturn[C[K]["operator"]]
-      : "never1"
-    : "never2";
+      ? C[K] extends FieldFunctionCustom<T>
+        ? ReturnType<C[K]["value"]>
+        : C[K]["operator"] extends keyof FieldFunctionReturn
+          ? FieldFunctionReturn[C[K]["operator"]]
+          : "never1"
+      : "never2";
 };
 
 type ResultQuery<
@@ -33,11 +33,11 @@ type ResultQuery<
       ? ResultItem<T, C, Item<Q["fields"]>>
       : ResultItem<T, C, keyof T | keyof C>
     : Item<Q["fields"]> extends keyof T
-    ? ResultItem<T, never, Item<Q["fields"]>>
-    : T
+      ? ResultItem<T, never, Item<Q["fields"]>>
+      : T
   : [Q] extends [QueryAggregate<T, C>]
-  ? number
-  : "never3";
+    ? number
+    : "never3";
 
 export type Response<
   T extends object,

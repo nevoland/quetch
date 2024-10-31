@@ -53,12 +53,12 @@ type Entity2<
       readonly [K in F]: K extends keyof T
         ? T[K]
         : K extends keyof C
-        ? C[K] extends FieldFunctionCustom<T>
-          ? ReturnType<C[K]["value"]>
-          : C[K]["operator"] extends keyof FieldFunctionReturn
-          ? FieldFunctionReturn[C[K]["operator"]]
-          : never
-        : never;
+          ? C[K] extends FieldFunctionCustom<T>
+            ? ReturnType<C[K]["value"]>
+            : C[K]["operator"] extends keyof FieldFunctionReturn
+              ? FieldFunctionReturn[C[K]["operator"]]
+              : never
+          : never;
     }
   : T;
 
@@ -67,17 +67,18 @@ type ResultB<
   Q extends Query2<T, C>,
   C extends CustomFieldMap<T> | undefined,
   // F extends (keyof T | keyof C)[] | undefined = Q["fields"],
-> = Q extends QueryRead<T, C>
-  ? Item<Q["fields"]> extends keyof T | keyof C
-    ? C extends CustomFieldMap<T>
-      ? Entity2<T, C, Item<Q["fields"]>>
-      : Entity2<T, never, Item<Q["fields"]>>
-    : C extends CustomFieldMap<T>
-    ? Entity2<T, C, keyof T | keyof C>
-    : T
-  : Q extends QueryAggregate<T, C>
-  ? number
-  : never;
+> =
+  Q extends QueryRead<T, C>
+    ? Item<Q["fields"]> extends keyof T | keyof C
+      ? C extends CustomFieldMap<T>
+        ? Entity2<T, C, Item<Q["fields"]>>
+        : Entity2<T, never, Item<Q["fields"]>>
+      : C extends CustomFieldMap<T>
+        ? Entity2<T, C, keyof T | keyof C>
+        : T
+    : Q extends QueryAggregate<T, C>
+      ? number
+      : never;
 
 type ResultC<
   T extends object,
@@ -101,11 +102,8 @@ type IsNever<T> = [never, T] extends [T, never] ? true : false;
 
 type check = IsNever<any>;
 
-type IsUnknown<T> = IsAny<T> extends true
-  ? false
-  : [unknown] extends [T]
-  ? true
-  : false;
+type IsUnknown<T> =
+  IsAny<T> extends true ? false : [unknown] extends [T] ? true : false;
 
 type ENTITY = { a: number; b: string; c: boolean };
 type QUERY = {

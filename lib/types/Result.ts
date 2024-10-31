@@ -24,7 +24,7 @@ export type Result<T extends object, Q extends Query<T>> = [Q] extends [
     ? ResultRead<T, Q>[]
     : ResultRead<T, Q>
   : [Q] extends [{ method: "aggregate" }]
-  ? number
-  : [Q] extends [{ multiple: true }]
-  ? ResultRead<T, Q>[]
-  : ResultRead<T, Q>;
+    ? number
+    : [Q] extends [{ multiple: true }]
+      ? ResultRead<T, Q>[]
+      : ResultRead<T, Q>;

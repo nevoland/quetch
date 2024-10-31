@@ -10,5 +10,5 @@ export type Get<T, P> = [P] extends [[infer K, ...infer R]]
       : T[K]
     : never
   : [P] extends [keyof T]
-  ? T[P]
-  : T;
+    ? T[P]
+    : T;

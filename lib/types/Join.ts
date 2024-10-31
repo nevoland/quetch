@@ -6,7 +6,7 @@ export type Join<
     ? R extends []
       ? I
       : R extends string[]
-      ? `${I}${Separator}${Join<R, Separator>}`
-      : never
+        ? `${I}${Separator}${Join<R, Separator>}`
+        : never
     : never
   : never;

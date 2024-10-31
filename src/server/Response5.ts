@@ -1,4 +1,17 @@
-import { type Filter, defineCustomFetch } from "../../lib/main.js";
+import {
+  type Filter,
+  type Normalized,
+  defineCustomFetch,
+} from "../../lib/main.js";
+
+type MenuItem = { type: "separator" } | { value: number; label?: string };
+type Test1 = Filter<MenuItem>;
+
+type MenuItemKeys = keyof Normalized<MenuItem>;
+
+const filter1: Test1 = {
+  field: "label",
+};
 
 type id = string;
 
@@ -13,48 +26,6 @@ type Message = {
     };
   };
 };
-
-const deviceList = await customFetch({
-  type: "device",
-  filter: {
-    field: "id",
-    operator: "in",
-    value: {
-      type: "alert",
-      field: ["deviceId"],
-      filter: {
-        field: "type",
-        operator: "equal",
-        value: "IMEI_MISMATCH",
-      },
-      flatten: true,
-      map: { field: "deviceId" },
-      valueField: "deviceId",
-    },
-  },
-});
-
-const alertList = await customFetch({
-  type: "alert",
-  multiple: true,
-  fields: ["deviceId"],
-  filter: {
-    field: "type",
-    operator: "equal",
-    value: "IMEI_MISMATCH",
-  },
-});
-
-const deviceList = alertList.map((alert) => alert.deviceId);
-
-const deviceWithMisatch = await customFetch({
-  type: "device",
-  filter: {
-    field: "id",
-    operator: "included",
-    value: deviceList,
-  },
-});
 
 type EntityMap = {
   device: {
@@ -110,6 +81,53 @@ type EntityMap = {
 };
 
 const customFetch = defineCustomFetch<EntityMap>(null as any);
+
+/**
+ * Related query search.
+ */
+const deviceList3 = await customFetch({
+  type: "device",
+  method: "read",
+  multiple: true,
+  filter: {
+    field: "id",
+    operator: "g",
+    value: {
+      type: "alert",
+      field: ["deviceId"],
+      filter: {
+        field: "type",
+        operator: "equal",
+        value: "IMEI_MISMATCH",
+      },
+      flatten: true,
+      map: { field: "deviceId" },
+      valueField: "deviceId",
+    },
+  },
+});
+
+const alertList = await customFetch({
+  type: "alert",
+  multiple: true,
+  fields: ["deviceId"],
+  filter: {
+    field: "type",
+    operator: "equal",
+    value: "IMEI_MISMATCH",
+  },
+});
+
+const deviceList = alertList.map((alert) => alert.deviceId);
+
+const deviceWithMisatch = await customFetch({
+  type: "device",
+  filter: {
+    field: "id",
+    operator: "included",
+    value: deviceList,
+  },
+});
 
 const temperatureOfHouse = customFetch({
   type: "record",

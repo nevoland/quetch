@@ -1,4 +1,4 @@
-import type { Get, Path } from "../types";
+import type { Field, Get } from "../types";
 
 /**
  * Gets the property value of the given `value` at the specified `path` (an array of object property names or array indexes).
@@ -10,10 +10,7 @@ import type { Get, Path } from "../types";
  * @param path The path leading to the property value or a property name or `undefined`.
  * @returns The property value found at the given path, or `undefined` if it cannot be found.
  */
-export function get<T, P extends keyof T | Path<T>>(
-  value: T,
-  path?: P,
-): Get<T, P> {
+export function get<T, P extends Field<T>>(value: T, path?: P): Get<T, P> {
   if (path === undefined) {
     return value as any;
   }

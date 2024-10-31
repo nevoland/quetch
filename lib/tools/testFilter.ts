@@ -12,7 +12,8 @@ function valueFromFilter<T extends object, F extends Filter<T>>(
   filter: F,
 ): F extends { value: infer V } ? V : never {
   if ("valueField" in filter) {
-    return get(value, filter.valueField) as any;
+    filter.valueField;
+    return get<T, any>(value, filter.valueField) as any;
   }
   return (filter as any).value;
 }
@@ -56,7 +57,8 @@ export function testFilter<T extends object>(
     case "equal": {
       const rightValue = valueFromFilter(value, filter);
       if (isArray(rightValue)) {
-        const leftValue = get(value, filter.field) as Any[] | undefined;
+        filter.field;
+        const leftValue = get<T, any>(value, filter.field) as Any[] | undefined;
         if (!isArray(leftValue)) {
           return false;
         }
@@ -65,7 +67,7 @@ export function testFilter<T extends object>(
         }
         return rightValue.every((value) => leftValue.includes(value));
       }
-      const leftValue = get(value, filter.field);
+      const leftValue = get<T, any>(value, filter.field);
       if (leftValue === rightValue) {
         return true;
       }
@@ -86,7 +88,7 @@ export function testFilter<T extends object>(
     }
     case "notEqual": {
       const rightValue = valueFromFilter(value, filter);
-      const leftValue = get(value, filter.field);
+      const leftValue = get<T, any>(value, filter.field);
       if (leftValue === rightValue) {
         return false;
       }
@@ -96,7 +98,7 @@ export function testFilter<T extends object>(
       ) {
         return (
           (rightValue as string).localeCompare(
-            get(value, filter.field) as string,
+            get<T, any>(value, filter.field) as string,
             (filter as FilterString<T>).locale,
             (filter as FilterString<T>).options,
           ) !== 0
@@ -131,7 +133,7 @@ export function testFilter<T extends object>(
     }
     case "startWith": {
       const rightValue = valueFromFilter(value, filter);
-      const leftValue = get(value, filter.field) as string | undefined;
+      const leftValue = get<T, any>(value, filter.field) as string | undefined;
       if (leftValue === undefined || leftValue.length < rightValue.length) {
         return false;
       }
@@ -148,7 +150,7 @@ export function testFilter<T extends object>(
     }
     case "endWith": {
       const rightValue = valueFromFilter(value, filter);
-      const leftValue = get(value, filter.field) as string | undefined;
+      const leftValue = get<T, any>(value, filter.field) as string | undefined;
       if (leftValue === undefined || leftValue.length < rightValue.length) {
         return false;
       }
@@ -165,7 +167,7 @@ export function testFilter<T extends object>(
     }
     case "include": {
       const rightValue = valueFromFilter(value, filter);
-      const leftValue = get(value, filter.field) as string | any[];
+      const leftValue = get<T, any>(value, filter.field) as string | any[];
       if (leftValue == null) {
         return false;
       }
@@ -202,7 +204,7 @@ export function testFilter<T extends object>(
     }
     case "greaterThan": {
       const rightValue = valueFromFilter(value, filter);
-      const leftValue = get(value, filter.field);
+      const leftValue = get<T, any>(value, filter.field);
       if (
         (filter as FilterString<T>).options ||
         (filter as FilterString<T>).locale
@@ -219,7 +221,7 @@ export function testFilter<T extends object>(
     }
     case "greaterThanOrEqual": {
       const rightValue = valueFromFilter(value, filter);
-      const leftValue = get(value, filter.field);
+      const leftValue = get<T, any>(value, filter.field);
       if (
         (filter as FilterString<T>).options ||
         (filter as FilterString<T>).locale
@@ -236,7 +238,7 @@ export function testFilter<T extends object>(
     }
     case "lowerThan": {
       const rightValue = valueFromFilter(value, filter);
-      const leftValue = get(value, filter.field);
+      const leftValue = get<T, any>(value, filter.field);
       if (
         (filter as FilterString<T>).options ||
         (filter as FilterString<T>).locale
@@ -253,7 +255,7 @@ export function testFilter<T extends object>(
     }
     case "lowerThanOrEqual": {
       const rightValue = valueFromFilter(value, filter);
-      const leftValue = get(value, filter.field);
+      const leftValue = get<T, any>(value, filter.field);
       if (
         (filter as FilterString<T>).options ||
         (filter as FilterString<T>).locale
@@ -270,7 +272,7 @@ export function testFilter<T extends object>(
     }
     case "match": {
       const rightValue = valueFromFilter(value, filter);
-      const leftValue = get(value, filter.field) as string | undefined;
+      const leftValue = get<T, any>(value, filter.field) as string | undefined;
       if (leftValue === undefined) {
         return false;
       }
@@ -286,7 +288,7 @@ export function testFilter<T extends object>(
     }
     case "intersect": {
       const rightValue = valueFromFilter(value, filter);
-      const leftValue = get(value, filter.field);
+      const leftValue = get<T, any>(value, filter.field);
       if (leftValue == null) {
         return false;
       }
