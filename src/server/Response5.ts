@@ -11,6 +11,8 @@ type MenuItemKeys = keyof Normalized<MenuItem>;
 
 const filter1: Test1 = {
   field: "label",
+  operator: "equal",
+  value: "test",
 };
 
 type id = string;
@@ -37,7 +39,7 @@ type EntityMap = {
     id: id;
     name?: string;
     lastMessage?: Message;
-    alerts: alert[];
+    alerts: EntityMap["alert"][];
   };
   alert: {
     id: id;
@@ -72,15 +74,26 @@ type EntityMap = {
     // gatewayIdList: id[];
   };
   record: {
-    sensorId: id;
+    sensorId?: id;
     creationDate: string;
-    data: {
+    data?: {
       [key: string]: any;
     };
   };
 };
 
 const customFetch = defineCustomFetch<EntityMap>(null as any);
+
+const records = await customFetch({
+  type: "record",
+  method: "read",
+  multiple: true,
+  filter: {
+    field: "sensorId",
+    operator: "equal",
+    value: "test",
+  },
+});
 
 /**
  * Related query search.
