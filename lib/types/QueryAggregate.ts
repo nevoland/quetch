@@ -22,7 +22,7 @@ export type QueryAggregate<T extends object> = {
   /**
    * Order by which the items should be sorted.
    */
-  order?: Order<T>[];
+  order?: readonly Order<T>[];
   /**
    * Offset of the first matching item.
    */

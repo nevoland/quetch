@@ -46,9 +46,9 @@ function normalizeAggregator<T extends object>(
  * @returns The result of the query.
  */
 export function queryItemList<T extends object, const Q extends Query<T>>(
-  query: Q & { type: T[] },
+  query: Q & { type: readonly T[] },
 ): Result<T, Q> {
-  const data = query.type as T[];
+  const data = query.type;
   switch (query.method) {
     case "read":
     case undefined: {

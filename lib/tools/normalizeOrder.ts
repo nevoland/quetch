@@ -1,6 +1,6 @@
 import type { Field, Order } from "../types";
 
-const { isArray } = Array;
+const isArray = Array.isArray as (value: any) => value is readonly any[];
 
 /**
  * Returns a normalized order, which is an object with the `field` and `descending` properties.

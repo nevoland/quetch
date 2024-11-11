@@ -10,4 +10,4 @@ export type FilterStringIntersect<T extends object> = {
   field: FieldFiltered<T, string>;
   options?: Intl.CollatorOptions;
   locale?: Locale;
-} & Value<T, string[]>;
+} & Value<T, readonly string[]>;

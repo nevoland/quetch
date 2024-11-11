@@ -12,7 +12,7 @@ export type QueryCreateMultiple<T extends object> = {
    * Common item properties to use for identifying the context in which to create the items.
    */
   context?: Context<T>;
-  value: Partial<T>[];
+  value: readonly Partial<T>[];
   /**
    * Query parameters.
    */

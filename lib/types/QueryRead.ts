@@ -31,7 +31,7 @@ export type QueryRead<T extends object> = {
   /**
    * Order by which the items should be sorted.
    */
-  order?: Order<T>[];
+  order?: readonly Order<T>[];
   /**
    * Query parameters.
    */

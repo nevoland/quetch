@@ -11,8 +11,8 @@ import { normalizeOrder } from "./normalizeOrder.js";
  * @returns A new sorted array.
  */
 export function sortItemList<T extends object>(
-  orderList: Order<T>[] | undefined,
-  value: T[],
+  orderList: readonly Order<T>[] | undefined,
+  value: readonly T[],
 ) {
   if (orderList === undefined || orderList.length === 0) {
     return value;

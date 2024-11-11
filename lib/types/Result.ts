@@ -12,6 +12,7 @@ export type PickFields<
   : { readonly [K in keyof T]: T[K] };
 
 export type ResultRead<T extends object, Q extends Query<T>> = [Q] extends [
+  // FIXME: `keyof T` should be `Field<T>`
   { fields: (keyof T)[] },
 ]
   ? PickFields<T, Item<Q["fields"]>>
@@ -21,10 +22,10 @@ export type Result<T extends object, Q extends Query<T>> = [Q] extends [
   { method: "read" },
 ]
   ? [Q] extends [{ multiple: true }]
-    ? ResultRead<T, Q>[]
+    ? readonly ResultRead<T, Q>[]
     : ResultRead<T, Q>
   : [Q] extends [{ method: "aggregate" }]
     ? number
     : [Q] extends [{ multiple: true }]
-      ? ResultRead<T, Q>[]
+      ? readonly ResultRead<T, Q>[]
       : ResultRead<T, Q>;

@@ -12,7 +12,7 @@ export type FilterGroup<T extends object> =
       /**
        * Filters to join.
        */
-      value: Filter<T>[];
+      value: readonly Filter<T>[];
     }
   | {
       /**
@@ -22,5 +22,5 @@ export type FilterGroup<T extends object> =
       /**
        * Filters to join.
        */
-      value?: Filter<T>[];
+      value?: readonly Filter<T>[];
     };

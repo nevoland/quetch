@@ -1,1 +1,1 @@
-export type Locale = string | string[];
+export type Locale = string | readonly string[];
