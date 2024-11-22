@@ -9,7 +9,7 @@ export function filterFromContext<T extends object>(
 ): Filter<T> {
   return {
     operator: "all",
-    value: criteria(context) as Filter<T>[],
+    value: criteria(context),
   };
 }
 
@@ -30,7 +30,7 @@ function criteria<T extends object>(
             field: path.length === 0 ? field : [...path, field],
             operator: "equal",
             value,
-          },
+          } as Filter<T>,
         ];
       case "object":
         return criteria(value, [...path, field]);
@@ -40,19 +40,3 @@ function criteria<T extends object>(
     }
   });
 }
-
-/* 
-
-{
-  filter: {
-    field: "a"
-  }
-}
-
-{
-  operator: "equal",
-  field: ["filter", "field"],
-  value: "a"
-}
-  
-*/
