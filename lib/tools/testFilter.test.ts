@@ -3,6 +3,7 @@ import { expect, test } from "vitest";
 import { SymbolCache } from "../constants.js";
 import type { FilterChildren } from "../types.js";
 
+import { filterFromContext } from "./filterFromContext.js";
 import { testFilter } from "./testFilter.js";
 
 test("tests filter lists", () => {
@@ -264,6 +265,15 @@ test("tests filter on array values", () => {
       { a: [1, 2] },
     ),
   ).toBe(false);
+});
+
+test("tests filter with paths", () => {
+  const context = { value: { filter: { field: "label" } } };
+  expect(
+    testFilter(filterFromContext(context), {
+      value: { filter: { field: "label" } },
+    }),
+  ).toBe(true);
 });
 
 test("tests filter with children predicates", () => {
