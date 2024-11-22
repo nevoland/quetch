@@ -38,7 +38,7 @@
     "format:fix": "prettier --write './**/*.{css,scss,md,mdx,json,tsx,ts,jsx,js}'",
     "lint": "npm run lint:ts",
     "lint:fix": "npm run lint:ts:fix",
-    "lint:ts": "eslint .",
+    "lint:ts": "eslint . && tsc --project tsconfig.package.json --noEmit",
     "lint:ts:fix": "eslint --fix .",
     "release:init": "npm publish --access=public",
     "release:patch": "npm version patch && git push origin --follow-tags && npm publish",
