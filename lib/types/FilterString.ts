@@ -8,6 +8,7 @@ import type { Value } from "./Value";
 export type FilterString<T extends object> = {
   operator:
     | "equal"
+    // FIXME: Redundant with `"not"` operator
     | "notEqual"
     | "startWith"
     | "endWith"
