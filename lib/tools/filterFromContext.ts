@@ -32,8 +32,18 @@ function criteria<T extends object>(
             value,
           } as Filter<T>,
         ];
-      case "object":
+      case "object": {
+        if (value == null) {
+          return [
+            {
+              field: path.length === 0 ? field : [...path, field],
+              operator: "equal",
+              value,
+            } as Filter<T>,
+          ];
+        }
         return criteria(value, [...path, field]);
+      }
       default:
         return EMPTY_ARRAY;
       // Ignore
