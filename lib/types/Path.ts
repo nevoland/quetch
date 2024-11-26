@@ -1,6 +1,6 @@
 import type { Increment } from "./Increment";
 
-export type Path<T, D = 0> = D extends 4
+export type Path<T, D = 0> = D extends 2
   ? never
   : T extends Array<infer P>
     ? readonly [number] | readonly [number, ...Path<P, Increment<D>>]
