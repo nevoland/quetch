@@ -1,4 +1,4 @@
-import type { Field, Get } from "../types";
+import type { Get, Path } from "../types";
 
 /**
  * Gets the property value of the given `value` at the specified `path` (an array of object property names or array indexes).
@@ -10,7 +10,10 @@ import type { Field, Get } from "../types";
  * @param path The path leading to the property value or a property name or `undefined`.
  * @returns The property value found at the given path, or `undefined` if it cannot be found.
  */
-export function get<T, P extends Field<T>>(value: T, path?: P): Get<T, P> {
+export function get<const T, const P extends Path<T> | keyof T>(
+  value: T,
+  path?: P,
+): Get<T, P> {
   if (path === undefined) {
     return value as any;
   }
@@ -20,19 +23,19 @@ export function get<T, P extends Field<T>>(value: T, path?: P): Get<T, P> {
     case "symbol":
       return (value as any)?.[path];
     default: {
-      switch (path.length) {
+      switch (path.length as number) {
         case 1:
           return (value as any)?.[path[0] as any];
         case 2:
-          return (value as any)?.[path[0] as any]?.[path[1] as any];
+          return (value as any)?.[path[0] as any]?.[(path as any)[1] as any];
         case 3:
-          return (value as any)?.[path[0] as any]?.[path[1] as any]?.[
-            path[2] as any
+          return (value as any)?.[path[0] as any]?.[(path as any)[1] as any]?.[
+            (path as any)[2] as any
           ];
         case 4:
-          return (value as any)?.[path[0] as any]?.[path[1] as any]?.[
-            path[2] as any
-          ]?.[path[3] as any];
+          return (value as any)?.[path[0] as any]?.[(path as any)[1] as any]?.[
+            (path as any)[2] as any
+          ]?.[(path as any)[3] as any];
         default:
           return path.reduce(
             (value, key) => (value as any)?.[key],

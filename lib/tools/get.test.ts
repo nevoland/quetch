@@ -14,6 +14,7 @@ test("gets properties", () => {
   expect(result2).toBe(value.a.d.e[2].f);
 
   const result3 = get(value, ["a"]);
+  expect(result3.b).toBe(value.a.b);
   expect(result3).toBe(value.a);
 
   const result4 = get(value, "a");

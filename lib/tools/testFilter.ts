@@ -1,6 +1,6 @@
 import { SymbolCache } from "../constants/SymbolCache.js";
 import type { QuerySettings } from "../types/QuerySettings.js";
-import type { Any, FieldFiltered, Filter, FilterString } from "../types.js";
+import type { FieldFiltered, Filter, FilterString } from "../types.js";
 
 import { filterChildren } from "./filterChildren.js";
 import { get } from "./get.js";
@@ -53,12 +53,12 @@ export function testFilter<T extends object>(
       return filter.value.every((filter) => !testFilter(filter, value));
     }
     case "exist":
-      return get(value, filter.field) !== undefined;
+      return get(value, filter.field as any) !== undefined;
     case "equal": {
       const rightValue = valueFromFilter(value, filter);
       if (isArray(rightValue)) {
         filter.field;
-        const leftValue = get<T, any>(value, filter.field) as Any[] | undefined;
+        const leftValue = get<T, any>(value, filter.field) as any[] | undefined;
         if (!isArray(leftValue)) {
           return false;
         }
