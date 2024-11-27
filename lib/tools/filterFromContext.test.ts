@@ -43,6 +43,16 @@ test("returns filter from context", () => {
       },
     ],
   });
+  expect(filterFromContext({ a: null })).toEqual({
+    operator: "all",
+    value: [
+      {
+        field: "a",
+        operator: "equal",
+        value: null,
+      },
+    ],
+  });
   expect(filterFromContext({ a: { b: 1 }, c: 2 })).toEqual({
     operator: "all",
     value: [
