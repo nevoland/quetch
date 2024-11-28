@@ -1,5 +1,7 @@
 import { expect, test } from "vitest";
 
+import { SELF } from "../constants.js";
+
 import { filterFromContext } from "./filterFromContext.js";
 
 test("returns filter from context", () => {
@@ -40,6 +42,16 @@ test("returns filter from context", () => {
         field: ["a", "b"],
         operator: "equal",
         value: null,
+      },
+    ],
+  });
+  expect(filterFromContext({ [SELF]: 3 })).toEqual({
+    operator: "all",
+    value: [
+      {
+        field: SELF,
+        operator: "equal",
+        value: 3,
       },
     ],
   });

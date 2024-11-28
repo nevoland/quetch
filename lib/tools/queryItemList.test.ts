@@ -1,5 +1,7 @@
 import { expect, test } from "vitest";
 
+import { SELF } from "../constants.js";
+
 import { queryItemList } from "./queryItemList.js";
 
 test("queries a single item", () => {
@@ -36,6 +38,41 @@ test("queries a single item", () => {
       type: [{ a: 1 }, { a: 2 }, { a: 3 }],
     }),
   ).toThrow("Not found");
+});
+
+test("queries primitive objects", () => {
+  expect(
+    queryItemList({
+      type: [3, 2, 4, 9, 1, 2],
+    }),
+  ).toEqual(3);
+  expect(
+    queryItemList({
+      type: [3, 2, 4, 9, 1, 2],
+      context: {
+        [SELF]: 9,
+      },
+    }),
+  ).toEqual(9);
+  expect(
+    queryItemList({
+      type: [3, 2, 4, 9, 1, 2],
+      multiple: true,
+      order: [SELF],
+    }),
+  ).toEqual([1, 2, 2, 3, 4, 9]);
+  expect(
+    queryItemList({
+      type: [3, 2, 4, 9, 1, 2],
+      multiple: true,
+      order: [SELF],
+      filter: {
+        field: SELF,
+        operator: "greaterThan",
+        value: 3,
+      },
+    }),
+  ).toEqual([4, 9]);
 });
 
 test("queries lists of items", () => {

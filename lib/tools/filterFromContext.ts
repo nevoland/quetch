@@ -1,5 +1,6 @@
 import { EMPTY_ARRAY } from "unchangeable";
 
+import { SELF } from "../constants/SELF.js";
 import type { Context, Filter } from "../types";
 
 const { entries } = Object;
@@ -15,13 +16,20 @@ function criteria<T>(
   context: object,
   path: readonly string[] = EMPTY_ARRAY,
 ): readonly Filter<T>[] {
-  return entries(context).flatMap(([field, value]) => {
+  return entriesAndSelf(context).flatMap(([field, value]) => {
     switch (typeof value) {
+      case "symbol":
+        return [
+          {
+            field: SELF,
+            operator: "equal",
+            value,
+          } as any,
+        ];
       case "bigint":
       case "string":
       case "number":
       case "boolean":
-      case "symbol":
       case "undefined":
         return [
           {
@@ -40,11 +48,21 @@ function criteria<T>(
             } as Filter<T>,
           ];
         }
-        return criteria(value, [...path, field]);
+        return criteria(value, [...path, field as string]);
       }
       default:
         return EMPTY_ARRAY;
       // Ignore
     }
   });
+}
+
+function entriesAndSelf(
+  context: object,
+): readonly [string | typeof SELF, any][] {
+  const result = entries(context) as [string | typeof SELF, any][];
+  if (SELF in context) {
+    result.push([SELF, context[SELF]]);
+  }
+  return result;
 }

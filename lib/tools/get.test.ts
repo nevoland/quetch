@@ -10,6 +10,8 @@ test("gets properties", () => {
   const result1 = get(value, ["a", "c"]);
   expect(result1).toBe(value.a.c);
 
+  // Error on the last two path items is expected, as it does not iterate beyond 3 levels deep
+  // @ts-ignore
   const result2 = get(value, ["a", "d", "e", 2, "f"]);
   expect(result2).toBe(value.a.d.e[2].f);
 
