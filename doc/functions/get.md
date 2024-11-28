@@ -41,4 +41,4 @@ The property value found at the given path, or `undefined` if it cannot be found
 
 ## Defined in
 
-[lib/tools/get.ts:14](https://github.com/nevoland/quetch/blob/daab7d5db71d61e74901886a2473b07ec4e9fc05/lib/tools/get.ts#L14)
+[lib/tools/get.ts:14](https://github.com/nevoland/quetch/blob/db84578eb5eba15d3388a1c2cfad7cc80fe9fbe6/lib/tools/get.ts#L14)

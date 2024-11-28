@@ -22,4 +22,4 @@ Uncallable handler used to terminate a sequence of handlers combined with `combi
 
 ## Defined in
 
-[lib/tools/cork.ts:6](https://github.com/nevoland/quetch/blob/daab7d5db71d61e74901886a2473b07ec4e9fc05/lib/tools/cork.ts#L6)
+[lib/tools/cork.ts:6](https://github.com/nevoland/quetch/blob/db84578eb5eba15d3388a1c2cfad7cc80fe9fbe6/lib/tools/cork.ts#L6)

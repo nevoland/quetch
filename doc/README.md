@@ -74,6 +74,11 @@
 - [Store](type-aliases/Store.md)
 - [Value](type-aliases/Value.md)
 
+## Variables
+
+- [CACHE](variables/CACHE.md)
+- [SELF](variables/SELF.md)
+
 ## Functions
 
 - [aggregate](functions/aggregate.md)

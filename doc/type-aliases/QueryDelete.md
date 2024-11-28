@@ -48,4 +48,4 @@ Query settings.
 
 ## Defined in
 
-[lib/types/QueryDelete.ts:9](https://github.com/nevoland/quetch/blob/daab7d5db71d61e74901886a2473b07ec4e9fc05/lib/types/QueryDelete.ts#L9)
+[lib/types/QueryDelete.ts:9](https://github.com/nevoland/quetch/blob/db84578eb5eba15d3388a1c2cfad7cc80fe9fbe6/lib/types/QueryDelete.ts#L9)

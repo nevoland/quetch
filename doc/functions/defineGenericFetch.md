@@ -55,4 +55,4 @@ A curried generic fetch function.
 
 ## Defined in
 
-[lib/tools/defineGenericFetch.ts:14](https://github.com/nevoland/quetch/blob/daab7d5db71d61e74901886a2473b07ec4e9fc05/lib/tools/defineGenericFetch.ts#L14)
+[lib/tools/defineGenericFetch.ts:14](https://github.com/nevoland/quetch/blob/db84578eb5eba15d3388a1c2cfad7cc80fe9fbe6/lib/tools/defineGenericFetch.ts#L14)
