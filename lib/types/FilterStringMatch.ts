@@ -6,7 +6,7 @@ import type { Value } from "./Value";
 /**
  * Checks if a given string field matches a given regular expression, the value being a raw regular expression string.
  */
-export type FilterStringMatch<T extends object> = {
+export type FilterStringMatch<T> = {
   operator: "match";
   field: FieldFiltered<T, string>;
   /**

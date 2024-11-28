@@ -6,7 +6,7 @@ import type { QuerySettings } from "./QuerySettings";
 /**
  * Query for updating an item.
  */
-export type QueryUpdate<T extends object> = {
+export type QueryUpdate<T> = {
   method: "update";
   multiple?: false;
   /**

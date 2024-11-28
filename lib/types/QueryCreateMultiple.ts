@@ -5,7 +5,7 @@ import type { QuerySettings } from "./QuerySettings";
 /**
  * Query for creating multiple items.
  */
-export type QueryCreateMultiple<T extends object> = {
+export type QueryCreateMultiple<T> = {
   method: "create";
   multiple: true;
   /**

@@ -1,9 +1,10 @@
+import type { Field } from "./Field";
 import type { Filter } from "./Filter";
 
 /**
  * Aggregation function.
  */
-export type AggregateFunction<T extends object> =
+export type AggregateFunction<T> =
   | "length"
   | { operator: "length" }
   | { operator: "index"; filter?: Filter<T>; last?: boolean }
@@ -16,5 +17,5 @@ export type AggregateFunction<T extends object> =
         | "maximum"
         | "variance"
         | "mode";
-      field: keyof T;
+      field: Field<T>;
     };

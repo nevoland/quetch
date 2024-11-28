@@ -290,7 +290,7 @@ test("tests filter with children predicates", () => {
       },
     ),
   ).toBe(true);
-  const filterChildren: FilterChildren<any> = {
+  const filterChildren: FilterChildren<{ path: string }> = {
     operator: "children",
     value: "a",
   };

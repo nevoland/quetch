@@ -8,7 +8,7 @@ import type { QuerySettings } from "./QuerySettings";
 /**
  * Query for computing an aggregated value.
  */
-export type QueryAggregate<T extends object> = {
+export type QueryAggregate<T> = {
   method: "aggregate";
   /**
    * Common item properties to use for identifying the item.

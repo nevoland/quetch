@@ -6,7 +6,7 @@ import type { Filter, FilterGroup } from "../types";
  * @param value The filter to test.
  * @returns Whether the provided filter is a group filter or not.
  */
-export function isFilterGroup<T extends object>(
+export function isFilterGroup<T>(
   value: Filter<T> | undefined,
 ): value is FilterGroup<T> {
   switch (value?.operator) {

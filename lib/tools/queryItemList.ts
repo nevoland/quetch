@@ -11,7 +11,7 @@ import { filterFromContext } from "./filterFromContext.js";
 import { sortItemList } from "./sortItemList.js";
 import { testFilter } from "./testFilter.js";
 
-function mergeContextAndFilter<T extends object>(
+function mergeContextAndFilter<T>(
   context?: Context<T>,
   filter?: Filter<T>,
 ): Filter<T> | undefined {
@@ -30,7 +30,7 @@ function mergeContextAndFilter<T extends object>(
   };
 }
 
-function normalizeAggregator<T extends object>(
+function normalizeAggregator<T>(
   aggregator: AggregateFunction<T>,
 ): Exclude<AggregateFunction<T>, string> {
   if (typeof aggregator === "string") {
@@ -45,7 +45,7 @@ function normalizeAggregator<T extends object>(
  * @param query The query to perform.
  * @returns The result of the query.
  */
-export function queryItemList<T extends object, const Q extends Query<T>>(
+export function queryItemList<T, const Q extends Query<T>>(
   query: Q & { type: readonly T[] },
 ): Result<T, Q> {
   const data = query.type;

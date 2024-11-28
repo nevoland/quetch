@@ -1,3 +1,3 @@
-export type Immutable<T extends object> = {
+export type Immutable<T> = {
   readonly [K in keyof T]: T[K];
 };

@@ -8,7 +8,7 @@ import type { Field, Filter } from "../types";
  * @param filter The filter to extract the fields from.
  * @returns A list of fields.
  */
-export function fieldListFromFilter<T extends object>(
+export function fieldListFromFilter<T>(
   filter?: Filter<T>,
 ): readonly Field<T>[] {
   if (filter === undefined) {

@@ -1,7 +1,7 @@
+import type { CombineUnion } from "./CombineUnion";
 import type { KeyFiltered } from "./KeyFiltered";
-import type { Normalized } from "./Normalized";
 import type { PathFiltered } from "./PathFiltered";
 
-export type FieldFiltered<T extends object, P> =
-  | KeyFiltered<Normalized<T>, P>
-  | PathFiltered<Normalized<T>, P>;
+export type FieldFiltered<T, P> = KeyOrPathFiltered<CombineUnion<T>, P>;
+
+type KeyOrPathFiltered<T, P> = KeyFiltered<T, P> | PathFiltered<T, P>;

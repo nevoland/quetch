@@ -8,9 +8,7 @@ const isArray = Array.isArray as (value: any) => value is readonly any[];
  * @param order The string or order object.
  * @returns The normalized order object.
  */
-export function normalizeOrder<T extends object>(
-  order: Order<T>,
-): {
+export function normalizeOrder<T>(order: Order<T>): {
   field: Field<T>;
   descending?: boolean | undefined;
 } {

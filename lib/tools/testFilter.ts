@@ -7,10 +7,7 @@ import { get } from "./get.js";
 
 const { isArray } = Array;
 
-function valueFromFilter<T extends object, F extends Filter<T>>(
-  value: T,
-  filter: F,
-): F extends { value: infer V } ? V : never {
+function valueFromFilter<T>(value: T, filter: Filter<T>): any {
   if ("valueField" in filter) {
     filter.valueField;
     return get<T, any>(value, filter.valueField) as any;
@@ -26,7 +23,7 @@ function valueFromFilter<T extends object, F extends Filter<T>>(
  * @param settings Optional query settings.
  * @returns `true` if the `value` matches the `filter` and `false` otherwise.
  */
-export function testFilter<T extends object>(
+export function testFilter<T>(
   filter: Filter<T> | undefined,
   value: T | undefined,
   settings?: QuerySettings<T>,
@@ -55,10 +52,10 @@ export function testFilter<T extends object>(
     case "exist":
       return get(value, filter.field as any) !== undefined;
     case "equal": {
-      const rightValue = valueFromFilter(value, filter);
+      const rightValue = valueFromFilter(value, filter as Filter<any>);
       if (isArray(rightValue)) {
         filter.field;
-        const leftValue = get<T, any>(value, filter.field) as any[] | undefined;
+        const leftValue = get<T, any>(value, filter.field);
         if (!isArray(leftValue)) {
           return false;
         }

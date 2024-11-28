@@ -16,7 +16,7 @@ export function defineCustomFetch<M extends Record<string, object>>(
     T extends M[K],
     const Q extends Query<T>,
   >(query: Q & { type: K }): Promise<Result<T, Q>>;
-  async function customFetch<T extends object, const Q extends Query<T>>(
+  async function customFetch<T, const Q extends Query<T>>(
     type: T[],
     query: Q,
   ): Promise<Result<T, Q>>;

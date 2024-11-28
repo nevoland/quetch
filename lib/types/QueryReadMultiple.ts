@@ -8,7 +8,7 @@ import type { QuerySettings } from "./QuerySettings";
 /**
  * Query for getting a list of items.
  */
-export type QueryReadMultiple<T extends object> = {
+export type QueryReadMultiple<T> = {
   method?: "read";
   multiple: true;
   /**

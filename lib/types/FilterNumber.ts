@@ -4,7 +4,7 @@ import type { Value } from "./Value";
 /**
  * Checks if a given number field matches a given number value according to a given operator.
  */
-export type FilterNumber<T extends object> = {
+export type FilterNumber<T> = {
   operator:
     | "equal"
     | "notEqual"

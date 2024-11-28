@@ -5,7 +5,7 @@ import type { Value } from "./Value";
 /**
  * Checks if a given string field has any of the provided values.
  */
-export type FilterStringIntersect<T extends object> = {
+export type FilterStringIntersect<T> = {
   operator: "intersect";
   field: FieldFiltered<T, string>;
   options?: Intl.CollatorOptions;

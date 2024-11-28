@@ -1,6 +1,6 @@
-import type { Normalized } from "./Normalized";
+import type { CombineUnion } from "./CombineUnion";
 import type { Path } from "./Path";
 
-export type Field<T> = T extends object
-  ? keyof Normalized<T> | Path<Normalized<T>>
-  : never;
+export type Field<T> = KeyOrPath<CombineUnion<T>>;
+
+type KeyOrPath<T> = keyof T | Path<T>;

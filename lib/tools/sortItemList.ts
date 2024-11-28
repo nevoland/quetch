@@ -10,7 +10,7 @@ import { normalizeOrder } from "./normalizeOrder.js";
  * @param value The array to sort.
  * @returns A new sorted array.
  */
-export function sortItemList<T extends object>(
+export function sortItemList<T>(
   orderList: readonly Order<T>[] | undefined,
   value: readonly T[],
 ) {

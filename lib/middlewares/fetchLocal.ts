@@ -6,7 +6,7 @@ import type { Handler, Query } from "../types";
  *
  * @returns Promise that resolves to the response.
  */
-export function fetchLocal<T extends object>(): Handler<
+export function fetchLocal<T>(): Handler<
   Query<T> & { type: T[] },
   any,
   never,

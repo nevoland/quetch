@@ -24,6 +24,8 @@ export function get<const T, const P extends Path<T> | keyof T>(
       return (value as any)?.[path];
     default: {
       switch (path.length as number) {
+        case 0:
+          return value as any;
         case 1:
           return (value as any)?.[path[0] as any];
         case 2:

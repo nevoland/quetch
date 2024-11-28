@@ -3,7 +3,7 @@ import type { FieldFiltered } from "./FieldFiltered";
 /**
  * Actual `value` or `valueField` leading to the value.
  */
-export type Value<T extends object, V> =
+export type Value<T, V> =
   | {
       /**
        * Value to use.

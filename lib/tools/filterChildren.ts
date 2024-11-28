@@ -2,7 +2,7 @@ import type { FieldFiltered, Filter } from "../types.ts";
 
 import { escapeRegex } from "./escapeRegex.js";
 
-export function filterChildren<T extends object>(
+export function filterChildren<T>(
   parentPath: string,
   pathFieldKey: FieldFiltered<T, string>,
   deep = false,

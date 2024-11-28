@@ -12,7 +12,7 @@ import type { FilterStringMatch } from "./FilterStringMatch";
 /**
  * Describes a predicate for filtering items.
  */
-export type Filter<T extends object> =
+export type Filter<T> =
   | FilterArray<T>
   | FilterBoolean<T>
   | FilterChildren<T>

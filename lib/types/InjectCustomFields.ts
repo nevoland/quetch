@@ -5,10 +5,7 @@ import type { FieldFunctionReturn } from "./FieldFunctionReturn";
 /**
  * Injects the custom fields into the entity type.
  */
-export type InjectCustomFields<
-  T extends object,
-  C extends CustomFieldMap<T> | undefined,
-> =
+export type InjectCustomFields<T, C extends CustomFieldMap<T> | undefined> =
   C extends CustomFieldMap<T>
     ? {
         readonly [K in keyof T | keyof C]: K extends keyof T

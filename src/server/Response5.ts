@@ -3,11 +3,43 @@ import {
   type Normalized,
   defineCustomFetch,
 } from "../../lib/main.js";
+import type { CombineUnion } from "../../lib/types/CombineUnion.js";
 
-type MenuItem = { type: "separator" } | { value: number; label?: string };
+type MenuItem =
+  | { type: "separator" }
+  | { value: number; label?: string }
+  | { type: "label"; label: string }
+  | { type: { a?: number } }
+  | { type: { a?: string } };
+
+type Reuslt6 = CombineUnion<MenuItem>;
+
 type Test1 = Filter<MenuItem>;
 
+function check(m: MenuItem) {
+  m.type;
+}
+
+type Values<T> = T[keyof T];
+
+type Result4 = Values<MenuItem>;
+
 type MenuItemKeys = keyof Normalized<MenuItem>;
+type MenuItemKeysSimple = keyof MenuItem;
+
+type UnionToIntersection2<U> = (
+  U extends any ? (x: U) => void : never
+) extends (x: infer I) => void
+  ? I
+  : never;
+
+type UnionToIntersection<Union> = (
+  Union extends any ? (arg: Union) => void : never
+) extends (arg: infer Intersection) => void
+  ? Intersection
+  : never;
+
+type MenuItemIntersectedTEST = UnionToIntersection<MenuItem>;
 
 const filter1: Test1 = {
   field: "label",

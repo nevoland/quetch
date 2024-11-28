@@ -5,7 +5,7 @@ import { queryItemList } from "./queryItemList.js";
 test("queries a single item", () => {
   expect(
     queryItemList({
-      type: [{ a: 1 }, { a: 2 }, { a: 3 }] as { a: number }[],
+      type: [{ a: 1 }, { a: 2 }, { a: 3 }],
     }),
   ).toEqual({ a: 1 });
   expect(() =>
@@ -13,7 +13,7 @@ test("queries a single item", () => {
       context: {
         a: 4,
       },
-      type: [{ a: 1 }, { a: 2 }, { a: 3 }] as { a: number }[],
+      type: [{ a: 1 }, { a: 2 }, { a: 3 }] as readonly { a: number }[],
     }),
   ).toThrow("Not found");
   expect(

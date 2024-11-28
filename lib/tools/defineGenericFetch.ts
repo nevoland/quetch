@@ -15,7 +15,7 @@ export function defineGenericFetch<K extends string>(
   handler: Handler<Query<any> & { type: Key | any[] }, any, never, never>,
 ) {
   // FIXME: Until https://github.com/microsoft/TypeScript/issues/26242 gets resolved, the fetcher needs to be curried
-  function genericFetch<T extends object>() {
+  function genericFetch<T>() {
     async function customFetch<const Q extends Query<T>>(
       query: Q & { type: K | T[] },
     ): Promise<Result<T, Q>> {

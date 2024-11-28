@@ -4,16 +4,14 @@ import type { Context, Filter } from "../types";
 
 const { entries } = Object;
 
-export function filterFromContext<T extends object>(
-  context: Context<T>,
-): Filter<T> {
+export function filterFromContext<T>(context: Context<T>): Filter<T> {
   return {
     operator: "all",
     value: criteria(context),
   };
 }
 
-function criteria<T extends object>(
+function criteria<T>(
   context: object,
   path: readonly string[] = EMPTY_ARRAY,
 ): readonly Filter<T>[] {

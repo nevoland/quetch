@@ -3,7 +3,7 @@ import type { Field } from "./Field";
 /**
  * Checks if a given field exists.
  */
-export type FilterField<T extends object> = {
+export type FilterField<T> = {
   operator: "exist";
   /**
    * The field name or path for which to check its existence.

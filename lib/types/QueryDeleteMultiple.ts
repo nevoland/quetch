@@ -6,7 +6,7 @@ import type { QuerySettings } from "./QuerySettings";
 /**
  * Query for deleting multiple items.
  */
-export type QueryDeleteMultiple<T extends object> = {
+export type QueryDeleteMultiple<T> = {
   method: "delete";
   multiple: true;
   /**

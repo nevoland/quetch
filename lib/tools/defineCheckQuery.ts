@@ -6,7 +6,7 @@ import type { Query } from "../types";
  * @returns Function that checks queries.
  */
 export function defineCheckQuery<M extends Record<string, object>>() {
-  function checkQuery<T extends object, const Q extends Query<T>>(
+  function checkQuery<T, const Q extends Query<T>>(
     query: Q & { type: T[] },
   ): typeof query;
   function checkQuery<

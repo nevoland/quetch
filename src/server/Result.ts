@@ -100,6 +100,8 @@ type OveralResultB<
 type IsAny<T> = [0] extends [1 & T] ? true : false;
 type IsNever<T> = [never, T] extends [T, never] ? true : false;
 
+type checkingAny = IsAny<any>;
+
 type check = IsNever<any>;
 
 type IsUnknown<T> =

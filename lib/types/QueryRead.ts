@@ -7,7 +7,7 @@ import type { QuerySettings } from "./QuerySettings";
 /**
  * Query for reading a single item.
  */
-export type QueryRead<T extends object> = {
+export type QueryRead<T> = {
   method?: "read";
   multiple?: false;
   /**

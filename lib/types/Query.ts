@@ -13,9 +13,9 @@ import type { QueryUpdateMultiple } from "./QueryUpdateMultiple";
  */
 export type Query<
   /**
-   * Type of the object item to be queried.
+   * Type of the item to be queried.
    */
-  T extends object,
+  T,
 > =
   | QueryRead<T>
   | QueryReadMultiple<T>

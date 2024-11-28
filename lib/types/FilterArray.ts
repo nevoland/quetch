@@ -8,7 +8,7 @@ import type { Value } from "./Value";
  * - `include` requires every value to be present in the array.
  * - `intersect` requires at least one item of the value to be present in the array.
  */
-export type FilterArray<T extends object, P = any> = {
+export type FilterArray<T, P = any> = {
   operator: "equal" | "include" | "intersect";
   field: FieldFiltered<T, P[]>;
 } & Value<T, P[]>;

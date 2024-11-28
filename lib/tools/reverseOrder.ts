@@ -8,9 +8,7 @@ import { normalizeOrder } from "./normalizeOrder.js";
  * @param order The order to reverse.
  * @returns The reversed order.
  */
-export function reverseOrder<T extends object>(
-  order: Order<T>,
-): {
+export function reverseOrder<T>(order: Order<T>): {
   field: Field<T>;
   descending?: boolean | undefined;
 } {
