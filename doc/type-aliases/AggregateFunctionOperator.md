@@ -10,4 +10,4 @@
 
 ## Defined in
 
-[lib/types/AggregateFunctionOperator.ts:3](https://github.com/nevoland/quetch/blob/6249acbaaaaaeed54f7d39c2e784b6176249eef9/lib/types/AggregateFunctionOperator.ts#L3)
+[lib/types/AggregateFunctionOperator.ts:3](https://github.com/nevoland/quetch/blob/74684cd5cd1bd7a08980d4ce305ecc4be0c3e8b8/lib/types/AggregateFunctionOperator.ts#L3)

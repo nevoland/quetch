@@ -36,4 +36,4 @@ Custom filter where `value(item)` returns `true` for matching items.
 
 ## Defined in
 
-[lib/types/FilterCustom.ts:4](https://github.com/nevoland/quetch/blob/6249acbaaaaaeed54f7d39c2e784b6176249eef9/lib/types/FilterCustom.ts#L4)
+[lib/types/FilterCustom.ts:4](https://github.com/nevoland/quetch/blob/74684cd5cd1bd7a08980d4ce305ecc4be0c3e8b8/lib/types/FilterCustom.ts#L4)

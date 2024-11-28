@@ -49,4 +49,4 @@ const customFetch = combine(
 
 ## Defined in
 
-[lib/middlewares/branch.ts:21](https://github.com/nevoland/quetch/blob/6249acbaaaaaeed54f7d39c2e784b6176249eef9/lib/middlewares/branch.ts#L21)
+[lib/middlewares/branch.ts:21](https://github.com/nevoland/quetch/blob/74684cd5cd1bd7a08980d4ce305ecc4be0c3e8b8/lib/middlewares/branch.ts#L21)

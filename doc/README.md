@@ -53,6 +53,7 @@
 - [Locale](type-aliases/Locale.md)
 - [NextHandler](type-aliases/NextHandler.md)
 - [Order](type-aliases/Order.md)
+- [OrderNormalized](type-aliases/OrderNormalized.md)
 - [Parameters](type-aliases/Parameters.md)
 - [Path](type-aliases/Path.md)
 - [PathFiltered](type-aliases/PathFiltered.md)

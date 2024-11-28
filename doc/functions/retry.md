@@ -36,4 +36,4 @@ Handler
 
 ## Defined in
 
-[lib/middlewares/retry.ts:15](https://github.com/nevoland/quetch/blob/6249acbaaaaaeed54f7d39c2e784b6176249eef9/lib/middlewares/retry.ts#L15)
+[lib/middlewares/retry.ts:15](https://github.com/nevoland/quetch/blob/74684cd5cd1bd7a08980d4ce305ecc4be0c3e8b8/lib/middlewares/retry.ts#L15)

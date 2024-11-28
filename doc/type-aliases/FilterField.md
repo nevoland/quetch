@@ -28,4 +28,4 @@ The field name or path for which to check its existence.
 
 ## Defined in
 
-[lib/types/FilterField.ts:6](https://github.com/nevoland/quetch/blob/6249acbaaaaaeed54f7d39c2e784b6176249eef9/lib/types/FilterField.ts#L6)
+[lib/types/FilterField.ts:6](https://github.com/nevoland/quetch/blob/74684cd5cd1bd7a08980d4ce305ecc4be0c3e8b8/lib/types/FilterField.ts#L6)
