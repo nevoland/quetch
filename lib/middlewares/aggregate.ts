@@ -1,4 +1,5 @@
 import { sleep } from "futurise";
+import { EMPTY_OBJECT } from "unchangeable";
 
 import { RequestError } from "../errors.js";
 import type { Handler, Query } from "../types";
@@ -28,7 +29,7 @@ export function aggregate<
     }
     return type;
   },
-  queryId = ({ context = {} }) => {
+  queryId = ({ context = EMPTY_OBJECT }) => {
     if (context.id === undefined) {
       return undefined;
     }
