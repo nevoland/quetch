@@ -24,4 +24,4 @@
 
 ## Defined in
 
-[lib/tools/filterFromContext.ts:7](https://github.com/nevoland/quetch/blob/db84578eb5eba15d3388a1c2cfad7cc80fe9fbe6/lib/tools/filterFromContext.ts#L7)
+[lib/tools/filterFromContext.ts:8](https://github.com/nevoland/quetch/blob/6249acbaaaaaeed54f7d39c2e784b6176249eef9/lib/tools/filterFromContext.ts#L8)

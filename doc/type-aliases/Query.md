@@ -16,4 +16,4 @@ Query that fetches or mutates an entity.
 
 ## Defined in
 
-[lib/types/Query.ts:14](https://github.com/nevoland/quetch/blob/db84578eb5eba15d3388a1c2cfad7cc80fe9fbe6/lib/types/Query.ts#L14)
+[lib/types/Query.ts:14](https://github.com/nevoland/quetch/blob/6249acbaaaaaeed54f7d39c2e784b6176249eef9/lib/types/Query.ts#L14)

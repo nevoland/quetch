@@ -14,4 +14,4 @@
 
 ## Defined in
 
-[lib/types/FieldFunction.ts:4](https://github.com/nevoland/quetch/blob/db84578eb5eba15d3388a1c2cfad7cc80fe9fbe6/lib/types/FieldFunction.ts#L4)
+[lib/types/FieldFunction.ts:4](https://github.com/nevoland/quetch/blob/6249acbaaaaaeed54f7d39c2e784b6176249eef9/lib/types/FieldFunction.ts#L4)

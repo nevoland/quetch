@@ -6,7 +6,7 @@
 
 # Type Alias: Context\<T\>
 
-> **Context**\<`T`\>: `{ [K in keyof T]?: T[K] }`
+> **Context**\<`T`\>: [`0`] *extends* [`1` & `T`] ? `any` : `T` *extends* [`Primitive`](Primitive.md) ? `object` : `{ [K in keyof T]?: T[K] }`
 
 ## Type Parameters
 
@@ -14,4 +14,4 @@
 
 ## Defined in
 
-[lib/types/Context.ts:1](https://github.com/nevoland/quetch/blob/db84578eb5eba15d3388a1c2cfad7cc80fe9fbe6/lib/types/Context.ts#L1)
+[lib/types/Context.ts:5](https://github.com/nevoland/quetch/blob/6249acbaaaaaeed54f7d39c2e784b6176249eef9/lib/types/Context.ts#L5)

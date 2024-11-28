@@ -30,4 +30,4 @@ A list of fields.
 
 ## Defined in
 
-[lib/tools/fieldListFromFilter.ts:11](https://github.com/nevoland/quetch/blob/db84578eb5eba15d3388a1c2cfad7cc80fe9fbe6/lib/tools/fieldListFromFilter.ts#L11)
+[lib/tools/fieldListFromFilter.ts:11](https://github.com/nevoland/quetch/blob/6249acbaaaaaeed54f7d39c2e784b6176249eef9/lib/tools/fieldListFromFilter.ts#L11)
