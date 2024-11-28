@@ -1,4 +1,4 @@
-import { SymbolCache } from "../constants/SymbolCache.js";
+import { CACHE } from "../constants/CACHE.js";
 import type { QuerySettings } from "../types/QuerySettings.js";
 import type { FieldFiltered, Filter, FilterString } from "../types.js";
 
@@ -104,17 +104,17 @@ export function testFilter<T>(
       return true;
     }
     case "children": {
-      if (filter[SymbolCache] === undefined) {
+      if (filter[CACHE] === undefined) {
         switch (true) {
           case settings?.transformFilterChildren !== undefined:
-            filter[SymbolCache] = settings.transformFilterChildren(filter);
+            filter[CACHE] = settings.transformFilterChildren(filter);
             break;
           default: {
             const {
               pathFieldKey = "id" as FieldFiltered<T, string>,
               pathFieldSeparator = "/",
             } = settings || {};
-            filter[SymbolCache] = filterChildren(
+            filter[CACHE] = filterChildren(
               filter.value as string,
               pathFieldKey,
               filter.deep,
@@ -123,7 +123,7 @@ export function testFilter<T>(
           }
         }
       }
-      return testFilter(filter[SymbolCache], value);
+      return testFilter(filter[CACHE], value);
     }
     case "custom": {
       return filter.value(value);
@@ -273,15 +273,15 @@ export function testFilter<T>(
       if (leftValue === undefined) {
         return false;
       }
-      if (filter[SymbolCache] === undefined) {
-        filter[SymbolCache] = new RegExp(
+      if (filter[CACHE] === undefined) {
+        filter[CACHE] = new RegExp(
           rightValue,
           `${filter.options?.ignoreCase ? "i" : ""}${
             filter.options?.dotAll ? "s" : ""
           }`,
         );
       }
-      return filter[SymbolCache].test(leftValue);
+      return filter[CACHE].test(leftValue);
     }
     case "intersect": {
       const rightValue = valueFromFilter(value, filter);

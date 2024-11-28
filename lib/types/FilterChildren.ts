@@ -1,4 +1,4 @@
-import type { SymbolCache } from "../constants";
+import type { CACHE } from "../constants/CACHE.js";
 
 import type { Context } from "./Context";
 import type { Filter } from "./Filter";
@@ -11,5 +11,5 @@ export type FilterChildren<T> = {
   operator: "children";
   value?: Context<T> | string;
   deep?: boolean;
-  [SymbolCache]?: Filter<T>;
+  [CACHE]?: Filter<T>;
 };

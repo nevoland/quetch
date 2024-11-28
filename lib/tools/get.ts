@@ -1,3 +1,4 @@
+import { SELF } from "../constants/SELF.js";
 import type { Get, Path } from "../types";
 
 /**
@@ -14,7 +15,7 @@ export function get<const T, const P extends Path<T> | keyof T>(
   value: T,
   path?: P,
 ): Get<T, P> {
-  if (path === undefined) {
+  if (path === undefined || path === SELF) {
     return value as any;
   }
   switch (typeof path) {

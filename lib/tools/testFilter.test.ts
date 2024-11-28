@@ -1,6 +1,6 @@
 import { expect, test } from "vitest";
 
-import { SymbolCache } from "../constants.js";
+import { CACHE } from "../constants/CACHE.js";
 import type { FilterChildren } from "../types.js";
 
 import { filterFromContext } from "./filterFromContext.js";
@@ -309,7 +309,7 @@ test("tests filter with children predicates", () => {
       },
     ),
   ).toBe(true);
-  expect(filterChildren[SymbolCache]).toBeDefined();
+  expect(filterChildren[CACHE]).toBeDefined();
   expect(testFilter({ operator: "children", value: "b" }, { id: "a/b" })).toBe(
     false,
   );

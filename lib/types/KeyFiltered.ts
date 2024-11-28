@@ -1,19 +1,19 @@
-import type { SymbolSelf } from "../constants/SymbolSelf";
+import type { SELF } from "../constants/SELF";
 
 import type { Key } from "./Key";
 import type { Primitive } from "./Primitive";
 
-type SymbolSelfType = typeof SymbolSelf;
+type SymbolSelf = typeof SELF;
 
 /**
  * Returns union of keys whose mapped value extend the provided `P` type.
  */
 export type KeyFiltered<T, P> = [0] extends [1 & T]
-  ? Key | SymbolSelfType
+  ? Key | SymbolSelf
   : T extends object
     ? T extends Primitive
       ? [MapPrimitive<T>] extends [P]
-        ? SymbolSelfType
+        ? SymbolSelf
         : never
       : keyof {
           [K in keyof T as Extract<T[K], P> extends never ? never : K]-?: T[K];
