@@ -39,6 +39,7 @@ export type { KeyFromUnion } from "./types/KeyFromUnion";
 export type { Locale } from "./types/Locale";
 export type { NextHandler } from "./types/NextHandler";
 export type { Order } from "./types/Order";
+export type { OrderNormalized } from "./types/OrderNormalized";
 export type { Parameters } from "./types/Parameters";
 export type { Path } from "./types/Path";
 export type { PathFiltered } from "./types/PathFiltered";
