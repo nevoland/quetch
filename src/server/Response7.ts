@@ -1,4 +1,7 @@
 // union to intersection converter by @jcalz
+
+import type { Filter, FieldFiltered, CombineUnion } from "../../lib/types";
+
 // Intersect<{ a: 1 } | { b: 2 }> = { a: 1 } & { b: 2 }
 type Intersect<T> = (T extends any ? (x: T) => 0 : never) extends (
   x: infer R,
@@ -40,9 +43,30 @@ type MenuItem =
   | { value: number; label?: string }
   | { type: "label"; label: string };
 
+type MenuItem2 =
+  | { type: "separator" }
+  | { value: number[]; label?: string }
+  | { type: "label"; label: string }
+  | { type: { a?: number } }
+  | { type: { a?: string; f: () => void } };
+
+type MenuItem2Combined = CombineUnion<MenuItem2>;
+type TypeProp = MenuItem2Combined["type"];
+type CHECK2 = TypeProp extends string ? true : false;
+type CHECK3 = Extract<TypeProp, string> extends never ? false : true;
+
+type CHECK = FieldFiltered<MenuItem2, string>;
+// type CHECK = "label" | readonly ["label"] | readonly ["type", "a"]
+
+const fmenu: Filter<MenuItem2> = {
+  field: ["type", "a"] as const,
+  operator: "equal",
+  value: "separator",
+};
+
 type TYPE = MenuItem["type"];
 
-type MenuItem2 = { type: "separator" } & { value: number; label?: string } & {
+type MenuItem3 = { type: "separator" } & { value: number; label?: string } & {
   type: "label";
   label: string;
 };
