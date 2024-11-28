@@ -1,4 +1,4 @@
-[**quetch**](../README.md) • **Docs**
+[**quetch**](../README.md)
 
 ***
 
@@ -18,4 +18,4 @@ Returns the inferred item type of an array, or an alternative type if it is some
 
 ## Defined in
 
-[lib/types/Item.ts:4](https://github.com/nevoland/quetch/blob/4c3c4d08a348f3317d0dfdffa7516132c18306c7/lib/types/Item.ts#L4)
+[lib/types/Item.ts:4](https://github.com/nevoland/quetch/blob/daab7d5db71d61e74901886a2473b07ec4e9fc05/lib/types/Item.ts#L4)

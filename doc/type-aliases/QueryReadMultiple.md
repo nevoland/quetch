@@ -1,4 +1,4 @@
-[**quetch**](../README.md) • **Docs**
+[**quetch**](../README.md)
 
 ***
 
@@ -12,7 +12,7 @@ Query for getting a list of items.
 
 ## Type Parameters
 
-• **T** *extends* `object`
+• **T**
 
 ## Type declaration
 
@@ -36,7 +36,7 @@ Filter that picks the items.
 
 ### group?
 
-> `optional` **group**: [`Group`](Group.md)\<`T`\>[]
+> `optional` **group**: readonly [`Group`](Group.md)\<`T`\>[]
 
 Groups items by specified fields.
 
@@ -62,7 +62,7 @@ Offset of the first matching item.
 
 ### order?
 
-> `optional` **order**: [`Order`](Order.md)\<`T`\>[]
+> `optional` **order**: readonly [`Order`](Order.md)\<`T`\>[]
 
 Order by which the items should be sorted.
 
@@ -80,4 +80,4 @@ Query settings.
 
 ## Defined in
 
-[lib/types/QueryReadMultiple.ts:11](https://github.com/nevoland/quetch/blob/4c3c4d08a348f3317d0dfdffa7516132c18306c7/lib/types/QueryReadMultiple.ts#L11)
+[lib/types/QueryReadMultiple.ts:11](https://github.com/nevoland/quetch/blob/daab7d5db71d61e74901886a2473b07ec4e9fc05/lib/types/QueryReadMultiple.ts#L11)

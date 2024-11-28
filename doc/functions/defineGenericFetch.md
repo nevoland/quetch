@@ -1,4 +1,4 @@
-[**quetch**](../README.md) • **Docs**
+[**quetch**](../README.md)
 
 ***
 
@@ -19,7 +19,9 @@ genericFetch<T>()(query)
 
 ## Parameters
 
-• **handler**: [`Handler`](../type-aliases/Handler.md)\<[`Query`](../type-aliases/Query.md)\<`any`\> & `object`, `any`, `never`, `never`\>
+### handler
+
+[`Handler`](../type-aliases/Handler.md)\<[`Query`](../type-aliases/Query.md)\<`any`\> & `object`, `any`, `never`, `never`\>
 
 The query handler.
 
@@ -31,7 +33,7 @@ A curried generic fetch function.
 
 ### Type Parameters
 
-• **T** *extends* `object`
+• **T**
 
 ### Returns
 
@@ -43,7 +45,9 @@ A curried generic fetch function.
 
 #### Parameters
 
-• **query**: `Q` & `object`
+##### query
+
+`Q` & `object`
 
 #### Returns
 
@@ -51,4 +55,4 @@ A curried generic fetch function.
 
 ## Defined in
 
-[lib/tools/defineGenericFetch.ts:14](https://github.com/nevoland/quetch/blob/4c3c4d08a348f3317d0dfdffa7516132c18306c7/lib/tools/defineGenericFetch.ts#L14)
+[lib/tools/defineGenericFetch.ts:14](https://github.com/nevoland/quetch/blob/daab7d5db71d61e74901886a2473b07ec4e9fc05/lib/tools/defineGenericFetch.ts#L14)

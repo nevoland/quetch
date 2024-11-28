@@ -1,4 +1,4 @@
-[**quetch**](../README.md) • **Docs**
+[**quetch**](../README.md)
 
 ***
 
@@ -17,15 +17,19 @@ If the `path` leads to an unknown property, returns `undefined`.
 
 • **T**
 
-• **P** *extends* `string` \| `number` \| `symbol` \| [`number`] \| [keyof `T`\<`T`\>] \| [keyof `T`\<`T`\>, ...(T\<T\>\[keyof T\<T\>\] extends P\[\] ? \[number\] \| \[number, ...(P extends P\[\] ? \[number\] \| \[number, ...(P extends P\[\] ? \[number\] : P extends object ? (...)\[(...)\] : never)\[\]\] : P extends object ? \{ \[K in string \| number \| symbol\]-?: \[(...)\] \| \[(...), ...(...)\[\]\] \}\[keyof P\<P\>\] : never)\[\]\] : T\<T\>\[keyof T\<T\>\] extends object ? \{ \[K in string \| number \| symbol\]-?: \[K\] \| \[K, ...(any\[any\]\[K\] extends P\[\] ? \[(...)\] \| \[(...), ...(...)\[\]\] : (...)\[(...)\] extends object ? (...)\[(...)\] : never)\[\]\] \}\[keyof any\[any\]\] : never)\[\]]
+• **P** *extends* `string` \| `number` \| `symbol` \| readonly [`number`] \| readonly `never`[] \| readonly [`Key`](../type-aliases/Key.md)[] \| [keyof `T`\<`T`\>] \| [keyof `T`\<`T`\>, `...Path<T<T>[keyof T<T>], 8>[]`]
 
 ## Parameters
 
-• **value**: `T`
+### value
+
+`T`
 
 The value from which to get the property value.
 
-• **path?**: `P`
+### path?
+
+`P`
 
 The path leading to the property value or a property name or `undefined`.
 
@@ -37,4 +41,4 @@ The property value found at the given path, or `undefined` if it cannot be found
 
 ## Defined in
 
-[lib/tools/get.ts:13](https://github.com/nevoland/quetch/blob/4c3c4d08a348f3317d0dfdffa7516132c18306c7/lib/tools/get.ts#L13)
+[lib/tools/get.ts:14](https://github.com/nevoland/quetch/blob/daab7d5db71d61e74901886a2473b07ec4e9fc05/lib/tools/get.ts#L14)

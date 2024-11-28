@@ -1,4 +1,4 @@
-[**quetch**](../README.md) • **Docs**
+[**quetch**](../README.md)
 
 ***
 
@@ -18,7 +18,9 @@
 
 #### Parameters
 
-• **key**: `string`
+##### key
+
+`string`
 
 #### Returns
 
@@ -28,7 +30,9 @@
 
 #### Parameters
 
-• **key**: `string`
+##### key
+
+`string`
 
 #### Returns
 
@@ -38,7 +42,9 @@
 
 #### Parameters
 
-• **key**: `string`
+##### key
+
+`string`
 
 #### Returns
 
@@ -48,9 +54,13 @@
 
 #### Parameters
 
-• **key**: `string`
+##### key
 
-• **value**: `T`
+`string`
+
+##### value
+
+`T`
 
 #### Returns
 
@@ -58,4 +68,4 @@
 
 ## Defined in
 
-[lib/types/Store.ts:2](https://github.com/nevoland/quetch/blob/4c3c4d08a348f3317d0dfdffa7516132c18306c7/lib/types/Store.ts#L2)
+[lib/types/Store.ts:2](https://github.com/nevoland/quetch/blob/daab7d5db71d61e74901886a2473b07ec4e9fc05/lib/types/Store.ts#L2)

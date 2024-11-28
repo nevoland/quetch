@@ -1,4 +1,4 @@
-[**quetch**](../README.md) • **Docs**
+[**quetch**](../README.md)
 
 ***
 
@@ -6,16 +6,16 @@
 
 # Type Alias: KeyFiltered\<T, P\>
 
-> **KeyFiltered**\<`T`, `P`\>: keyof `T` & keyof `{ [K in keyof T as T[K] extends P ? K : never]-?: T[K] }`
+> **KeyFiltered**\<`T`, `P`\>: [`0`] *extends* [`1` & `T`] ? [`Key`](Key.md) \| `SymbolSelf` : `T` *extends* `string` \| `number` \| `boolean` \| `bigint` \| `symbol` ? `T` *extends* `P` ? `SymbolSelf` : `never` : `T` *extends* `object` ? keyof `{ [K in keyof T as Extract<T[K], P> extends never ? never : K]-?: T[K] }` : `never`
 
-Returns object type with field extending the provided `P` type.
+Returns union of keys whose mapped value extend the provided `P` type.
 
 ## Type Parameters
 
-• **T** *extends* `object`
+• **T**
 
 • **P**
 
 ## Defined in
 
-[lib/types/KeyFiltered.ts:4](https://github.com/nevoland/quetch/blob/4c3c4d08a348f3317d0dfdffa7516132c18306c7/lib/types/KeyFiltered.ts#L4)
+[lib/types/KeyFiltered.ts:10](https://github.com/nevoland/quetch/blob/daab7d5db71d61e74901886a2473b07ec4e9fc05/lib/types/KeyFiltered.ts#L10)

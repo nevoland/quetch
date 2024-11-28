@@ -1,4 +1,4 @@
-[**quetch**](../README.md) • **Docs**
+[**quetch**](../README.md)
 
 ***
 
@@ -16,7 +16,9 @@ Returns a custom fetch function that handles a `query`
 
 ## Parameters
 
-• **handler**: [`Handler`](../type-aliases/Handler.md)\<[`Query`](../type-aliases/Query.md)\<`any`\> & `object`, `any`, `never`, `never`\>
+### handler
+
+[`Handler`](../type-aliases/Handler.md)\<[`Query`](../type-aliases/Query.md)\<`any`\> & `object`, `any`, `never`, `never`\>
 
 The query handler.
 
@@ -36,7 +38,9 @@ A custom fetch function.
 
 ### Parameters
 
-• **query**: `Q` & `object`
+#### query
+
+`Q` & `object`
 
 ### Returns
 
@@ -44,15 +48,19 @@ A custom fetch function.
 
 ### Type Parameters
 
-• **T** *extends* `object`
+• **T**
 
 • **Q** *extends* [`Query`](../type-aliases/Query.md)\<`T`\>
 
 ### Parameters
 
-• **type**: `T`[]
+#### type
 
-• **query**: `Q`
+`T`[]
+
+#### query
+
+`Q`
 
 ### Returns
 
@@ -60,4 +68,4 @@ A custom fetch function.
 
 ## Defined in
 
-[lib/tools/defineCustomFetch.ts:11](https://github.com/nevoland/quetch/blob/4c3c4d08a348f3317d0dfdffa7516132c18306c7/lib/tools/defineCustomFetch.ts#L11)
+[lib/tools/defineCustomFetch.ts:11](https://github.com/nevoland/quetch/blob/daab7d5db71d61e74901886a2473b07ec4e9fc05/lib/tools/defineCustomFetch.ts#L11)

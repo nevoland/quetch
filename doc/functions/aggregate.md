@@ -1,4 +1,4 @@
-[**quetch**](../README.md) • **Docs**
+[**quetch**](../README.md)
 
 ***
 
@@ -26,19 +26,31 @@ If a query occurs twice, `mergeQuery(query, currentQuery)` is called and the out
 
 ## Parameters
 
-• **options**
+### options
 
-• **options.delay?**: `number` = `200`
+#### options.delay
 
-• **options.mergeQuery?** = `...`
+`number` = `200`
 
-• **options.queryForGroup** = `...`
+#### options.mergeQuery
 
-• **options.queryGroupId?** = `...`
+(`query`, `currentQuery`) => `I` = `...`
 
-• **options.queryId?** = `...`
+#### options.queryForGroup
 
-• **options.resultForQuery** = `...`
+(`queryList`, `group`) => [`Query`](../type-aliases/Query.md)\<`any`\> & `object` = `...`
+
+#### options.queryGroupId
+
+(`query`) => `undefined` \| `string` = `...`
+
+#### options.queryId
+
+(`query`) => `undefined` \| `string` = `...`
+
+#### options.resultForQuery
+
+(`resultList`, `query`) => `O` = `...`
 
 ## Returns
 
@@ -46,4 +58,4 @@ If a query occurs twice, `mergeQuery(query, currentQuery)` is called and the out
 
 ## Defined in
 
-[lib/middlewares/aggregate.ts:16](https://github.com/nevoland/quetch/blob/4c3c4d08a348f3317d0dfdffa7516132c18306c7/lib/middlewares/aggregate.ts#L16)
+[lib/middlewares/aggregate.ts:16](https://github.com/nevoland/quetch/blob/daab7d5db71d61e74901886a2473b07ec4e9fc05/lib/middlewares/aggregate.ts#L16)

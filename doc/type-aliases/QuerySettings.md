@@ -1,4 +1,4 @@
-[**quetch**](../README.md) • **Docs**
+[**quetch**](../README.md)
 
 ***
 
@@ -12,7 +12,7 @@ Settings to use when doing a query.
 
 ## Type Parameters
 
-• **T** *extends* `object`
+• **T**
 
 ## Type declaration
 
@@ -48,7 +48,9 @@ Returns a filter that captures the items expressed by the provided `FilterChildr
 
 #### Parameters
 
-• **filter**: [`FilterChildren`](FilterChildren.md)\<`T`\>
+##### filter
+
+[`FilterChildren`](FilterChildren.md)\<`T`\>
 
 The provided `FilterChildren` to express.
 
@@ -60,4 +62,4 @@ A filter that captures the items expressed by the provided `FilterChildren`.
 
 ## Defined in
 
-[lib/types/QuerySettings.ts:8](https://github.com/nevoland/quetch/blob/4c3c4d08a348f3317d0dfdffa7516132c18306c7/lib/types/QuerySettings.ts#L8)
+[lib/types/QuerySettings.ts:8](https://github.com/nevoland/quetch/blob/daab7d5db71d61e74901886a2473b07ec4e9fc05/lib/types/QuerySettings.ts#L8)

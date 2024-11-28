@@ -1,4 +1,4 @@
-[**quetch**](../README.md) • **Docs**
+[**quetch**](../README.md)
 
 ***
 
@@ -12,7 +12,7 @@ Performs the fetch query on local data.
 
 ## Type Parameters
 
-• **T** *extends* `object`
+• **T**
 
 ## Returns
 
@@ -22,4 +22,4 @@ Promise that resolves to the response.
 
 ## Defined in
 
-[lib/middlewares/fetchLocal.ts:9](https://github.com/nevoland/quetch/blob/4c3c4d08a348f3317d0dfdffa7516132c18306c7/lib/middlewares/fetchLocal.ts#L9)
+[lib/middlewares/fetchLocal.ts:9](https://github.com/nevoland/quetch/blob/daab7d5db71d61e74901886a2473b07ec4e9fc05/lib/middlewares/fetchLocal.ts#L9)

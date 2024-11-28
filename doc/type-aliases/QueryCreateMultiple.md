@@ -1,4 +1,4 @@
-[**quetch**](../README.md) • **Docs**
+[**quetch**](../README.md)
 
 ***
 
@@ -12,7 +12,7 @@ Query for creating multiple items.
 
 ## Type Parameters
 
-• **T** *extends* `object`
+• **T**
 
 ## Type declaration
 
@@ -44,8 +44,8 @@ Query settings.
 
 ### value
 
-> **value**: `Partial`\<`T`\>[]
+> **value**: readonly `Partial`\<`T`\>[]
 
 ## Defined in
 
-[lib/types/QueryCreateMultiple.ts:8](https://github.com/nevoland/quetch/blob/4c3c4d08a348f3317d0dfdffa7516132c18306c7/lib/types/QueryCreateMultiple.ts#L8)
+[lib/types/QueryCreateMultiple.ts:8](https://github.com/nevoland/quetch/blob/daab7d5db71d61e74901886a2473b07ec4e9fc05/lib/types/QueryCreateMultiple.ts#L8)

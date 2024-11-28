@@ -1,4 +1,4 @@
-[**quetch**](../README.md) • **Docs**
+[**quetch**](../README.md)
 
 ***
 
@@ -12,7 +12,9 @@ Escapes special characters of a given regular expresion `pattern`.
 
 ## Parameters
 
-• **pattern**: `string`
+### pattern
+
+`string`
 
 Regular expression string to escape.
 
@@ -24,4 +26,4 @@ Escaped regular expression
 
 ## Defined in
 
-[lib/tools/escapeRegex.ts:7](https://github.com/nevoland/quetch/blob/4c3c4d08a348f3317d0dfdffa7516132c18306c7/lib/tools/escapeRegex.ts#L7)
+[lib/tools/escapeRegex.ts:7](https://github.com/nevoland/quetch/blob/daab7d5db71d61e74901886a2473b07ec4e9fc05/lib/tools/escapeRegex.ts#L7)

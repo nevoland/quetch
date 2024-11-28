@@ -1,4 +1,4 @@
-[**quetch**](../README.md) • **Docs**
+[**quetch**](../README.md)
 
 ***
 
@@ -22,13 +22,15 @@ Function that checks queries.
 
 ### Type Parameters
 
-• **T** *extends* `object`
+• **T**
 
 • **Q** *extends* [`Query`](../type-aliases/Query.md)\<`T`\>
 
 ### Parameters
 
-• **query**: `Q` & `object`
+#### query
+
+`Q` & `object`
 
 ### Returns
 
@@ -44,7 +46,9 @@ Function that checks queries.
 
 ### Parameters
 
-• **query**: `Q` & `object`
+#### query
+
+`Q` & `object`
 
 ### Returns
 
@@ -52,4 +56,4 @@ Function that checks queries.
 
 ## Defined in
 
-[lib/tools/defineCheckQuery.ts:8](https://github.com/nevoland/quetch/blob/4c3c4d08a348f3317d0dfdffa7516132c18306c7/lib/tools/defineCheckQuery.ts#L8)
+[lib/tools/defineCheckQuery.ts:8](https://github.com/nevoland/quetch/blob/daab7d5db71d61e74901886a2473b07ec4e9fc05/lib/tools/defineCheckQuery.ts#L8)

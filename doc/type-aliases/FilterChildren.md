@@ -1,4 +1,4 @@
-[**quetch**](../README.md) • **Docs**
+[**quetch**](../README.md)
 
 ***
 
@@ -13,13 +13,13 @@ If `deep` is `true`, also captures all the descendants.
 
 ## Type Parameters
 
-• **T** *extends* `object`
+• **T**
 
 ## Type declaration
 
-### \[SymbolCache\]?
+### \[CACHE\]?
 
-> `optional` **\[SymbolCache\]**: [`Filter`](Filter.md)\<`T`\>
+> `optional` **\[CACHE\]**: [`Filter`](Filter.md)\<`T`\>
 
 ### deep?
 
@@ -35,4 +35,4 @@ If `deep` is `true`, also captures all the descendants.
 
 ## Defined in
 
-[lib/types/FilterChildren.ts:10](https://github.com/nevoland/quetch/blob/4c3c4d08a348f3317d0dfdffa7516132c18306c7/lib/types/FilterChildren.ts#L10)
+[lib/types/FilterChildren.ts:10](https://github.com/nevoland/quetch/blob/daab7d5db71d61e74901886a2473b07ec4e9fc05/lib/types/FilterChildren.ts#L10)

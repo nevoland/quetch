@@ -1,4 +1,4 @@
-[**quetch**](../README.md) • **Docs**
+[**quetch**](../README.md)
 
 ***
 
@@ -12,7 +12,9 @@ Uncallable handler used to terminate a sequence of handlers combined with `combi
 
 ## Parameters
 
-• **input**: `never`
+### input
+
+`never`
 
 ## Returns
 
@@ -20,4 +22,4 @@ Uncallable handler used to terminate a sequence of handlers combined with `combi
 
 ## Defined in
 
-[lib/tools/cork.ts:6](https://github.com/nevoland/quetch/blob/4c3c4d08a348f3317d0dfdffa7516132c18306c7/lib/tools/cork.ts#L6)
+[lib/tools/cork.ts:6](https://github.com/nevoland/quetch/blob/daab7d5db71d61e74901886a2473b07ec4e9fc05/lib/tools/cork.ts#L6)

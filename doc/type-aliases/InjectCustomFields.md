@@ -1,4 +1,4 @@
-[**quetch**](../README.md) • **Docs**
+[**quetch**](../README.md)
 
 ***
 
@@ -12,10 +12,10 @@ Injects the custom fields into the entity type.
 
 ## Type Parameters
 
-• **T** *extends* `object`
+• **T**
 
 • **C** *extends* [`CustomFieldMap`](CustomFieldMap.md)\<`T`\> \| `undefined`
 
 ## Defined in
 
-[lib/types/InjectCustomFields.ts:8](https://github.com/nevoland/quetch/blob/4c3c4d08a348f3317d0dfdffa7516132c18306c7/lib/types/InjectCustomFields.ts#L8)
+[lib/types/InjectCustomFields.ts:8](https://github.com/nevoland/quetch/blob/daab7d5db71d61e74901886a2473b07ec4e9fc05/lib/types/InjectCustomFields.ts#L8)

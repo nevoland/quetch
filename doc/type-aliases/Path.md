@@ -1,4 +1,4 @@
-[**quetch**](../README.md) • **Docs**
+[**quetch**](../README.md)
 
 ***
 
@@ -6,14 +6,14 @@
 
 # Type Alias: Path\<T, D\>
 
-> **Path**\<`T`, `D`\>: `D` *extends* `4` ? `never` : `T` *extends* infer P[] ? [`number`] \| [`number`, `...Path<P, Increment<D>>`] : `T` *extends* `object` ? \{ \[K in keyof T\]-?: \[K\] \| \[K, ...Path\<T\[K\], Increment\<D\>\>\] \}\[keyof `T`\] : `never`
+> **Path**\<`T`, `D`\>: [`0`] *extends* [`1` & `T`] ? readonly ([`Key`](Key.md) \| `never`)[] : `D` *extends* `-1` ? `never` : `T` *extends* [`Primitive`](Primitive.md) ? readonly `never`[] : `T` *extends* infer P[] ? readonly [`number`] \| readonly [`number`, `...Path<P, Increment<D>>`] : `T` *extends* `object` ? \{ \[K in keyof T\]: \[K\] \| \[K, ...Path\<(...), (...)\>\] \}\[keyof `T`\] : `never`
 
 ## Type Parameters
 
 • **T**
 
-• **D** = `0`
+• **D** = `7`
 
 ## Defined in
 
-[lib/types/Path.ts:3](https://github.com/nevoland/quetch/blob/4c3c4d08a348f3317d0dfdffa7516132c18306c7/lib/types/Path.ts#L3)
+[lib/types/Path.ts:5](https://github.com/nevoland/quetch/blob/daab7d5db71d61e74901886a2473b07ec4e9fc05/lib/types/Path.ts#L5)

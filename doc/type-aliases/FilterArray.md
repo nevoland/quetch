@@ -1,4 +1,4 @@
-[**quetch**](../README.md) • **Docs**
+[**quetch**](../README.md)
 
 ***
 
@@ -8,7 +8,11 @@
 
 > **FilterArray**\<`T`, `P`\>: `object` & [`Value`](Value.md)\<`T`, `P`[]\>
 
-Checks if a given array field matches a given array value according to a given operator.
+Checks if a given array field matches a given array value according to a given operator:
+
+- `equal` matches the exact content of the array.
+- `include` requires every value to be present in the array.
+- `intersect` requires at least one item of the value to be present in the array.
 
 ## Type declaration
 
@@ -22,10 +26,10 @@ Checks if a given array field matches a given array value according to a given o
 
 ## Type Parameters
 
-• **T** *extends* `object`
+• **T**
 
-• **P** = [`Any`](Any.md)
+• **P** = `any`
 
 ## Defined in
 
-[lib/types/FilterArray.ts:8](https://github.com/nevoland/quetch/blob/4c3c4d08a348f3317d0dfdffa7516132c18306c7/lib/types/FilterArray.ts#L8)
+[lib/types/FilterArray.ts:11](https://github.com/nevoland/quetch/blob/daab7d5db71d61e74901886a2473b07ec4e9fc05/lib/types/FilterArray.ts#L11)

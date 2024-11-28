@@ -1,4 +1,4 @@
-[**quetch**](../README.md) • **Docs**
+[**quetch**](../README.md)
 
 ***
 
@@ -12,19 +12,21 @@ Checks wether the provided `value` matches the `filter` or not.
 
 ## Type Parameters
 
-• **T** *extends* `object`
+• **T**
 
 ## Parameters
 
-• **filter**: `undefined` \| [`Filter`](../type-aliases/Filter.md)\<`T`\>
+### filter
 
-The filter to apply.
+`undefined` | [`Filter`](../type-aliases/Filter.md)\<`T`\>
 
-• **value**: `undefined` \| `T`
+### value
 
-The value to check.
+`undefined` | `T`
 
-• **settings?**: [`QuerySettings`](../type-aliases/QuerySettings.md)\<`T`\>
+### settings?
+
+[`QuerySettings`](../type-aliases/QuerySettings.md)\<`T`\>
 
 Optional query settings.
 
@@ -36,4 +38,4 @@ Optional query settings.
 
 ## Defined in
 
-[lib/tools/testFilter.ts:28](https://github.com/nevoland/quetch/blob/4c3c4d08a348f3317d0dfdffa7516132c18306c7/lib/tools/testFilter.ts#L28)
+[lib/tools/testFilter.ts:26](https://github.com/nevoland/quetch/blob/daab7d5db71d61e74901886a2473b07ec4e9fc05/lib/tools/testFilter.ts#L26)

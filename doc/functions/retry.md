@@ -1,4 +1,4 @@
-[**quetch**](../README.md) • **Docs**
+[**quetch**](../README.md)
 
 ***
 
@@ -14,13 +14,19 @@ Only instances of `RequestError` that do not result in a `500` status error will
 
 ## Parameters
 
-• **options** = `{}`
+### options
 
-• **options.amount**: `undefined` \| `number` = `5`
+#### options.amount
 
-• **options.delay**: `undefined` \| `number` = `1000`
+`number` = `5`
 
-• **options.delayDelta**: `undefined` \| `number` = `500`
+#### options.delay
+
+`number` = `1000`
+
+#### options.delayDelta
+
+`number` = `500`
 
 ## Returns
 
@@ -30,4 +36,4 @@ Handler
 
 ## Defined in
 
-[lib/middlewares/retry.ts:15](https://github.com/nevoland/quetch/blob/4c3c4d08a348f3317d0dfdffa7516132c18306c7/lib/middlewares/retry.ts#L15)
+[lib/middlewares/retry.ts:15](https://github.com/nevoland/quetch/blob/daab7d5db71d61e74901886a2473b07ec4e9fc05/lib/middlewares/retry.ts#L15)

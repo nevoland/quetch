@@ -1,4 +1,4 @@
-[**quetch**](../README.md) • **Docs**
+[**quetch**](../README.md)
 
 ***
 
@@ -14,4 +14,4 @@
 
 ## Defined in
 
-[lib/types/Increment.ts:5](https://github.com/nevoland/quetch/blob/4c3c4d08a348f3317d0dfdffa7516132c18306c7/lib/types/Increment.ts#L5)
+[lib/types/Increment.ts:5](https://github.com/nevoland/quetch/blob/daab7d5db71d61e74901886a2473b07ec4e9fc05/lib/types/Increment.ts#L5)

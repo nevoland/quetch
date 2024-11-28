@@ -1,4 +1,4 @@
-**quetch** • **Docs**
+**quetch**
 
 ***
 
@@ -16,7 +16,7 @@
 
 - [AggregateFunction](type-aliases/AggregateFunction.md)
 - [AggregateFunctionOperator](type-aliases/AggregateFunctionOperator.md)
-- [Any](type-aliases/Any.md)
+- [CombineUnion](type-aliases/CombineUnion.md)
 - [Context](type-aliases/Context.md)
 - [CustomFieldAggregateMap](type-aliases/CustomFieldAggregateMap.md)
 - [CustomFieldMap](type-aliases/CustomFieldMap.md)
@@ -44,17 +44,20 @@
 - [Immutable](type-aliases/Immutable.md)
 - [Increment](type-aliases/Increment.md)
 - [InjectCustomFields](type-aliases/InjectCustomFields.md)
+- [IntersectUnion](type-aliases/IntersectUnion.md)
 - [Item](type-aliases/Item.md)
 - [Join](type-aliases/Join.md)
 - [Key](type-aliases/Key.md)
 - [KeyFiltered](type-aliases/KeyFiltered.md)
+- [KeyFromUnion](type-aliases/KeyFromUnion.md)
 - [Locale](type-aliases/Locale.md)
-- [Mutable](type-aliases/Mutable.md)
 - [NextHandler](type-aliases/NextHandler.md)
 - [Order](type-aliases/Order.md)
 - [Parameters](type-aliases/Parameters.md)
 - [Path](type-aliases/Path.md)
 - [PathFiltered](type-aliases/PathFiltered.md)
+- [Primitive](type-aliases/Primitive.md)
+- [PrimitiveObject](type-aliases/PrimitiveObject.md)
 - [Query](type-aliases/Query.md)
 - [QueryAggregate](type-aliases/QueryAggregate.md)
 - [QueryCreate](type-aliases/QueryCreate.md)

@@ -1,4 +1,4 @@
-[**quetch**](../README.md) • **Docs**
+[**quetch**](../README.md)
 
 ***
 
@@ -6,14 +6,14 @@
 
 # Type Alias: FieldFiltered\<T, P\>
 
-> **FieldFiltered**\<`T`, `P`\>: [`KeyFiltered`](KeyFiltered.md)\<`Required`\<`T`\>, `P`\> \| [`PathFiltered`](PathFiltered.md)\<`Required`\<`T`\>, `P`\>
+> **FieldFiltered**\<`T`, `P`\>: `KeyOrPathFiltered`\<[`CombineUnion`](CombineUnion.md)\<`T`\>, `P`\>
 
 ## Type Parameters
 
-• **T** *extends* `object`
+• **T**
 
 • **P**
 
 ## Defined in
 
-[lib/types/FieldFiltered.ts:4](https://github.com/nevoland/quetch/blob/4c3c4d08a348f3317d0dfdffa7516132c18306c7/lib/types/FieldFiltered.ts#L4)
+[lib/types/FieldFiltered.ts:5](https://github.com/nevoland/quetch/blob/daab7d5db71d61e74901886a2473b07ec4e9fc05/lib/types/FieldFiltered.ts#L5)

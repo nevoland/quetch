@@ -1,4 +1,4 @@
-[**quetch**](../README.md) • **Docs**
+[**quetch**](../README.md)
 
 ***
 
@@ -6,30 +6,32 @@
 
 # Function: sortItemList()
 
-> **sortItemList**\<`T`\>(`orderList`, `value`): `T`[]
+> **sortItemList**\<`T`\>(`orderList`, `value`): readonly `T`[]
 
 Sorts provided `value` array according to the `orderList`.
 
 ## Type Parameters
 
-• **T** *extends* `object`
+• **T**
 
 ## Parameters
 
-• **orderList**: `undefined` \| [`Order`](../type-aliases/Order.md)\<`T`\>[]
+### orderList
 
-The order to use for sorting.
+`undefined` | readonly [`Order`](../type-aliases/Order.md)\<`T`\>[]
 
-• **value**: `T`[]
+### value
+
+readonly `T`[]
 
 The array to sort.
 
 ## Returns
 
-`T`[]
+readonly `T`[]
 
 A new sorted array.
 
 ## Defined in
 
-[lib/tools/sortItemList.ts:13](https://github.com/nevoland/quetch/blob/4c3c4d08a348f3317d0dfdffa7516132c18306c7/lib/tools/sortItemList.ts#L13)
+[lib/tools/sortItemList.ts:13](https://github.com/nevoland/quetch/blob/daab7d5db71d61e74901886a2473b07ec4e9fc05/lib/tools/sortItemList.ts#L13)

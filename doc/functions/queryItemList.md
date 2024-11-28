@@ -1,4 +1,4 @@
-[**quetch**](../README.md) • **Docs**
+[**quetch**](../README.md)
 
 ***
 
@@ -12,13 +12,15 @@ Performs a provided `query` on local data, provided through the `query.type` pro
 
 ## Type Parameters
 
-• **T** *extends* `object`
+• **T**
 
 • **Q** *extends* [`Query`](../type-aliases/Query.md)\<`T`\>
 
 ## Parameters
 
-• **query**: `Q` & `object`
+### query
+
+`Q` & `object`
 
 The query to perform.
 
@@ -30,4 +32,4 @@ The result of the query.
 
 ## Defined in
 
-[lib/tools/queryItemList.ts:48](https://github.com/nevoland/quetch/blob/4c3c4d08a348f3317d0dfdffa7516132c18306c7/lib/tools/queryItemList.ts#L48)
+[lib/tools/queryItemList.ts:48](https://github.com/nevoland/quetch/blob/daab7d5db71d61e74901886a2473b07ec4e9fc05/lib/tools/queryItemList.ts#L48)

@@ -1,4 +1,4 @@
-[**quetch**](../README.md) • **Docs**
+[**quetch**](../README.md)
 
 ***
 
@@ -6,14 +6,44 @@
 
 # Type Alias: FilterGroup\<T\>
 
-> **FilterGroup**\<`T`\>: `object` \| `object`
+> **FilterGroup**\<`T`\>: \{`operator`: `"all"`;`value`: readonly [`Filter`](Filter.md)\<`T`\>[]; \} \| \{`operator`: `"any"` \| `"none"`;`value`: readonly [`Filter`](Filter.md)\<`T`\>[]; \}
 
 Joins a list of filters with a specific boolean operator.
 
 ## Type Parameters
 
-• **T** *extends* `object`
+• **T**
+
+## Type declaration
+
+\{`operator`: `"all"`;`value`: readonly [`Filter`](Filter.md)\<`T`\>[]; \}
+
+### operator
+
+> **operator**: `"all"`
+
+Boolean operator to use for joining the filters.
+
+### value
+
+> **value**: readonly [`Filter`](Filter.md)\<`T`\>[]
+
+Filters to join.
+
+\{`operator`: `"any"` \| `"none"`;`value`: readonly [`Filter`](Filter.md)\<`T`\>[]; \}
+
+### operator
+
+> **operator**: `"any"` \| `"none"`
+
+Boolean operator to use for joining the filters.
+
+### value?
+
+> `optional` **value**: readonly [`Filter`](Filter.md)\<`T`\>[]
+
+Filters to join.
 
 ## Defined in
 
-[lib/types/FilterGroup.ts:6](https://github.com/nevoland/quetch/blob/4c3c4d08a348f3317d0dfdffa7516132c18306c7/lib/types/FilterGroup.ts#L6)
+[lib/types/FilterGroup.ts:6](https://github.com/nevoland/quetch/blob/daab7d5db71d61e74901886a2473b07ec4e9fc05/lib/types/FilterGroup.ts#L6)

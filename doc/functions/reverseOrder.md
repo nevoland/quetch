@@ -1,4 +1,4 @@
-[**quetch**](../README.md) • **Docs**
+[**quetch**](../README.md)
 
 ***
 
@@ -12,11 +12,13 @@ Reverses the provided `order`.
 
 ## Type Parameters
 
-• **T** *extends* `object`
+• **T**
 
 ## Parameters
 
-• **order**: [`Order`](../type-aliases/Order.md)\<`T`\>
+### order
+
+[`Order`](../type-aliases/Order.md)\<`T`\>
 
 The order to reverse.
 
@@ -36,4 +38,4 @@ The reversed order.
 
 ## Defined in
 
-[lib/tools/reverseOrder.ts:11](https://github.com/nevoland/quetch/blob/4c3c4d08a348f3317d0dfdffa7516132c18306c7/lib/tools/reverseOrder.ts#L11)
+[lib/tools/reverseOrder.ts:11](https://github.com/nevoland/quetch/blob/daab7d5db71d61e74901886a2473b07ec4e9fc05/lib/tools/reverseOrder.ts#L11)

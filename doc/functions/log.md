@@ -1,4 +1,4 @@
-[**quetch**](../README.md) • **Docs**
+[**quetch**](../README.md)
 
 ***
 
@@ -22,7 +22,9 @@ Logs the outgoing query and the incoming result or the error.
 
 ## Parameters
 
-• **title**: `string` = `"Query"`
+### title
+
+`string` = `"Query"`
 
 ## Returns
 
@@ -32,4 +34,4 @@ Query handler
 
 ## Defined in
 
-[lib/middlewares/log.ts:13](https://github.com/nevoland/quetch/blob/4c3c4d08a348f3317d0dfdffa7516132c18306c7/lib/middlewares/log.ts#L13)
+[lib/middlewares/log.ts:13](https://github.com/nevoland/quetch/blob/daab7d5db71d61e74901886a2473b07ec4e9fc05/lib/middlewares/log.ts#L13)

@@ -1,4 +1,4 @@
-[**quetch**](../README.md) • **Docs**
+[**quetch**](../README.md)
 
 ***
 
@@ -12,8 +12,8 @@ Describes a predicate for filtering items.
 
 ## Type Parameters
 
-• **T** *extends* `object`
+• **T**
 
 ## Defined in
 
-[lib/types/Filter.ts:15](https://github.com/nevoland/quetch/blob/4c3c4d08a348f3317d0dfdffa7516132c18306c7/lib/types/Filter.ts#L15)
+[lib/types/Filter.ts:15](https://github.com/nevoland/quetch/blob/daab7d5db71d61e74901886a2473b07ec4e9fc05/lib/types/Filter.ts#L15)

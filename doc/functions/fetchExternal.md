@@ -1,4 +1,4 @@
-[**quetch**](../README.md) • **Docs**
+[**quetch**](../README.md)
 
 ***
 
@@ -12,7 +12,9 @@ Calls the provided `fetch` function, which defaults to the DOM `fetch` function,
 
 ## Parameters
 
-• **fetch** = `...`
+### fetch
+
+(`input`, `init`?) => `Promise`\<`Response`\>(`input`, `init`?) => `Promise`\<`Response`\>
 
 A standard `fetch` function.
 
@@ -24,4 +26,4 @@ Handler that returns a promise that resolves to the response.
 
 ## Defined in
 
-[lib/middlewares/fetchExternal.ts:12](https://github.com/nevoland/quetch/blob/4c3c4d08a348f3317d0dfdffa7516132c18306c7/lib/middlewares/fetchExternal.ts#L12)
+[lib/middlewares/fetchExternal.ts:12](https://github.com/nevoland/quetch/blob/daab7d5db71d61e74901886a2473b07ec4e9fc05/lib/middlewares/fetchExternal.ts#L12)

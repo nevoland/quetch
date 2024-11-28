@@ -1,4 +1,4 @@
-[**quetch**](../README.md) • **Docs**
+[**quetch**](../README.md)
 
 ***
 
@@ -18,7 +18,9 @@ Handles an `input` query and returns an `output` promise.
 
 ## Parameters
 
-• **input**: `I`
+### input
+
+`I`
 
 ## Returns
 
@@ -26,4 +28,4 @@ Handles an `input` query and returns an `output` promise.
 
 ## Defined in
 
-[lib/types/NextHandler.ts:4](https://github.com/nevoland/quetch/blob/4c3c4d08a348f3317d0dfdffa7516132c18306c7/lib/types/NextHandler.ts#L4)
+[lib/types/NextHandler.ts:4](https://github.com/nevoland/quetch/blob/daab7d5db71d61e74901886a2473b07ec4e9fc05/lib/types/NextHandler.ts#L4)

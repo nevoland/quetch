@@ -1,4 +1,4 @@
-[**quetch**](../README.md) • **Docs**
+[**quetch**](../README.md)
 
 ***
 
@@ -6,7 +6,7 @@
 
 # Type Alias: FilterStringIntersect\<T\>
 
-> **FilterStringIntersect**\<`T`\>: `object` & [`Value`](Value.md)\<`T`, `string`[]\>
+> **FilterStringIntersect**\<`T`\>: `object` & [`Value`](Value.md)\<`T`, readonly `string`[]\>
 
 Checks if a given string field has any of the provided values.
 
@@ -30,8 +30,8 @@ Checks if a given string field has any of the provided values.
 
 ## Type Parameters
 
-• **T** *extends* `object`
+• **T**
 
 ## Defined in
 
-[lib/types/FilterStringIntersect.ts:8](https://github.com/nevoland/quetch/blob/4c3c4d08a348f3317d0dfdffa7516132c18306c7/lib/types/FilterStringIntersect.ts#L8)
+[lib/types/FilterStringIntersect.ts:8](https://github.com/nevoland/quetch/blob/daab7d5db71d61e74901886a2473b07ec4e9fc05/lib/types/FilterStringIntersect.ts#L8)
