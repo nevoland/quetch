@@ -1,5 +1,7 @@
 // union to intersection converter by @jcalz
 
+import { EMPTY_ARRAY } from "unchangeable";
+import { SELF } from "../../lib/constants";
 import type { Filter, FieldFiltered, CombineUnion } from "../../lib/types";
 
 // Intersect<{ a: 1 } | { b: 2 }> = { a: 1 } & { b: 2 }
@@ -37,6 +39,14 @@ type X = IntersectItems<Test>; // { a: 1, c: 3 } | { b: 2, c: 3 }
 
 // this is not what we wanted
 type Y = Intersect<Test[number]>; // { a: 1, b: 2, c: 3 }
+
+type FilterTEST = Filter<string>;
+
+const aFilterTEST: FilterTEST = {
+  field: SELF,
+  operator: "equal",
+  value: "hello",
+};
 
 type MenuItem =
   | { type: "separator" }

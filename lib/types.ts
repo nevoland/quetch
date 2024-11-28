@@ -43,6 +43,7 @@ export type { Parameters } from "./types/Parameters";
 export type { Path } from "./types/Path";
 export type { PathFiltered } from "./types/PathFiltered";
 export type { Primitive } from "./types/Primitive";
+export type { PrimitiveObject } from "./types/PrimitiveObject";
 export type { Query } from "./types/Query";
 export type { QueryAggregate } from "./types/QueryAggregate";
 export type { QueryCreate } from "./types/QueryCreate";
