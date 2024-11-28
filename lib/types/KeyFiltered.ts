@@ -6,7 +6,7 @@ import type { Primitive } from "./Primitive";
 type SymbolSelfType = typeof SymbolSelf;
 
 /**
- * Returns object type with field extending the provided `P` type.
+ * Returns union of keys whose mapped value extend the provided `P` type.
  */
 export type KeyFiltered<T, P> = [0] extends [1 & T]
   ? Key | SymbolSelfType
@@ -15,10 +15,9 @@ export type KeyFiltered<T, P> = [0] extends [1 & T]
       ? [MapPrimitive<T>] extends [P]
         ? SymbolSelfType
         : never
-      : keyof T &
-          keyof {
-            [K in keyof T as T[K] extends P ? K : never]-?: T[K];
-          }
+      : keyof {
+          [K in keyof T as Extract<T[K], P> extends never ? never : K]-?: T[K];
+        }
     : never;
 
 type MapPrimitive<P> = P extends String
