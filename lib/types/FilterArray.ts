@@ -9,6 +9,12 @@ import type { Value } from "./Value";
  * - `intersect` requires at least one item of the value to be present in the array.
  */
 export type FilterArray<T, P = any> = {
-  operator: "equal" | "include" | "intersect";
+  operator:
+    | "equal"
+    | "include"
+    | "intersect"
+    | "notEqual"
+    | "notInclude"
+    | "notIntersect";
   field: FieldFiltered<T, P[]>;
 } & Value<T, P[]>;

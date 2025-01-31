@@ -259,10 +259,22 @@ test("tests filter on array values", () => {
   ).toBe(true);
   expect(
     testFilter(
+      { field: "a", operator: "notInclude", value: [1] },
+      { a: [1, 2] },
+    ),
+  ).toBe(false);
+  expect(
+    testFilter(
       { field: "a", operator: "include", value: [2, 3] },
       { a: [1, 2] },
     ),
   ).toBe(false);
+  expect(
+    testFilter(
+      { field: "a", operator: "notInclude", value: [2, 3] },
+      { a: [1, 2] },
+    ),
+  ).toBe(true);
   expect(
     testFilter(
       { field: "a", operator: "intersect", value: [2, 3] },
@@ -271,10 +283,22 @@ test("tests filter on array values", () => {
   ).toBe(true);
   expect(
     testFilter(
+      { field: "a", operator: "notIntersect", value: [2, 3] },
+      { a: [1, 2] },
+    ),
+  ).toBe(false);
+  expect(
+    testFilter(
       { field: "a", operator: "intersect", value: [3, 4] },
       { a: [1, 2] },
     ),
   ).toBe(false);
+  expect(
+    testFilter(
+      { field: "a", operator: "notIntersect", value: [3, 4] },
+      { a: [1, 2] },
+    ),
+  ).toBe(true);
 });
 
 test("tests filter with paths", () => {
@@ -291,6 +315,9 @@ test("tests filter with children predicates", () => {
     true,
   );
   expect(
+    testFilter({ operator: "notChildren", value: "a" }, { id: "a/b" }),
+  ).toBe(false);
+  expect(
     testFilter(
       { operator: "children", value: ".a" },
       { path: ".a.b" },
@@ -300,6 +327,16 @@ test("tests filter with children predicates", () => {
       },
     ),
   ).toBe(true);
+  expect(
+    testFilter(
+      { operator: "notChildren", value: ".a" },
+      { path: ".a.b" },
+      {
+        pathFieldKey: "path",
+        pathFieldSeparator: ".",
+      },
+    ),
+  ).toBe(false);
   const filterChildren: FilterChildren<{ path: string }> = {
     operator: "children",
     value: "a",
@@ -324,6 +361,9 @@ test("tests filter with children predicates", () => {
     false,
   );
   expect(
+    testFilter({ operator: "notChildren", value: "b" }, { id: "a/b" }),
+  ).toBe(true);
+  expect(
     testFilter(
       { operator: "children", value: "ba" },
       { path: ".a.b" },
@@ -333,4 +373,14 @@ test("tests filter with children predicates", () => {
       },
     ),
   ).toBe(false);
+  expect(
+    testFilter(
+      { operator: "notChildren", value: "ba" },
+      { path: ".a.b" },
+      {
+        pathFieldKey: "path",
+        pathFieldSeparator: ".",
+      },
+    ),
+  ).toBe(true);
 });

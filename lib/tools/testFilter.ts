@@ -103,7 +103,9 @@ export function testFilter<T>(
       }
       return true;
     }
-    case "children": {
+    case "children":
+    case "notChildren": {
+      const not = filter.operator[0] === "n";
       if (filter[CACHE] === undefined) {
         switch (true) {
           case settings?.transformFilterChildren !== undefined:
@@ -123,60 +125,71 @@ export function testFilter<T>(
           }
         }
       }
-      return testFilter(filter[CACHE], value);
+      return negate(testFilter(filter[CACHE], value), not);
     }
     case "custom": {
       return filter.value(value);
     }
-    case "startWith": {
+    case "startWith":
+    case "notStartWith": {
+      const not = filter.operator[0] === "n";
       const rightValue = valueFromFilter(value, filter);
       const leftValue = get<T, any>(value, filter.field) as string | undefined;
       if (leftValue === undefined || leftValue.length < rightValue.length) {
-        return false;
+        return negate(false, not);
       }
       if (filter.options !== undefined || filter.locale !== undefined) {
-        return (
+        return negate(
           rightValue.localeCompare(
             leftValue.slice(0, rightValue.length),
             filter.locale,
             filter.options,
-          ) === 0
+          ) === 0,
+          not,
         );
       }
-      return leftValue.startsWith(rightValue) ?? false;
+      return negate(leftValue.startsWith(rightValue) ?? false, not);
     }
-    case "endWith": {
+    case "endWith":
+    case "notEndWith": {
+      const not = filter.operator[0] === "n";
       const rightValue = valueFromFilter(value, filter);
       const leftValue = get<T, any>(value, filter.field) as string | undefined;
       if (leftValue === undefined || leftValue.length < rightValue.length) {
-        return false;
+        return negate(false, not);
       }
       if (filter.options !== undefined || filter.locale !== undefined) {
-        return (
+        return negate(
           rightValue.localeCompare(
             leftValue.slice(-rightValue.length),
             filter.locale,
             filter.options,
-          ) === 0
+          ) === 0,
+          not,
         );
       }
-      return leftValue.endsWith(rightValue) ?? false;
+      return negate(leftValue.endsWith(rightValue) ?? false, not);
     }
-    case "include": {
+    case "include":
+    case "notInclude": {
+      const not = filter.operator[0] === "n";
       const rightValue = valueFromFilter(value, filter);
       const leftValue = get<T, any>(value, filter.field) as string | any[];
       if (leftValue == null) {
-        return false;
+        return negate(false, not);
       }
       if (isArray(rightValue)) {
         // FIXME: Get unique values
         if (!isArray(leftValue) || leftValue.length < rightValue.length) {
-          return false;
+          return negate(false, not);
         }
-        return rightValue.every((value) => leftValue.includes(value));
+        return negate(
+          rightValue.every((value) => leftValue.includes(value)),
+          not,
+        );
       }
       if (isArray(leftValue) || leftValue.length < rightValue.length) {
-        return false;
+        return negate(false, not);
       }
       if (
         (filter as FilterString<T>).options ||
@@ -192,12 +205,12 @@ export function testFilter<T>(
               (filter as FilterString<T>).options,
             ) === 0
           ) {
-            return true;
+            return negate(true, not);
           }
         }
-        return false;
+        return negate(false, not);
       }
-      return leftValue.includes?.(rightValue) ?? false;
+      return negate(leftValue.includes?.(rightValue) ?? false, not);
     }
     case "greaterThan": {
       const rightValue = valueFromFilter(value, filter);
@@ -267,11 +280,13 @@ export function testFilter<T>(
       }
       return leftValue <= rightValue;
     }
-    case "match": {
+    case "match":
+    case "notMatch": {
+      const not = filter.operator[0] === "n";
       const rightValue = valueFromFilter(value, filter);
       const leftValue = get<T, any>(value, filter.field) as string | undefined;
       if (leftValue === undefined) {
-        return false;
+        return negate(false, not);
       }
       if (filter[CACHE] === undefined) {
         filter[CACHE] = new RegExp(
@@ -281,39 +296,47 @@ export function testFilter<T>(
           }`,
         );
       }
-      return filter[CACHE].test(leftValue);
+      return negate(filter[CACHE].test(leftValue), not);
     }
-    case "intersect": {
+    case "intersect":
+    case "notIntersect": {
+      const not = filter.operator[0] === "n";
       const rightValue = valueFromFilter(value, filter);
       const leftValue = get<T, any>(value, filter.field);
       if (leftValue == null) {
-        return false;
+        return negate(false, not);
       }
       if (isArray(leftValue)) {
-        return (
+        return negate(
           isArray(rightValue) &&
-          rightValue.some((value) => leftValue.includes(value))
+            rightValue.some((value) => leftValue.includes(value)),
+          not,
         );
       }
       if (
         (filter as FilterString<T>).options ||
         (filter as FilterString<T>).locale
       ) {
-        return (
+        return negate(
           leftValue !== undefined &&
-          (rightValue as string[]).some(
-            (value) =>
-              value.localeCompare(
-                leftValue as string,
-                (filter as FilterString<T>).locale,
-                (filter as FilterString<T>).options,
-              ) === 0,
-          )
+            (rightValue as string[]).some(
+              (value) =>
+                value.localeCompare(
+                  leftValue as string,
+                  (filter as FilterString<T>).locale,
+                  (filter as FilterString<T>).options,
+                ) === 0,
+            ),
+          not,
         );
       }
-      return rightValue.includes(leftValue as string);
+      return negate(rightValue.includes(leftValue as string), not);
     }
     default:
       throw new Error(`Unknown filter operator '${(filter as any).operator}'`);
   }
+}
+
+function negate(value: boolean, condition: boolean) {
+  return condition ? !value : value;
 }

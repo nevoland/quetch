@@ -11,12 +11,18 @@ export type FilterString<T> = {
     // FIXME: Redundant with `"not"` operator
     | "notEqual"
     | "startWith"
+    | "notStartWith"
     | "endWith"
+    | "notEndWith"
     | "include"
     | "greaterThan"
     | "greaterThanOrEqual"
     | "lowerThan"
-    | "lowerThanOrEqual";
+    | "lowerThanOrEqual"
+    | "between"
+    | "notBetween"
+    | "betweenOrEqual"
+    | "notBetweenOrEqual";
   field: FieldFiltered<T, string>;
   options?: Intl.CollatorOptions;
   locale?: Locale;

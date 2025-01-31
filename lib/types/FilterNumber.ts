@@ -11,6 +11,10 @@ export type FilterNumber<T> = {
     | "greaterThan"
     | "greaterThanOrEqual"
     | "lowerThan"
-    | "lowerThanOrEqual";
+    | "lowerThanOrEqual"
+    | "between"
+    | "notBetween"
+    | "betweenOrEqual"
+    | "notBetweenOrEqual";
   field: FieldFiltered<T, number>;
 } & Value<T, number>;

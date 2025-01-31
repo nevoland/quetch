@@ -8,7 +8,7 @@ import type { Filter } from "./Filter";
  * If `deep` is `true`, also captures all the descendants.
  */
 export type FilterChildren<T> = {
-  operator: "children";
+  operator: "children" | "notChildren";
   value?: Context<T> | string;
   deep?: boolean;
   [CACHE]?: Filter<T>;
