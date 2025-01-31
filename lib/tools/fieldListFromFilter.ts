@@ -26,8 +26,12 @@ export function fieldListFromFilter<T>(
     case "startWith":
     case "endWith":
     case "match":
-    case "exist":
-      return [filter.field as any];
+    case "exist": {
+      if ("field" in filter) {
+        return [filter.field as Field<T>];
+      }
+      return EMPTY_ARRAY;
+    }
     case "all":
     case "any":
     case "none":

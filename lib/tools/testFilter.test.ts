@@ -1,6 +1,7 @@
 import { expect, test } from "vitest";
 
 import { CACHE } from "../constants/CACHE.js";
+import { SELF } from "../constants.js";
 import type { FilterChildren } from "../types.js";
 
 import { filterFromContext } from "./filterFromContext.js";
@@ -91,6 +92,15 @@ test("tests filter lists", () => {
       },
       { a: "foo", b: "bar" },
     ),
+  ).toBe(true);
+});
+
+test("tests filter on primitive values", () => {
+  expect(
+    testFilter({ field: SELF, operator: "equal", value: "test" }, "test"),
+  ).toBe(true);
+  expect(
+    testFilter({ field: SELF, operator: "include", value: "test" }, "testing"),
   ).toBe(true);
 });
 
