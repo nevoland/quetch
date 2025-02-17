@@ -79,6 +79,7 @@
     "vitest": "^2.1.4"
   },
   "dependencies": {
+    "compromise": "^14.14.4",
     "futurise": "^1.7.1",
     "unchangeable": "^1.7.3"
   }
