@@ -32,4 +32,12 @@ export type QuerySettings<T> = {
    * Abort controller to abort the query.
    */
   abortController?: AbortController;
+  /**
+   * String used to separate the path nodes of an item.
+   */
+  separator?: string;
+  /**
+   * String used to escape the separator.
+   */
+  separatorEscape?: string;
 };

@@ -1,4 +1,4 @@
-import type { Order } from "../types";
+import type { Order, QuerySettings } from "../types";
 
 import { escapeRegex } from "./escapeRegex.js";
 import { get } from "./get.js";
@@ -10,14 +10,15 @@ import { normalizeOrder } from "./normalizeOrder.js";
  * @param orderList The order to use for sorting.
  * @param value The array to sort.
  * @param separator String used to separate the path nodes of an item.
+ * @param separator String used to escape the separator.
  * @returns A new sorted array.
  */
 export function sortItemList<T>(
   orderList: readonly Order<T>[] | undefined,
   value: readonly T[],
-  separator?: string,
-  separatorEscape = "\\",
+  settings?: QuerySettings<T>,
 ) {
+  const { separator, separatorEscape = "\\" } = settings ?? {};
   if (orderList === undefined || orderList.length === 0) {
     return value;
   }
