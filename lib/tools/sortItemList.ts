@@ -9,8 +9,7 @@ import { normalizeOrder } from "./normalizeOrder.js";
  *
  * @param orderList The order to use for sorting.
  * @param value The array to sort.
- * @param separator String used to separate the path nodes of an item.
- * @param separator String used to escape the separator.
+ * @param settings Optional query settings.
  * @returns A new sorted array.
  */
 export function sortItemList<T>(
