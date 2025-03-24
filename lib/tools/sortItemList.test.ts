@@ -60,4 +60,29 @@ test("sorts items", () => {
     { a: 2, c: "a" },
     { a: 3, c: "b" },
   ]);
+  expect(
+    sortItemList(
+      [{ descending: false, field: "path" }],
+      [
+        { path: "a" },
+        { path: "a/b" },
+        { path: "a.b" },
+        { path: "a/b/c" },
+        { path: "a.b.c" },
+        { path: "a/b.c" },
+        { path: "a\\/b.c" },
+        { path: "a.b/c" },
+      ],
+      "/",
+    ),
+  ).toEqual([
+    { path: "a" },
+    { path: "a/b" },
+    { path: "a/b/c" },
+    { path: "a/b.c" },
+    { path: "a.b" },
+    { path: "a.b/c" },
+    { path: "a.b.c" },
+    { path: "a\\/b.c" },
+  ]);
 });
