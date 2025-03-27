@@ -9,6 +9,7 @@ export { filterChildren } from "./tools/filterChildren.js";
 export { filterFromContext } from "./tools/filterFromContext.js";
 export { get } from "./tools/get.js";
 export { isFilterGroup } from "./tools/isFilterGroup.js";
+export { normalizeFieldSeparatorMap } from "./tools/normalizeFieldSeparatorMap.js";
 export { normalizeOrder } from "./tools/normalizeOrder.js";
 export { queryItemList } from "./tools/queryItemList.js";
 export { reverseOrder } from "./tools/reverseOrder.js";

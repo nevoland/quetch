@@ -1,20 +1,29 @@
 import type { FieldFiltered } from "./FieldFiltered";
+import type { FieldMap } from "./FieldMap";
 import type { Filter } from "./Filter";
 import type { FilterChildren } from "./FilterChildren";
+import type { ValueMap } from "./ValueMap";
 
 /**
  * Settings to use when doing a query.
  */
 export type QuerySettings<T> = {
-  // TODO: Move `path*` and `transform*` to fetch middleware?
   /**
-   * String used to separate the path nodes of an item.
-   */
-  pathFieldSeparator?: string;
-  /**
-   * Field key to that contains the path value of an item.
+   * Path to the field that contains the path value of an item, used for displaying items in a tree.
    */
   pathFieldKey?: FieldFiltered<T, string>;
+  /**
+   * String used to escape the separator.
+   *
+   * @default "\\"
+   */
+  fieldSeparatorEscape?: string;
+  /**
+   * String used to separate the path nodes of a field value. It can be the same for all fields, or specific to a field.
+   *
+   * @default "/"
+   */
+  fieldSeparatorMap?: FieldMap<T, string> | ValueMap<T, string>;
   /**
    * Returns a filter that captures the items expressed by the provided `FilterChildren`. The return filter cannot use filters of type `FilterChildren`.
    *
@@ -32,12 +41,4 @@ export type QuerySettings<T> = {
    * Abort controller to abort the query.
    */
   abortController?: AbortController;
-  /**
-   * String used to separate the path nodes of an item.
-   */
-  separator?: string;
-  /**
-   * String used to escape the separator.
-   */
-  separatorEscape?: string;
 };

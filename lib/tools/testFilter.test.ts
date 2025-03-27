@@ -323,7 +323,7 @@ test("tests filter with children predicates", () => {
       { path: ".a.b" },
       {
         pathFieldKey: "path",
-        pathFieldSeparator: ".",
+        fieldSeparatorMap: { path: "." },
       },
     ),
   ).toBe(true);
@@ -333,7 +333,7 @@ test("tests filter with children predicates", () => {
       { path: ".a.b" },
       {
         pathFieldKey: "path",
-        pathFieldSeparator: ".",
+        fieldSeparatorMap: { path: "." },
       },
     ),
   ).toBe(false);
@@ -369,7 +369,7 @@ test("tests filter with children predicates", () => {
       { path: ".a.b" },
       {
         pathFieldKey: "path",
-        pathFieldSeparator: ".",
+        fieldSeparatorMap: { path: "." },
       },
     ),
   ).toBe(false);
@@ -379,7 +379,7 @@ test("tests filter with children predicates", () => {
       { path: ".a.b" },
       {
         pathFieldKey: "path",
-        pathFieldSeparator: ".",
+        fieldSeparatorMap: { path: "." },
       },
     ),
   ).toBe(true);

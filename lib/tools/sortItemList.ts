@@ -2,6 +2,7 @@ import type { Order, QuerySettings } from "../types";
 
 import { escapeRegex } from "./escapeRegex.js";
 import { get } from "./get.js";
+import { normalizeFieldSeparatorMap } from "./normalizeFieldSeparatorMap.js";
 import { normalizeOrder } from "./normalizeOrder.js";
 
 /**
@@ -17,18 +18,15 @@ export function sortItemList<T>(
   value: readonly T[],
   settings?: QuerySettings<T>,
 ) {
-  const { separator, separatorEscape = "\\" } = settings ?? {};
+  const { fieldSeparatorMap, fieldSeparatorEscape = "\\" } = settings ?? {};
   if (orderList === undefined || orderList.length === 0) {
     return value;
   }
   const normalizedOrder = orderList.map(normalizeOrder);
-  const normalizedSeparator =
-    separator == null
-      ? null
-      : new RegExp(
-          `(?<!${escapeRegex(separatorEscape)})${escapeRegex(separator)}`,
-          "g",
-        );
+  const normalizedFieldSeparatorMap =
+    fieldSeparatorMap == null
+      ? undefined
+      : normalizeFieldSeparatorMap(fieldSeparatorMap);
   return value.toSorted((a, b) => {
     for (let index = 0; index < normalizedOrder.length; index++) {
       const { field, descending } = normalizedOrder[index]!;
@@ -37,7 +35,12 @@ export function sortItemList<T>(
       if (valueA === valueB) {
         continue;
       }
-      if (normalizedSeparator != null) {
+      const fieldSeparator = get(normalizedFieldSeparatorMap, field as any);
+      if (fieldSeparator != null) {
+        const fieldSeparatorRegex = new RegExp(
+          `(?<!${escapeRegex(fieldSeparatorEscape)})${escapeRegex(fieldSeparator)}`,
+          "g",
+        );
         if (valueA == null) {
           return valueB == null ? 0 : descending ? 1 : -1;
         }
@@ -45,11 +48,11 @@ export function sortItemList<T>(
           return descending ? -1 : 1;
         }
         const normalizedA = (valueA as string).replaceAll(
-          normalizedSeparator,
+          fieldSeparatorRegex,
           "\x00",
         );
         const normalizedB = (valueB as string).replaceAll(
-          normalizedSeparator,
+          fieldSeparatorRegex,
           "\x00",
         );
         if (normalizedA > normalizedB) {
