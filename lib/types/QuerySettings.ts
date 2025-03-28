@@ -19,9 +19,7 @@ export type QuerySettings<T> = {
    */
   fieldSeparatorEscape?: string;
   /**
-   * String used to separate the path nodes of a field value. It can be the same for all fields, or specific to a field.
-   *
-   * @default "/"
+   * Maps path fields to a string used to separate the path nodes of a field value.
    */
   fieldSeparatorMap?: FieldMap<T, string> | ValueMap<T, string>;
   /**

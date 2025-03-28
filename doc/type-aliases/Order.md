@@ -16,4 +16,4 @@ Order item.
 
 ## Defined in
 
-[lib/types/Order.ts:6](https://github.com/nevoland/quetch/blob/74684cd5cd1bd7a08980d4ce305ecc4be0c3e8b8/lib/types/Order.ts#L6)
+[lib/types/Order.ts:6](https://github.com/nevoland/quetch/blob/d3c3874b3b683738adb5be9e083a7d95e2758c83/lib/types/Order.ts#L6)

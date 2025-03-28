@@ -18,4 +18,4 @@ Return types of custom field functions.
 
 ## Defined in
 
-[lib/types/FieldFunctionReturn.ts:4](https://github.com/nevoland/quetch/blob/74684cd5cd1bd7a08980d4ce305ecc4be0c3e8b8/lib/types/FieldFunctionReturn.ts#L4)
+[lib/types/FieldFunctionReturn.ts:4](https://github.com/nevoland/quetch/blob/d3c3874b3b683738adb5be9e083a7d95e2758c83/lib/types/FieldFunctionReturn.ts#L4)

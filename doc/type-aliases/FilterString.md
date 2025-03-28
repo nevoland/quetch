@@ -22,7 +22,7 @@ Checks if a given string field matches a given string value according to a given
 
 ### operator
 
-> **operator**: `"equal"` \| `"notEqual"` \| `"startWith"` \| `"endWith"` \| `"include"` \| `"greaterThan"` \| `"greaterThanOrEqual"` \| `"lowerThan"` \| `"lowerThanOrEqual"`
+> **operator**: `"equal"` \| `"notEqual"` \| `"startWith"` \| `"notStartWith"` \| `"endWith"` \| `"notEndWith"` \| `"include"` \| `"greaterThan"` \| `"greaterThanOrEqual"` \| `"lowerThan"` \| `"lowerThanOrEqual"` \| `"between"` \| `"notBetween"` \| `"betweenOrEqual"` \| `"notBetweenOrEqual"`
 
 ### options?
 
@@ -34,4 +34,4 @@ Checks if a given string field matches a given string value according to a given
 
 ## Defined in
 
-[lib/types/FilterString.ts:8](https://github.com/nevoland/quetch/blob/74684cd5cd1bd7a08980d4ce305ecc4be0c3e8b8/lib/types/FilterString.ts#L8)
+[lib/types/FilterString.ts:8](https://github.com/nevoland/quetch/blob/d3c3874b3b683738adb5be9e083a7d95e2758c83/lib/types/FilterString.ts#L8)

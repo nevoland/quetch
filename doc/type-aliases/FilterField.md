@@ -24,8 +24,8 @@ The field name or path for which to check its existence.
 
 ### operator
 
-> **operator**: `"exist"`
+> **operator**: `"exist"` \| `"notExist"`
 
 ## Defined in
 
-[lib/types/FilterField.ts:6](https://github.com/nevoland/quetch/blob/74684cd5cd1bd7a08980d4ce305ecc4be0c3e8b8/lib/types/FilterField.ts#L6)
+[lib/types/FilterField.ts:6](https://github.com/nevoland/quetch/blob/d3c3874b3b683738adb5be9e083a7d95e2758c83/lib/types/FilterField.ts#L6)
