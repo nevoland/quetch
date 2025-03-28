@@ -27,6 +27,21 @@ export function sortItemList<T>(
     fieldSeparatorMap == null
       ? undefined
       : normalizeFieldSeparatorMap(fieldSeparatorMap);
+  const fieldSeparatorRegexpList =
+    normalizedFieldSeparatorMap == null
+      ? undefined
+      : normalizedOrder.map(({ field }) => {
+          const separator = get(
+            normalizedFieldSeparatorMap,
+            field as any,
+          ) as string;
+          return separator == null
+            ? undefined
+            : new RegExp(
+                `(?<!${escapeRegex(fieldSeparatorEscape)})${escapeRegex(separator)}`,
+                "g",
+              );
+        });
   return value.toSorted((a, b) => {
     for (let index = 0; index < normalizedOrder.length; index++) {
       const { field, descending } = normalizedOrder[index]!;
@@ -35,12 +50,8 @@ export function sortItemList<T>(
       if (valueA === valueB) {
         continue;
       }
-      const fieldSeparator = get(normalizedFieldSeparatorMap, field as any);
-      if (fieldSeparator != null) {
-        const fieldSeparatorRegex = new RegExp(
-          `(?<!${escapeRegex(fieldSeparatorEscape)})${escapeRegex(fieldSeparator)}`,
-          "g",
-        );
+      const fieldSeparatorRegexp = fieldSeparatorRegexpList?.[index];
+      if (fieldSeparatorRegexp != null) {
         if (valueA == null) {
           return valueB == null ? 0 : descending ? 1 : -1;
         }
@@ -48,11 +59,11 @@ export function sortItemList<T>(
           return descending ? -1 : 1;
         }
         const normalizedA = (valueA as string).replaceAll(
-          fieldSeparatorRegex,
+          fieldSeparatorRegexp,
           "\x00",
         );
         const normalizedB = (valueB as string).replaceAll(
-          fieldSeparatorRegex,
+          fieldSeparatorRegexp,
           "\x00",
         );
         if (normalizedA > normalizedB) {

@@ -121,7 +121,7 @@ export function testFilter<T>(
             } = settings || (EMPTY_OBJECT as QuerySettings<T>);
             const pathFieldSeparator =
               fieldSeparatorMap == null
-                ? "/"
+                ? undefined
                 : (get(
                     normalizeFieldSeparatorMap(fieldSeparatorMap),
                     pathFieldKey as any,
