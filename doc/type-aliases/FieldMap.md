@@ -18,4 +18,4 @@ Maps the fields of the provided value `T` to a specific value `V`.
 
 ## Defined in
 
-[lib/types/FieldMap.ts:6](https://github.com/nevoland/quetch/blob/d3c3874b3b683738adb5be9e083a7d95e2758c83/lib/types/FieldMap.ts#L6)
+[lib/types/FieldMap.ts:6](https://github.com/nevoland/quetch/blob/3b1cd3aac672a1a4d2ad52892d4fa09995f51627/lib/types/FieldMap.ts#L6)
