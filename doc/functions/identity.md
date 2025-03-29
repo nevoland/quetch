@@ -34,4 +34,4 @@
 
 ## Defined in
 
-[lib/middlewares/identity.ts:3](https://github.com/nevoland/quetch/blob/74684cd5cd1bd7a08980d4ce305ecc4be0c3e8b8/lib/middlewares/identity.ts#L3)
+[lib/middlewares/identity.ts:3](https://github.com/nevoland/quetch/blob/d3c3874b3b683738adb5be9e083a7d95e2758c83/lib/middlewares/identity.ts#L3)

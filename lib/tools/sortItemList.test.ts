@@ -61,3 +61,62 @@ test("sorts items", () => {
     { a: 3, c: "b" },
   ]);
 });
+
+test("sorts items with separator setting", () => {
+  expect(
+    sortItemList(
+      [{ descending: false, field: "path" }],
+      [
+        { path: "a" },
+        { path: "a/b" },
+        { path: "a.b" },
+        { path: "a/b/c" },
+        { path: "a.b.c" },
+        { path: "a/b.c" },
+        { path: "a\\/b.c" },
+        { path: "a.b/c" },
+      ],
+      {
+        pathField: "path",
+        pathFieldSeparator: "/",
+      },
+    ),
+  ).toEqual([
+    { path: "a" },
+    { path: "a/b" },
+    { path: "a/b/c" },
+    { path: "a/b.c" },
+    { path: "a.b" },
+    { path: "a.b/c" },
+    { path: "a.b.c" },
+    { path: "a\\/b.c" },
+  ]);
+  expect(
+    sortItemList(
+      [{ descending: false, field: "path" }],
+      [
+        { path: "a" },
+        { path: "a/b" },
+        { path: "a.b" },
+        { path: "a/b/c" },
+        { path: "a.b.c" },
+        { path: "a/b.c" },
+        { path: "a\\/b.c" },
+        { path: "a.b/c" },
+      ],
+      {
+        pathField: "path",
+        pathFieldSeparator: "/",
+      },
+    ),
+  ).toEqual([
+    { path: "a" },
+    { path: "a/b" },
+    { path: "a/b/c" },
+    { path: "a/b.c" },
+    { path: "a.b" },
+    { path: "a.b/c" },
+    { path: "a.b.c" },
+    { path: "a\\/b.c" },
+  ]);
+});

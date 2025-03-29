@@ -1,3 +1,5 @@
+import { EMPTY_OBJECT } from "unchangeable";
+
 import { CACHE } from "../constants/CACHE.js";
 import type { QuerySettings } from "../types/QuerySettings.js";
 import type { FieldFiltered, Filter, FilterString } from "../types.js";
@@ -113,12 +115,12 @@ export function testFilter<T>(
             break;
           default: {
             const {
-              pathFieldKey = "id" as FieldFiltered<T, string>,
-              pathFieldSeparator = "/",
-            } = settings || {};
+              pathField = "id" as FieldFiltered<T, string>,
+              pathFieldSeparator,
+            } = settings || (EMPTY_OBJECT as QuerySettings<T>);
             filter[CACHE] = filterChildren(
               filter.value as string,
-              pathFieldKey,
+              pathField,
               filter.deep,
               pathFieldSeparator,
             );

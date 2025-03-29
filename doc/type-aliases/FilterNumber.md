@@ -18,7 +18,7 @@ Checks if a given number field matches a given number value according to a given
 
 ### operator
 
-> **operator**: `"equal"` \| `"notEqual"` \| `"greaterThan"` \| `"greaterThanOrEqual"` \| `"lowerThan"` \| `"lowerThanOrEqual"`
+> **operator**: `"equal"` \| `"notEqual"` \| `"greaterThan"` \| `"greaterThanOrEqual"` \| `"lowerThan"` \| `"lowerThanOrEqual"` \| `"between"` \| `"notBetween"` \| `"betweenOrEqual"` \| `"notBetweenOrEqual"`
 
 ## Type Parameters
 
@@ -26,4 +26,4 @@ Checks if a given number field matches a given number value according to a given
 
 ## Defined in
 
-[lib/types/FilterNumber.ts:7](https://github.com/nevoland/quetch/blob/74684cd5cd1bd7a08980d4ce305ecc4be0c3e8b8/lib/types/FilterNumber.ts#L7)
+[lib/types/FilterNumber.ts:7](https://github.com/nevoland/quetch/blob/d3c3874b3b683738adb5be9e083a7d95e2758c83/lib/types/FilterNumber.ts#L7)

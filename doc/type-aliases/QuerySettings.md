@@ -22,17 +22,29 @@ Settings to use when doing a query.
 
 Abort controller to abort the query.
 
+### fieldSeparatorEscape?
+
+> `optional` **fieldSeparatorEscape**: `string`
+
+String used to escape the separator.
+
+#### Default
+
+```ts
+"\\"
+```
+
+### fieldSeparatorMap?
+
+> `optional` **fieldSeparatorMap**: [`FieldMap`](FieldMap.md)\<`T`, `string`\> \| [`ValueMap`](ValueMap.md)\<`T`, `string`\>
+
+Maps path fields to a string used to separate the path nodes of a field value.
+
 ### pathFieldKey?
 
 > `optional` **pathFieldKey**: [`FieldFiltered`](FieldFiltered.md)\<`T`, `string`\>
 
-Field key to that contains the path value of an item.
-
-### pathFieldSeparator?
-
-> `optional` **pathFieldSeparator**: `string`
-
-String used to separate the path nodes of an item.
+Path to the field that contains the path value of an item, used for displaying items in a tree.
 
 ### signal?
 
@@ -62,4 +74,4 @@ A filter that captures the items expressed by the provided `FilterChildren`.
 
 ## Defined in
 
-[lib/types/QuerySettings.ts:8](https://github.com/nevoland/quetch/blob/74684cd5cd1bd7a08980d4ce305ecc4be0c3e8b8/lib/types/QuerySettings.ts#L8)
+[lib/types/QuerySettings.ts:10](https://github.com/nevoland/quetch/blob/d3c3874b3b683738adb5be9e083a7d95e2758c83/lib/types/QuerySettings.ts#L10)

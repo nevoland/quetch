@@ -26,6 +26,8 @@
 - [FieldFunctionCustom](type-aliases/FieldFunctionCustom.md)
 - [FieldFunctionFormatDate](type-aliases/FieldFunctionFormatDate.md)
 - [FieldFunctionReturn](type-aliases/FieldFunctionReturn.md)
+- [FieldKey](type-aliases/FieldKey.md)
+- [FieldMap](type-aliases/FieldMap.md)
 - [Filter](type-aliases/Filter.md)
 - [FilterArray](type-aliases/FilterArray.md)
 - [FilterBoolean](type-aliases/FilterBoolean.md)
@@ -74,6 +76,7 @@
 - [Result](type-aliases/Result.md)
 - [Store](type-aliases/Store.md)
 - [Value](type-aliases/Value.md)
+- [ValueMap](type-aliases/ValueMap.md)
 
 ## Variables
 
@@ -100,6 +103,7 @@
 - [identity](functions/identity.md)
 - [isFilterGroup](functions/isFilterGroup.md)
 - [log](functions/log.md)
+- [normalizeFieldSeparatorMap](functions/normalizeFieldSeparatorMap.md)
 - [normalizeOrder](functions/normalizeOrder.md)
 - [queryItemList](functions/queryItemList.md)
 - [retry](functions/retry.md)
