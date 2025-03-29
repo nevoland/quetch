@@ -77,9 +77,8 @@ test("sorts items with separator setting", () => {
         { path: "a.b/c" },
       ],
       {
-        fieldSeparatorMap: {
-          path: "/",
-        },
+        pathField: "path",
+        pathFieldSeparator: "/",
       },
     ),
   ).toEqual([
@@ -106,7 +105,8 @@ test("sorts items with separator setting", () => {
         { path: "a.b/c" },
       ],
       {
-        fieldSeparatorMap: [[["path"], "/"]],
+        pathField: "path",
+        pathFieldSeparator: "/",
       },
     ),
   ).toEqual([

@@ -2,8 +2,8 @@ import type { Order, QuerySettings } from "../types";
 
 import { escapeRegex } from "./escapeRegex.js";
 import { get } from "./get.js";
-import { normalizeFieldSeparatorMap } from "./normalizeFieldSeparatorMap.js";
 import { normalizeOrder } from "./normalizeOrder.js";
+import { sameField } from "./sameField.js";
 
 /**
  * Sorts provided `value` array according to the `orderList`.
@@ -18,30 +18,15 @@ export function sortItemList<T>(
   value: readonly T[],
   settings?: QuerySettings<T>,
 ) {
-  const { fieldSeparatorMap, fieldSeparatorEscape = "\\" } = settings ?? {};
+  const {
+    pathField,
+    pathFieldSeparator,
+    pathFieldSeparatorEscape = "\\",
+  } = settings ?? {};
   if (orderList === undefined || orderList.length === 0) {
     return value;
   }
   const normalizedOrder = orderList.map(normalizeOrder);
-  const normalizedFieldSeparatorMap =
-    fieldSeparatorMap == null
-      ? undefined
-      : normalizeFieldSeparatorMap(fieldSeparatorMap);
-  const fieldSeparatorRegexpList =
-    normalizedFieldSeparatorMap == null
-      ? undefined
-      : normalizedOrder.map(({ field }) => {
-          const separator = get(
-            normalizedFieldSeparatorMap,
-            field as any,
-          ) as string;
-          return separator == null
-            ? undefined
-            : new RegExp(
-                `(?<!${escapeRegex(fieldSeparatorEscape)})${escapeRegex(separator)}`,
-                "g",
-              );
-        });
   return value.toSorted((a, b) => {
     for (let index = 0; index < normalizedOrder.length; index++) {
       const { field, descending } = normalizedOrder[index]!;
@@ -50,8 +35,15 @@ export function sortItemList<T>(
       if (valueA === valueB) {
         continue;
       }
-      const fieldSeparatorRegexp = fieldSeparatorRegexpList?.[index];
-      if (fieldSeparatorRegexp != null) {
+      if (
+        pathFieldSeparator != null &&
+        pathField != null &&
+        sameField(field, pathField)
+      ) {
+        const fieldSeparatorRegexp = new RegExp(
+          `(?<!${escapeRegex(pathFieldSeparatorEscape)})${escapeRegex(pathFieldSeparator)}`,
+          "g",
+        );
         if (valueA == null) {
           return valueB == null ? 0 : descending ? 1 : -1;
         }

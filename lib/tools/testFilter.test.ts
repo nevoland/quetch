@@ -322,8 +322,8 @@ test("tests filter with children predicates", () => {
       { operator: "children", value: ".a" },
       { path: ".a.b" },
       {
-        pathFieldKey: "path",
-        fieldSeparatorMap: { path: "." },
+        pathField: "path",
+        pathFieldSeparator: ".",
       },
     ),
   ).toBe(true);
@@ -332,8 +332,8 @@ test("tests filter with children predicates", () => {
       { operator: "notChildren", value: ".a" },
       { path: ".a.b" },
       {
-        pathFieldKey: "path",
-        fieldSeparatorMap: { path: "." },
+        pathField: "path",
+        pathFieldSeparator: ".",
       },
     ),
   ).toBe(false);
@@ -368,8 +368,8 @@ test("tests filter with children predicates", () => {
       { operator: "children", value: "ba" },
       { path: ".a.b" },
       {
-        pathFieldKey: "path",
-        fieldSeparatorMap: { path: "." },
+        pathField: "path",
+        pathFieldSeparator: ".",
       },
     ),
   ).toBe(false);
@@ -378,8 +378,8 @@ test("tests filter with children predicates", () => {
       { operator: "notChildren", value: "ba" },
       { path: ".a.b" },
       {
-        pathFieldKey: "path",
-        fieldSeparatorMap: { path: "." },
+        pathField: "path",
+        pathFieldSeparator: ".",
       },
     ),
   ).toBe(true);

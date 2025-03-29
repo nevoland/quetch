@@ -6,7 +6,6 @@ import type { FieldFiltered, Filter, FilterString } from "../types.js";
 
 import { filterChildren } from "./filterChildren.js";
 import { get } from "./get.js";
-import { normalizeFieldSeparatorMap } from "./normalizeFieldSeparatorMap.js";
 
 const { isArray } = Array;
 
@@ -116,19 +115,12 @@ export function testFilter<T>(
             break;
           default: {
             const {
-              pathFieldKey = "id" as FieldFiltered<T, string>,
-              fieldSeparatorMap,
+              pathField = "id" as FieldFiltered<T, string>,
+              pathFieldSeparator,
             } = settings || (EMPTY_OBJECT as QuerySettings<T>);
-            const pathFieldSeparator =
-              fieldSeparatorMap == null
-                ? undefined
-                : (get(
-                    normalizeFieldSeparatorMap(fieldSeparatorMap),
-                    pathFieldKey as any,
-                  ) as string);
             filter[CACHE] = filterChildren(
               filter.value as string,
-              pathFieldKey,
+              pathField,
               filter.deep,
               pathFieldSeparator,
             );
