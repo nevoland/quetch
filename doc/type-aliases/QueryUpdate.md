@@ -68,4 +68,4 @@ Partial property values to update.
 
 ## Defined in
 
-[lib/types/QueryUpdate.ts:9](https://github.com/nevoland/quetch/blob/3b1cd3aac672a1a4d2ad52892d4fa09995f51627/lib/types/QueryUpdate.ts#L9)
+[lib/types/QueryUpdate.ts:9](https://github.com/nevoland/quetch/blob/5d54d23c7450a0f85309e15fdf3a25ea832b3452/lib/types/QueryUpdate.ts#L9)

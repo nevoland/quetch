@@ -109,4 +109,5 @@
 - [reverseOrder](functions/reverseOrder.md)
 - [sameField](functions/sameField.md)
 - [sortItemList](functions/sortItemList.md)
+- [splitPath](functions/splitPath.md)
 - [testFilter](functions/testFilter.md)
