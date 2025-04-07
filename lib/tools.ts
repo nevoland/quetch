@@ -14,4 +14,5 @@ export { queryItemList } from "./tools/queryItemList.js";
 export { reverseOrder } from "./tools/reverseOrder.js";
 export { sameField } from "./tools/sameField.js";
 export { sortItemList } from "./tools/sortItemList.js";
+export { splitPath } from "./tools/splitPath.js";
 export { testFilter } from "./tools/testFilter.js";
