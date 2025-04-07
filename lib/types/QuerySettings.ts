@@ -30,7 +30,7 @@ export type QuerySettings<T> = {
    */
   transformFilterChildren?: (
     filter: FilterChildren<T>,
-  ) => Exclude<Filter<T>, { operator: "children" }>;
+  ) => Exclude<Filter<T>, { operator: "children" | "notChildren" }>;
   /**
    * Abort signal to abort the query.
    */
