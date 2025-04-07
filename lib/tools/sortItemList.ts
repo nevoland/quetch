@@ -20,13 +20,22 @@ export function sortItemList<T>(
 ) {
   const {
     pathField,
-    pathFieldSeparator,
-    pathFieldSeparatorEscape = "\\",
+    pathFieldSeparator = "/",
+    pathFieldSeparatorEscape,
   } = settings ?? {};
   if (orderList === undefined || orderList.length === 0) {
     return value;
   }
   const normalizedOrder = orderList.map(normalizeOrder);
+  const fieldSeparatorRegexp =
+    pathField == null || pathFieldSeparator == null
+      ? null
+      : new RegExp(
+          !pathFieldSeparatorEscape
+            ? escapeRegex(pathFieldSeparator)
+            : `(?<!${escapeRegex(pathFieldSeparatorEscape)})${escapeRegex(pathFieldSeparator)}`,
+          "g",
+        );
   return value.toSorted((a, b) => {
     for (let index = 0; index < normalizedOrder.length; index++) {
       const { field, descending } = normalizedOrder[index]!;
@@ -35,15 +44,7 @@ export function sortItemList<T>(
       if (valueA === valueB) {
         continue;
       }
-      if (
-        pathFieldSeparator != null &&
-        pathField != null &&
-        sameField(field, pathField)
-      ) {
-        const fieldSeparatorRegexp = new RegExp(
-          `(?<!${escapeRegex(pathFieldSeparatorEscape)})${escapeRegex(pathFieldSeparator)}`,
-          "g",
-        );
+      if (fieldSeparatorRegexp != null && sameField(field, pathField!)) {
         if (valueA == null) {
           return valueB == null ? 0 : descending ? 1 : -1;
         }

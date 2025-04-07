@@ -18,6 +18,8 @@ export type QuerySettings<T> = {
   pathFieldSeparatorEscape?: string;
   /**
    * Maps path fields to a string used to separate the path nodes of a field value.
+   *
+   * @default "/"
    */
   pathFieldSeparator?: string;
   /**
