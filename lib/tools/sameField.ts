@@ -2,6 +2,13 @@ import type { Field } from "../types";
 
 const { isArray } = Array;
 
+/**
+ * Checks if two fields are the same.
+ *
+ * @param a A field to compare.
+ * @param b Another field to compare.
+ * @returns Whether the fields are the same.
+ */
 export function sameField(a: Field<any>, b: Field<any>): boolean {
   if (a === b) {
     return true;
