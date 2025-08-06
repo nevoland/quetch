@@ -12,6 +12,8 @@ export type Path<T, D = 7> = [0] extends [1 & T]
         ? readonly [number] | readonly [number, ...Path<P, Increment<D>>]
         : T extends object
           ? {
-              [K in keyof T]: [K] | [K, ...Path<T[K], Increment<D>>];
+              [K in keyof T]:
+                | readonly [K]
+                | readonly [K, ...Path<T[K], Increment<D>>];
             }[keyof T]
           : never;
