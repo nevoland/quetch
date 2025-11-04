@@ -40,10 +40,20 @@ export function testFilter<T>(
     case "all":
       return filter.value.every((filter) => testFilter(filter, value));
     case "any": {
+      const length = filter.value?.length ?? 0;
+      const minimum = filter.minimum ?? (length > 0 ? 1 : 0);
+      const maximum = filter.maximum ?? Infinity;
       if (filter.value === undefined || filter.value.length === 0) {
         return true;
       }
-      return filter.value.some((filter) => testFilter(filter, value));
+      if (minimum === 1 && maximum >= length) {
+        return filter.value.some((filter) => testFilter(filter, value));
+      }
+      const matched = filter.value.reduce(
+        (count, filter) => count + (testFilter(filter, value) ? 1 : 0),
+        0,
+      );
+      return matched >= minimum && matched <= maximum;
     }
     case "none": {
       if (filter.value === undefined || filter.value.length === 0) {

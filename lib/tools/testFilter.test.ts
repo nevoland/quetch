@@ -72,6 +72,46 @@ test("tests filter lists", () => {
   expect(
     testFilter(
       {
+        operator: "any",
+        value: [
+          { field: "a", operator: "equal", value: "foo" },
+          { field: "c", operator: "equal", value: "baz" },
+        ],
+        minimum: 2,
+      },
+      { a: "foo", b: "bar", c: "baz" },
+    ),
+  ).toBe(true);
+  expect(
+    testFilter(
+      {
+        operator: "any",
+        value: [
+          { field: "a", operator: "equal", value: "foo" },
+          { field: "c", operator: "equal", value: "baz" },
+        ],
+        minimum: 1,
+        maximum: 2,
+      },
+      { a: "foo", b: "bar", c: "baz" },
+    ),
+  ).toBe(true);
+  expect(
+    testFilter(
+      {
+        operator: "any",
+        value: [
+          { field: "a", operator: "equal", value: "foo" },
+          { field: "c", operator: "equal", value: "baz" },
+        ],
+        maximum: 1,
+      },
+      { a: "foo", b: "bar", c: "baz" },
+    ),
+  ).toBe(false);
+  expect(
+    testFilter(
+      {
         operator: "none",
         value: [
           { field: "a", operator: "equal", value: "a" },
