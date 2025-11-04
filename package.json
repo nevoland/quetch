@@ -79,7 +79,7 @@
     "vitest": "^2.1.4"
   },
   "dependencies": {
-    "futurise": "^1.7.1",
-    "unchangeable": "^1.7.3"
+    "futurise": "^1.9.1",
+    "unchangeable": "^2.1.2"
   }
 }
