@@ -1,22 +1,22 @@
 import { EMPTY_ARRAY } from "unchangeable";
 
 import { SELF } from "../constants/SELF.js";
-import type { Context, Filter } from "../types.js";
+import type { Filter } from "../types.js";
 
 const { entries } = Object;
 
-export function filterFromValue<T>(context: Context<T>): Filter<T> {
+export function filterFromValue<T>(value: T): Filter<T> {
   return {
     operator: "all",
-    value: criteria(context),
+    value: criteria(value),
   };
 }
 
 function criteria<T>(
-  context: object,
+  value: T,
   path: readonly string[] = EMPTY_ARRAY,
 ): readonly Filter<T>[] {
-  return entriesAndSelf(context).flatMap(([field, value]) => {
+  return entriesAndSelf(value).flatMap(([field, value]) => {
     switch (typeof value) {
       case "symbol":
         return [
@@ -48,7 +48,7 @@ function criteria<T>(
             } as Filter<T>,
           ];
         }
-        return criteria(value, [...path, field as string]);
+        return criteria<T>(value, [...path, field as string]);
       }
       default:
         return EMPTY_ARRAY;
@@ -57,12 +57,26 @@ function criteria<T>(
   });
 }
 
-function entriesAndSelf(
-  context: object,
-): readonly [string | typeof SELF, any][] {
-  const result = entries(context) as [string | typeof SELF, any][];
-  if (SELF in context) {
-    result.push([SELF, context[SELF]]);
+function entriesAndSelf<T>(value: T): readonly [string | typeof SELF, any][] {
+  switch (typeof value) {
+    case "symbol":
+    case "bigint":
+    case "string":
+    case "number":
+    case "boolean":
+    case "undefined":
+      return [[SELF, value]];
+    case "object": {
+      if (value == null) {
+        return [[SELF, value]];
+      }
+      const result = entries(value) as [string | typeof SELF, any][];
+      if (SELF in value) {
+        result.push([SELF, value[SELF]]);
+      }
+      return result;
+    }
+    default:
+      return EMPTY_ARRAY;
   }
-  return result;
 }

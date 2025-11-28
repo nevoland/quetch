@@ -22,11 +22,11 @@ function mergeContextAndFilter<T>(
     return filter ?? { operator: "any" };
   }
   if (filter === undefined) {
-    return filterFromValue(context);
+    return filterFromValue(context as T);
   }
   return {
     operator: "all",
-    value: [filterFromValue(context), filter],
+    value: [filterFromValue(context as T), filter],
   };
 }
 
