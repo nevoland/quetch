@@ -2,10 +2,10 @@ import { expect, test } from "vitest";
 
 import { SELF } from "../constants.js";
 
-import { filterFromContext } from "./filterFromContext.js";
+import { filterFromValue } from "./filterFromValue.js";
 
 test("returns filter from context", () => {
-  expect(filterFromContext({ a: 1 })).toEqual({
+  expect(filterFromValue({ a: 1 })).toEqual({
     operator: "all",
     value: [
       {
@@ -15,7 +15,7 @@ test("returns filter from context", () => {
       },
     ],
   });
-  expect(filterFromContext({ a: { b: 1 } })).toEqual({
+  expect(filterFromValue({ a: { b: 1 } })).toEqual({
     operator: "all",
     value: [
       {
@@ -25,7 +25,7 @@ test("returns filter from context", () => {
       },
     ],
   });
-  expect(filterFromContext({ a: { b: undefined } })).toEqual({
+  expect(filterFromValue({ a: { b: undefined } })).toEqual({
     operator: "all",
     value: [
       {
@@ -35,7 +35,7 @@ test("returns filter from context", () => {
       },
     ],
   });
-  expect(filterFromContext({ a: { b: null } })).toEqual({
+  expect(filterFromValue({ a: { b: null } })).toEqual({
     operator: "all",
     value: [
       {
@@ -45,7 +45,7 @@ test("returns filter from context", () => {
       },
     ],
   });
-  expect(filterFromContext({ [SELF]: 3 })).toEqual({
+  expect(filterFromValue({ [SELF]: 3 })).toEqual({
     operator: "all",
     value: [
       {
@@ -55,7 +55,7 @@ test("returns filter from context", () => {
       },
     ],
   });
-  expect(filterFromContext({ a: null })).toEqual({
+  expect(filterFromValue({ a: null })).toEqual({
     operator: "all",
     value: [
       {
@@ -65,7 +65,7 @@ test("returns filter from context", () => {
       },
     ],
   });
-  expect(filterFromContext({ a: { b: 1 }, c: 2 })).toEqual({
+  expect(filterFromValue({ a: { b: 1 }, c: 2 })).toEqual({
     operator: "all",
     value: [
       {

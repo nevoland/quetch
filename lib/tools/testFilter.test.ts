@@ -4,7 +4,7 @@ import { CACHE } from "../constants/CACHE.js";
 import { SELF } from "../constants.js";
 import type { FilterChildren } from "../types.js";
 
-import { filterFromContext } from "./filterFromContext.js";
+import { filterFromValue } from "./filterFromValue.js";
 import { testFilter } from "./testFilter.js";
 
 test("tests filter lists", () => {
@@ -344,7 +344,7 @@ test("tests filter on array values", () => {
 test("tests filter with paths", () => {
   const context = { value: { filter: { field: "label" } } };
   expect(
-    testFilter(filterFromContext(context), {
+    testFilter(filterFromValue(context), {
       value: { filter: { field: "label" } },
     }),
   ).toBe(true);

@@ -7,7 +7,7 @@ import type {
   Result,
 } from "../types.js";
 
-import { filterFromContext } from "./filterFromContext.js";
+import { filterFromValue } from "./filterFromValue.js";
 import { sortItemList } from "./sortItemList.js";
 import { testFilter } from "./testFilter.js";
 
@@ -22,11 +22,11 @@ function mergeContextAndFilter<T>(
     return filter ?? { operator: "any" };
   }
   if (filter === undefined) {
-    return filterFromContext(context);
+    return filterFromValue(context);
   }
   return {
     operator: "all",
-    value: [filterFromContext(context), filter],
+    value: [filterFromValue(context), filter],
   };
 }
 

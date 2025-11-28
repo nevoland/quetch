@@ -1,11 +1,11 @@
 import { EMPTY_ARRAY } from "unchangeable";
 
 import { SELF } from "../constants/SELF.js";
-import type { Context, Filter } from "../types";
+import type { Context, Filter } from "../types.js";
 
 const { entries } = Object;
 
-export function filterFromContext<T>(context: Context<T>): Filter<T> {
+export function filterFromValue<T>(context: Context<T>): Filter<T> {
   return {
     operator: "all",
     value: criteria(context),

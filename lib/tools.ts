@@ -6,7 +6,7 @@ export { defineGenericFetch } from "./tools/defineGenericFetch.js";
 export { escapeRegex } from "./tools/escapeRegex.js";
 export { fieldListFromFilter } from "./tools/fieldListFromFilter.js";
 export { filterChildren } from "./tools/filterChildren.js";
-export { filterFromContext } from "./tools/filterFromContext.js";
+export { filterFromValue } from "./tools/filterFromValue.js";
 export { get } from "./tools/get.js";
 export { isFilterGroup } from "./tools/isFilterGroup.js";
 export { normalizeOrder } from "./tools/normalizeOrder.js";
