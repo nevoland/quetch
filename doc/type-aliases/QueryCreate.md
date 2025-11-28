@@ -50,4 +50,4 @@ Value properties of the item to create.
 
 ## Defined in
 
-[lib/types/QueryCreate.ts:8](https://github.com/nevoland/quetch/blob/a3ccd863643bdab12f1ae3f17b69623aaeed1b9f/lib/types/QueryCreate.ts#L8)
+[lib/types/QueryCreate.ts:8](https://github.com/nevoland/quetch/blob/ac27bbd10371e5d511c6f132fbd86a55d2c14316/lib/types/QueryCreate.ts#L8)
