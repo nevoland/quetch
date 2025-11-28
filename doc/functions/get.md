@@ -17,7 +17,7 @@ If the `path` leads to an unknown property, returns `undefined`.
 
 • **T**
 
-• **P** *extends* `string` \| `number` \| `symbol` \| readonly [`number`] \| readonly `never`[] \| readonly [`Key`](../type-aliases/Key.md)[] \| [keyof `T`\<`T`\>] \| [keyof `T`\<`T`\>, `...Path<T<T>[keyof T<T>], 8>[]`]
+• **P** *extends* `string` \| `number` \| `symbol` \| readonly [`number`] \| readonly `never`[] \| readonly [`Key`](../type-aliases/Key.md)[] \| readonly [keyof `T`\<`T`\>] \| readonly [keyof `T`\<`T`\>, [`Path`](../type-aliases/Path.md)\<`T`\<`T`\>\[keyof `T`\<`T`\>\], `8`\>]
 
 ## Parameters
 
@@ -41,4 +41,4 @@ The property value found at the given path, or `undefined` if it cannot be found
 
 ## Defined in
 
-[lib/tools/get.ts:14](https://github.com/nevoland/quetch/blob/5d54d23c7450a0f85309e15fdf3a25ea832b3452/lib/tools/get.ts#L14)
+[lib/tools/get.ts:14](https://github.com/nevoland/quetch/blob/a3ccd863643bdab12f1ae3f17b69623aaeed1b9f/lib/tools/get.ts#L14)

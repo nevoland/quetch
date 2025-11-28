@@ -98,7 +98,7 @@
 - [fetchLocal](functions/fetchLocal.md)
 - [fieldListFromFilter](functions/fieldListFromFilter.md)
 - [filterChildren](functions/filterChildren.md)
-- [filterFromContext](functions/filterFromContext.md)
+- [filterFromValue](functions/filterFromValue.md)
 - [get](functions/get.md)
 - [identity](functions/identity.md)
 - [isFilterGroup](functions/isFilterGroup.md)
