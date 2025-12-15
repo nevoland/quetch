@@ -22,7 +22,7 @@ export type QueryUpdate<T> = {
    */
   filter?: Filter<T>;
   offset?: never;
-  order: never;
+  order?: never;
   group?: never;
   /**
    * Query parameters.
