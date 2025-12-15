@@ -13,7 +13,15 @@ export type QueryDelete<T> = {
    * Common item properties to use for identifying the context in which to delete the item.
    */
   context?: Context<T>;
+  /**
+   * Filter for finding the item, if it cannot be found based on the `context`.
+   */
   filter?: Filter<T>;
+  /**
+   * Offset of the first matching item to delete.
+   */
+  offset?: number;
+  limit?: never;
   /**
    * Query parameters.
    */

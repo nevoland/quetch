@@ -13,7 +13,18 @@ export type QueryDeleteMultiple<T> = {
    * Common item properties to use for identifying the context in which to delete the item.
    */
   context?: Context<T>;
+  /**
+   * Filter for finding the items to delete.
+   */
   filter?: Filter<T>;
+  /**
+   * Offset of the first matching item to delete.
+   */
+  offset?: number;
+  /**
+   * Upper bound of the number of items to delete.
+   */
+  limit?: number;
   /**
    * Query parameters.
    */
