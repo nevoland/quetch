@@ -28,7 +28,7 @@ export type QueryReadMultiple<T> = {
    */
   fields?: readonly (keyof T)[];
   /**
-   * Filter that picks the items.
+   * Filter for finding the items.
    */
   filter?: Filter<T>;
   /**

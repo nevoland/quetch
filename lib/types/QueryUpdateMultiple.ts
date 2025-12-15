@@ -18,6 +18,9 @@ export type QueryUpdateMultiple<T> = {
    * Partial property values to update.
    */
   value: readonly Partial<T>[];
+  /**
+   * Filter for finding the items to update.
+   */
   filter?: Filter<T>;
   /**
    * Order by which the items should be sorted.
