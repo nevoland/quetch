@@ -26,6 +26,12 @@ Common item properties to use for identifying the context in which to delete the
 
 > `optional` **filter**: [`Filter`](Filter.md)\<`T`\>
 
+Filter for finding the item, if it cannot be found based on the `context`.
+
+### limit?
+
+> `optional` **limit**: `never`
+
 ### method
 
 > **method**: `"delete"`
@@ -33,6 +39,12 @@ Common item properties to use for identifying the context in which to delete the
 ### multiple?
 
 > `optional` **multiple**: `false`
+
+### offset?
+
+> `optional` **offset**: `number`
+
+Offset of the first matching item to delete.
 
 ### parameters?
 
@@ -48,4 +60,4 @@ Query settings.
 
 ## Defined in
 
-[lib/types/QueryDelete.ts:9](https://github.com/nevoland/quetch/blob/ac27bbd10371e5d511c6f132fbd86a55d2c14316/lib/types/QueryDelete.ts#L9)
+[lib/types/QueryDelete.ts:9](https://github.com/nevoland/quetch/blob/9da567b909b330487e6cd515ad713dcc58d03ec9/lib/types/QueryDelete.ts#L9)

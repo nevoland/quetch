@@ -58,4 +58,4 @@ If a query occurs twice, `mergeQuery(query, currentQuery)` is called and the out
 
 ## Defined in
 
-[lib/middlewares/aggregate.ts:17](https://github.com/nevoland/quetch/blob/ac27bbd10371e5d511c6f132fbd86a55d2c14316/lib/middlewares/aggregate.ts#L17)
+[lib/middlewares/aggregate.ts:17](https://github.com/nevoland/quetch/blob/9da567b909b330487e6cd515ad713dcc58d03ec9/lib/middlewares/aggregate.ts#L17)

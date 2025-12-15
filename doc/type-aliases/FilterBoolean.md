@@ -26,4 +26,4 @@ Checks if a given boolean field is `true` or `false`.
 
 ## Defined in
 
-[lib/types/FilterBoolean.ts:7](https://github.com/nevoland/quetch/blob/ac27bbd10371e5d511c6f132fbd86a55d2c14316/lib/types/FilterBoolean.ts#L7)
+[lib/types/FilterBoolean.ts:7](https://github.com/nevoland/quetch/blob/9da567b909b330487e6cd515ad713dcc58d03ec9/lib/types/FilterBoolean.ts#L7)

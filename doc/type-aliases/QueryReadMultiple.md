@@ -32,7 +32,7 @@ Item fields to pick. If omitted, all fields are picked.
 
 > `optional` **filter**: [`Filter`](Filter.md)\<`T`\>
 
-Filter that picks the items.
+Filter for finding the items.
 
 ### group?
 
@@ -80,4 +80,4 @@ Query settings.
 
 ## Defined in
 
-[lib/types/QueryReadMultiple.ts:11](https://github.com/nevoland/quetch/blob/ac27bbd10371e5d511c6f132fbd86a55d2c14316/lib/types/QueryReadMultiple.ts#L11)
+[lib/types/QueryReadMultiple.ts:11](https://github.com/nevoland/quetch/blob/9da567b909b330487e6cd515ad713dcc58d03ec9/lib/types/QueryReadMultiple.ts#L11)

@@ -76,4 +76,4 @@ Query settings.
 
 ## Defined in
 
-[lib/types/QueryRead.ts:10](https://github.com/nevoland/quetch/blob/ac27bbd10371e5d511c6f132fbd86a55d2c14316/lib/types/QueryRead.ts#L10)
+[lib/types/QueryRead.ts:10](https://github.com/nevoland/quetch/blob/9da567b909b330487e6cd515ad713dcc58d03ec9/lib/types/QueryRead.ts#L10)
