@@ -80,4 +80,4 @@ Query settings.
 
 ## Defined in
 
-[lib/types/QueryReadMultiple.ts:11](https://github.com/nevoland/quetch/blob/9da567b909b330487e6cd515ad713dcc58d03ec9/lib/types/QueryReadMultiple.ts#L11)
+[lib/types/QueryReadMultiple.ts:11](https://github.com/nevoland/quetch/blob/1dbcbe5bf2276e5e4dfe5bc56d7adf82ee0d0a42/lib/types/QueryReadMultiple.ts#L11)

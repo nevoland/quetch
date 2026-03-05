@@ -100,6 +100,7 @@
 - [filterChildren](functions/filterChildren.md)
 - [filterFromValue](functions/filterFromValue.md)
 - [get](functions/get.md)
+- [groupFilters](functions/groupFilters.md)
 - [identity](functions/identity.md)
 - [isFilterGroup](functions/isFilterGroup.md)
 - [log](functions/log.md)
