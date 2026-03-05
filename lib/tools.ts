@@ -8,6 +8,7 @@ export { fieldListFromFilter } from "./tools/fieldListFromFilter.js";
 export { filterChildren } from "./tools/filterChildren.js";
 export { filterFromValue } from "./tools/filterFromValue.js";
 export { get } from "./tools/get.js";
+export { groupFilters } from "./tools/groupFilters.js";
 export { isFilterGroup } from "./tools/isFilterGroup.js";
 export { normalizeOrder } from "./tools/normalizeOrder.js";
 export { queryItemList } from "./tools/queryItemList.js";
