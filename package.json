@@ -80,6 +80,6 @@
   },
   "dependencies": {
     "futurise": "^1.9.1",
-    "unchangeable": "^2.1.2"
+    "unchangeable": "^2.2.0"
   }
 }
