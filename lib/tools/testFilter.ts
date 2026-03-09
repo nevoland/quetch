@@ -11,6 +11,7 @@ import type {
 } from "../types.js";
 
 import { filterChildren } from "./filterChildren.js";
+import { filterFromValue } from "./filterFromValue.js";
 import { get } from "./get.js";
 
 const { isArray } = Array;
@@ -151,6 +152,21 @@ export function testFilter<T>(
         }
       }
       return negate(testFilter(filter[CACHE], value, settings), not);
+    }
+    case "is":
+    case "notIs": {
+      const not = filter.operator[0] === "n";
+      if (filter[CACHE] === undefined) {
+        switch (true) {
+          case settings?.transformFilterContext !== undefined:
+            filter[CACHE] = settings.transformFilterContext(filter);
+            break;
+          default: {
+            filter[CACHE] = filterFromValue(filter.value as T);
+          }
+        }
+      }
+      return negate(testFilter(filter[CACHE], value), not);
     }
     case "custom": {
       return filter.value(value);
