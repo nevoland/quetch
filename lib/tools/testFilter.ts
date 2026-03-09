@@ -2,7 +2,13 @@ import { EMPTY_OBJECT } from "unchangeable";
 
 import { CACHE } from "../constants/CACHE.js";
 import type { QuerySettings } from "../types/QuerySettings.js";
-import type { FieldFiltered, Filter, FilterString } from "../types.js";
+import type {
+  Context,
+  FieldFiltered,
+  Filter,
+  FilterString,
+  IntrinsicFilter,
+} from "../types.js";
 
 import { filterChildren } from "./filterChildren.js";
 import { get } from "./get.js";
@@ -131,16 +137,16 @@ export function testFilter<T>(
             filter[CACHE] = settings.transformFilterChildren(filter);
             break;
           default: {
-            const {
-              pathField = "id" as FieldFiltered<T, string>,
+            const { pathField = "id", pathFieldSeparator } =
+              settings || EMPTY_OBJECT;
+            pathField;
+            filter[CACHE] = filterChildren<Context<T>>(
+              (get(filter.value, pathField as any) as string) ?? "",
+              pathField as FieldFiltered<Context<T>, string>,
+              filter.minDepth,
+              filter.maxDepth,
               pathFieldSeparator,
-            } = settings || EMPTY_OBJECT;
-            filter[CACHE] = filterChildren(
-              filter.value as string,
-              pathField,
-              filter.deep,
-              pathFieldSeparator,
-            );
+            ) as IntrinsicFilter<T>;
           }
         }
       }

@@ -5,11 +5,21 @@ import type { IntrinsicFilter } from "./IntrinsicFilter.js";
 
 /**
  * Matches the direct children of a specified `value` item.
- * If `deep` is `true`, also captures all the descendants.
  */
 export type FilterChildren<T> = {
   operator: "children" | "notChildren";
-  value?: Context<T> | string;
-  deep?: boolean;
+  value?: Context<T>;
+  /**
+   * Minimum depth of the children to match. If `0`, matches the direct children. If `1`, matches the grandchildren, and so on.
+   *
+   * @default 0
+   */
+  minDepth?: number;
+  /**
+   * Maximum depth of the children to match. If `0`, matches the direct children. If `1`, matches the grandchildren, and so on.
+   *
+   * @default Infinity
+   */
+  maxDepth?: number;
   [CACHE]?: IntrinsicFilter<T>;
 };
