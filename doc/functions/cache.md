@@ -68,4 +68,4 @@ Cache store.
 
 ## Defined in
 
-[lib/middlewares/cache.ts:8](https://github.com/nevoland/quetch/blob/75ee4a15f2f2b7e06491343419abee1d1c8ff78f/lib/middlewares/cache.ts#L8)
+[lib/middlewares/cache.ts:8](https://github.com/nevoland/quetch/blob/90f88a16e6d59a9c61398498a63289d526194476/lib/middlewares/cache.ts#L8)

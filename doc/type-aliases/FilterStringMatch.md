@@ -50,4 +50,4 @@ Ignore casing differences if `true`.
 
 ## Defined in
 
-[lib/types/FilterStringMatch.ts:9](https://github.com/nevoland/quetch/blob/75ee4a15f2f2b7e06491343419abee1d1c8ff78f/lib/types/FilterStringMatch.ts#L9)
+[lib/types/FilterStringMatch.ts:9](https://github.com/nevoland/quetch/blob/90f88a16e6d59a9c61398498a63289d526194476/lib/types/FilterStringMatch.ts#L9)

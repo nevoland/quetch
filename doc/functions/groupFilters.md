@@ -38,4 +38,4 @@ The filters to group together.
 
 ## Defined in
 
-[lib/tools/groupFilters.ts:16](https://github.com/nevoland/quetch/blob/75ee4a15f2f2b7e06491343419abee1d1c8ff78f/lib/tools/groupFilters.ts#L16)
+[lib/tools/groupFilters.ts:16](https://github.com/nevoland/quetch/blob/90f88a16e6d59a9c61398498a63289d526194476/lib/tools/groupFilters.ts#L16)
