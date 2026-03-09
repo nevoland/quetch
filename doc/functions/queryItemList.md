@@ -32,4 +32,4 @@ The result of the query.
 
 ## Defined in
 
-[lib/tools/queryItemList.ts:48](https://github.com/nevoland/quetch/blob/1dbcbe5bf2276e5e4dfe5bc56d7adf82ee0d0a42/lib/tools/queryItemList.ts#L48)
+[lib/tools/queryItemList.ts:48](https://github.com/nevoland/quetch/blob/fe379c4b50ec8fa5471bc145281a4c5256d2f06b/lib/tools/queryItemList.ts#L48)

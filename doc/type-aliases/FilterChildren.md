@@ -19,7 +19,7 @@ If `deep` is `true`, also captures all the descendants.
 
 ### \[CACHE\]?
 
-> `optional` **\[CACHE\]**: [`Filter`](Filter.md)\<`T`\>
+> `optional` **\[CACHE\]**: [`IntrinsicFilter`](IntrinsicFilter.md)\<`T`\>
 
 ### deep?
 
@@ -35,4 +35,4 @@ If `deep` is `true`, also captures all the descendants.
 
 ## Defined in
 
-[lib/types/FilterChildren.ts:10](https://github.com/nevoland/quetch/blob/1dbcbe5bf2276e5e4dfe5bc56d7adf82ee0d0a42/lib/types/FilterChildren.ts#L10)
+[lib/types/FilterChildren.ts:10](https://github.com/nevoland/quetch/blob/fe379c4b50ec8fa5471bc145281a4c5256d2f06b/lib/types/FilterChildren.ts#L10)

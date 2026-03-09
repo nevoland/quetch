@@ -22,7 +22,7 @@ If only one filter is provided, returns that filter directly for `"all"` and `"a
 
 ### operator
 
-`"all"` | `"any"` | `"none"`
+`"any"` | `"none"` | `"all"`
 
 ### filters
 
@@ -38,4 +38,4 @@ The filters to group together.
 
 ## Defined in
 
-[lib/tools/groupFilters.ts:16](https://github.com/nevoland/quetch/blob/1dbcbe5bf2276e5e4dfe5bc56d7adf82ee0d0a42/lib/tools/groupFilters.ts#L16)
+[lib/tools/groupFilters.ts:16](https://github.com/nevoland/quetch/blob/fe379c4b50ec8fa5471bc145281a4c5256d2f06b/lib/tools/groupFilters.ts#L16)

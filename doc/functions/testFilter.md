@@ -38,4 +38,4 @@ Optional query settings.
 
 ## Defined in
 
-[lib/tools/testFilter.ts:28](https://github.com/nevoland/quetch/blob/1dbcbe5bf2276e5e4dfe5bc56d7adf82ee0d0a42/lib/tools/testFilter.ts#L28)
+[lib/tools/testFilter.ts:28](https://github.com/nevoland/quetch/blob/fe379c4b50ec8fa5471bc145281a4c5256d2f06b/lib/tools/testFilter.ts#L28)

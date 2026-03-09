@@ -24,4 +24,4 @@
 
 ## Defined in
 
-[lib/types/OrderNormalized.ts:3](https://github.com/nevoland/quetch/blob/1dbcbe5bf2276e5e4dfe5bc56d7adf82ee0d0a42/lib/types/OrderNormalized.ts#L3)
+[lib/types/OrderNormalized.ts:3](https://github.com/nevoland/quetch/blob/fe379c4b50ec8fa5471bc145281a4c5256d2f06b/lib/types/OrderNormalized.ts#L3)

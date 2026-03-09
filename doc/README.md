@@ -47,6 +47,7 @@
 - [Increment](type-aliases/Increment.md)
 - [InjectCustomFields](type-aliases/InjectCustomFields.md)
 - [IntersectUnion](type-aliases/IntersectUnion.md)
+- [IntrinsicFilter](type-aliases/IntrinsicFilter.md)
 - [Item](type-aliases/Item.md)
 - [Join](type-aliases/Join.md)
 - [Key](type-aliases/Key.md)
@@ -81,6 +82,8 @@
 ## Variables
 
 - [CACHE](variables/CACHE.md)
+- [FILTER\_ANY](variables/FILTER_ANY.md)
+- [FILTER\_NONE](variables/FILTER_NONE.md)
 - [SELF](variables/SELF.md)
 
 ## Functions
