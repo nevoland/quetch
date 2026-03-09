@@ -38,7 +38,9 @@ export function testFilter<T>(
   }
   switch (filter.operator) {
     case "all":
-      return filter.value.every((filter) => testFilter(filter, value));
+      return filter.value.every((filter) =>
+        testFilter(filter, value, settings),
+      );
     case "any": {
       const length = filter.value?.length ?? 0;
       const minimum = filter.minimum ?? (length > 0 ? 1 : 0);
@@ -47,10 +49,13 @@ export function testFilter<T>(
         return true;
       }
       if (minimum === 1 && maximum >= length) {
-        return filter.value.some((filter) => testFilter(filter, value));
+        return filter.value.some((filter) =>
+          testFilter(filter, value, settings),
+        );
       }
       const matched = filter.value.reduce(
-        (count, filter) => count + (testFilter(filter, value) ? 1 : 0),
+        (count, filter) =>
+          count + (testFilter(filter, value, settings) ? 1 : 0),
         0,
       );
       return matched >= minimum && matched <= maximum;
@@ -59,7 +64,9 @@ export function testFilter<T>(
       if (filter.value === undefined || filter.value.length === 0) {
         return false;
       }
-      return filter.value.every((filter) => !testFilter(filter, value));
+      return filter.value.every(
+        (filter) => !testFilter(filter, value, settings),
+      );
     }
     case "exist":
       return get(value, filter.field as any) !== undefined;
@@ -137,7 +144,7 @@ export function testFilter<T>(
           }
         }
       }
-      return negate(testFilter(filter[CACHE], value), not);
+      return negate(testFilter(filter[CACHE], value, settings), not);
     }
     case "custom": {
       return filter.value(value);
