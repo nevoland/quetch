@@ -28,4 +28,4 @@ Handles an `input` query and returns an `output` promise.
 
 ## Defined in
 
-[lib/types/NextHandler.ts:4](https://github.com/nevoland/quetch/blob/fe379c4b50ec8fa5471bc145281a4c5256d2f06b/lib/types/NextHandler.ts#L4)
+[lib/types/NextHandler.ts:4](https://github.com/nevoland/quetch/blob/50090a7fe48ca3e8786e2d177c48636858557e1c/lib/types/NextHandler.ts#L4)

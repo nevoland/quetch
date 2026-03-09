@@ -24,4 +24,4 @@
 
 ## Defined in
 
-[lib/tools/filterFromValue.ts:8](https://github.com/nevoland/quetch/blob/fe379c4b50ec8fa5471bc145281a4c5256d2f06b/lib/tools/filterFromValue.ts#L8)
+[lib/tools/filterFromValue.ts:8](https://github.com/nevoland/quetch/blob/50090a7fe48ca3e8786e2d177c48636858557e1c/lib/tools/filterFromValue.ts#L8)
