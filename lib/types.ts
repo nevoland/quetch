@@ -33,6 +33,7 @@ export type { Immutable } from "./types/Immutable";
 export type { Increment } from "./types/Increment";
 export type { InjectCustomFields } from "./types/InjectCustomFields";
 export type { IntersectUnion } from "./types/IntersectUnion";
+export type { IntrinsicFilter } from "./types/IntrinsicFilter";
 export type { Item } from "./types/Item";
 export type { Join } from "./types/Join";
 export type { Key } from "./types/Key";

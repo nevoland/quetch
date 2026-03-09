@@ -1,4 +1,4 @@
-import type { FieldFiltered, Filter } from "../types.ts";
+import type { FieldFiltered, IntrinsicFilter } from "../types.ts";
 
 import { escapeRegex } from "./escapeRegex.js";
 
@@ -7,7 +7,7 @@ export function filterChildren<T>(
   pathFieldKey: FieldFiltered<T, string>,
   deep = false,
   pathSeparator = "/",
-): Filter<T> {
+): IntrinsicFilter<T> {
   return {
     field: pathFieldKey,
     operator: "match",

@@ -1,21 +1,31 @@
 import { EMPTY_ARRAY } from "unchangeable";
 
 import { SELF } from "../constants/SELF.js";
-import type { Filter } from "../types.js";
+import type { IntrinsicFilter } from "../types.js";
 
 const { entries } = Object;
 
-export function filterFromValue<T>(value: T): Filter<T> {
-  return {
-    operator: "all",
-    value: criteria(value),
-  };
+export function filterFromValue<T>(value: T): IntrinsicFilter<T> {
+  const criteriaValue = criteria(value);
+  switch (criteriaValue.length) {
+    case 0:
+      return {
+        operator: "any",
+      };
+    case 1:
+      return criteriaValue[0]!;
+    default:
+      return {
+        operator: "all",
+        value: criteria(value),
+      };
+  }
 }
 
 function criteria<T>(
   value: T,
   path: readonly string[] = EMPTY_ARRAY,
-): readonly Filter<T>[] {
+): readonly IntrinsicFilter<T>[] {
   return entriesAndSelf(value).flatMap(([field, value]) => {
     switch (typeof value) {
       case "symbol":
@@ -36,7 +46,7 @@ function criteria<T>(
             field: path.length === 0 ? field : [...path, field],
             operator: "equal",
             value,
-          } as Filter<T>,
+          } as IntrinsicFilter<T>,
         ];
       case "object": {
         if (value == null) {
@@ -45,7 +55,7 @@ function criteria<T>(
               field: path.length === 0 ? field : [...path, field],
               operator: "equal",
               value,
-            } as Filter<T>,
+            } as IntrinsicFilter<T>,
           ];
         }
         return criteria<T>(value, [...path, field as string]);

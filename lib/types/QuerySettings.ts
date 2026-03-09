@@ -1,6 +1,6 @@
 import type { FieldFiltered } from "./FieldFiltered";
-import type { Filter } from "./Filter";
 import type { FilterChildren } from "./FilterChildren";
+import type { IntrinsicFilter } from "./IntrinsicFilter";
 
 /**
  * Settings to use when doing a query.
@@ -23,14 +23,12 @@ export type QuerySettings<T> = {
    */
   pathFieldSeparator?: string;
   /**
-   * Returns a filter that captures the items expressed by the provided `FilterChildren`. The return filter cannot use filters of type `FilterChildren`.
+   * Returns a filter that captures the items expressed by the provided `FilterChildren`. The return filter cannot use filters of type `FilterChildren` or `FilterContext`.
    *
    * @param filter The provided `FilterChildren` to express.
    * @returns A filter that captures the items expressed by the provided `FilterChildren`.
    */
-  transformFilterChildren?: (
-    filter: FilterChildren<T>,
-  ) => Exclude<Filter<T>, { operator: "children" | "notChildren" }>;
+  transformFilterChildren?: (filter: FilterChildren<T>) => IntrinsicFilter<T>;
   /**
    * Abort signal to abort the query.
    */

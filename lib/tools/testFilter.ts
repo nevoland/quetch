@@ -127,7 +127,7 @@ export function testFilter<T>(
             const {
               pathField = "id" as FieldFiltered<T, string>,
               pathFieldSeparator,
-            } = settings || (EMPTY_OBJECT as QuerySettings<T>);
+            } = settings || EMPTY_OBJECT;
             filter[CACHE] = filterChildren(
               filter.value as string,
               pathField,

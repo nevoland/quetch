@@ -1,7 +1,7 @@
 import type { CACHE } from "../constants/CACHE.js";
 
 import type { Context } from "./Context";
-import type { Filter } from "./Filter";
+import type { IntrinsicFilter } from "./IntrinsicFilter.js";
 
 /**
  * Matches the direct children of a specified `value` item.
@@ -11,5 +11,5 @@ export type FilterChildren<T> = {
   operator: "children" | "notChildren";
   value?: Context<T> | string;
   deep?: boolean;
-  [CACHE]?: Filter<T>;
+  [CACHE]?: IntrinsicFilter<T>;
 };
