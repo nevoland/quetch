@@ -396,6 +396,24 @@ test("tests filter with children predicates", () => {
       },
     ),
   ).toBe(true);
+  expect(
+    testFilter(
+      {
+        operator: "all",
+        value: [filterChildren],
+      },
+      { path: ".a.b" },
+      {
+        transformFilterChildren(filter) {
+          return {
+            field: "path",
+            operator: "startWith",
+            value: `.${filter.value?.path}.`,
+          };
+        },
+      },
+    ),
+  ).toBe(true);
   expect(filterChildren[CACHE]).toBeDefined();
   expect(
     testFilter({ operator: "children", value: { id: "b" } }, { id: "a/b" }),
