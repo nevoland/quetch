@@ -6,7 +6,7 @@
 
 # Function: filterChildren()
 
-> **filterChildren**\<`T`\>(`parentPath`, `pathFieldKey`, `deep`, `pathSeparator`): [`IntrinsicFilter`](../type-aliases/IntrinsicFilter.md)\<`T`\>
+> **filterChildren**\<`T`\>(`parentPath`, `pathFieldKey`, `minDepth`, `maxDepth`, `pathSeparator`): [`IntrinsicFilter`](../type-aliases/IntrinsicFilter.md)\<`T`\>
 
 ## Type Parameters
 
@@ -22,9 +22,13 @@
 
 [`FieldFiltered`](../type-aliases/FieldFiltered.md)\<`T`, `string`\>
 
-### deep
+### minDepth
 
-`boolean` = `false`
+`number` = `0`
+
+### maxDepth
+
+`number` = `Infinity`
 
 ### pathSeparator
 
@@ -36,4 +40,4 @@
 
 ## Defined in
 
-[lib/tools/filterChildren.ts:5](https://github.com/nevoland/quetch/blob/50090a7fe48ca3e8786e2d177c48636858557e1c/lib/tools/filterChildren.ts#L5)
+[lib/tools/filterChildren.ts:5](https://github.com/nevoland/quetch/blob/75ee4a15f2f2b7e06491343419abee1d1c8ff78f/lib/tools/filterChildren.ts#L5)

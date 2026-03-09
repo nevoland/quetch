@@ -116,4 +116,4 @@ Handler that combines all provided handlers.
 
 ## Defined in
 
-[lib/middlewares/combine.ts:801](https://github.com/nevoland/quetch/blob/50090a7fe48ca3e8786e2d177c48636858557e1c/lib/middlewares/combine.ts#L801)
+[lib/middlewares/combine.ts:801](https://github.com/nevoland/quetch/blob/75ee4a15f2f2b7e06491343419abee1d1c8ff78f/lib/middlewares/combine.ts#L801)

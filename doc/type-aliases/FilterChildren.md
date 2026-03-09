@@ -9,7 +9,6 @@
 > **FilterChildren**\<`T`\>: `object`
 
 Matches the direct children of a specified `value` item.
-If `deep` is `true`, also captures all the descendants.
 
 ## Type Parameters
 
@@ -21,9 +20,29 @@ If `deep` is `true`, also captures all the descendants.
 
 > `optional` **\[CACHE\]**: [`IntrinsicFilter`](IntrinsicFilter.md)\<`T`\>
 
-### deep?
+### maxDepth?
 
-> `optional` **deep**: `boolean`
+> `optional` **maxDepth**: `number`
+
+Maximum depth of the children to match. If `0`, matches the direct children. If `1`, matches the grandchildren, and so on.
+
+#### Default
+
+```ts
+Infinity
+```
+
+### minDepth?
+
+> `optional` **minDepth**: `number`
+
+Minimum depth of the children to match. If `0`, matches the direct children. If `1`, matches the grandchildren, and so on.
+
+#### Default
+
+```ts
+0
+```
 
 ### operator
 
@@ -31,8 +50,8 @@ If `deep` is `true`, also captures all the descendants.
 
 ### value?
 
-> `optional` **value**: [`Context`](Context.md)\<`T`\> \| `string`
+> `optional` **value**: [`Context`](Context.md)\<`T`\>
 
 ## Defined in
 
-[lib/types/FilterChildren.ts:10](https://github.com/nevoland/quetch/blob/50090a7fe48ca3e8786e2d177c48636858557e1c/lib/types/FilterChildren.ts#L10)
+[lib/types/FilterChildren.ts:9](https://github.com/nevoland/quetch/blob/75ee4a15f2f2b7e06491343419abee1d1c8ff78f/lib/types/FilterChildren.ts#L9)

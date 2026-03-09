@@ -84,4 +84,4 @@ Filters to join.
 
 ## Defined in
 
-[lib/types/FilterGroup.ts:6](https://github.com/nevoland/quetch/blob/50090a7fe48ca3e8786e2d177c48636858557e1c/lib/types/FilterGroup.ts#L6)
+[lib/types/FilterGroup.ts:6](https://github.com/nevoland/quetch/blob/75ee4a15f2f2b7e06491343419abee1d1c8ff78f/lib/types/FilterGroup.ts#L6)
