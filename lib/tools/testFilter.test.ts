@@ -2,7 +2,7 @@ import { expect, test } from "vitest";
 
 import { CACHE } from "../constants/CACHE.js";
 import { SELF } from "../constants.js";
-import type { FilterChildren } from "../types.js";
+import type { FilterChildren, FilterContext } from "../types.js";
 
 import { filterFromValue } from "./filterFromValue.js";
 import { testFilter } from "./testFilter.js";
@@ -440,5 +440,56 @@ test("tests filter with children predicates", () => {
         pathFieldSeparator: ".",
       },
     ),
+  ).toBe(true);
+});
+
+test("tests filter with context predicates", () => {
+  const context = { id: "a" };
+  expect(testFilter({ operator: "is", value: context }, { id: "a" })).toBe(
+    true,
+  );
+  expect(testFilter({ operator: "notIs", value: context }, { id: "a" })).toBe(
+    false,
+  );
+  const filterContext: FilterContext<typeof context> = {
+    operator: "is",
+    value: context,
+  };
+  expect(
+    testFilter(
+      filterContext,
+      { id: "a" },
+      {
+        transformFilterContext(filter) {
+          return {
+            field: "id",
+            operator: "equal",
+            value: filter.value?.id ?? "",
+          };
+        },
+      },
+    ),
+  ).toBe(true);
+  expect(
+    testFilter(
+      { operator: "all", value: [filterContext] },
+      { id: "a" },
+      {
+        transformFilterContext(filter) {
+          return {
+            field: "id",
+            operator: "equal",
+            value: filter.value?.id ?? "",
+          };
+        },
+      },
+    ),
+  ).toBe(true);
+  expect(filterContext[CACHE]).toBeDefined();
+  expect(testFilter({ operator: "is", value: { id: "b" } }, { id: "a" })).toBe(
+    false,
+  );
+  expect(
+    testFilter({ operator: "notIs", value: { id: "b" } }, { id: "a" }),
   ).toBe(true);
 });
