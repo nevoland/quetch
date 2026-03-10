@@ -14,4 +14,4 @@
 
 ## Defined in
 
-[lib/types/CustomFieldAggregateMap.ts:3](https://github.com/nevoland/quetch/blob/90f88a16e6d59a9c61398498a63289d526194476/lib/types/CustomFieldAggregateMap.ts#L3)
+[lib/types/CustomFieldAggregateMap.ts:3](https://github.com/nevoland/quetch/blob/78e51f8989e150bad7c9687ad573f6d1f074683e/lib/types/CustomFieldAggregateMap.ts#L3)

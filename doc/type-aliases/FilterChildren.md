@@ -54,4 +54,4 @@ Minimum depth of the children to match. If `0`, matches the direct children. If 
 
 ## Defined in
 
-[lib/types/FilterChildren.ts:9](https://github.com/nevoland/quetch/blob/90f88a16e6d59a9c61398498a63289d526194476/lib/types/FilterChildren.ts#L9)
+[lib/types/FilterChildren.ts:9](https://github.com/nevoland/quetch/blob/78e51f8989e150bad7c9687ad573f6d1f074683e/lib/types/FilterChildren.ts#L9)
