@@ -36,4 +36,4 @@ Handles an `input` query and returns an `output` promise, eventually using the `
 
 ## Defined in
 
-[lib/types/Handler.ts:6](https://github.com/nevoland/quetch/blob/113c92700ad416b9a1f93a34d9c9a5df2d593321/lib/types/Handler.ts#L6)
+[lib/types/Handler.ts:6](https://github.com/nevoland/quetch/blob/f881c4f19d7899ff86da90e179fb6d9e199b8525/lib/types/Handler.ts#L6)

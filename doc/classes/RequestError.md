@@ -50,7 +50,7 @@ Error to be thrown in case there is an issue with the query call. Only instances
 
 #### Defined in
 
-[lib/errors/RequestError.ts:7](https://github.com/nevoland/quetch/blob/113c92700ad416b9a1f93a34d9c9a5df2d593321/lib/errors/RequestError.ts#L7)
+[lib/errors/RequestError.ts:7](https://github.com/nevoland/quetch/blob/f881c4f19d7899ff86da90e179fb6d9e199b8525/lib/errors/RequestError.ts#L7)
 
 ## Properties
 
@@ -60,7 +60,7 @@ Error to be thrown in case there is an issue with the query call. Only instances
 
 #### Defined in
 
-[lib/errors/RequestError.ts:10](https://github.com/nevoland/quetch/blob/113c92700ad416b9a1f93a34d9c9a5df2d593321/lib/errors/RequestError.ts#L10)
+[lib/errors/RequestError.ts:10](https://github.com/nevoland/quetch/blob/f881c4f19d7899ff86da90e179fb6d9e199b8525/lib/errors/RequestError.ts#L10)
 
 ***
 
@@ -70,7 +70,7 @@ Error to be thrown in case there is an issue with the query call. Only instances
 
 #### Defined in
 
-[lib/errors/RequestError.ts:11](https://github.com/nevoland/quetch/blob/113c92700ad416b9a1f93a34d9c9a5df2d593321/lib/errors/RequestError.ts#L11)
+[lib/errors/RequestError.ts:11](https://github.com/nevoland/quetch/blob/f881c4f19d7899ff86da90e179fb6d9e199b8525/lib/errors/RequestError.ts#L11)
 
 ***
 
@@ -80,7 +80,7 @@ Error to be thrown in case there is an issue with the query call. Only instances
 
 #### Defined in
 
-[lib/errors/RequestError.ts:12](https://github.com/nevoland/quetch/blob/113c92700ad416b9a1f93a34d9c9a5df2d593321/lib/errors/RequestError.ts#L12)
+[lib/errors/RequestError.ts:12](https://github.com/nevoland/quetch/blob/f881c4f19d7899ff86da90e179fb6d9e199b8525/lib/errors/RequestError.ts#L12)
 
 ***
 
@@ -90,4 +90,4 @@ Error to be thrown in case there is an issue with the query call. Only instances
 
 #### Defined in
 
-[lib/errors/RequestError.ts:9](https://github.com/nevoland/quetch/blob/113c92700ad416b9a1f93a34d9c9a5df2d593321/lib/errors/RequestError.ts#L9)
+[lib/errors/RequestError.ts:9](https://github.com/nevoland/quetch/blob/f881c4f19d7899ff86da90e179fb6d9e199b8525/lib/errors/RequestError.ts#L9)

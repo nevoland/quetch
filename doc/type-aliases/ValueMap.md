@@ -18,4 +18,4 @@ Maps the properties of the provided value `T` to a specific value `V`.
 
 ## Defined in
 
-[lib/types/ValueMap.ts:6](https://github.com/nevoland/quetch/blob/113c92700ad416b9a1f93a34d9c9a5df2d593321/lib/types/ValueMap.ts#L6)
+[lib/types/ValueMap.ts:6](https://github.com/nevoland/quetch/blob/f881c4f19d7899ff86da90e179fb6d9e199b8525/lib/types/ValueMap.ts#L6)

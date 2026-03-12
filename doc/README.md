@@ -105,6 +105,7 @@
 - [get](functions/get.md)
 - [groupFilters](functions/groupFilters.md)
 - [identity](functions/identity.md)
+- [intrinsicFilter](functions/intrinsicFilter.md)
 - [isFilterGroup](functions/isFilterGroup.md)
 - [log](functions/log.md)
 - [normalizeOrder](functions/normalizeOrder.md)

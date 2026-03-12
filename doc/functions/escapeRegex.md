@@ -26,4 +26,4 @@ Escaped regular expression
 
 ## Defined in
 
-[lib/tools/escapeRegex.ts:7](https://github.com/nevoland/quetch/blob/113c92700ad416b9a1f93a34d9c9a5df2d593321/lib/tools/escapeRegex.ts#L7)
+[lib/tools/escapeRegex.ts:7](https://github.com/nevoland/quetch/blob/f881c4f19d7899ff86da90e179fb6d9e199b8525/lib/tools/escapeRegex.ts#L7)
