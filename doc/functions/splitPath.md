@@ -38,7 +38,7 @@ An array containing the splitted path items if `path` is defined, or a function 
 
 ### Defined in
 
-[lib/tools/splitPath.ts:22](https://github.com/nevoland/quetch/blob/439120295bc3ab3895611a5a04d7281d9d40fc45/lib/tools/splitPath.ts#L22)
+[lib/tools/splitPath.ts:22](https://github.com/nevoland/quetch/blob/113c92700ad416b9a1f93a34d9c9a5df2d593321/lib/tools/splitPath.ts#L22)
 
 ## Call Signature
 
@@ -70,4 +70,4 @@ An array containing the splitted path items if `path` is defined, or a function 
 
 ### Defined in
 
-[lib/tools/splitPath.ts:27](https://github.com/nevoland/quetch/blob/439120295bc3ab3895611a5a04d7281d9d40fc45/lib/tools/splitPath.ts#L27)
+[lib/tools/splitPath.ts:27](https://github.com/nevoland/quetch/blob/113c92700ad416b9a1f93a34d9c9a5df2d593321/lib/tools/splitPath.ts#L27)

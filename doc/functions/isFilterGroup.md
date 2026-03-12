@@ -28,4 +28,4 @@ Whether the provided filter is a group filter or not.
 
 ## Defined in
 
-[lib/tools/isFilterGroup.ts:9](https://github.com/nevoland/quetch/blob/439120295bc3ab3895611a5a04d7281d9d40fc45/lib/tools/isFilterGroup.ts#L9)
+[lib/tools/isFilterGroup.ts:9](https://github.com/nevoland/quetch/blob/113c92700ad416b9a1f93a34d9c9a5df2d593321/lib/tools/isFilterGroup.ts#L9)

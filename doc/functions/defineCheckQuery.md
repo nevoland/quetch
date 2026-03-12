@@ -56,4 +56,4 @@ Function that checks queries.
 
 ## Defined in
 
-[lib/tools/defineCheckQuery.ts:8](https://github.com/nevoland/quetch/blob/439120295bc3ab3895611a5a04d7281d9d40fc45/lib/tools/defineCheckQuery.ts#L8)
+[lib/tools/defineCheckQuery.ts:8](https://github.com/nevoland/quetch/blob/113c92700ad416b9a1f93a34d9c9a5df2d593321/lib/tools/defineCheckQuery.ts#L8)
