@@ -83,7 +83,7 @@ export function queryItemList<T, const Q extends Query<T>>(
         );
       }
       // Sort
-      result = sortItemList(order, result, query.settings);
+      result = sortItemList(order, result, settings);
       // Slice
       if (offset !== 0 || limit !== Infinity) {
         result = result.slice(offset, offset + limit);
@@ -125,7 +125,7 @@ export function queryItemList<T, const Q extends Query<T>>(
             );
           }
           // Sort
-          result = sortItemList(order, result, query.settings);
+          result = sortItemList(order, result, settings);
           // Slice
           if (offset !== 0 || limit !== Infinity) {
             result = result.slice(offset, offset + limit);
