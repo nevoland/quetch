@@ -34,4 +34,4 @@ Query handler
 
 ## Defined in
 
-[lib/middlewares/log.ts:13](https://github.com/nevoland/quetch/blob/78e51f8989e150bad7c9687ad573f6d1f074683e/lib/middlewares/log.ts#L13)
+[lib/middlewares/log.ts:13](https://github.com/nevoland/quetch/blob/439120295bc3ab3895611a5a04d7281d9d40fc45/lib/middlewares/log.ts#L13)

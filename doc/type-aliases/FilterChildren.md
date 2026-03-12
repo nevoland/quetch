@@ -36,12 +36,12 @@ Infinity
 
 > `optional` **minDepth**: `number`
 
-Minimum depth of the children to match. If `0`, matches the direct children. If `1`, matches the grandchildren, and so on.
+Minimum depth of the children to match. If `0`, matches the parent. If `1`, matches the direct children, if `2`, the grandchildren, and so on.
 
 #### Default
 
 ```ts
-0
+1
 ```
 
 ### operator
@@ -54,4 +54,4 @@ Minimum depth of the children to match. If `0`, matches the direct children. If 
 
 ## Defined in
 
-[lib/types/FilterChildren.ts:9](https://github.com/nevoland/quetch/blob/78e51f8989e150bad7c9687ad573f6d1f074683e/lib/types/FilterChildren.ts#L9)
+[lib/types/FilterChildren.ts:9](https://github.com/nevoland/quetch/blob/439120295bc3ab3895611a5a04d7281d9d40fc45/lib/types/FilterChildren.ts#L9)

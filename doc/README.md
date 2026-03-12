@@ -32,7 +32,6 @@
 - [FilterArray](type-aliases/FilterArray.md)
 - [FilterBoolean](type-aliases/FilterBoolean.md)
 - [FilterChildren](type-aliases/FilterChildren.md)
-- [FilterContext](type-aliases/FilterContext.md)
 - [FilterCustom](type-aliases/FilterCustom.md)
 - [FilterField](type-aliases/FilterField.md)
 - [FilterGroup](type-aliases/FilterGroup.md)

@@ -78,22 +78,6 @@ The provided `FilterChildren` to express.
 
 A filter that captures the items expressed by the provided `FilterChildren`.
 
-### transformFilterContext()?
-
-> `optional` **transformFilterContext**: (`filter`) => [`IntrinsicFilter`](IntrinsicFilter.md)\<`T`\>
-
-Returns a filter that captures the items expressed by the provided `FilterContext`. The return filter cannot use filters of type `FilterContext` or `FilterChildren`.
-
-#### Parameters
-
-##### filter
-
-[`FilterContext`](FilterContext.md)\<`T`\>
-
-#### Returns
-
-[`IntrinsicFilter`](IntrinsicFilter.md)\<`T`\>
-
 ## Defined in
 
-[lib/types/QuerySettings.ts:9](https://github.com/nevoland/quetch/blob/78e51f8989e150bad7c9687ad573f6d1f074683e/lib/types/QuerySettings.ts#L9)
+[lib/types/QuerySettings.ts:8](https://github.com/nevoland/quetch/blob/439120295bc3ab3895611a5a04d7281d9d40fc45/lib/types/QuerySettings.ts#L8)

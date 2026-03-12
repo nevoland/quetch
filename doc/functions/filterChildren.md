@@ -30,7 +30,7 @@ The key of the field that contains the path information.
 
 ### minDepth
 
-`number` = `0`
+`number` = `1`
 
 The minimum depth of the child items relative to the parent.
 
@@ -54,4 +54,4 @@ A filter that can be used to match child items.
 
 ## Defined in
 
-[lib/tools/filterChildren.ts:15](https://github.com/nevoland/quetch/blob/78e51f8989e150bad7c9687ad573f6d1f074683e/lib/tools/filterChildren.ts#L15)
+[lib/tools/filterChildren.ts:15](https://github.com/nevoland/quetch/blob/439120295bc3ab3895611a5a04d7281d9d40fc45/lib/tools/filterChildren.ts#L15)

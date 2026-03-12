@@ -30,4 +30,4 @@ Formats the date found in a given field, which can be an ISO string date or a ti
 
 ## Defined in
 
-[lib/types/FieldFunctionFormatDate.ts:6](https://github.com/nevoland/quetch/blob/78e51f8989e150bad7c9687ad573f6d1f074683e/lib/types/FieldFunctionFormatDate.ts#L6)
+[lib/types/FieldFunctionFormatDate.ts:6](https://github.com/nevoland/quetch/blob/439120295bc3ab3895611a5a04d7281d9d40fc45/lib/types/FieldFunctionFormatDate.ts#L6)
