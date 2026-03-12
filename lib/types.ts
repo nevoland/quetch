@@ -18,7 +18,6 @@ export type { Filter } from "./types/Filter";
 export type { FilterArray } from "./types/FilterArray";
 export type { FilterBoolean } from "./types/FilterBoolean";
 export type { FilterChildren } from "./types/FilterChildren";
-export type { FilterContext } from "./types/FilterContext";
 export type { FilterCustom } from "./types/FilterCustom";
 export type { FilterField } from "./types/FilterField";
 export type { FilterGroup } from "./types/FilterGroup";

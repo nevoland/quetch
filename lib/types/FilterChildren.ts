@@ -10,9 +10,9 @@ export type FilterChildren<T> = {
   operator: "children" | "notChildren";
   value?: Context<T>;
   /**
-   * Minimum depth of the children to match. If `0`, matches the direct children. If `1`, matches the grandchildren, and so on.
+   * Minimum depth of the children to match. If `0`, matches the parent. If `1`, matches the direct children, if `2`, the grandchildren, and so on.
    *
-   * @default 0
+   * @default 1
    */
   minDepth?: number;
   /**

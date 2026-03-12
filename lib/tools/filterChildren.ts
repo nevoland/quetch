@@ -15,16 +15,16 @@ import { escapeRegex } from "./escapeRegex.js";
 export function filterChildren<T>(
   parentPath: string,
   pathFieldKey: FieldFiltered<T, string>,
-  minDepth = 0,
+  minDepth = 1,
   maxDepth = Infinity,
   pathSeparator = "/",
 ): FilterStringMatch<T> {
   const escapedSeparator = escapeRegex(pathSeparator);
   const segment = `${escapedSeparator}[^${escapedSeparator}]+`;
   const quantifier =
-    minDepth === 0 && maxDepth === 1
+    minDepth === 1 && maxDepth === 1
       ? ""
-      : `{${minDepth + 1},${maxDepth === Infinity ? "" : maxDepth + 1}}`;
+      : `{${minDepth},${maxDepth === Infinity ? "" : maxDepth}}`;
   return {
     field: pathFieldKey,
     operator: "match",

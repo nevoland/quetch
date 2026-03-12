@@ -1,6 +1,5 @@
 import type { FieldFiltered } from "./FieldFiltered";
 import type { FilterChildren } from "./FilterChildren";
-import type { FilterContext } from "./FilterContext";
 import type { IntrinsicFilter } from "./IntrinsicFilter";
 
 /**
@@ -30,13 +29,6 @@ export type QuerySettings<T> = {
    * @returns A filter that captures the items expressed by the provided `FilterChildren`.
    */
   transformFilterChildren?: (filter: FilterChildren<T>) => IntrinsicFilter<T>;
-  /**
-   * Returns a filter that captures the items expressed by the provided `FilterContext`. The return filter cannot use filters of type `FilterContext` or `FilterChildren`.
-   *
-   * @param filter
-   * @returns
-   */
-  transformFilterContext?: (filter: FilterContext<T>) => IntrinsicFilter<T>;
   /**
    * Abort signal to abort the query.
    */

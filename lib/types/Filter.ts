@@ -1,7 +1,6 @@
 import type { FilterArray } from "./FilterArray";
 import type { FilterBoolean } from "./FilterBoolean";
 import type { FilterChildren } from "./FilterChildren";
-import type { FilterContext } from "./FilterContext";
 import type { FilterCustom } from "./FilterCustom";
 import type { FilterField } from "./FilterField";
 import type { FilterGroup } from "./FilterGroup";
@@ -23,5 +22,4 @@ export type Filter<T> =
   | FilterGroup<T>
   | FilterString<T>
   | FilterStringIntersect<T>
-  | FilterContext<T>
   | FilterStringMatch<T>;

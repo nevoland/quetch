@@ -5,5 +5,5 @@ import type { Filter } from "./Filter";
  */
 export type IntrinsicFilter<T> = Exclude<
   Filter<T>,
-  { operator: "children" | "notChildren" | "is" | "notIs" }
+  { operator: "children" | "notChildren" }
 >;

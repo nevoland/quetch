@@ -355,6 +355,12 @@ test("tests filter with children predicates", () => {
     testFilter({ operator: "children", value: { id: "a" } }, { id: "a/b" }),
   ).toBe(true);
   expect(
+    testFilter(
+      { operator: "children", value: { id: "a" }, minDepth: 0 },
+      { id: "a" },
+    ),
+  ).toBe(true);
+  expect(
     testFilter({ operator: "notChildren", value: { id: "a" } }, { id: "a/b" }),
   ).toBe(false);
   expect(
@@ -440,56 +446,5 @@ test("tests filter with children predicates", () => {
         pathFieldSeparator: ".",
       },
     ),
-  ).toBe(true);
-});
-
-test("tests filter with context predicates", () => {
-  const context = { id: "a" };
-  expect(testFilter({ operator: "is", value: context }, { id: "a" })).toBe(
-    true,
-  );
-  expect(testFilter({ operator: "notIs", value: context }, { id: "a" })).toBe(
-    false,
-  );
-  const filterContext: FilterContext<typeof context> = {
-    operator: "is",
-    value: context,
-  };
-  expect(
-    testFilter(
-      filterContext,
-      { id: "a" },
-      {
-        transformFilterContext(filter) {
-          return {
-            field: "id",
-            operator: "equal",
-            value: filter.value?.id ?? "",
-          };
-        },
-      },
-    ),
-  ).toBe(true);
-  expect(
-    testFilter(
-      { operator: "all", value: [filterContext] },
-      { id: "a" },
-      {
-        transformFilterContext(filter) {
-          return {
-            field: "id",
-            operator: "equal",
-            value: filter.value?.id ?? "",
-          };
-        },
-      },
-    ),
-  ).toBe(true);
-  expect(filterContext[CACHE]).toBeDefined();
-  expect(testFilter({ operator: "is", value: { id: "b" } }, { id: "a" })).toBe(
-    false,
-  );
-  expect(
-    testFilter({ operator: "notIs", value: { id: "b" } }, { id: "a" }),
   ).toBe(true);
 });
