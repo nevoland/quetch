@@ -1,16 +1,7 @@
-import { EMPTY_OBJECT } from "unchangeable";
-
 import { CACHE } from "../constants/CACHE.js";
 import type { QuerySettings } from "../types/QuerySettings.js";
-import type {
-  Context,
-  FieldFiltered,
-  Filter,
-  FilterString,
-  IntrinsicFilter,
-} from "../types.js";
+import type { Filter, FilterString } from "../types.js";
 
-import { filterChildren } from "./filterChildren.js";
 import { get } from "./get.js";
 
 const { isArray } = Array;
