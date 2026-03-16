@@ -32,7 +32,7 @@ function valueFromFilter<T>(value: T, filter: Filter<T>): any {
  * @returns `true` if the `value` matches the `filter` and `false` otherwise.
  */
 export function testFilter<T>(
-  filter: Filter<T> | undefined,
+  filter: NoInfer<Filter<T>> | undefined,
   value: T | undefined,
   settings?: QuerySettings<T>,
 ): boolean {
@@ -49,12 +49,12 @@ export function testFilter<T>(
       );
     case "any": {
       const length = filter.value?.length ?? 0;
-      const minimum = filter.minimum ?? (length > 0 ? 1 : 0);
-      const maximum = filter.maximum ?? Infinity;
+      const min = filter.min ?? (length > 0 ? 1 : 0);
+      const max = filter.max ?? Infinity;
       if (filter.value === undefined || filter.value.length === 0) {
         return true;
       }
-      if (minimum === 1 && maximum >= length) {
+      if (min === 1 && max >= length) {
         return filter.value.some((filter) =>
           testFilter(filter, value, settings),
         );
@@ -64,7 +64,7 @@ export function testFilter<T>(
           count + (testFilter(filter, value, settings) ? 1 : 0),
         0,
       );
-      return matched >= minimum && matched <= maximum;
+      return matched >= min && matched <= max;
     }
     case "none": {
       if (filter.value === undefined || filter.value.length === 0) {
@@ -137,16 +137,8 @@ export function testFilter<T>(
             filter[CACHE] = settings.transformFilterChildren(filter);
             break;
           default: {
-            const { pathField = "id", pathFieldSeparator } =
-              settings || EMPTY_OBJECT;
-            pathField;
-            filter[CACHE] = filterChildren<Context<T>>(
-              (get(filter.value, pathField as any) as string) ?? "",
-              pathField as FieldFiltered<Context<T>, string>,
-              filter.minDepth,
-              filter.maxDepth,
-              pathFieldSeparator,
-            ) as IntrinsicFilter<T>;
+            // Opt-out if no filter transformation is provided
+            return true;
           }
         }
       }
