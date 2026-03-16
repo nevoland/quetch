@@ -29,13 +29,13 @@ export type FilterGroup<T> =
        *
        * @default `1` if filters are provided, `0` otherwise
        */
-      minimum?: number;
+      min?: number;
       /**
        * Maximum number of filters that can match.
        *
        * @default Infinity
        */
-      maximum?: number;
+      max?: number;
     }
   | {
       /**
