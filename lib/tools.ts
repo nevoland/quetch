@@ -18,3 +18,4 @@ export { sameField } from "./tools/sameField.js";
 export { sortItemList } from "./tools/sortItemList.js";
 export { splitPath } from "./tools/splitPath.js";
 export { testFilter } from "./tools/testFilter.js";
+export { transformerFilterChildren } from "./tools/transformerFilterChildren.js";
