@@ -6,7 +6,7 @@
 
 # Function: intrinsicFilter()
 
-> **intrinsicFilter**\<`T`\>(`filter`, `settings`): [`IntrinsicFilter`](../type-aliases/IntrinsicFilter.md)\<`T`\>
+> **intrinsicFilter**\<`T`\>(`settings`, `filter`): [`IntrinsicFilter`](../type-aliases/IntrinsicFilter.md)\<`T`\>
 
 Transforms a filter into an intrinsic filter by replacing `children` and `notChildren` filters with their transformed versions from the query settings.
 
@@ -16,17 +16,17 @@ Transforms a filter into an intrinsic filter by replacing `children` and `notChi
 
 ## Parameters
 
-### filter
-
-[`Filter`](../type-aliases/Filter.md)\<`T`\>
-
-The filter to transform.
-
 ### settings
 
 `Required`\<`Pick`\<[`QuerySettings`](../type-aliases/QuerySettings.md)\<`T`\>, `"transformFilterChildren"`\>\>
 
 The query settings that may contain a `transformFilterChildren` function to transform `children` and `notChildren` filters.
+
+### filter
+
+[`Filter`](../type-aliases/Filter.md)\<`T`\>
+
+The filter to transform.
 
 ## Returns
 
@@ -36,4 +36,4 @@ The transformed intrinsic filter.
 
 ## Defined in
 
-[lib/tools/intrinsicFilter.ts:10](https://github.com/nevoland/quetch/blob/f881c4f19d7899ff86da90e179fb6d9e199b8525/lib/tools/intrinsicFilter.ts#L10)
+[lib/tools/intrinsicFilter.ts:10](https://github.com/nevoland/quetch/blob/94f546831241bf41f83cf97787b7e923c8cf7824/lib/tools/intrinsicFilter.ts#L10)

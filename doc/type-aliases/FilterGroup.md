@@ -6,7 +6,7 @@
 
 # Type Alias: FilterGroup\<T\>
 
-> **FilterGroup**\<`T`\>: \{`operator`: `"all"`;`value`: readonly [`Filter`](Filter.md)\<`T`\>[]; \} \| \{`maximum`: `number`;`minimum`: `number`;`operator`: `"any"`;`value`: readonly [`Filter`](Filter.md)\<`T`\>[]; \} \| \{`operator`: `"none"`;`value`: readonly [`Filter`](Filter.md)\<`T`\>[]; \}
+> **FilterGroup**\<`T`\>: \{`operator`: `"all"`;`value`: readonly [`Filter`](Filter.md)\<`T`\>[]; \} \| \{`max`: `number`;`min`: `number`;`operator`: `"any"`;`value`: readonly [`Filter`](Filter.md)\<`T`\>[]; \} \| \{`operator`: `"none"`;`value`: readonly [`Filter`](Filter.md)\<`T`\>[]; \}
 
 Joins a list of filters with a specific boolean operator.
 
@@ -30,11 +30,11 @@ Checks if all filters are true.
 
 Filters to join.
 
-\{`maximum`: `number`;`minimum`: `number`;`operator`: `"any"`;`value`: readonly [`Filter`](Filter.md)\<`T`\>[]; \}
+\{`max`: `number`;`min`: `number`;`operator`: `"any"`;`value`: readonly [`Filter`](Filter.md)\<`T`\>[]; \}
 
-### maximum?
+### max?
 
-> `optional` **maximum**: `number`
+> `optional` **max**: `number`
 
 Maximum number of filters that can match.
 
@@ -44,9 +44,9 @@ Maximum number of filters that can match.
 Infinity
 ```
 
-### minimum?
+### min?
 
-> `optional` **minimum**: `number`
+> `optional` **min**: `number`
 
 Minimum number of filters that must match.
 
@@ -84,4 +84,4 @@ Filters to join.
 
 ## Defined in
 
-[lib/types/FilterGroup.ts:6](https://github.com/nevoland/quetch/blob/f881c4f19d7899ff86da90e179fb6d9e199b8525/lib/types/FilterGroup.ts#L6)
+[lib/types/FilterGroup.ts:6](https://github.com/nevoland/quetch/blob/94f546831241bf41f83cf97787b7e923c8cf7824/lib/types/FilterGroup.ts#L6)

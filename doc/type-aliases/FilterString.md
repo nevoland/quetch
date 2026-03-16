@@ -34,4 +34,4 @@ Checks if a given string field matches a given string value according to a given
 
 ## Defined in
 
-[lib/types/FilterString.ts:8](https://github.com/nevoland/quetch/blob/f881c4f19d7899ff86da90e179fb6d9e199b8525/lib/types/FilterString.ts#L8)
+[lib/types/FilterString.ts:8](https://github.com/nevoland/quetch/blob/94f546831241bf41f83cf97787b7e923c8cf7824/lib/types/FilterString.ts#L8)

@@ -16,4 +16,4 @@ Filter that does not rely on query settings, and thus can be evaluated directly 
 
 ## Defined in
 
-[lib/types/IntrinsicFilter.ts:6](https://github.com/nevoland/quetch/blob/f881c4f19d7899ff86da90e179fb6d9e199b8525/lib/types/IntrinsicFilter.ts#L6)
+[lib/types/IntrinsicFilter.ts:6](https://github.com/nevoland/quetch/blob/94f546831241bf41f83cf97787b7e923c8cf7824/lib/types/IntrinsicFilter.ts#L6)

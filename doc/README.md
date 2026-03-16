@@ -116,3 +116,4 @@
 - [sortItemList](functions/sortItemList.md)
 - [splitPath](functions/splitPath.md)
 - [testFilter](functions/testFilter.md)
+- [transformerFilterChildren](functions/transformerFilterChildren.md)

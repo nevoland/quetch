@@ -18,7 +18,7 @@ Checks wether the provided `value` matches the `filter` or not.
 
 ### filter
 
-`undefined` | [`Filter`](../type-aliases/Filter.md)\<`T`\>
+`undefined` | `NoInfer`\<[`Filter`](../type-aliases/Filter.md)\<`T`\>\>
 
 ### value
 
@@ -38,4 +38,4 @@ Optional query settings.
 
 ## Defined in
 
-[lib/tools/testFilter.ts:34](https://github.com/nevoland/quetch/blob/f881c4f19d7899ff86da90e179fb6d9e199b8525/lib/tools/testFilter.ts#L34)
+[lib/tools/testFilter.ts:25](https://github.com/nevoland/quetch/blob/94f546831241bf41f83cf97787b7e923c8cf7824/lib/tools/testFilter.ts#L25)

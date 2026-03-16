@@ -50,8 +50,8 @@ Minimum depth of the children to match. If `0`, matches the parent. If `1`, matc
 
 ### value?
 
-> `optional` **value**: [`Context`](Context.md)\<`T`\>
+> `optional` **value**: `T`
 
 ## Defined in
 
-[lib/types/FilterChildren.ts:9](https://github.com/nevoland/quetch/blob/f881c4f19d7899ff86da90e179fb6d9e199b8525/lib/types/FilterChildren.ts#L9)
+[lib/types/FilterChildren.ts:8](https://github.com/nevoland/quetch/blob/94f546831241bf41f83cf97787b7e923c8cf7824/lib/types/FilterChildren.ts#L8)
