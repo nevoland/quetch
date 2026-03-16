@@ -2,7 +2,7 @@ import { expect, test } from "vitest";
 
 import { CACHE } from "../constants/CACHE.js";
 import { SELF } from "../constants.js";
-import type { FilterChildren, FilterContext } from "../types.js";
+import type { FilterChildren } from "../types.js";
 
 import { filterFromValue } from "./filterFromValue.js";
 import { testFilter } from "./testFilter.js";
@@ -77,7 +77,7 @@ test("tests filter lists", () => {
           { field: "a", operator: "equal", value: "foo" },
           { field: "c", operator: "equal", value: "baz" },
         ],
-        minimum: 2,
+        min: 2,
       },
       { a: "foo", b: "bar", c: "baz" },
     ),
@@ -90,8 +90,8 @@ test("tests filter lists", () => {
           { field: "a", operator: "equal", value: "foo" },
           { field: "c", operator: "equal", value: "baz" },
         ],
-        minimum: 1,
-        maximum: 2,
+        min: 1,
+        max: 2,
       },
       { a: "foo", b: "bar", c: "baz" },
     ),
@@ -104,7 +104,7 @@ test("tests filter lists", () => {
           { field: "a", operator: "equal", value: "foo" },
           { field: "c", operator: "equal", value: "baz" },
         ],
-        maximum: 1,
+        max: 1,
       },
       { a: "foo", b: "bar", c: "baz" },
     ),
