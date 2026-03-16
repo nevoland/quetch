@@ -1,6 +1,5 @@
 import type { CACHE } from "../constants/CACHE.js";
 
-import type { Context } from "./Context";
 import type { IntrinsicFilter } from "./IntrinsicFilter.js";
 
 /**
@@ -8,7 +7,7 @@ import type { IntrinsicFilter } from "./IntrinsicFilter.js";
  */
 export type FilterChildren<T> = {
   operator: "children" | "notChildren";
-  value?: Context<T>;
+  value?: T;
   /**
    * Minimum depth of the children to match. If `0`, matches the parent. If `1`, matches the direct children, if `2`, the grandchildren, and so on.
    *
