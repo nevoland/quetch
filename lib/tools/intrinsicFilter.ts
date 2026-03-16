@@ -8,8 +8,8 @@ import type { Filter, IntrinsicFilter, QuerySettings } from "../types";
  * @returns The transformed intrinsic filter.
  */
 export function intrinsicFilter<T>(
-  filter: Filter<T>,
   settings: Required<Pick<QuerySettings<T>, "transformFilterChildren">>,
+  filter: Filter<T>,
 ): IntrinsicFilter<T> {
   switch (filter.operator) {
     case "any":
@@ -18,7 +18,7 @@ export function intrinsicFilter<T>(
       return {
         ...filter,
         value: filter.value?.map((filter) =>
-          intrinsicFilter(filter, settings),
+          intrinsicFilter(settings, filter),
         ) as readonly Filter<T>[],
       };
     case "children":
