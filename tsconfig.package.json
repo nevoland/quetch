@@ -4,7 +4,8 @@
     "outDir": "./dist",
     "sourceMap": true,
     "declaration": true,
-    "allowImportingTsExtensions": false
+    "allowImportingTsExtensions": false,
+    "skipLibCheck": true
   },
   "include": ["lib"],
   "exclude": ["**/*.test.ts", "**/*.test.tsx"],

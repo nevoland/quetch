@@ -1,5 +1,6 @@
 import { expect, test } from "vitest";
 
+import { querySettings } from "./querySettings.js";
 import { sortItemList } from "./sortItemList.js";
 
 test("sorts items", () => {
@@ -76,10 +77,7 @@ test("sorts items with separator setting", () => {
         { path: "a\\/b.c" },
         { path: "a.b/c" },
       ],
-      {
-        pathField: "path",
-        pathFieldSeparator: "/",
-      },
+      querySettings(),
     ),
   ).toEqual([
     { path: "a" },
@@ -104,10 +102,7 @@ test("sorts items with separator setting", () => {
         { path: "a\\/b.c" },
         { path: "a.b/c" },
       ],
-      {
-        pathField: "path",
-        pathFieldSeparator: "/",
-      },
+      querySettings(),
     ),
   ).toEqual([
     { path: "a" },
@@ -118,5 +113,33 @@ test("sorts items with separator setting", () => {
     { path: "a.b/c" },
     { path: "a.b.c" },
     { path: "a\\/b.c" },
+  ]);
+
+  expect(
+    sortItemList(
+      [{ descending: false, field: "path" }],
+      [
+        { path: "a" },
+        { path: "a/b" },
+        { path: "a.b" },
+        { path: "a/b/c" },
+        { path: "a.b.c" },
+        { path: "a/b.c" },
+        { path: "a\\.b.c" },
+        { path: "a.b/c" },
+      ],
+      querySettings({
+        pathFieldSeparator: ".",
+      }),
+    ),
+  ).toEqual([
+    { path: "a" },
+    { path: "a.b" },
+    { path: "a.b.c" },
+    { path: "a.b/c" },
+    { path: "a/b" },
+    { path: "a/b.c" },
+    { path: "a/b/c" },
+    { path: "a\\.b.c" },
   ]);
 });

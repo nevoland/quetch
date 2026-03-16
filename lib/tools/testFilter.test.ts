@@ -5,6 +5,7 @@ import { SELF } from "../constants.js";
 import type { FilterChildren } from "../types.js";
 
 import { filterFromValue } from "./filterFromValue.js";
+import { querySettings } from "./querySettings.js";
 import { testFilter } from "./testFilter.js";
 
 test("tests filter lists", () => {
@@ -360,27 +361,37 @@ test("tests filter with children predicates", () => {
       { id: "a" },
     ),
   ).toBe(true);
+
+  // Always true if `transformFilterChildren` is not provided, to avoid false negatives
   expect(
     testFilter({ operator: "notChildren", value: { id: "a" } }, { id: "a/b" }),
+  ).toBe(true);
+  expect(
+    testFilter(
+      { operator: "notChildren", value: { id: "a" } },
+      { id: "a/b" },
+      querySettings({ pathField: "id" }),
+    ),
   ).toBe(false);
+
   expect(
     testFilter(
       { operator: "children", value: { path: ".a" } },
       { path: ".a.b" },
-      {
+      querySettings({
         pathField: "path",
         pathFieldSeparator: ".",
-      },
+      }),
     ),
   ).toBe(true);
   expect(
     testFilter(
       { operator: "notChildren", value: { path: ".a" } },
       { path: ".a.b" },
-      {
+      querySettings({
         pathField: "path",
         pathFieldSeparator: ".",
-      },
+      }),
     ),
   ).toBe(false);
   const filterChildren: FilterChildren<{ path: string }> = {
@@ -422,29 +433,41 @@ test("tests filter with children predicates", () => {
   ).toBe(true);
   expect(filterChildren[CACHE]).toBeDefined();
   expect(
-    testFilter({ operator: "children", value: { id: "b" } }, { id: "a/b" }),
+    testFilter(
+      { operator: "children", value: { id: "b" } },
+      { id: "a/b" },
+      querySettings({
+        pathField: "id",
+      }),
+    ),
   ).toBe(false);
   expect(
-    testFilter({ operator: "notChildren", value: { id: "b" } }, { id: "a/b" }),
+    testFilter(
+      { operator: "notChildren", value: { id: "b" } },
+      { id: "a/b" },
+      querySettings({
+        pathField: "id",
+      }),
+    ),
   ).toBe(true);
   expect(
     testFilter(
       { operator: "children", value: { path: "ba" } },
       { path: ".a.b" },
-      {
+      querySettings({
         pathField: "path",
         pathFieldSeparator: ".",
-      },
+      }),
     ),
   ).toBe(false);
   expect(
     testFilter(
       { operator: "notChildren", value: { path: "ba" } },
       { path: ".a.b" },
-      {
+      querySettings({
         pathField: "path",
         pathFieldSeparator: ".",
-      },
+      }),
     ),
   ).toBe(true);
 });
