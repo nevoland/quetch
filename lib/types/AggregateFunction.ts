@@ -13,8 +13,8 @@ export type AggregateFunction<T> =
         | "median"
         | "standardDeviation"
         | "mean"
-        | "minimum"
-        | "maximum"
+        | "min"
+        | "max"
         | "variance"
         | "mode";
       field: Field<T>;
