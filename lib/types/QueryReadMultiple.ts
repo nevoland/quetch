@@ -1,4 +1,5 @@
 import type { Context } from "./Context";
+import type { Field } from "./Field";
 import type { Filter } from "./Filter";
 import type { Group } from "./Group";
 import type { Order } from "./Order";
@@ -26,7 +27,7 @@ export type QueryReadMultiple<T> = {
   /**
    * Item fields to pick. If omitted, all fields are picked.
    */
-  fields?: readonly (keyof T)[];
+  fields?: readonly Field<T>[];
   /**
    * Filter for finding the items.
    */

@@ -1,4 +1,5 @@
 import type { Context } from "./Context";
+import type { Field } from "./Field";
 import type { Filter } from "./Filter";
 import type { Order } from "./Order";
 import type { Parameters } from "./Parameters";
@@ -23,7 +24,7 @@ export type QueryRead<T> = {
   /**
    * Item fields to pick. If omitted, all fields are picked.
    */
-  fields?: readonly (keyof T)[];
+  fields?: readonly Field<T>[];
   /**
    * Filter for finding the item, if it cannot be found based on the `context`.
    */

@@ -48,6 +48,7 @@ export type { OrderNormalized } from "./types/OrderNormalized";
 export type { Parameters } from "./types/Parameters";
 export type { Path } from "./types/Path";
 export type { PathFiltered } from "./types/PathFiltered";
+export type { Prettify } from "./types/Prettify";
 export type { Primitive } from "./types/Primitive";
 export type { PrimitiveObject } from "./types/PrimitiveObject";
 export type { Query } from "./types/Query";
