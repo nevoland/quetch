@@ -54,4 +54,4 @@ Minimum depth of the children to match. If `0`, matches the parent. If `1`, matc
 
 ## Defined in
 
-[lib/types/FilterChildren.ts:8](https://github.com/nevoland/quetch/blob/1cf615b166541d2a753e34c0a2dd4a9474026d7a/lib/types/FilterChildren.ts#L8)
+[lib/types/FilterChildren.ts:8](https://github.com/nevoland/quetch/blob/11efc4791b6b46376df8dcc576f30e0b288063ba/lib/types/FilterChildren.ts#L8)

@@ -36,4 +36,4 @@ Applies a custom field transform function.
 
 ## Defined in
 
-[lib/types/FieldFunctionCustom.ts:4](https://github.com/nevoland/quetch/blob/1cf615b166541d2a753e34c0a2dd4a9474026d7a/lib/types/FieldFunctionCustom.ts#L4)
+[lib/types/FieldFunctionCustom.ts:4](https://github.com/nevoland/quetch/blob/11efc4791b6b46376df8dcc576f30e0b288063ba/lib/types/FieldFunctionCustom.ts#L4)

@@ -10,6 +10,7 @@ import { escapeRegex } from "./escapeRegex.js";
  * @param minDepth - The minimum depth of the child items relative to the parent.
  * @param maxDepth - The maximum depth of the child items relative to the parent.
  * @param pathSeparator - The character used to separate path segments.
+ * @param not - If true, generates a filter that matches items that are not children of the given parent path.
  * @returns A filter that can be used to match child items.
  */
 export function filterChildren<T>(

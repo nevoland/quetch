@@ -14,4 +14,4 @@
 
 ## Defined in
 
-[lib/types/Immutable.ts:1](https://github.com/nevoland/quetch/blob/1cf615b166541d2a753e34c0a2dd4a9474026d7a/lib/types/Immutable.ts#L1)
+[lib/types/Immutable.ts:1](https://github.com/nevoland/quetch/blob/11efc4791b6b46376df8dcc576f30e0b288063ba/lib/types/Immutable.ts#L1)

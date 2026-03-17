@@ -6,7 +6,7 @@
 
 # Function: filterChildren()
 
-> **filterChildren**\<`T`\>(`parentPath`, `pathFieldKey`, `minDepth`, `maxDepth`, `pathSeparator`): [`FilterStringMatch`](../type-aliases/FilterStringMatch.md)\<`T`\>
+> **filterChildren**\<`T`\>(`parentPath`, `pathFieldKey`, `minDepth`, `maxDepth`, `pathSeparator`, `not`): [`FilterStringMatch`](../type-aliases/FilterStringMatch.md)\<`T`\>
 
 Generates a filter that matches items whose path field indicates they are children of a given parent path, with an optional depth range.
 
@@ -46,6 +46,12 @@ The maximum depth of the child items relative to the parent.
 
 The character used to separate path segments.
 
+### not
+
+`boolean` = `false`
+
+If true, generates a filter that matches items that are not children of the given parent path.
+
 ## Returns
 
 [`FilterStringMatch`](../type-aliases/FilterStringMatch.md)\<`T`\>
@@ -54,4 +60,4 @@ A filter that can be used to match child items.
 
 ## Defined in
 
-[lib/tools/filterChildren.ts:15](https://github.com/nevoland/quetch/blob/1cf615b166541d2a753e34c0a2dd4a9474026d7a/lib/tools/filterChildren.ts#L15)
+[lib/tools/filterChildren.ts:16](https://github.com/nevoland/quetch/blob/11efc4791b6b46376df8dcc576f30e0b288063ba/lib/tools/filterChildren.ts#L16)

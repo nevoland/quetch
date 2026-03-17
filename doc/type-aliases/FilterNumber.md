@@ -26,4 +26,4 @@ Checks if a given number field matches a given number value according to a given
 
 ## Defined in
 
-[lib/types/FilterNumber.ts:7](https://github.com/nevoland/quetch/blob/1cf615b166541d2a753e34c0a2dd4a9474026d7a/lib/types/FilterNumber.ts#L7)
+[lib/types/FilterNumber.ts:7](https://github.com/nevoland/quetch/blob/11efc4791b6b46376df8dcc576f30e0b288063ba/lib/types/FilterNumber.ts#L7)
