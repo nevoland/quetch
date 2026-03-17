@@ -18,7 +18,7 @@ Returns a function that transforms a `FilterChildren` into a `FilterStringMatch`
 
 ### options
 
-`TransformerFilterChildrenOptions`\<`T`\> = `EMPTY_OBJECT`
+[`NormalizedPathFieldSettings`](../type-aliases/NormalizedPathFieldSettings.md)\<`T`\> = `EMPTY_OBJECT`
 
 Options for the transformer.
 
@@ -40,4 +40,4 @@ A function that takes a `FilterChildren` and returns a `FilterStringMatch` that 
 
 ## Defined in
 
-[lib/tools/transformerFilterChildren.ts:39](https://github.com/nevoland/quetch/blob/94f546831241bf41f83cf97787b7e923c8cf7824/lib/tools/transformerFilterChildren.ts#L39)
+[lib/tools/transformerFilterChildren.ts:19](https://github.com/nevoland/quetch/blob/1cf615b166541d2a753e34c0a2dd4a9474026d7a/lib/tools/transformerFilterChildren.ts#L19)

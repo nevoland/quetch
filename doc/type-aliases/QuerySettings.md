@@ -22,36 +22,6 @@ Settings to use when doing a query.
 
 Abort controller to abort the query.
 
-### pathField?
-
-> `optional` **pathField**: [`FieldFiltered`](FieldFiltered.md)\<`T`, `string`\>
-
-Path to the field that contains the path value of an item, used for displaying items in a tree.
-
-### pathFieldSeparator?
-
-> `optional` **pathFieldSeparator**: `string`
-
-Maps path fields to a string used to separate the path nodes of a field value.
-
-#### Default
-
-```ts
-"/"
-```
-
-### pathFieldSeparatorEscape?
-
-> `optional` **pathFieldSeparatorEscape**: `string`
-
-String used to escape the separator.
-
-#### Default
-
-```ts
-"\\"
-```
-
 ### signal?
 
 > `optional` **signal**: `AbortSignal`
@@ -78,6 +48,42 @@ The provided `FilterChildren` to express.
 
 A filter that captures the items expressed by the provided `FilterChildren`.
 
+### compareFieldValues()?
+
+Compares two values of a field for sorting purposes. If not provided, values are compared using the default comparison operators (`>`, `<`, `===`).
+
+This function is called only when both `a` and `b` are defined and different. If it returns `undefined`, the default comparison operators are used as a fallback.
+
+#### Type Parameters
+
+• **T**
+
+#### Parameters
+
+##### field
+
+[`Field`](Field.md)\<`T`\>
+
+The field for which the values are compared.
+
+##### a
+
+`any`
+
+The first value to compare.
+
+##### b
+
+`any`
+
+The second value to compare.
+
+#### Returns
+
+`undefined` \| `0` \| `1` \| `-1`
+
+`-1` if `a` should be sorted before `b`, `1` if `a` should be sorted after `b`, `0` if they are considered equal, or `undefined` to use the default comparison operators.
+
 ## Defined in
 
-[lib/types/QuerySettings.ts:8](https://github.com/nevoland/quetch/blob/94f546831241bf41f83cf97787b7e923c8cf7824/lib/types/QuerySettings.ts#L8)
+[lib/types/QuerySettings.ts:8](https://github.com/nevoland/quetch/blob/1cf615b166541d2a753e34c0a2dd4a9474026d7a/lib/types/QuerySettings.ts#L8)

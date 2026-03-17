@@ -6,7 +6,7 @@
 
 # Type Alias: PathFiltered\<T, P, D\>
 
-> **PathFiltered**\<`T`, `P`, `D`\>: [`0`] *extends* [`1` & `T`] ? readonly ([`Key`](Key.md) \| `never`)[] : `D` *extends* `-1` ? `never` : `T` *extends* `P` ? readonly `never`[] : `T` *extends* `ReadonlyArray`\<infer I\> ? `Extract`\<`I`, `P`\> *extends* `never` ? readonly [`number`, `...PathFiltered<I, P, Increment<D>>`] : readonly [`number`] : `T` *extends* `object` ? `{ [K in keyof T]: Extract<T[K], P> extends never ? readonly [K, ...(...)] : readonly [K] }`\[keyof `T`\] : `never`
+> **PathFiltered**\<`T`, `P`, `D`\>: [`unknown`] *extends* [`T`] ? readonly ([`Key`](Key.md) \| `never`)[] : [`0`] *extends* [`1` & `T`] ? readonly ([`Key`](Key.md) \| `never`)[] : `D` *extends* `-1` ? `never` : `T` *extends* `P` ? readonly `never`[] : `T` *extends* `ReadonlyArray`\<infer I\> ? `Extract`\<`I`, `P`\> *extends* `never` ? readonly [`number`, `...PathFiltered<I, P, Decrement<(...)>>`] : readonly [`number`] : `T` *extends* `object` ? `{ [K in keyof T]: Extract<(...)[(...)], P> extends never ? readonly [(...), (...)] : readonly [(...)] }`\[keyof `T`\] : `never`
 
 ## Type Parameters
 
@@ -14,8 +14,8 @@
 
 • **P**
 
-• **D** = `7`
+• **D** = [`DepthLimit`](DepthLimit.md)
 
 ## Defined in
 
-[lib/types/PathFiltered.ts:4](https://github.com/nevoland/quetch/blob/94f546831241bf41f83cf97787b7e923c8cf7824/lib/types/PathFiltered.ts#L4)
+[lib/types/PathFiltered.ts:5](https://github.com/nevoland/quetch/blob/1cf615b166541d2a753e34c0a2dd4a9474026d7a/lib/types/PathFiltered.ts#L5)

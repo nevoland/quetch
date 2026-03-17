@@ -6,7 +6,7 @@
 
 # Type Alias: KeyFiltered\<T, P\>
 
-> **KeyFiltered**\<`T`, `P`\>: [`0`] *extends* [`1` & `T`] ? [`Key`](Key.md) \| `SymbolSelf` : `T` *extends* `string` \| `number` \| `boolean` \| `bigint` \| `symbol` ? `T` *extends* `P` ? `SymbolSelf` : `never` : `T` *extends* `object` ? keyof `{ [K in keyof T as Extract<T[K], P> extends never ? never : K]-?: T[K] }` : `never`
+> **KeyFiltered**\<`T`, `P`\>: [`unknown`] *extends* [`T`] ? [`Key`](Key.md) \| `SymbolSelf` : [`0`] *extends* [`1` & `T`] ? [`Key`](Key.md) \| `SymbolSelf` : `T` *extends* `string` \| `number` \| `boolean` \| `bigint` \| `symbol` ? `T` *extends* `P` ? `SymbolSelf` : `never` : `T` *extends* `object` ? keyof `{ [K in keyof T as Extract<T[K], P> extends never ? never : K]-?: T[K] }` : `never`
 
 Returns union of keys whose mapped value extend the provided `P` type.
 
@@ -18,4 +18,4 @@ Returns union of keys whose mapped value extend the provided `P` type.
 
 ## Defined in
 
-[lib/types/KeyFiltered.ts:10](https://github.com/nevoland/quetch/blob/94f546831241bf41f83cf97787b7e923c8cf7824/lib/types/KeyFiltered.ts#L10)
+[lib/types/KeyFiltered.ts:10](https://github.com/nevoland/quetch/blob/1cf615b166541d2a753e34c0a2dd4a9474026d7a/lib/types/KeyFiltered.ts#L10)

@@ -4,9 +4,9 @@
 
 [quetch](../README.md) / Get
 
-# Type Alias: Get\<T, P\>
+# Type Alias: Get\<T, P, D\>
 
-> **Get**\<`T`, `P`\>: [`P`] *extends* [readonly [infer K, `...(infer R)`]] ? `K` *extends* keyof `T` ? `R` *extends* [`Path`](Path.md)\<`T`\[`K`\]\> ? [`Get`](Get.md)\<`T`\[`K`\], `R`\> : `T`\[`K`\] : `never` : [`P`] *extends* [keyof `T`] ? `T`\[`P`\] : `T`
+> **Get**\<`T`, `P`, `D`\>: [`unknown`] *extends* [`T`] ? `unknown` : [`0`] *extends* [`1` & `T`] ? `any` : `D` *extends* `-1` ? `any` : [`P`] *extends* [readonly [infer K, `...(infer R)`]] ? `K` *extends* keyof `T` ? `R` *extends* [`Path`](Path.md)\<`T`\[`K`\]\> ? [`Get`](Get.md)\<`T`\[`K`\], `R`, [`Decrement`](Decrement.md)\<`D`\>\> : `T`\[`K`\] : `never` : [`P`] *extends* [keyof `T`] ? `T`\[`P`\] : `T`
 
 Returns the type of the property at the specified `P` path.
 
@@ -16,6 +16,8 @@ Returns the type of the property at the specified `P` path.
 
 • **P**
 
+• **D** = [`DepthLimit`](DepthLimit.md)
+
 ## Defined in
 
-[lib/types/Get.ts:6](https://github.com/nevoland/quetch/blob/94f546831241bf41f83cf97787b7e923c8cf7824/lib/types/Get.ts#L6)
+[lib/types/Get.ts:8](https://github.com/nevoland/quetch/blob/1cf615b166541d2a753e34c0a2dd4a9474026d7a/lib/types/Get.ts#L8)
