@@ -1,5 +1,7 @@
 import { SELF } from "../constants/SELF.js";
-import type { Get, Path } from "../types";
+import type { Field, Get } from "../types";
+
+const { isArray } = Array;
 
 /**
  * Gets the property value of the given `value` at the specified `path` (an array of object property names or array indexes).
@@ -7,11 +9,13 @@ import type { Get, Path } from "../types";
  * If the `path` is a string, it is considered as a path with one item.
  * If the `path` leads to an unknown property, returns `undefined`.
  *
+ * Beware that if
+ *
  * @param value The value from which to get the property value.
  * @param path The path leading to the property value or a property name or `undefined`.
  * @returns The property value found at the given path, or `undefined` if it cannot be found.
  */
-export function get<const T, const P extends Path<T> | keyof T>(
+export function get<const T, const P extends Field<T>>(
   value: T,
   path?: P,
 ): Get<T, P> {
@@ -24,6 +28,9 @@ export function get<const T, const P extends Path<T> | keyof T>(
     case "symbol":
       return (value as any)?.[path];
     default: {
+      if (!isArray(path)) {
+        return value as any;
+      }
       switch (path.length as number) {
         case 0:
           return value as any;

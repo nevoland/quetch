@@ -26,8 +26,8 @@ export function sortItemList<T>(
   return value.toSorted((a, b) => {
     for (let index = 0; index < normalizedOrder.length; index++) {
       const { field, descending } = normalizedOrder[index]!;
-      const valueA = get<any, any>(a, field);
-      const valueB = get<any, any>(b, field);
+      const valueA = get(a, field);
+      const valueB = get(b, field);
       if (valueA === valueB) {
         continue;
       }
