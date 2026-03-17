@@ -34,4 +34,4 @@ Checks if a given string field has any of the provided values.
 
 ## Defined in
 
-[lib/types/FilterStringIntersect.ts:8](https://github.com/nevoland/quetch/blob/11efc4791b6b46376df8dcc576f30e0b288063ba/lib/types/FilterStringIntersect.ts#L8)
+[lib/types/FilterStringIntersect.ts:8](https://github.com/nevoland/quetch/blob/f290c9f2f51b8b7accd7522858dc7670791c1cb4/lib/types/FilterStringIntersect.ts#L8)

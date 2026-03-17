@@ -62,6 +62,7 @@
 - [Parameters](type-aliases/Parameters.md)
 - [Path](type-aliases/Path.md)
 - [PathFiltered](type-aliases/PathFiltered.md)
+- [Prettify](type-aliases/Prettify.md)
 - [Primitive](type-aliases/Primitive.md)
 - [PrimitiveObject](type-aliases/PrimitiveObject.md)
 - [Query](type-aliases/Query.md)

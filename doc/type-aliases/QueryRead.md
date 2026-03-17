@@ -24,7 +24,7 @@ Common item properties to use for identifying the context in which to get the it
 
 ### fields?
 
-> `optional` **fields**: readonly keyof `T`[]
+> `optional` **fields**: readonly [`Field`](Field.md)\<`T`\>[]
 
 Item fields to pick. If omitted, all fields are picked.
 
@@ -76,4 +76,4 @@ Query settings.
 
 ## Defined in
 
-[lib/types/QueryRead.ts:10](https://github.com/nevoland/quetch/blob/11efc4791b6b46376df8dcc576f30e0b288063ba/lib/types/QueryRead.ts#L10)
+[lib/types/QueryRead.ts:11](https://github.com/nevoland/quetch/blob/f290c9f2f51b8b7accd7522858dc7670791c1cb4/lib/types/QueryRead.ts#L11)

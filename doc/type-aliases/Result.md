@@ -6,7 +6,9 @@
 
 # Type Alias: Result\<T, Q\>
 
-> **Result**\<`T`, `Q`\>: [`Q`] *extends* [`object`] ? [`Q`] *extends* [`object`] ? readonly `ResultRead`\<`T`, `Q`\>[] : `ResultRead`\<`T`, `Q`\> : [`Q`] *extends* [`object`] ? `number` : [`Q`] *extends* [`object`] ? readonly `ResultRead`\<`T`, `Q`\>[] : `ResultRead`\<`T`, `Q`\>
+> **Result**\<`T`, `Q`\>: [`Q`] *extends* [[`QueryReadMultiple`](QueryReadMultiple.md)\<`T`\>] ? readonly `ResultRead`\<`T`, `Q`\>[] : [`Q`] *extends* [[`QueryRead`](QueryRead.md)\<`T`\>] ? `ResultRead`\<`T`, `Q`\> : [`Q`] *extends* [`object`] ? `number` : `never`
+
+Result of a read and aggregate query.
 
 ## Type Parameters
 
@@ -16,4 +18,4 @@
 
 ## Defined in
 
-[lib/types/Result.ts:20](https://github.com/nevoland/quetch/blob/11efc4791b6b46376df8dcc576f30e0b288063ba/lib/types/Result.ts#L20)
+[lib/types/Result.ts:64](https://github.com/nevoland/quetch/blob/f290c9f2f51b8b7accd7522858dc7670791c1cb4/lib/types/Result.ts#L64)
