@@ -16,4 +16,4 @@ Prettifies a type by recursively removing any intersections or unions.
 
 ## Defined in
 
-[lib/types/Prettify.ts:4](https://github.com/nevoland/quetch/blob/f290c9f2f51b8b7accd7522858dc7670791c1cb4/lib/types/Prettify.ts#L4)
+[lib/types/Prettify.ts:4](https://github.com/nevoland/quetch/blob/556422ecfdc4dbcfabe378d17bda6757f5dee8c3/lib/types/Prettify.ts#L4)

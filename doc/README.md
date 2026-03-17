@@ -104,6 +104,7 @@
 - [fetchExternal](functions/fetchExternal.md)
 - [fetchLocal](functions/fetchLocal.md)
 - [fieldListFromFilter](functions/fieldListFromFilter.md)
+- [fieldListUnion](functions/fieldListUnion.md)
 - [filterChildren](functions/filterChildren.md)
 - [filterFromValue](functions/filterFromValue.md)
 - [get](functions/get.md)
