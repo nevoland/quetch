@@ -6,6 +6,7 @@ export { defineCustomFetch } from "./tools/defineCustomFetch.js";
 export { defineGenericFetch } from "./tools/defineGenericFetch.js";
 export { escapeRegex } from "./tools/escapeRegex.js";
 export { fieldListFromFilter } from "./tools/fieldListFromFilter.js";
+export { fieldListUnion } from "./tools/fieldListUnion.js";
 export { filterChildren } from "./tools/filterChildren.js";
 export { filterFromValue } from "./tools/filterFromValue.js";
 export { get } from "./tools/get.js";
