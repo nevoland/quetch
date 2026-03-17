@@ -9,8 +9,6 @@ const { isArray } = Array;
  * If the `path` is a string, it is considered as a path with one item.
  * If the `path` leads to an unknown property, returns `undefined`.
  *
- * Beware that if
- *
  * @param value The value from which to get the property value.
  * @param path The path leading to the property value or a property name or `undefined`.
  * @returns The property value found at the given path, or `undefined` if it cannot be found.
