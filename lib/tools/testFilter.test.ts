@@ -408,7 +408,7 @@ test("tests filter with children predicates", () => {
             field: "path",
             operator: "startWith",
             value: `.${filter.value?.path}.`,
-          };
+          } as const;
         },
       },
     ),
@@ -426,7 +426,7 @@ test("tests filter with children predicates", () => {
             field: "path",
             operator: "startWith",
             value: `.${filter.value?.path}.`,
-          };
+          } as const;
         },
       },
     ),
