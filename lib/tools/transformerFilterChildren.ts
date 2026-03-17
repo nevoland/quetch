@@ -29,6 +29,7 @@ export function transformerFilterChildren<T>({
       minDepth,
       maxDepth,
       pathFieldSeparator,
+      filter.operator[0] === "n",
     );
   };
 }

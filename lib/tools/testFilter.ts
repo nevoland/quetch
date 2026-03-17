@@ -121,7 +121,6 @@ export function testFilter<T>(
     }
     case "children":
     case "notChildren": {
-      const not = filter.operator[0] === "n";
       if (filter[CACHE] === undefined) {
         switch (true) {
           case settings?.transformFilterChildren !== undefined:
@@ -133,7 +132,7 @@ export function testFilter<T>(
           }
         }
       }
-      return negate(testFilter(filter[CACHE], value, settings), not);
+      return testFilter(filter[CACHE], value, settings);
     }
     case "custom": {
       return filter.value(value);
