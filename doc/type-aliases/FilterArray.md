@@ -32,4 +32,4 @@ Checks if a given array field matches a given array value according to a given o
 
 ## Defined in
 
-[lib/types/FilterArray.ts:11](https://github.com/nevoland/quetch/blob/556422ecfdc4dbcfabe378d17bda6757f5dee8c3/lib/types/FilterArray.ts#L11)
+[lib/types/FilterArray.ts:11](https://github.com/nevoland/quetch/blob/b61dbca54473f80e71fa7a49ff56d6963b3a7e91/lib/types/FilterArray.ts#L11)

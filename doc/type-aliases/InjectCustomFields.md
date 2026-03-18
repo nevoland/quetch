@@ -18,4 +18,4 @@ Injects the custom fields into the entity type.
 
 ## Defined in
 
-[lib/types/InjectCustomFields.ts:8](https://github.com/nevoland/quetch/blob/556422ecfdc4dbcfabe378d17bda6757f5dee8c3/lib/types/InjectCustomFields.ts#L8)
+[lib/types/InjectCustomFields.ts:8](https://github.com/nevoland/quetch/blob/b61dbca54473f80e71fa7a49ff56d6963b3a7e91/lib/types/InjectCustomFields.ts#L8)

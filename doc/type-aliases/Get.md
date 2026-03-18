@@ -20,4 +20,4 @@ Returns the type of the property at the specified `P` path.
 
 ## Defined in
 
-[lib/types/Get.ts:8](https://github.com/nevoland/quetch/blob/556422ecfdc4dbcfabe378d17bda6757f5dee8c3/lib/types/Get.ts#L8)
+[lib/types/Get.ts:8](https://github.com/nevoland/quetch/blob/b61dbca54473f80e71fa7a49ff56d6963b3a7e91/lib/types/Get.ts#L8)

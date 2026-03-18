@@ -42,6 +42,7 @@
 - [FilterString](type-aliases/FilterString.md)
 - [FilterStringIntersect](type-aliases/FilterStringIntersect.md)
 - [FilterStringMatch](type-aliases/FilterStringMatch.md)
+- [FilterWithField](type-aliases/FilterWithField.md)
 - [Get](type-aliases/Get.md)
 - [Group](type-aliases/Group.md)
 - [Handler](type-aliases/Handler.md)
