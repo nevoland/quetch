@@ -28,6 +28,7 @@ export type { FilterOperator } from "./types/FilterOperator";
 export type { FilterString } from "./types/FilterString";
 export type { FilterStringIntersect } from "./types/FilterStringIntersect";
 export type { FilterStringMatch } from "./types/FilterStringMatch";
+export type { FilterWithField } from "./types/FilterWithField";
 export type { Get } from "./types/Get";
 export type { Group } from "./types/Group";
 export type { Handler } from "./types/Handler";
