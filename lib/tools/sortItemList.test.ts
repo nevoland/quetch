@@ -143,3 +143,61 @@ test("sorts items with separator setting", () => {
     { path: "a\\.b.c" },
   ]);
 });
+
+test("sorts trees appropriately", () => {
+  expect(
+    sortItemList(
+      [{ descending: false, field: "path" }],
+      [
+        { path: "a" },
+        { path: "a/b" },
+        { path: "a/c" },
+        { path: "a.b" },
+        { path: "a/b/c" },
+        { path: "a.b.c" },
+        { path: "a/b.c" },
+        { path: "a\\/b.c" },
+        { path: "a.b/c" },
+      ],
+      querySettings(),
+    ),
+  ).toEqual([
+    { path: "a" },
+    { path: "a/b" },
+    { path: "a/b/c" },
+    { path: "a/b.c" },
+    { path: "a/c" },
+    { path: "a.b" },
+    { path: "a.b/c" },
+    { path: "a.b.c" },
+    { path: "a\\/b.c" },
+  ]);
+
+  expect(
+    sortItemList(
+      [{ descending: true, field: "path" }],
+      [
+        { path: "a" },
+        { path: "a/c" },
+        { path: "a/b" },
+        { path: "a.b" },
+        { path: "a/b/c" },
+        { path: "a.b.c" },
+        { path: "a/b.c" },
+        { path: "a\\/b.c" },
+        { path: "a.b/c" },
+      ],
+      querySettings(),
+    ),
+  ).toEqual([
+    { path: "a\\/b.c" },
+    { path: "a.b.c" },
+    { path: "a.b" },
+    { path: "a.b/c" },
+    { path: "a" },
+    { path: "a/c" },
+    { path: "a/b.c" },
+    { path: "a/b" },
+    { path: "a/b/c" },
+  ]);
+});

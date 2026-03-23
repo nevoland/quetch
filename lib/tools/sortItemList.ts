@@ -25,7 +25,7 @@ export function sortItemList<T>(
   const normalizedOrder = orderList.map(normalizeOrder);
   return value.toSorted((a, b) => {
     for (let index = 0; index < normalizedOrder.length; index++) {
-      const { field, descending } = normalizedOrder[index]!;
+      const { field, descending = false } = normalizedOrder[index]!;
       const valueA = get(a, field);
       const valueB = get(b, field);
       if (valueA === valueB) {
@@ -37,7 +37,12 @@ export function sortItemList<T>(
       if (valueB == null) {
         return descending ? -1 : 1;
       }
-      const comparison = compareFieldValues?.(field, valueA, valueB);
+      const comparison = compareFieldValues?.(
+        field,
+        descending,
+        valueA,
+        valueB,
+      );
       if (comparison === undefined) {
         if (valueA > valueB) {
           return descending ? -1 : 1;
@@ -47,7 +52,7 @@ export function sortItemList<T>(
       if (comparison === 0) {
         continue;
       }
-      return descending ? -comparison : comparison;
+      return comparison;
     }
     return 0;
   });

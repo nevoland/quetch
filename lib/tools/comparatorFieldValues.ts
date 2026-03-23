@@ -23,12 +23,19 @@ export function comparatorFieldValues<T>({
   const fieldSeparatorRegexp = new RegExp(
     !pathFieldSeparatorEscape
       ? escapeRegex(pathFieldSeparator)
-      : `(?<!${escapeRegex(pathFieldSeparatorEscape)})${escapeRegex(pathFieldSeparator)}`,
+      : `(?<!(?:${escapeRegex(pathFieldSeparatorEscape)}{2})*${escapeRegex(pathFieldSeparatorEscape)})${escapeRegex(pathFieldSeparator)}`,
     "g",
   );
-  return (field, a, b) => {
+  return (field, descending, a, b) => {
     if (!sameField(field, pathField)) {
       return undefined;
+    }
+    // Parents should always appear before their children, regardless of the order direction
+    if ((a as string).startsWith(`${b}${pathFieldSeparator}`)) {
+      return 1;
+    }
+    if ((b as string).startsWith(`${a}${pathFieldSeparator}`)) {
+      return -1;
     }
     const normalizedA = (a as string).replaceAll?.(
       fieldSeparatorRegexp,
@@ -39,8 +46,8 @@ export function comparatorFieldValues<T>({
       "\x00",
     );
     if (normalizedA > normalizedB) {
-      return 1;
+      return descending ? -1 : 1;
     }
-    return -1;
+    return descending ? 1 : -1;
   };
 }

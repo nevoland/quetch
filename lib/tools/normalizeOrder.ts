@@ -18,5 +18,5 @@ export function normalizeOrder<T>(order: Order<T>): {
       descending: false,
     };
   }
-  return order;
+  return order as ReturnType<typeof normalizeOrder<T>>;
 }
