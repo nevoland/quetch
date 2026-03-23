@@ -1,6 +1,6 @@
 {
   "name": "quetch",
-  "version": "0.32.3",
+  "version": "0.33.0",
   "type": "module",
   "main": "./dist/main.js",
   "exports": {
