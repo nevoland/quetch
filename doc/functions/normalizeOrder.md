@@ -38,4 +38,4 @@ The normalized order object.
 
 ## Defined in
 
-[lib/tools/normalizeOrder.ts:11](https://github.com/nevoland/quetch/blob/b61dbca54473f80e71fa7a49ff56d6963b3a7e91/lib/tools/normalizeOrder.ts#L11)
+[lib/tools/normalizeOrder.ts:11](https://github.com/nevoland/quetch/blob/131557e11062ea669e329412a2b134052204e500/lib/tools/normalizeOrder.ts#L11)

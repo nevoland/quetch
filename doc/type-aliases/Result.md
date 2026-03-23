@@ -18,4 +18,4 @@ Result of a read and aggregate query.
 
 ## Defined in
 
-[lib/types/Result.ts:64](https://github.com/nevoland/quetch/blob/b61dbca54473f80e71fa7a49ff56d6963b3a7e91/lib/types/Result.ts#L64)
+[lib/types/Result.ts:64](https://github.com/nevoland/quetch/blob/131557e11062ea669e329412a2b134052204e500/lib/types/Result.ts#L64)

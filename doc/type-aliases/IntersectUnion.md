@@ -16,4 +16,4 @@ Converts a union type to an intersection type.
 
 ## Defined in
 
-[lib/types/IntersectUnion.ts:4](https://github.com/nevoland/quetch/blob/b61dbca54473f80e71fa7a49ff56d6963b3a7e91/lib/types/IntersectUnion.ts#L4)
+[lib/types/IntersectUnion.ts:4](https://github.com/nevoland/quetch/blob/131557e11062ea669e329412a2b134052204e500/lib/types/IntersectUnion.ts#L4)

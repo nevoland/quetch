@@ -6,7 +6,7 @@
 
 # Type Alias: FieldKey\<T\>
 
-> **FieldKey**\<`T`\>: `T` *extends* [`Primitive`](Primitive.md) ? *typeof* [`SELF`](../variables/SELF.md) : [`unknown`] *extends* [`T`] ? [`Key`](Key.md) : keyof `T`
+> **FieldKey**\<`T`\>: [`unknown`] *extends* [`T`] ? [`Key`](Key.md) : `T` *extends* [`Primitive`](Primitive.md) ? *typeof* [`SELF`](../variables/SELF.md) : keyof `T`
 
 ## Type Parameters
 
@@ -14,4 +14,4 @@
 
 ## Defined in
 
-[lib/types/FieldKey.ts:6](https://github.com/nevoland/quetch/blob/b61dbca54473f80e71fa7a49ff56d6963b3a7e91/lib/types/FieldKey.ts#L6)
+[lib/types/FieldKey.ts:6](https://github.com/nevoland/quetch/blob/131557e11062ea669e329412a2b134052204e500/lib/types/FieldKey.ts#L6)
