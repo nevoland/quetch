@@ -86,6 +86,7 @@
 ## Variables
 
 - [CACHE](variables/CACHE.md)
+- [COLLATOR\_DEFAULT](variables/COLLATOR_DEFAULT.md)
 - [FILTER\_ANY](variables/FILTER_ANY.md)
 - [FILTER\_NONE](variables/FILTER_NONE.md)
 - [SELF](variables/SELF.md)

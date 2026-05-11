@@ -36,4 +36,4 @@ The transformed intrinsic filter.
 
 ## Defined in
 
-[lib/tools/intrinsicFilter.ts:10](https://github.com/nevoland/quetch/blob/131557e11062ea669e329412a2b134052204e500/lib/tools/intrinsicFilter.ts#L10)
+[lib/tools/intrinsicFilter.ts:10](https://github.com/nevoland/quetch/blob/26a6a149fc06ca974acb5d9f3e9fe2273dcb9969/lib/tools/intrinsicFilter.ts#L10)

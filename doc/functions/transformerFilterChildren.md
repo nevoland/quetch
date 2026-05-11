@@ -40,4 +40,4 @@ A function that takes a `FilterChildren` and returns a `FilterStringMatch` that 
 
 ## Defined in
 
-[lib/tools/transformerFilterChildren.ts:19](https://github.com/nevoland/quetch/blob/131557e11062ea669e329412a2b134052204e500/lib/tools/transformerFilterChildren.ts#L19)
+[lib/tools/transformerFilterChildren.ts:19](https://github.com/nevoland/quetch/blob/26a6a149fc06ca974acb5d9f3e9fe2273dcb9969/lib/tools/transformerFilterChildren.ts#L19)
