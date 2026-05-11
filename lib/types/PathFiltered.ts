@@ -2,6 +2,9 @@ import type { Decrement } from "./Decrement";
 import type { DepthLimit } from "./DepthLimit";
 import type { Key } from "./Key";
 
+/**
+ * Returns the type of paths that can be used to select fields from a value of type `T` whose mapped value extend the provided `P` type, with an optional depth limit `D`.
+ */
 export type PathFiltered<T, P, D = DepthLimit> = [unknown] extends [T]
   ? readonly (Key | never)[]
   : [0] extends [1 & T]

@@ -8,37 +8,39 @@ import type { QueryRead } from "./QueryRead";
 import type { QueryReadMultiple } from "./QueryReadMultiple";
 
 /**
- * Picks fields `F` from object `T`.
+ * Picks fields `F` from value `T`.
  */
 type PickFields<T, F extends readonly Field<T>[]> = [unknown] extends [T]
   ? T
   : T extends Primitive
     ? T
-    : [F] extends [readonly [infer J, ...infer R]]
-      ? Merge<
-          | // J is a single key
-          ([J] extends [keyof T]
-              ? PickField<T, J, T[J]>
-              : // J is a path
-                [J] extends [readonly [infer K, ...infer S]]
-                ? [K] extends [keyof T]
-                  ? PickField<
-                      T,
-                      K,
-                      PickFields<
-                        T[K],
-                        S extends readonly Field<T[K]>[] ? S : never
+    : T extends undefined
+      ? never
+      : [F] extends [readonly [infer J, ...infer R]]
+        ? Merge<
+            | // J is a single key
+            ([J] extends [keyof T]
+                ? PickField<T, J, T[J]>
+                : // J is a path
+                  [J] extends [readonly [infer K, ...infer S]]
+                  ? [K] extends [keyof T]
+                    ? PickField<
+                        T,
+                        K,
+                        PickFields<
+                          T[K],
+                          S extends readonly Field<T[K]>[] ? S : never
+                        >
                       >
-                    >
-                  : never
-                : never)
-          | (R extends readonly never[]
-              ? never
-              : R extends readonly Field<T>[]
-                ? PickFields<T, R>
-                : never)
-        >
-      : never;
+                    : never
+                  : never)
+            | (R extends readonly never[]
+                ? never
+                : R extends readonly Field<T>[]
+                  ? PickFields<T, R>
+                  : never)
+          >
+        : never;
 
 type Merge<T> = Prettify<IntersectUnion<T>>;
 

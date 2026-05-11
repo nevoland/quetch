@@ -7,7 +7,7 @@ export type CombineUnion<U> = [unknown] extends [U]
     ? any
     : [U] extends [Function | readonly Function[]]
       ? undefined
-      : [U] extends [Primitive]
+      : [U] extends [Primitive | undefined]
         ? U
         : [U] extends readonly [Array<any>]
           ? U

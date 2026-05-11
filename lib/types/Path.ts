@@ -3,13 +3,16 @@ import type { DepthLimit } from "./DepthLimit";
 import type { Key } from "./Key";
 import type { Primitive } from "./Primitive";
 
+/**
+ * Returns the type of paths that can be used to select fields from a value of type `T`, with an optional depth limit `D`.
+ */
 export type Path<T, D = DepthLimit> = [unknown] extends [T]
   ? readonly (Key | never)[]
   : [0] extends [1 & T]
     ? readonly (Key | never)[]
     : D extends -1
       ? never
-      : T extends Primitive
+      : T extends Primitive | undefined
         ? readonly never[]
         : T extends Array<infer P>
           ? readonly [number] | readonly [number, ...Path<P, Decrement<D>>]

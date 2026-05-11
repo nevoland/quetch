@@ -10,10 +10,14 @@ import type { Primitive } from "./Primitive.js";
  *
  * It can be a partial object of the type `T` or a primitive value wrapped in an object with the `SELF` key.
  */
-export type Context<T> = [0] extends [1 & T]
+export type Context<T> = [unknown] extends [T]
   ? any
-  : T extends Primitive
-    ? { [SELF]: T }
-    : {
-        [K in keyof T]?: T[K];
-      };
+  : [0] extends [1 & T]
+    ? any
+    : T extends Primitive
+      ? { [SELF]: T }
+      : T extends undefined
+        ? never
+        : {
+            [K in keyof T]?: T[K];
+          };
