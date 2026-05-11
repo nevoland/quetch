@@ -68,4 +68,4 @@
 
 ## Defined in
 
-[lib/types/Store.ts:2](https://github.com/nevoland/quetch/blob/26a6a149fc06ca974acb5d9f3e9fe2273dcb9969/lib/types/Store.ts#L2)
+[lib/types/Store.ts:2](https://github.com/nevoland/quetch/blob/f06bc3e41c99a7cd13f24ba66911a74f93f25000/lib/types/Store.ts#L2)

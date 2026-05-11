@@ -12,4 +12,4 @@ Available query methods.
 
 ## Defined in
 
-[lib/types/QueryMethod.ts:6](https://github.com/nevoland/quetch/blob/26a6a149fc06ca974acb5d9f3e9fe2273dcb9969/lib/types/QueryMethod.ts#L6)
+[lib/types/QueryMethod.ts:6](https://github.com/nevoland/quetch/blob/f06bc3e41c99a7cd13f24ba66911a74f93f25000/lib/types/QueryMethod.ts#L6)

@@ -18,4 +18,4 @@ Returns the inferred item type of an array, or an alternative type if it is some
 
 ## Defined in
 
-[lib/types/Item.ts:4](https://github.com/nevoland/quetch/blob/26a6a149fc06ca974acb5d9f3e9fe2273dcb9969/lib/types/Item.ts#L4)
+[lib/types/Item.ts:4](https://github.com/nevoland/quetch/blob/f06bc3e41c99a7cd13f24ba66911a74f93f25000/lib/types/Item.ts#L4)

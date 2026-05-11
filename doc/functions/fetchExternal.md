@@ -26,4 +26,4 @@ Handler that returns a promise that resolves to the response.
 
 ## Defined in
 
-[lib/middlewares/fetchExternal.ts:12](https://github.com/nevoland/quetch/blob/26a6a149fc06ca974acb5d9f3e9fe2273dcb9969/lib/middlewares/fetchExternal.ts#L12)
+[lib/middlewares/fetchExternal.ts:12](https://github.com/nevoland/quetch/blob/f06bc3e41c99a7cd13f24ba66911a74f93f25000/lib/middlewares/fetchExternal.ts#L12)

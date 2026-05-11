@@ -68,4 +68,4 @@ A custom fetch function.
 
 ## Defined in
 
-[lib/tools/defineCustomFetch.ts:11](https://github.com/nevoland/quetch/blob/26a6a149fc06ca974acb5d9f3e9fe2273dcb9969/lib/tools/defineCustomFetch.ts#L11)
+[lib/tools/defineCustomFetch.ts:11](https://github.com/nevoland/quetch/blob/f06bc3e41c99a7cd13f24ba66911a74f93f25000/lib/tools/defineCustomFetch.ts#L11)
