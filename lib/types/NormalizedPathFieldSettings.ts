@@ -22,4 +22,8 @@ export type NormalizedPathFieldSettings<T> = {
    * @default "/"
    */
   pathFieldSeparator?: string;
+  /**
+   * Collator used for string comparison.
+   */
+  collator?: Intl.Collator;
 };

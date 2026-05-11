@@ -19,6 +19,7 @@ export function comparatorFieldValues<T>({
   pathField = "path" as FieldFiltered<T, string>,
   pathFieldSeparator = "/",
   pathFieldSeparatorEscape = "\\",
+  collator,
 }: NormalizedPathFieldSettings<T> = EMPTY_OBJECT): QuerySettings<T>["compareFieldValues"] {
   const fieldSeparatorRegexp = new RegExp(
     !pathFieldSeparatorEscape
@@ -45,9 +46,30 @@ export function comparatorFieldValues<T>({
       fieldSeparatorRegexp,
       "\x00",
     );
-    if (normalizedA > normalizedB) {
+    if (collator) {
+      const comparison = collator.compare(normalizedA, normalizedB);
+      return descending
+        ? comparison > 0
+          ? -1
+          : comparison < 0
+            ? 1
+            : 0
+        : comparison > 0
+          ? 1
+          : comparison < 0
+            ? -1
+            : 0;
+    }
+    const comparison = normalizedA.localeCompare(normalizedB, undefined, {
+      numeric: true,
+    });
+    const comparisonNormalized = comparison > 0 ? 1 : comparison < 0 ? -1 : 0;
+    if (comparisonNormalized > 0) {
       return descending ? -1 : 1;
     }
-    return descending ? 1 : -1;
+    if (comparisonNormalized < 0) {
+      return descending ? 1 : -1;
+    }
+    return 0;
   };
 }
