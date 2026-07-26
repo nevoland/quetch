@@ -6,7 +6,7 @@
 
 # Type Alias: Path\<T, D\>
 
-> **Path**\<`T`, `D`\>: [`unknown`] *extends* [`T`] ? readonly ([`Key`](Key.md) \| `never`)[] : [`0`] *extends* [`1` & `T`] ? readonly ([`Key`](Key.md) \| `never`)[] : `D` *extends* `-1` ? `never` : `T` *extends* [`Primitive`](Primitive.md) \| `undefined` ? readonly `never`[] : `T` *extends* infer P[] ? readonly [`number`] \| readonly [`number`, `...Path<P, Decrement<(...)>>`] : `T` *extends* `object` ? \{ \[K in keyof T\]: readonly \[(...)\] \| readonly \[(...), (...)\] \}\[keyof `T`\] : `never`
+> **Path**\<`T`, `D`\>: [`unknown`] *extends* [`T`] ? readonly (`PropertyKey` \| `never`)[] : [`0`] *extends* [`1` & `T`] ? readonly (`PropertyKey` \| `never`)[] : `D` *extends* `-1` ? `never` : `T` *extends* [`Primitive`](Primitive.md) \| `undefined` ? readonly `never`[] : `T` *extends* infer P[] ? readonly [`number`] \| readonly [`number`, `...Path<P, Decrement<(...)>>`] : `T` *extends* `object` ? \{ \[K in keyof T\]: readonly \[(...)\] \| readonly \[(...), (...)\] \}\[keyof `T`\] : `never`
 
 Returns the type of paths that can be used to select fields from a value of type `T`, with an optional depth limit `D`.
 
@@ -18,4 +18,4 @@ Returns the type of paths that can be used to select fields from a value of type
 
 ## Defined in
 
-[lib/types/Path.ts:9](https://github.com/nevoland/quetch/blob/f06bc3e41c99a7cd13f24ba66911a74f93f25000/lib/types/Path.ts#L9)
+[lib/types/Path.ts:8](https://github.com/nevoland/quetch/blob/852e493056419119d071edc6f41975a9efd727e3/lib/types/Path.ts#L8)

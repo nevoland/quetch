@@ -52,7 +52,6 @@
 - [IntrinsicFilter](type-aliases/IntrinsicFilter.md)
 - [Item](type-aliases/Item.md)
 - [Join](type-aliases/Join.md)
-- [Key](type-aliases/Key.md)
 - [KeyFiltered](type-aliases/KeyFiltered.md)
 - [KeyFromUnion](type-aliases/KeyFromUnion.md)
 - [Locale](type-aliases/Locale.md)

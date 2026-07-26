@@ -6,7 +6,7 @@
 
 # Type Alias: FieldKey\<T\>
 
-> **FieldKey**\<`T`\>: [`unknown`] *extends* [`T`] ? [`Key`](Key.md) : `T` *extends* [`Primitive`](Primitive.md) \| `undefined` ? *typeof* [`SELF`](../variables/SELF.md) : keyof `T`
+> **FieldKey**\<`T`\>: [`unknown`] *extends* [`T`] ? `PropertyKey` : `T` *extends* [`Primitive`](Primitive.md) \| `undefined` ? *typeof* [`SELF`](../variables/SELF.md) : keyof `T`
 
 Returns the type of keys that can be used to select fields from a value of type `T`.
 
@@ -16,4 +16,4 @@ Returns the type of keys that can be used to select fields from a value of type 
 
 ## Defined in
 
-[lib/types/FieldKey.ts:9](https://github.com/nevoland/quetch/blob/f06bc3e41c99a7cd13f24ba66911a74f93f25000/lib/types/FieldKey.ts#L9)
+[lib/types/FieldKey.ts:8](https://github.com/nevoland/quetch/blob/852e493056419119d071edc6f41975a9efd727e3/lib/types/FieldKey.ts#L8)

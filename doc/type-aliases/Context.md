@@ -21,4 +21,4 @@ It can be a partial object of the type `T` or a primitive value wrapped in an ob
 
 ## Defined in
 
-[lib/types/Context.ts:13](https://github.com/nevoland/quetch/blob/f06bc3e41c99a7cd13f24ba66911a74f93f25000/lib/types/Context.ts#L13)
+[lib/types/Context.ts:13](https://github.com/nevoland/quetch/blob/852e493056419119d071edc6f41975a9efd727e3/lib/types/Context.ts#L13)

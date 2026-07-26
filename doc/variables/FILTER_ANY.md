@@ -16,4 +16,4 @@
 
 ## Defined in
 
-[lib/constants/FILTER\_ANY.ts:1](https://github.com/nevoland/quetch/blob/f06bc3e41c99a7cd13f24ba66911a74f93f25000/lib/constants/FILTER_ANY.ts#L1)
+[lib/constants/FILTER\_ANY.ts:1](https://github.com/nevoland/quetch/blob/852e493056419119d071edc6f41975a9efd727e3/lib/constants/FILTER_ANY.ts#L1)
