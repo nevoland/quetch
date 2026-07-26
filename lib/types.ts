@@ -38,7 +38,6 @@ export type { IntersectUnion } from "./types/IntersectUnion";
 export type { IntrinsicFilter } from "./types/IntrinsicFilter";
 export type { Item } from "./types/Item";
 export type { Join } from "./types/Join";
-export type { Key } from "./types/Key";
 export type { KeyFiltered } from "./types/KeyFiltered";
 export type { KeyFromUnion } from "./types/KeyFromUnion";
 export type { Locale } from "./types/Locale";

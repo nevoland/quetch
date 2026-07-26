@@ -1,16 +1,14 @@
 import type { SELF } from "../constants/SELF";
 
-import type { Key } from "./Key";
-
 type SymbolSelf = typeof SELF;
 
 /**
  * Returns union of keys whose mapped value extend the provided `P` type.
  */
 export type KeyFiltered<T, P> = [unknown] extends [T]
-  ? Key | SymbolSelf
+  ? PropertyKey | SymbolSelf
   : [0] extends [1 & T]
-    ? Key | SymbolSelf
+    ? PropertyKey | SymbolSelf
     : T extends string | number | boolean | bigint | symbol
       ? T extends P
         ? SymbolSelf

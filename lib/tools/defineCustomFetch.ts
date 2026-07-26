@@ -1,4 +1,4 @@
-import type { Handler, Key, Query, Result } from "../types";
+import type { Handler, Query, Result } from "../types";
 
 import { cork } from "./cork.js";
 
@@ -9,7 +9,12 @@ import { cork } from "./cork.js";
  * @returns A custom fetch function.
  */
 export function defineCustomFetch<M extends Record<string, object>>(
-  handler: Handler<Query<any> & { type: Key | any[] }, any, never, never>,
+  handler: Handler<
+    Query<any> & { type: PropertyKey | any[] },
+    any,
+    never,
+    never
+  >,
 ) {
   async function customFetch<
     K extends keyof M,

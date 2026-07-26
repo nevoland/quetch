@@ -1,4 +1,4 @@
-import type { Handler, Key, Query, Result } from "../types";
+import type { Handler, Query, Result } from "../types";
 
 import { cork } from "./cork.js";
 
@@ -12,7 +12,12 @@ import { cork } from "./cork.js";
  * @returns A curried generic fetch function.
  */
 export function defineGenericFetch<K extends string>(
-  handler: Handler<Query<any> & { type: Key | any[] }, any, never, never>,
+  handler: Handler<
+    Query<any> & { type: PropertyKey | any[] },
+    any,
+    never,
+    never
+  >,
 ) {
   // FIXME: Until https://github.com/microsoft/TypeScript/issues/26242 gets resolved, the fetcher needs to be curried
   function genericFetch<T>() {
