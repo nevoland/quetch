@@ -1,10 +1,10 @@
 import type { KeyFromUnion } from "./KeyFromUnion";
 import type { Primitive } from "./Primitive";
 
-export type CombineUnion<U> = [unknown] extends [U]
-  ? unknown
-  : [0] extends [1 & U]
-    ? any
+export type CombineUnion<U> = [0] extends [1 & U]
+  ? any
+  : [unknown] extends [U]
+    ? unknown
     : [U] extends [Function | readonly Function[]]
       ? undefined
       : [U] extends [Primitive | undefined]

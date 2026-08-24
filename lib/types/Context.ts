@@ -12,12 +12,10 @@ import type { Primitive } from "./Primitive.js";
  */
 export type Context<T> = [unknown] extends [T]
   ? any
-  : [0] extends [1 & T]
-    ? any
-    : T extends Primitive
-      ? { [SELF]: T }
-      : T extends undefined
-        ? never
-        : {
-            [K in keyof T]?: T[K];
-          };
+  : T extends Primitive
+    ? { [SELF]: T }
+    : T extends undefined
+      ? never
+      : {
+          [K in keyof T]?: T[K];
+        };
