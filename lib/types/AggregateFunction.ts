@@ -1,6 +1,5 @@
 import type { Field } from "./Field";
 import type { Filter } from "./Filter";
-
 /**
  * Aggregation function.
  */
