@@ -67,3 +67,4 @@ export type { Result } from "./types/Result";
 export type { Store } from "./types/Store";
 export type { Value } from "./types/Value";
 export type { ValueMap } from "./types/ValueMap";
+export type { ValueOther } from "./types/ValueOther";
