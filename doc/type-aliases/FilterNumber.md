@@ -6,19 +6,9 @@
 
 # Type Alias: FilterNumber\<T\>
 
-> **FilterNumber**\<`T`\>: `object` & [`Value`](Value.md)\<`T`, `number`\>
+> **FilterNumber**\<`T`\>: `object` & [`Value`](Value.md)\<`T`, `number`\> \| `object` & [`Value`](Value.md)\<`T`, `number`\> & [`ValueOther`](ValueOther.md)\<`T`, `number`\>
 
 Checks if a given number field matches a given number value according to a given operator.
-
-## Type declaration
-
-### field
-
-> **field**: [`FieldFiltered`](FieldFiltered.md)\<`T`, `number`\>
-
-### operator
-
-> **operator**: `"equal"` \| `"notEqual"` \| `"greaterThan"` \| `"greaterThanOrEqual"` \| `"lowerThan"` \| `"lowerThanOrEqual"` \| `"between"` \| `"notBetween"` \| `"betweenOrEqual"` \| `"notBetweenOrEqual"`
 
 ## Type Parameters
 
@@ -26,4 +16,4 @@ Checks if a given number field matches a given number value according to a given
 
 ## Defined in
 
-[lib/types/FilterNumber.ts:7](https://github.com/nevoland/quetch/blob/852e493056419119d071edc6f41975a9efd727e3/lib/types/FilterNumber.ts#L7)
+[lib/types/FilterNumber.ts:8](https://github.com/nevoland/quetch/blob/81c71be508855bcc25db1158d9807bd1ffde0731/lib/types/FilterNumber.ts#L8)

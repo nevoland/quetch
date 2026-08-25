@@ -32,4 +32,4 @@ Whether the fields are the same.
 
 ## Defined in
 
-[lib/tools/sameField.ts:12](https://github.com/nevoland/quetch/blob/852e493056419119d071edc6f41975a9efd727e3/lib/tools/sameField.ts#L12)
+[lib/tools/sameField.ts:12](https://github.com/nevoland/quetch/blob/81c71be508855bcc25db1158d9807bd1ffde0731/lib/tools/sameField.ts#L12)

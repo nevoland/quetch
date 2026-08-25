@@ -6,7 +6,7 @@
 
 # Type Alias: Context\<T\>
 
-> **Context**\<`T`\>: [`unknown`] *extends* [`T`] ? `any` : [`0`] *extends* [`1` & `T`] ? `any` : `T` *extends* [`Primitive`](Primitive.md) ? `object` : `T` *extends* `undefined` ? `never` : `{ [K in keyof T]?: T[K] }`
+> **Context**\<`T`\>: [`unknown`] *extends* [`T`] ? `any` : `T` *extends* [`Primitive`](Primitive.md) ? `object` : `T` *extends* `undefined` ? `never` : `{ [K in keyof T]?: T[K] }`
 
 Describes the entity so that it can be identified or selected in a filter.
 
@@ -21,4 +21,4 @@ It can be a partial object of the type `T` or a primitive value wrapped in an ob
 
 ## Defined in
 
-[lib/types/Context.ts:13](https://github.com/nevoland/quetch/blob/852e493056419119d071edc6f41975a9efd727e3/lib/types/Context.ts#L13)
+[lib/types/Context.ts:13](https://github.com/nevoland/quetch/blob/81c71be508855bcc25db1158d9807bd1ffde0731/lib/types/Context.ts#L13)

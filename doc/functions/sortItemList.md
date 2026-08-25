@@ -40,4 +40,4 @@ A new sorted array.
 
 ## Defined in
 
-[lib/tools/sortItemList.ts:16](https://github.com/nevoland/quetch/blob/852e493056419119d071edc6f41975a9efd727e3/lib/tools/sortItemList.ts#L16)
+[lib/tools/sortItemList.ts:16](https://github.com/nevoland/quetch/blob/81c71be508855bcc25db1158d9807bd1ffde0731/lib/tools/sortItemList.ts#L16)

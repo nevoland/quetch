@@ -30,4 +30,4 @@ A function that takes a `FilterChildren` and returns a `FilterStringMatch` that 
 
 ## Defined in
 
-[lib/tools/comparatorFieldValues.ts:18](https://github.com/nevoland/quetch/blob/852e493056419119d071edc6f41975a9efd727e3/lib/tools/comparatorFieldValues.ts#L18)
+[lib/tools/comparatorFieldValues.ts:18](https://github.com/nevoland/quetch/blob/81c71be508855bcc25db1158d9807bd1ffde0731/lib/tools/comparatorFieldValues.ts#L18)

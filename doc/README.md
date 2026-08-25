@@ -81,6 +81,7 @@
 - [Store](type-aliases/Store.md)
 - [Value](type-aliases/Value.md)
 - [ValueMap](type-aliases/ValueMap.md)
+- [ValueOther](type-aliases/ValueOther.md)
 
 ## Variables
 
